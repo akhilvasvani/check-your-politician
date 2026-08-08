@@ -1,0 +1,11 @@
+{
+  "official_id": "mayor-bass",
+  "items": [
+    { "council_file": "23-0001", "title": "Sample Housing Ordinance", "role": "proposed",
+      "date": "2023-05-01", "outcome": "passed", "term": "current" },
+    { "council_file": "21-0042", "title": "Sample Transit Motion", "role": "voted_yes",
+      "date": "2021-09-12", "outcome": "passed", "term": "previous" },
+    { "council_file": "24-0100", "title": "Sample Budget Amendment", "role": "seconded",
+      "date": "2024-02-20", "outcome": "pending", "term": "current" }
+  ]
+}
