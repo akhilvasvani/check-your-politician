@@ -5,9 +5,758 @@
     "office": "Council District 14",
     "reelection": {
       "active": false,
-      "election_date": null,
-      "committee": "REPLACE_ME committee name"
+      "election_date": "2024-11-05",
+      "committee": "Jurado for City Council 2024"
     }
   },
-  "donors": []
+  "donors": [
+    {
+      "name": "Andy Bartholomew",
+      "type": "individual",
+      "total": 2300,
+      "employer": "Airbnb",
+      "contributions": [
+        {
+          "date": "2023-12-31",
+          "amount": 500
+        },
+        {
+          "date": "2024-03-31",
+          "amount": 900
+        },
+        {
+          "date": "2024-06-19",
+          "amount": 25
+        },
+        {
+          "date": "2024-06-21",
+          "amount": 875
+        }
+      ]
+    },
+    {
+      "name": "Joseph Bernardo",
+      "type": "individual",
+      "total": 2053,
+      "employer": "Loyola Marymount University",
+      "contributions": [
+        {
+          "date": "2023-02-11",
+          "amount": 300
+        },
+        {
+          "date": "2023-05-09",
+          "amount": 100
+        },
+        {
+          "date": "2023-06-26",
+          "amount": 50
+        },
+        {
+          "date": "2023-09-15",
+          "amount": 75
+        },
+        {
+          "date": "2023-12-11",
+          "amount": 128
+        },
+        {
+          "date": "2024-03-29",
+          "amount": 125
+        },
+        {
+          "date": "2024-04-29",
+          "amount": 125
+        },
+        {
+          "date": "2024-05-29",
+          "amount": 125
+        },
+        {
+          "date": "2024-06-29",
+          "amount": 125
+        },
+        {
+          "date": "2024-08-12",
+          "amount": 500
+        },
+        {
+          "date": "2024-09-26",
+          "amount": 200
+        },
+        {
+          "date": "2024-10-10",
+          "amount": 200
+        }
+      ]
+    },
+    {
+      "name": "Tamika Butler",
+      "type": "individual",
+      "total": 2050,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2023-04-30",
+          "amount": 100
+        },
+        {
+          "date": "2023-10-24",
+          "amount": 150
+        },
+        {
+          "date": "2024-02-27",
+          "amount": 900
+        },
+        {
+          "date": "2024-04-25",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Anthony Tolbert",
+      "type": "individual",
+      "total": 2050,
+      "employer": "UCLA School of Law",
+      "contributions": [
+        {
+          "date": "2023-05-10",
+          "amount": 900
+        },
+        {
+          "date": "2024-03-30",
+          "amount": 250
+        },
+        {
+          "date": "2024-08-08",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Matthew Shewfelt",
+      "type": "individual",
+      "total": 1950,
+      "employer": "Wilshire Escrow",
+      "contributions": [
+        {
+          "date": "2023-12-09",
+          "amount": 100
+        },
+        {
+          "date": "2023-12-13",
+          "amount": 250
+        },
+        {
+          "date": "2024-02-19",
+          "amount": 800
+        },
+        {
+          "date": "2024-08-07",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Luis Lopez",
+      "type": "individual",
+      "total": 1900,
+      "employer": "City of Hope",
+      "contributions": [
+        {
+          "date": "2023-05-16",
+          "amount": 100
+        },
+        {
+          "date": "2023-09-25",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-22",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Ben Davis",
+      "type": "individual",
+      "total": 1875,
+      "employer": "Elder Law and Disability Rights Center",
+      "contributions": [
+        {
+          "date": "2023-01-28",
+          "amount": 250
+        },
+        {
+          "date": "2023-06-20",
+          "amount": 250
+        },
+        {
+          "date": "2023-11-28",
+          "amount": 200
+        },
+        {
+          "date": "2024-02-12",
+          "amount": 100
+        },
+        {
+          "date": "2024-02-26",
+          "amount": 150
+        },
+        {
+          "date": "2024-03-06",
+          "amount": 25
+        },
+        {
+          "date": "2024-08-07",
+          "amount": 500
+        },
+        {
+          "date": "2024-10-15",
+          "amount": 400
+        }
+      ]
+    },
+    {
+      "name": "Elizabeth Christianson",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Larson LLP",
+      "contributions": [
+        {
+          "date": "2023-03-05",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-14",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Margaret Wynne",
+      "type": "individual",
+      "total": 1800,
+      "employer": "City of Los Angeles",
+      "contributions": [
+        {
+          "date": "2023-04-30",
+          "amount": 100
+        },
+        {
+          "date": "2023-05-15",
+          "amount": 100
+        },
+        {
+          "date": "2023-06-15",
+          "amount": 100
+        },
+        {
+          "date": "2023-07-15",
+          "amount": 100
+        },
+        {
+          "date": "2023-08-15",
+          "amount": 100
+        },
+        {
+          "date": "2023-09-15",
+          "amount": 100
+        },
+        {
+          "date": "2023-10-15",
+          "amount": 100
+        },
+        {
+          "date": "2023-11-10",
+          "amount": 100
+        },
+        {
+          "date": "2023-11-15",
+          "amount": 100
+        },
+        {
+          "date": "2024-05-20",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Christopher Roth",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Mynaric Lasercom GmbH",
+      "contributions": [
+        {
+          "date": "2023-09-07",
+          "amount": 500
+        },
+        {
+          "date": "2023-12-07",
+          "amount": 400
+        },
+        {
+          "date": "2024-07-17",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "John Collinson",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2023-10-30",
+          "amount": 500
+        },
+        {
+          "date": "2023-12-01",
+          "amount": 400
+        },
+        {
+          "date": "2024-09-17",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Adam Conover",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Self-employed",
+      "contributions": [
+        {
+          "date": "2023-12-31",
+          "amount": 900
+        },
+        {
+          "date": "2024-07-01",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Tim Disney",
+      "type": "individual",
+      "total": 1800,
+      "employer": "self",
+      "contributions": [
+        {
+          "date": "2023-12-22",
+          "amount": 900
+        },
+        {
+          "date": "2024-04-10",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Christina Samons",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Children's Law Center of California",
+      "contributions": [
+        {
+          "date": "2023-11-26",
+          "amount": 900
+        },
+        {
+          "date": "2024-08-07",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Daniel Scheinert",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2023-12-20",
+          "amount": 900
+        },
+        {
+          "date": "2024-10-19",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Richard Wood",
+      "type": "individual",
+      "total": 1800,
+      "employer": "LA County",
+      "contributions": [
+        {
+          "date": "2023-10-16",
+          "amount": 900
+        },
+        {
+          "date": "2024-04-21",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Kim Parker",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Freelance",
+      "contributions": [
+        {
+          "date": "2024-01-20",
+          "amount": 900
+        },
+        {
+          "date": "2024-04-19",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Elizabeth Allison Thomas",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2024-01-05",
+          "amount": 900
+        },
+        {
+          "date": "2024-04-08",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Engineers and Architects Association",
+      "type": "individual",
+      "total": 1800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-02-05",
+          "amount": 900
+        },
+        {
+          "date": "2024-05-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Robert Shore",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Raines Feldman Littrell LLP",
+      "contributions": [
+        {
+          "date": "2024-02-02",
+          "amount": 900
+        },
+        {
+          "date": "2024-04-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "David Somers",
+      "type": "individual",
+      "total": 1800,
+      "employer": "City of Los Angeles",
+      "contributions": [
+        {
+          "date": "2024-01-24",
+          "amount": 500
+        },
+        {
+          "date": "2024-03-02",
+          "amount": 400
+        },
+        {
+          "date": "2024-06-26",
+          "amount": 100
+        },
+        {
+          "date": "2024-06-30",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Carl Matthes",
+      "type": "individual",
+      "total": 1800,
+      "employer": "self",
+      "contributions": [
+        {
+          "date": "2024-04-08",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-28",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Tal Adam Levy",
+      "type": "individual",
+      "total": 1773,
+      "employer": "Second Spectrum",
+      "contributions": [
+        {
+          "date": "2023-12-31",
+          "amount": 873
+        },
+        {
+          "date": "2024-07-18",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Anne Freiermuth",
+      "type": "individual",
+      "total": 1759,
+      "employer": "Mission Math",
+      "contributions": [
+        {
+          "date": "2023-09-05",
+          "amount": 150
+        },
+        {
+          "date": "2023-09-28",
+          "amount": 500
+        },
+        {
+          "date": "2024-02-07",
+          "amount": 250
+        },
+        {
+          "date": "2024-04-13",
+          "amount": 200
+        },
+        {
+          "date": "2024-04-21",
+          "amount": 500
+        },
+        {
+          "date": "2024-06-29",
+          "amount": 129
+        },
+        {
+          "date": "2024-10-04",
+          "amount": 30
+        }
+      ]
+    },
+    {
+      "name": "Stephanie Uy",
+      "type": "individual",
+      "total": 1740,
+      "employer": "Shryne Group Inc",
+      "contributions": [
+        {
+          "date": "2023-02-18",
+          "amount": 900
+        },
+        {
+          "date": "2024-04-17",
+          "amount": 200
+        },
+        {
+          "date": "2024-05-16",
+          "amount": 50
+        },
+        {
+          "date": "2024-08-08",
+          "amount": 30
+        },
+        {
+          "date": "2024-09-04",
+          "amount": 60
+        },
+        {
+          "date": "2024-09-23",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Carlos Medina",
+      "type": "individual",
+      "total": 1677,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2024-01-28",
+          "amount": 250
+        },
+        {
+          "date": "2024-02-19",
+          "amount": 27
+        },
+        {
+          "date": "2024-02-27",
+          "amount": 500
+        },
+        {
+          "date": "2024-04-10",
+          "amount": 250
+        },
+        {
+          "date": "2024-09-17",
+          "amount": 250
+        },
+        {
+          "date": "2024-09-22",
+          "amount": 400
+        }
+      ]
+    },
+    {
+      "name": "Joan Potter",
+      "type": "individual",
+      "total": 1650,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2023-09-25",
+          "amount": 200
+        },
+        {
+          "date": "2023-12-11",
+          "amount": 200
+        },
+        {
+          "date": "2024-02-22",
+          "amount": 250
+        },
+        {
+          "date": "2024-03-29",
+          "amount": 200
+        },
+        {
+          "date": "2024-09-11",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Jennifer Tooley",
+      "type": "individual",
+      "total": 1650,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-09-06",
+          "amount": 500
+        },
+        {
+          "date": "2023-12-20",
+          "amount": 150
+        },
+        {
+          "date": "2024-08-07",
+          "amount": 500
+        },
+        {
+          "date": "2024-10-30",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Harrison Weinfeld",
+      "type": "individual",
+      "total": 1620,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2023-09-24",
+          "amount": 128
+        },
+        {
+          "date": "2023-11-28",
+          "amount": 36
+        },
+        {
+          "date": "2023-11-28",
+          "amount": 128
+        },
+        {
+          "date": "2023-12-05",
+          "amount": 25
+        },
+        {
+          "date": "2023-12-13",
+          "amount": 129
+        },
+        {
+          "date": "2024-01-29",
+          "amount": 30
+        },
+        {
+          "date": "2024-01-31",
+          "amount": 100
+        },
+        {
+          "date": "2024-02-23",
+          "amount": 180
+        },
+        {
+          "date": "2024-09-26",
+          "amount": 864
+        }
+      ]
+    },
+    {
+      "name": "Victor Narro",
+      "type": "individual",
+      "total": 1550,
+      "employer": "UCLA Labor Center",
+      "contributions": [
+        {
+          "date": "2023-05-16",
+          "amount": 200
+        },
+        {
+          "date": "2023-09-06",
+          "amount": 250
+        },
+        {
+          "date": "2023-09-30",
+          "amount": 150
+        },
+        {
+          "date": "2024-02-03",
+          "amount": 150
+        },
+        {
+          "date": "2024-05-17",
+          "amount": 200
+        },
+        {
+          "date": "2024-06-29",
+          "amount": 200
+        },
+        {
+          "date": "2024-07-13",
+          "amount": 200
+        },
+        {
+          "date": "2024-07-13",
+          "amount": 200
+        }
+      ]
+    }
+  ]
 }

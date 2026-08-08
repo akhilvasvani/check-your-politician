@@ -4,10 +4,547 @@
     "name": "REPLACE_ME",
     "office": "Council District 11",
     "reelection": {
-      "active": false,
-      "election_date": null,
-      "committee": "REPLACE_ME committee name"
+      "active": true,
+      "election_date": "2026-06-02",
+      "committee": "Traci Park for City Council 2026"
     }
   },
-  "donors": []
+  "donors": [
+    {
+      "name": "David Brown",
+      "type": "individual",
+      "total": 2500,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2026-01-01",
+          "amount": 1000
+        },
+        {
+          "date": "2026-04-09",
+          "amount": 1000
+        },
+        {
+          "date": "2026-04-29",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Robert Benderson",
+      "type": "individual",
+      "total": 2000,
+      "employer": "CMI",
+      "contributions": [
+        {
+          "date": "2024-12-04",
+          "amount": 1000
+        },
+        {
+          "date": "2026-03-03",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Greg Morena",
+      "type": "individual",
+      "total": 2000,
+      "employer": "Oz Corp",
+      "contributions": [
+        {
+          "date": "2024-12-10",
+          "amount": 1000
+        },
+        {
+          "date": "2026-05-17",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "David Nagel",
+      "type": "individual",
+      "total": 2000,
+      "employer": "Decron Properties",
+      "contributions": [
+        {
+          "date": "2024-12-29",
+          "amount": 1000
+        },
+        {
+          "date": "2025-08-05",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "David Paris",
+      "type": "individual",
+      "total": 2000,
+      "employer": "Paris West Companies",
+      "contributions": [
+        {
+          "date": "2024-12-05",
+          "amount": 1000
+        },
+        {
+          "date": "2026-02-03",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Janie Guthrie Skjervem",
+      "type": "individual",
+      "total": 2000,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2024-12-12",
+          "amount": 1000
+        },
+        {
+          "date": "2026-04-15",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Maggie Nemser",
+      "type": "individual",
+      "total": 2000,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2025-06-27",
+          "amount": 1000
+        },
+        {
+          "date": "2026-02-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Nirah Tishbi",
+      "type": "individual",
+      "total": 2000,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2025-04-07",
+          "amount": 1000
+        },
+        {
+          "date": "2026-04-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Robert Watkins",
+      "type": "individual",
+      "total": 2000,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2025-01-20",
+          "amount": 524.08
+        },
+        {
+          "date": "2025-06-03",
+          "amount": 1000
+        },
+        {
+          "date": "2025-10-28",
+          "amount": -524.08
+        },
+        {
+          "date": "2026-02-11",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "William Silverman",
+      "type": "individual",
+      "total": 2000,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2025-10-06",
+          "amount": 1000
+        },
+        {
+          "date": "2026-04-13",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "James Montgomery",
+      "type": "individual",
+      "total": 2000,
+      "employer": "March Capital",
+      "contributions": [
+        {
+          "date": "2026-02-21",
+          "amount": 1000
+        },
+        {
+          "date": "2026-04-21",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Matt Lichtenberg",
+      "type": "individual",
+      "total": 2000,
+      "employer": "Level Four Llc",
+      "contributions": [
+        {
+          "date": "2026-04-20",
+          "amount": 1000
+        },
+        {
+          "date": "2026-05-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "David Hill",
+      "type": "individual",
+      "total": 1524.08,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2024-12-05",
+          "amount": 1000
+        },
+        {
+          "date": "2025-05-15",
+          "amount": 524.08
+        }
+      ]
+    },
+    {
+      "name": "Monica Brautovich",
+      "type": "individual",
+      "total": 1524.08,
+      "employer": "Benk Collective",
+      "contributions": [
+        {
+          "date": "2025-04-04",
+          "amount": 524.08
+        },
+        {
+          "date": "2025-12-15",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Andrew Marton",
+      "type": "individual",
+      "total": 1500,
+      "employer": "Child Marton LLP",
+      "contributions": [
+        {
+          "date": "2024-12-02",
+          "amount": 250
+        },
+        {
+          "date": "2025-06-30",
+          "amount": 524.08
+        },
+        {
+          "date": "2025-12-05",
+          "amount": 250
+        },
+        {
+          "date": "2025-12-31",
+          "amount": -24.08
+        },
+        {
+          "date": "2026-03-09",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "John Russum",
+      "type": "individual",
+      "total": 1500,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2024-12-13",
+          "amount": 1000
+        },
+        {
+          "date": "2026-04-09",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Brenna Vincent",
+      "type": "individual",
+      "total": 1500,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2024-12-02",
+          "amount": 1000
+        },
+        {
+          "date": "2026-03-13",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Rob Galanti",
+      "type": "individual",
+      "total": 1500,
+      "employer": "L R Group Of Companies",
+      "contributions": [
+        {
+          "date": "2025-05-29",
+          "amount": 262.3
+        },
+        {
+          "date": "2025-06-09",
+          "amount": 524.08
+        },
+        {
+          "date": "2025-07-10",
+          "amount": 250
+        },
+        {
+          "date": "2025-11-14",
+          "amount": -36.38
+        },
+        {
+          "date": "2026-04-10",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Dawn Houston",
+      "type": "individual",
+      "total": 1500,
+      "employer": "Houston Family",
+      "contributions": [
+        {
+          "date": "2025-05-07",
+          "amount": 1000
+        },
+        {
+          "date": "2026-02-18",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Autumn Robinson",
+      "type": "individual",
+      "total": 1500,
+      "employer": "Ben Leeds Properties",
+      "contributions": [
+        {
+          "date": "2025-05-24",
+          "amount": 500
+        },
+        {
+          "date": "2025-12-30",
+          "amount": 500
+        },
+        {
+          "date": "2026-04-23",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Jennifer Bellah",
+      "type": "individual",
+      "total": 1500,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2025-12-02",
+          "amount": 500
+        },
+        {
+          "date": "2026-04-11",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Margo Galdjie",
+      "type": "individual",
+      "total": 1500,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2025-12-08",
+          "amount": 1000
+        },
+        {
+          "date": "2026-05-26",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Jason Sloane",
+      "type": "individual",
+      "total": 1500,
+      "employer": "Sloane Offer Weber And Dern Llp",
+      "contributions": [
+        {
+          "date": "2025-10-06",
+          "amount": 500
+        },
+        {
+          "date": "2026-03-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "John Terzian",
+      "type": "individual",
+      "total": 1500,
+      "employer": "Hwood",
+      "contributions": [
+        {
+          "date": "2025-12-28",
+          "amount": 1000
+        },
+        {
+          "date": "2026-05-11",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Arnie Abramyan",
+      "type": "individual",
+      "total": 1500,
+      "employer": "Arnies Bakery Acafe",
+      "contributions": [
+        {
+          "date": "2026-04-29",
+          "amount": 1000
+        },
+        {
+          "date": "2026-04-29",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Joel Shapiro",
+      "type": "individual",
+      "total": 1300,
+      "employer": "Shapco Inc",
+      "contributions": [
+        {
+          "date": "2024-12-03",
+          "amount": 500
+        },
+        {
+          "date": "2026-04-25",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Sandy Sigal",
+      "type": "individual",
+      "total": 1285.86,
+      "employer": "Newmark Merrill Companies",
+      "contributions": [
+        {
+          "date": "2025-07-20",
+          "amount": 785.86
+        },
+        {
+          "date": "2026-03-02",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Lois Tarter",
+      "type": "individual",
+      "total": 1274.6,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2024-12-02",
+          "amount": 250
+        },
+        {
+          "date": "2025-06-16",
+          "amount": 262.3
+        },
+        {
+          "date": "2025-06-23",
+          "amount": 262.3
+        },
+        {
+          "date": "2026-04-29",
+          "amount": 250
+        },
+        {
+          "date": "2026-05-19",
+          "amount": 250
+        }
+      ]
+    },
+    {
+      "name": "Steve Donell",
+      "type": "individual",
+      "total": 1250,
+      "employer": "Jalmar Properties",
+      "contributions": [
+        {
+          "date": "2024-12-03",
+          "amount": 1000
+        },
+        {
+          "date": "2026-03-02",
+          "amount": 250
+        }
+      ]
+    },
+    {
+      "name": "Gary Tenzer",
+      "type": "individual",
+      "total": 1250,
+      "employer": "Tenzer Consulting Group",
+      "contributions": [
+        {
+          "date": "2024-12-19",
+          "amount": 250
+        },
+        {
+          "date": "2025-12-09",
+          "amount": 500
+        },
+        {
+          "date": "2026-05-04",
+          "amount": 500
+        }
+      ]
+    }
+  ]
 }
