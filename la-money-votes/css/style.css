@@ -46,3 +46,7 @@ main {
   text-decoration: none;
   font-weight: 600;
 }
+
+#funding-graph {
+  height: 520px;
+}
