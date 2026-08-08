@@ -11,18 +11,59 @@
     <a href="index.html">&larr; Back</a>
     <h1 id="official-name">Loading&hellip;</h1>
     <p id="official-office"></p>
+    <div id="reelection-banner" class="reelection-banner" hidden></div>
   </header>
 
   <main>
     <section id="funding-section">
       <h2>Funding</h2>
-      <div id="funding-graph"></div>
-      <ul id="donor-list"></ul>
+      <p id="funding-stats" class="funding-stats"></p>
+      <div id="graph"></div>
     </section>
 
     <section id="record-section">
-      <h2>Voting Record</h2>
-      <ul id="record-list"></ul>
+      <h2>Voting &amp; Proposal Record</h2>
+
+      <div class="record-filters" role="group" aria-label="Filter by role">
+        <button type="button" class="filter-btn active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="proposed">Proposed</button>
+        <button type="button" class="filter-btn" data-filter="passed">Passed</button>
+        <button type="button" class="filter-btn" data-filter="voted">Voted</button>
+      </div>
+
+      <div class="record-term">
+        <h3>Current Term</h3>
+        <table class="record-table" id="record-table-current">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Council File</th>
+              <th>Title</th>
+              <th>Role</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="record-empty" id="record-empty-current" hidden>No matching items.</p>
+      </div>
+
+      <div class="record-term">
+        <h3>Previous Term</h3>
+        <table class="record-table" id="record-table-previous">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Council File</th>
+              <th>Title</th>
+              <th>Role</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="record-empty" id="record-empty-previous" hidden>No matching items.</p>
+      </div>
     </section>
   </main>
 
