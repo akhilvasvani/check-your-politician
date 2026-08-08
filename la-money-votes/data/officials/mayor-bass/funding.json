@@ -1,0 +1,16 @@
+{
+  "official": {
+    "id": "mayor-bass",
+    "name": "Karen Bass",
+    "office": "Mayor",
+    "reelection": { "active": true, "election_date": "2026-06-02", "committee": "Karen Bass for Mayor 2026" }
+  },
+  "donors": [
+    { "name": "Sample PAC A", "type": "pac", "total": 5400, "employer": null,
+      "contributions": [{ "date": "2025-03-01", "amount": 5400 }] },
+    { "name": "Jane Sample", "type": "individual", "total": 1600, "employer": "Sample Corp",
+      "contributions": [{ "date": "2025-02-10", "amount": 800 }, { "date": "2025-04-01", "amount": 800 }] },
+    { "name": "Sample Realty LLC", "type": "business", "total": 800, "employer": null,
+      "contributions": [{ "date": "2025-01-15", "amount": 800 }] }
+  ]
+}

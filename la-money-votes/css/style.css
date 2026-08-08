@@ -1,0 +1,48 @@
+/* la-money-votes — starter stylesheet, Person 4 owns this file */
+
+:root {
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-accent: #2b6cb0;
+  --color-border: #e2e2e2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+main {
+  padding: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+#official-list {
+  list-style: none;
+  padding: 0;
+}
+
+#official-list li {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+#official-list a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
