@@ -27,11 +27,20 @@ DEFAULT_CSV = ROOT / "data" / "raw" / "contributions.csv"
 TOP_N_DONORS = 30
 
 # Map each official id -> the campaign committee name exactly as it appears
-# in the CSV's cmt_nm column. Fill these in with the real committee names
-# before running (per-person huddle). Rows are matched case-insensitively.
+# in the CSV's cmt_nm column. Rows are matched case-insensitively.
 COMMITTEES = {
-    "mayor-bass": "REPLACE_ME committee name",
+    # DEMO WIRING ONLY. "Hahn for Mayor 2005" is the only committee present
+    # in the sample CSV used to build/smoke-test this script — it's James
+    # Hahn's 2003-05 mayoral campaign, NOT Karen Bass's real committee.
+    # This proves the pipeline runs end-to-end; it does NOT mean the
+    # generated funding.json reflects real Bass donor data. Swap in her
+    # actual 2026 reelection committee name before this ships anywhere real.
+    "mayor-bass": "Hahn for Mayor 2005",
+    # TODO: cd14-official's real name/office is still "REPLACE_ME" in
+    # data/officials.json (Person 4's file), and no CD14 rows exist in the
+    # sample CSV. Fill in once the official and committee are known.
     "cd14-official": "REPLACE_ME committee name",
+    # TODO: same blocker as cd14-official, for CD11.
     "cd11-official": "REPLACE_ME committee name",
 }
 

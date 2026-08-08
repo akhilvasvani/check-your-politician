@@ -3,14 +3,11 @@
     "id": "cd14-official",
     "name": "REPLACE_ME",
     "office": "Council District 14",
-    "reelection": { "active": true, "election_date": "2026-06-02", "committee": "REPLACE_ME Committee 2026" }
+    "reelection": {
+      "active": false,
+      "election_date": null,
+      "committee": "REPLACE_ME committee name"
+    }
   },
-  "donors": [
-    { "name": "Sample PAC A", "type": "pac", "total": 5400, "employer": null,
-      "contributions": [{ "date": "2025-03-01", "amount": 5400 }] },
-    { "name": "Jane Sample", "type": "individual", "total": 1600, "employer": "Sample Corp",
-      "contributions": [{ "date": "2025-02-10", "amount": 800 }, { "date": "2025-04-01", "amount": 800 }] },
-    { "name": "Sample Realty LLC", "type": "business", "total": 800, "employer": null,
-      "contributions": [{ "date": "2025-01-15", "amount": 800 }] }
-  ]
+  "donors": []
 }

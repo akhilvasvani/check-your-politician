@@ -3,14 +3,376 @@
     "id": "mayor-bass",
     "name": "Karen Bass",
     "office": "Mayor",
-    "reelection": { "active": true, "election_date": "2026-06-02", "committee": "Karen Bass for Mayor 2026" }
+    "reelection": {
+      "active": false,
+      "election_date": "2005-03-08",
+      "committee": "Hahn for Mayor 2005"
+    }
   },
   "donors": [
-    { "name": "Sample PAC A", "type": "pac", "total": 5400, "employer": null,
-      "contributions": [{ "date": "2025-03-01", "amount": 5400 }] },
-    { "name": "Jane Sample", "type": "individual", "total": 1600, "employer": "Sample Corp",
-      "contributions": [{ "date": "2025-02-10", "amount": 800 }, { "date": "2025-04-01", "amount": 800 }] },
-    { "name": "Sample Realty LLC", "type": "business", "total": 800, "employer": null,
-      "contributions": [{ "date": "2025-01-15", "amount": 800 }] }
+    {
+      "name": "Lea Friedman",
+      "type": "individual",
+      "total": 2000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        },
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "2040 Glenoaks Blvd Property",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "A & A Ready Mixed Concrete, Inc.",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-10",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Advanced Development and Investment, Inc.",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "AECOM Technology Corporation",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-27",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Robert Agresti",
+      "type": "individual",
+      "total": 1000,
+      "employer": "P & O Nedlloyd",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Thomas C. Amalfitano",
+      "type": "individual",
+      "total": 1000,
+      "employer": "San Pedro Fish",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "AMERICAN PRESIDENT LINES, LTD.",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "American Remedial Technologies Inc.",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Corinne Anderson",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Corinne Anderson",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "William W. Anderson",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Westrec Marinas",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Wallis Annenberg",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Annenberg Foundation",
+      "contributions": [
+        {
+          "date": "2003-06-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "APREA & COMPANY",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Ben Ashkenazy",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Ashkenazy Acquistions",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Debra Klein Ashkenazy",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Associated General Contractors Political Action Committe Of CA",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-10",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Joseph S. Avila Sr.",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Avila & Putnam, P.L.C.",
+      "contributions": [
+        {
+          "date": "2003-06-19",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Scott A. Axelson",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Tra Pac",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Lucy McCoy Bacigalupo",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Sage Advisors Inc.",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Peter Balov",
+      "type": "individual",
+      "total": 1000,
+      "employer": "San Pedro Fork Lift, Inc.",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Renato Balov",
+      "type": "individual",
+      "total": 1000,
+      "employer": "San Pedro Fork Lift",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Barin Investments LLC",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Leonard J. Baxt",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Dow, Loanes",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Richard Bayer",
+      "type": "individual",
+      "total": 1000,
+      "employer": "The Macerich Company",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Jeffrey A. Berger",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Berger & Associates",
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "BIRBAGROUP",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Bodega Latina Corporation",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "BOMA/GLA PAC",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-05-29",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Bomel Swall LLC",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-27",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Raymond G. Bradley",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2003-06-30",
+          "amount": 1000
+        }
+      ]
+    }
   ]
 }
