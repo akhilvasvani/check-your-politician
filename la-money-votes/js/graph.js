@@ -15,20 +15,26 @@
   // Tunables
   // ---------------------------------------------------------------------------
 
+  // Muted rather than saturated: the type encoding the spec requires, but calm
+  // enough to read as designed. Still distinct under projector washout.
   var TYPE_COLORS = {
-    individual: '#2563eb', // blue
-    pac: '#ea580c',        // orange
-    business: '#059669'    // green
+    individual: '#4a6fa5', // dusty blue
+    pac: '#c67b4a',        // terracotta
+    business: '#5d8a6f'    // sage
   };
-  var UNKNOWN_TYPE_COLOR = '#6b7280'; // gray — anything not in the schema
-  var OFFICIAL_COLOR = '#111827';
+  var UNKNOWN_TYPE_COLOR = '#9aa0a6'; // anything not in the schema
+  var OFFICIAL_COLOR = '#1a1a1a';
+
+  // Color lives on the nodes only. Edges are neutral and carry meaning through
+  // width alone, so the graph reads quietly until you engage with it.
+  var EDGE_COLOR = '#d4d7db';
 
   var DONOR_SIZE_MIN = 26;
   var DONOR_SIZE_MAX = 78;
-  var OFFICIAL_SIZE = 104;
+  var OFFICIAL_SIZE = 92;
 
-  var EDGE_WIDTH_MIN = 1.5;
-  var EDGE_WIDTH_MAX = 9;
+  var EDGE_WIDTH_MIN = 1;
+  var EDGE_WIDTH_MAX = 6;
 
   var FALLBACK_MIN_HEIGHT = 480; // only applied if the container has zero height
 
@@ -247,18 +253,19 @@
           'width': 'data(size)',
           'height': 'data(size)',
           'label': 'data(label)',
-          'color': '#1f2937',
-          'font-size': 11,
+          'color': '#6b7076',
+          'font-size': 10.5,
+          'font-weight': 400,
           'font-family': '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
           'text-valign': 'bottom',
           'text-halign': 'center',
-          'text-margin-y': 5,
+          'text-margin-y': 7,
           'text-wrap': 'ellipsis',
           'text-max-width': 110,
           // Hide labels instead of letting them turn to mush when zoomed out.
           'min-zoomed-font-size': 7,
           'text-background-color': '#ffffff',
-          'text-background-opacity': 0.75,
+          'text-background-opacity': 0.85,
           'text-background-padding': 2,
           'text-background-shape': 'roundrectangle',
           'border-width': 0,
@@ -271,11 +278,11 @@
         style: {
           'label': 'data(label)',
           'color': '#ffffff',
-          'font-size': 14,
-          'font-weight': 'bold',
+          'font-size': 13,
+          'font-weight': 500,
           'text-valign': 'center',
           'text-margin-y': 0,
-          'text-max-width': 92,
+          'text-max-width': 80,
           'text-wrap': 'wrap',
           'text-background-opacity': 0,
           'min-zoomed-font-size': 0
@@ -285,22 +292,23 @@
         selector: 'edge',
         style: {
           'width': 'data(width)',
-          'line-color': 'data(color)',
-          'opacity': 0.4,
+          'line-color': EDGE_COLOR,
+          'opacity': 1,
           'curve-style': 'straight'
         }
       },
       {
         selector: 'node.fg-hover',
-        style: { 'border-width': 3, 'border-color': '#111827', 'border-opacity': 0.35 }
+        style: { 'border-width': 6, 'border-color': 'data(color)', 'border-opacity': 0.22 }
       },
       {
         selector: 'node.fg-active',
-        style: { 'border-width': 4, 'border-color': '#111827', 'border-opacity': 0.9 }
+        style: { 'border-width': 6, 'border-color': 'data(color)', 'border-opacity': 0.45 }
       },
       {
+        // The one place color reaches the edges: the connection you're inspecting.
         selector: 'edge.fg-active',
-        style: { 'opacity': 0.95 }
+        style: { 'line-color': 'data(color)', 'opacity': 0.85 }
       }
     ];
   }
@@ -339,15 +347,15 @@
     'max-width:290px',
     'max-height:60%',
     'overflow-y:auto',
-    'padding:12px 14px',
-    'border:1px solid rgba(17,24,39,0.12)',
-    'border-radius:10px',
+    'padding:14px 16px',
+    'border:1px solid rgba(0,0,0,0.07)',
+    'border-radius:8px',
     'background:#ffffff',
-    'box-shadow:0 8px 28px rgba(17,24,39,0.18)',
+    'box-shadow:0 2px 14px rgba(0,0,0,0.07)',
     'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
-    'font-size:13px',
-    'line-height:1.45',
-    'color:#1f2937'
+    'font-size:12.5px',
+    'line-height:1.5',
+    'color:#2b2f33'
   ].join(';');
 
   function createTooltip(container) {
