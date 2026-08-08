@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Political Spectrum — Check Your Politician</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/spectrum.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html">&larr; All officials</a>
+    <h1>Where do they fall?</h1>
+    <p>
+      Hover a face for a quick take. Click it to open their full profile —
+      endorsements, campaign contributions, and voting record.
+    </p>
+  </header>
+
+  <main class="spectrum-main">
+    <div id="spectrum-loading" class="spectrum-status">Loading officials&hellip;</div>
+
+    <div id="spectrum-root" class="spectrum-root" hidden>
+      <div class="spectrum-track">
+        <div class="spectrum-track-line"></div>
+        <div class="spectrum-tick spectrum-tick-left">
+          <span class="spectrum-tick-label">Progressive / Left</span>
+        </div>
+        <div class="spectrum-tick spectrum-tick-center">
+          <span class="spectrum-tick-label">Center</span>
+        </div>
+        <div class="spectrum-tick spectrum-tick-right">
+          <span class="spectrum-tick-label">Moderate / Right</span>
+        </div>
+        <div id="spectrum-nodes" class="spectrum-nodes"></div>
+      </div>
+      <p class="spectrum-disclaimer">
+        Positions are relative to Los Angeles city politics, not the national
+        spectrum — all three officials shown are registered Democrats.
+        Placement is derived from each official's endorsing organizations
+        (see their profile for full sourcing).
+      </p>
+    </div>
+
+    <div id="spectrum-error" class="spectrum-status" hidden></div>
+  </main>
+
+  <script src="js/spectrum.js"></script>
+</body>
+</html>

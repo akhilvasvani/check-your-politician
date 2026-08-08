@@ -1,0 +1,28 @@
+{
+  "official_id": "cd11-official",
+  "lean_score": 65,
+  "lean_label": "Moderate / Law-and-Order Democrat",
+  "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Traci_Park%2C_2023.jpg",
+  "photo_credit": "Office of Councilmember Traci Park, via Wikimedia Commons",
+  "endorsements": [
+    { "organization": "Los Angeles Police Protective League (LAPPL)", "category": "labor_union", "date": "2026-03-01" },
+    { "organization": "United Firefighters of Los Angeles City, IAFF Local 112", "category": "labor_union" },
+    { "organization": "Los Angeles County Firefighters, IAFF Local 1014", "category": "labor_union" },
+    { "organization": "Los Angeles Airport Peace Officers Association (LAAPOA)", "category": "labor_union" },
+    { "organization": "Association of Los Angeles Deputy Sheriffs (ALADS)", "category": "labor_union" },
+    { "organization": "Los Angeles Port Police Association (LAPPA)", "category": "labor_union" },
+    { "organization": "California Coalition of Law Enforcement Associations (CCLEA)", "category": "labor_union" },
+    { "organization": "IBEW Local 11", "category": "labor_union" },
+    { "organization": "Laborers Local 300 - LiUNA!", "category": "labor_union" },
+    { "organization": "IATSE", "category": "labor_union" },
+    { "organization": "Operating Engineers Local 12", "category": "labor_union" },
+    { "organization": "Southwest Regional Council of Carpenters", "category": "labor_union" },
+    { "organization": "Painters District Council 36", "category": "labor_union" },
+    { "organization": "Plumbers & Fitters Local 761", "category": "labor_union" },
+    { "organization": "EMILY's List", "category": "pac" },
+    { "organization": "Sen. Adam Schiff", "category": "elected_official" },
+    { "organization": "Rep. Ted Lieu", "category": "elected_official" },
+    { "organization": "Rep. Brad Sherman", "category": "elected_official" },
+    { "organization": "California Treasurer Fiona Ma", "category": "elected_official" }
+  ]
+}

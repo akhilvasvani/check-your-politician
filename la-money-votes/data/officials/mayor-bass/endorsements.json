@@ -1,0 +1,28 @@
+{
+  "official_id": "mayor-bass",
+  "lean_score": -10,
+  "lean_label": "Establishment Democrat",
+  "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Mayor_Karen_Bass_official_portrait.jpg",
+  "photo_credit": "City of Los Angeles, via Wikimedia Commons",
+  "endorsements": [
+    { "organization": "Los Angeles County Democratic Party", "category": "political_party" },
+    { "organization": "Democratic Party of the San Fernando Valley (DPSFV)", "category": "political_party" },
+    { "organization": "Stonewall Democratic Club", "category": "political_party" },
+    { "organization": "Los Angeles County Federation of Labor, AFL-CIO", "category": "labor_union", "date": "2025-11-17" },
+    { "organization": "SEIU Local 721", "category": "labor_union" },
+    { "organization": "SEIU Local 99", "category": "labor_union" },
+    { "organization": "SEIU Local 2015", "category": "labor_union" },
+    { "organization": "California Nurses Association (CNA)", "category": "labor_union" },
+    { "organization": "California IATSE Council", "category": "labor_union" },
+    { "organization": "IATSE Local No. 33", "category": "labor_union" },
+    { "organization": "American Federation of Musicians (AFM) Local 47", "category": "labor_union" },
+    { "organization": "Los Angeles Police Protective League (LAPPL)", "category": "labor_union" },
+    { "organization": "LA/OC Building & Construction Trades Council", "category": "labor_union" },
+    { "organization": "Laborers Local 300 - LiUNA!", "category": "labor_union" },
+    { "organization": "National Union of Healthcare Workers (NUHW)", "category": "labor_union" },
+    { "organization": "EMILY's List", "category": "pac" },
+    { "organization": "Higher Heights for America PAC", "category": "pac" },
+    { "organization": "Women's March Action", "category": "advocacy_group" },
+    { "organization": "Coalition for Humane Immigrant Rights of LA (CHIRLA) Action Fund", "category": "advocacy_group" }
+  ]
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Official Profile — Check Your Politician</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+</head>
+<body>
+  <header class="profile-header">
+    <a href="spectrum.html">&larr; Back to spectrum</a>
+    <div class="profile-identity">
+      <div id="profile-avatar" class="profile-avatar"></div>
+      <div>
+        <h1 id="profile-name">Loading&hellip;</h1>
+        <p id="profile-office"></p>
+        <p id="profile-lean" class="profile-lean"></p>
+      </div>
+    </div>
+  </header>
+
+  <main class="profile-main">
+    <div id="profile-loading" class="profile-status">Loading profile&hellip;</div>
+
+    <div id="profile-root" hidden>
+      <nav class="tabs" role="tablist">
+        <button type="button" class="tab-button" data-tab="endorsements" role="tab" aria-selected="true">
+          Endorsements
+        </button>
+        <button type="button" class="tab-button" data-tab="contributions" role="tab" aria-selected="false">
+          Contributions
+        </button>
+        <button type="button" class="tab-button" data-tab="record" role="tab" aria-selected="false">
+          Voting Record
+        </button>
+      </nav>
+
+      <section id="tab-endorsements" class="tab-panel" role="tabpanel">
+        <p class="tab-summary" id="endorsements-summary"></p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Organization</th>
+              <th>Category</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="endorsements-body"></tbody>
+        </table>
+      </section>
+
+      <section id="tab-contributions" class="tab-panel" hidden role="tabpanel">
+        <p class="tab-summary">
+          Total raised: <strong id="contributions-total">$0</strong>
+          across <strong id="contributions-count">0</strong> individual contributions.
+        </p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Donor</th>
+              <th>Type</th>
+              <th>Employer</th>
+              <th>Date</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody id="contributions-body"></tbody>
+        </table>
+      </section>
+
+      <section id="tab-record" class="tab-panel" hidden role="tabpanel">
+        <p class="tab-summary" id="record-summary"></p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Council File</th>
+              <th>Title</th>
+              <th>Role</th>
+              <th>Date</th>
+              <th>Outcome</th>
+              <th>Term</th>
+            </tr>
+          </thead>
+          <tbody id="record-body"></tbody>
+        </table>
+      </section>
+    </div>
+
+    <div id="profile-error" class="profile-status" hidden></div>
+  </main>
+
+  <script src="js/profile.js"></script>
+</body>
+</html>

@@ -58,6 +58,32 @@ Owned by Person 2 (`scripts/build_record.py` generates it).
 }
 ```
 
+## `data/officials/<id>/endorsements.json`
+
+Added for the political-spectrum / profile UI. New schema, does not modify
+any existing file above.
+
+```json
+{
+  "official_id": "mayor-bass",
+  "lean_score": -10,
+  "lean_label": "Establishment Democrat",
+  "photo_url": "https://...",
+  "photo_credit": "...",
+  "endorsements": [
+    { "organization": "Los Angeles County Democratic Party", "category": "political_party" },
+    { "organization": "SEIU Local 721", "category": "labor_union", "date": "2025-11-17" }
+  ]
+}
+```
+
+- `lean_score`: integer from -100 (furthest left) to 100 (furthest right),
+  relative to LA city politics (not the national spectrum — all three
+  current officials are Democrats). Used to position the official on the
+  spectrum UI.
+- `category` is one of `political_party | labor_union | advocacy_group | pac | elected_official`.
+- `date` is optional (`YYYY-MM-DD`, omitted if not confirmed).
+
 ## Ownership
 
 | Path | Owner |

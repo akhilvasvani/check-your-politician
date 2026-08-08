@@ -1,0 +1,26 @@
+{
+  "official_id": "cd14-official",
+  "lean_score": -80,
+  "lean_label": "Democratic Socialist / Progressive",
+  "photo_url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Ysabel_Jurado%2C_2025_%28cropped%29.jpg",
+  "photo_credit": "Office of Councilmember Ysabel Jurado, via Wikimedia Commons",
+  "endorsements": [
+    { "organization": "Democratic Socialists of America — Los Angeles (DSA-LA)", "category": "political_party", "date": "2023-09-01" },
+    { "organization": "Los Angeles County Federation of Labor, AFL-CIO", "category": "labor_union" },
+    { "organization": "SEIU Local 2015", "category": "labor_union" },
+    { "organization": "SEIU Local 721", "category": "labor_union" },
+    { "organization": "UAW Region 6", "category": "labor_union" },
+    { "organization": "LA County Public Defenders Union, Local 148", "category": "labor_union" },
+    { "organization": "United Union of Roofers, Waterproofers & Allied Workers Local 36", "category": "labor_union" },
+    { "organization": "Engineers and Architects Association", "category": "labor_union" },
+    { "organization": "Ground Game LA", "category": "advocacy_group" },
+    { "organization": "LA Forward", "category": "advocacy_group" },
+    { "organization": "La Defensa", "category": "advocacy_group" },
+    { "organization": "Alliance of Californians for Community Empowerment (ACCE) Action", "category": "advocacy_group" },
+    { "organization": "California Women's List", "category": "pac" },
+    { "organization": "Progressive Victory", "category": "pac" },
+    { "organization": "PALAD (Pilipino American Los Angeles Democrats)", "category": "political_party" },
+    { "organization": "Councilmember Eunisses Hernandez (CD 1)", "category": "elected_official" },
+    { "organization": "Controller Kenneth Mejia", "category": "elected_official" }
+  ]
+}
