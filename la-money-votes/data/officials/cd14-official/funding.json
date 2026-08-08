@@ -6,8 +6,17 @@
     "reelection": {
       "active": false,
       "election_date": "2024-11-05",
-      "committee": "Jurado for City Council 2024"
+      "committee": "Jurado for City Council 2024",
+      "result": "won"
     }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Jurado for City Council 2024",
+      "Ysabel Jurado for City Council 2024-General"
+    ]
   },
   "donors": [
     {

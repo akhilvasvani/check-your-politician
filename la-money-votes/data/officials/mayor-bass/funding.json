@@ -6,8 +6,17 @@
     "reelection": {
       "active": true,
       "election_date": "2026-11-03",
-      "committee": "Re-Elect Karen Bass for Mayor 2026"
+      "committee": "Re-Elect Karen Bass for Mayor 2026",
+      "result": null
     }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Re-Elect Karen Bass for Mayor 2026",
+      "Re-Elect Karen Bass for Mayor 2026-General"
+    ]
   },
   "donors": [
     {

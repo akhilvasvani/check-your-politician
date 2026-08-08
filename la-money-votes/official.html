@@ -19,6 +19,40 @@
       <h2>Funding</h2>
       <p id="funding-stats" class="funding-stats"></p>
       <div id="graph"></div>
+
+      <h3 class="donor-heading">Donors</h3>
+      <div class="donor-filters" role="group" aria-label="Filter donors by type"></div>
+      <p id="donor-summary" class="donor-summary"></p>
+
+      <div class="table-scroll">
+        <table class="donor-table" id="donor-table">
+          <thead>
+            <tr>
+              <th scope="col" data-sort="name" aria-sort="none">
+                <button type="button" class="sort-btn">Donor <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+              <th scope="col" data-sort="type" aria-sort="none">
+                <button type="button" class="sort-btn">Type <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+              <th scope="col" data-sort="employer" aria-sort="none">
+                <button type="button" class="sort-btn">Employer <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+              <th scope="col" class="num" data-sort="count" aria-sort="none">
+                <button type="button" class="sort-btn">Gifts <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+              <th scope="col" data-sort="latest" aria-sort="none">
+                <button type="button" class="sort-btn">Latest <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+              <th scope="col" class="num" data-sort="total" aria-sort="none">
+                <button type="button" class="sort-btn">Total <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="record-empty" id="donor-empty" hidden>No donors match this filter.</p>
+      <p class="source-note" id="funding-source" hidden></p>
     </section>
 
     <section id="record-section">
@@ -33,37 +67,43 @@
 
       <div class="record-term">
         <h3>Current Term</h3>
-        <table class="record-table" id="record-table-current">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Council File</th>
-              <th>Title</th>
-              <th>Role</th>
-              <th>Outcome</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <div class="table-scroll">
+          <table class="record-table" id="record-table-current">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Council File</th>
+                <th>Title</th>
+                <th>Role</th>
+                <th>Outcome</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
         <p class="record-empty" id="record-empty-current" hidden>No matching items.</p>
       </div>
 
       <div class="record-term">
         <h3>Previous Term</h3>
-        <table class="record-table" id="record-table-previous">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Council File</th>
-              <th>Title</th>
-              <th>Role</th>
-              <th>Outcome</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <div class="table-scroll">
+          <table class="record-table" id="record-table-previous">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Council File</th>
+                <th>Title</th>
+                <th>Role</th>
+                <th>Outcome</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
         <p class="record-empty" id="record-empty-previous" hidden>No matching items.</p>
       </div>
+
+      <p class="source-note" id="record-source" hidden></p>
     </section>
   </main>
 

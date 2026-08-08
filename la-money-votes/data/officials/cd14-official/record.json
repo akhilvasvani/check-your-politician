@@ -1,5 +1,9 @@
 {
   "official_id": "cd14-official",
+  "source": {
+    "name": "LA City Clerk \u2014 Council File Management System",
+    "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+  },
   "items": [
     {
       "council_file": "24-1563",
@@ -7,7 +11,8 @@
       "role": "voted_no",
       "date": "2025-01-07",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=24-1563"
     },
     {
       "council_file": "25-0542",
@@ -15,7 +20,8 @@
       "role": "proposed",
       "date": "2025-05-16",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0542"
     },
     {
       "council_file": "25-0600-S17",
@@ -23,7 +29,8 @@
       "role": "proposed",
       "date": "2025-05-22",
       "outcome": "pending",
-      "term": "current"
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0600-S17"
     },
     {
       "council_file": "25-0577",
@@ -31,7 +38,8 @@
       "role": "proposed",
       "date": "2025-05-28",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0577"
     },
     {
       "council_file": "25-0645",
@@ -39,7 +47,8 @@
       "role": "proposed",
       "date": "2025-06-10",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0645"
     },
     {
       "council_file": "25-0881",
@@ -47,7 +56,8 @@
       "role": "proposed",
       "date": "2025-08-05",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0881"
     },
     {
       "council_file": "25-0887",
@@ -55,7 +65,8 @@
       "role": "proposed",
       "date": "2025-08-06",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0887"
     },
     {
       "council_file": "25-0002-S62",
@@ -63,7 +74,8 @@
       "role": "voted_yes",
       "date": "2025-08-19",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0002-S62"
     },
     {
       "council_file": "26-0011-S6",
@@ -71,7 +83,8 @@
       "role": "voted_yes",
       "date": "2026-02-24",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0011-S6"
     },
     {
       "council_file": "25-0006-S38",
@@ -79,7 +92,8 @@
       "role": "voted_yes",
       "date": "2026-03-27",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0006-S38"
     }
   ]
 }

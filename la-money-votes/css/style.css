@@ -18,6 +18,12 @@
   --color-pending-text: #8a6212;
   --color-failed-bg: #fbebea;
   --color-failed-text: #a3352c;
+  /* Donor type colors, kept in step with TYPE_COLORS in js/graph.js so a donor
+     reads the same in the table as it does in the graph. */
+  --color-type-individual: #4a6fa5;
+  --color-type-pac: #c67b4a;
+  --color-type-business: #5d8a6f;
+  --color-type-unknown: #6b7076;
 }
 
 * {
@@ -131,6 +137,14 @@ main {
   color: var(--color-inactive-text);
 }
 
+/* An election that has already happened: settled, so it reads as neutral fact
+   rather than as the live-campaign green. */
+.reelection-banner.held {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
 .reelection-status {
   font-weight: 600;
 }
@@ -159,6 +173,147 @@ main {
   border: 1px solid var(--color-border);
   border-radius: 10px;
   background: var(--color-surface);
+}
+
+/* ---------------------------------------------------------------- */
+/* Donor list                                                       */
+/* ---------------------------------------------------------------- */
+
+.donor-heading {
+  margin: 2rem 0 0.6rem;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.donor-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.filter-count {
+  opacity: 0.65;
+  font-variant-numeric: tabular-nums;
+}
+
+.filter-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.filter-btn:disabled:hover {
+  border-color: var(--color-border);
+}
+
+.donor-summary {
+  margin: 0 0 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
+
+/* Neither the donor table's six columns nor the record table's long titles fit
+   a phone; let each scroll inside its own box rather than pushing the whole
+   page sideways. */
+.table-scroll {
+  overflow-x: auto;
+}
+
+.donor-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.donor-table th,
+.donor-table td {
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.donor-table th {
+  padding: 0;
+  border-bottom-width: 2px;
+}
+
+.donor-table td.num,
+.donor-table th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.donor-table td.donor-date,
+.donor-table td.donor-total {
+  white-space: nowrap;
+}
+
+.donor-table td.donor-total {
+  font-weight: 600;
+}
+
+.sort-btn {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.sort-btn:hover {
+  color: var(--color-accent);
+}
+
+.donor-table th.sorted .sort-btn {
+  color: var(--color-text);
+}
+
+.sort-indicator {
+  font-size: 0.7em;
+}
+
+.type-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  background: var(--color-surface);
+  color: var(--color-type-unknown);
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.type-badge.type-individual { color: var(--color-type-individual); }
+.type-badge.type-pac { color: var(--color-type-pac); }
+.type-badge.type-business { color: var(--color-type-business); }
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+/* ---------------------------------------------------------------- */
+/* Primary-source attribution                                       */
+/* ---------------------------------------------------------------- */
+
+.source-note {
+  margin: 1rem 0 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.source-note a,
+.record-table a {
+  color: var(--color-accent);
 }
 
 /* ---------------------------------------------------------------- */
