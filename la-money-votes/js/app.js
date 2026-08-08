@@ -34,8 +34,8 @@ function isPlaceholderName(name) {
   return !name || String(name).trim().toUpperCase() === PLACEHOLDER_NAME;
 }
 
-// funding.json still has "REPLACE_ME" for cd14/cd11's official.name — fall
-// back to the office title rather than showing the raw placeholder token.
+// Falls back to the office title instead of showing a raw placeholder token,
+// in case an official's name isn't filled in yet (e.g. a newly added entry).
 function displayName(official) {
   return isPlaceholderName(official.name) ? official.office : official.name;
 }

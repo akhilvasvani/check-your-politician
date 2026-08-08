@@ -39,15 +39,11 @@ project pulls both together per-official, in one page, so the connection
 
 ## Live demo
 
-| ID | Real official (resolved from record data) | Link |
+| ID | Official | Link |
 | --- | --- | --- |
 | `mayor-bass` | Karen Bass (Mayor) | `official.html?id=mayor-bass` |
 | `cd14-official` | Ysabel Jurado (CD 14) | `official.html?id=cd14-official` |
 | `cd11-official` | Traci Park (CD 11) | `official.html?id=cd11-official` |
-
-> ⚠️ `data/officials.json` still has the real names as `"REPLACE_ME"` for
-> `cd14-official` / `cd11-official` — the display names above are pending
-> that file being updated (see [Project Status](#project-status)).
 
 _(Deployed link: TBD — see [Getting started](#getting-started) to run locally.)_
 
@@ -79,11 +75,14 @@ _(Deployed link: TBD — see [Getting started](#getting-started) to run locally.
 
 1. `index.html` lists every official from `data/officials.json`.
 2. Clicking an official opens `official.html?id=<official-id>`.
-3. `app.js` fetches that official's `funding.json` and `record.json`.
+3. `app.js` fetches that official's `funding.json` and `record.json`, and
+   renders a reelection banner from `funding.official.reelection`.
 4. `graph.js` renders the funding data as an interactive node graph —
    the official in the center, donors as nodes sized/colored by amount
    and type, click a donor for a contribution-history tooltip.
-5. The voting record renders as a simple, sortable list underneath.
+5. The voting/proposal record renders as a table, filterable by role
+   (proposed / passed / voted) and split into current-term vs.
+   previous-term sections.
 
 No build step, no framework, no bundler — open `index.html` and go.
 
@@ -200,21 +199,23 @@ frozen schemas.
 - [x] Repo skeleton + mock data
 - [x] Legislative records populated with real, sourced council files
   (`build_record.py` + `data/officials/*/record.json`)
-- [ ] Real official names in `data/officials.json` — still `"REPLACE_ME"`
-  for `cd14-official` (Ysabel Jurado) and `cd11-official` (Traci Park)
-- [ ] Funding data populated with real LA Ethics Commission contributions
-  — `build_funding.py` currently raises `NotImplementedError`;
-  `funding.json` files are still the sample mock data
-- [ ] Interactive funding graph — `js/graph.js` is currently the plain
-  starter stub (renders a static bar list, no Cytoscape.js graph yet)
-- [ ] Site shell polish / deploy
+- [x] Real official names in `data/officials.json` — Karen Bass (Mayor),
+  Ysabel Jurado (CD 14), Traci Park (CD 11)
+- [x] Funding data populated with real LA Ethics Commission contributions
+  (`build_funding.py` + `data/officials/*/funding.json`)
+- [x] Interactive funding graph — `js/graph.js`, Cytoscape.js, donor nodes
+  sized/colored by contribution, click-through tooltips
+- [x] Site shell + GitHub Pages deploy — `index.html` officials grid,
+  `official.html` profile page (reelection banner, funding graph, filterable
+  voting/proposal record split by term), `.github/workflows/deploy-pages.yml`
+  — repo owner still needs to flip Settings → Pages → Source to
+  "GitHub Actions" (one-time, GitHub UI only)
 
 ## Roadmap
 
 - [ ] Add remaining officials beyond the initial three
 - [ ] Sort/filter donor list by type, amount, date
 - [ ] Link each council file / donor to its primary source
-- [ ] Deploy to GitHub Pages
 
 ## License
 
