@@ -644,9 +644,19 @@
     // Containers that start hidden (tabs, accordions) or resize need a re-fit,
     // otherwise the graph renders at the wrong size or not at all.
     var resizeObserver = null;
+    var resizeTimer = null;
     if (typeof ResizeObserver === 'function') {
       resizeObserver = new ResizeObserver(function () {
         cy.resize();
+        // resize() rebuilds the canvas but keeps the old pan/zoom, which leaves the
+        // graph off-frame after a window or panel resize. Re-fit so it stays centered.
+        // Debounced so dragging a window edge doesn't thrash the layout.
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          resizeTimer = null;
+          cy.fit(60);
+          positionTooltip();
+        }, 120);
         positionTooltip();
       });
       resizeObserver.observe(container);
@@ -660,6 +670,7 @@
         document.removeEventListener('keydown', onKeyDown);
         tooltip.removeEventListener('click', onTooltipClick);
         if (resizeObserver) resizeObserver.disconnect();
+        if (resizeTimer) { clearTimeout(resizeTimer); resizeTimer = null; }
         if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
         container.style.cursor = '';
       }
