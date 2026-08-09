@@ -301,6 +301,63 @@ main {
   color: var(--color-text-muted);
 }
 
+/* Per-donor contribution detail — expanded via the count button in the
+   Contributions column, one row per itemized gift with its filing link. */
+.donor-details-toggle {
+  border: 0;
+  background: none;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.donor-details-toggle:hover,
+.donor-details-toggle:focus-visible {
+  color: var(--color-text);
+}
+
+.donor-details-row td {
+  background: var(--color-surface);
+  padding: 0.4rem 0.6rem 0.6rem;
+}
+
+.donor-details-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.donor-details-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.donor-details-list li:last-child {
+  border-bottom: none;
+}
+
+.contribution-date {
+  color: var(--color-text-muted);
+  min-width: 6.5rem;
+}
+
+.contribution-amount {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  min-width: 4.5rem;
+}
+
+.contribution-source a {
+  color: var(--color-accent);
+}
+
 /* ---------------------------------------------------------------- */
 /* Primary-source attribution                                       */
 /* ---------------------------------------------------------------- */
