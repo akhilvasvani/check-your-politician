@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.0",
+  "officials": {
+    "mayor-bass": {
+      "funding": {
+        "committees": [
+          "Re-Elect Karen Bass for Mayor 2026",
+          "Re-Elect Karen Bass for Mayor 2026-General"
+        ],
+        "election_result": null
+      },
+      "record": {
+        "source": {
+          "name": "Office of the Mayor \u2014 Executive Directives and Emergency Executive Orders",
+          "url": "https://mayor.lacity.gov/"
+        },
+        "fixture": "data/sources/records/mayor-bass.json"
+      }
+    },
+    "cd1-official": {
+      "funding": {
+        "committees": [
+          "Eunisses Hernandez for City Council 2026"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd1-official.json"
+      }
+    },
+    "cd2-official": {
+      "funding": {
+        "committees": [
+          "Adrin Nazarian for City Council 2024",
+          "Adrin Nazarian for City Council 2024-General"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd2-official.json"
+      }
+    },
+    "cd3-official": {
+      "funding": {
+        "committees": [
+          "Bob Blumenfield for City Council 2022"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd3-official.json"
+      }
+    },
+    "cd4-official": {
+      "funding": {
+        "committees": [
+          "Nithya Raman for City Council 2024"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd4-official.json"
+      }
+    },
+    "cd5-official": {
+      "funding": {
+        "committees": [
+          "Katy Yaroslavsky for City Council 2026"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd5-official.json"
+      }
+    },
+    "cd6-official": {
+      "funding": {
+        "committees": [
+          "Imelda Padilla for LA City Council 2024"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd6-official.json"
+      }
+    },
+    "cd7-official": {
+      "funding": {
+        "committees": [
+          "MONICA RODRIGUEZ FOR CITY COUNCIL 2026"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd7-official.json"
+      }
+    },
+    "cd8-official": {
+      "funding": {
+        "committees": [
+          "Harris-Dawson for City Council 2024"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd8-official.json"
+      }
+    },
+    "cd9-official": {
+      "funding": {
+        "committees": [
+          "Curren Price, Jr. for City Council 2022"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd9-official.json"
+      }
+    },
+    "cd10-official": {
+      "funding": {
+        "committees": [
+          "Heather Hutt for City Council 2024",
+          "Heather Hutt for City Council 2024-General"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd10-official.json"
+      }
+    },
+    "cd11-official": {
+      "funding": {
+        "committees": [
+          "Traci Park for City Council 2026"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd11-official.json"
+      }
+    },
+    "cd12-official": {
+      "funding": {
+        "committees": [
+          "John Lee for City Council 2024"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd12-official.json"
+      }
+    },
+    "cd13-official": {
+      "funding": {
+        "committees": [
+          "Hugo Soto-Martinez for City Council 2026"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd13-official.json"
+      }
+    },
+    "cd14-official": {
+      "funding": {
+        "committees": [
+          "Jurado for City Council 2024",
+          "Ysabel Jurado for City Council 2024-General"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd14-official.json"
+      }
+    },
+    "cd15-official": {
+      "funding": {
+        "committees": [
+          "Tim McOsker for City Council 2026"
+        ],
+        "election_result": "won"
+      },
+      "record": {
+        "source": {
+          "name": "LA City Clerk \u2014 Council File Management System",
+          "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+        },
+        "fixture": "data/sources/records/cd15-official.json"
+      }
+    }
+  }
+}

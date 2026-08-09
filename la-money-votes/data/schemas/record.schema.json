@@ -1,0 +1,37 @@
+{
+  "$id": "record.schema.json",
+  "title": "record.json (data/officials/<id>/record.json)",
+  "description": "Curated legislative/public-action items for one official. The original frozen shape (official_id, items[].{council_file,title,role,date,outcome,term}) is unchanged; provenance/source fields documented here are additive — see CONTRACT.md.",
+  "type": "object",
+  "required": ["official_id", "source", "items"],
+  "properties": {
+    "official_id": { "type": "string" },
+    "source": {
+      "type": "object",
+      "required": ["name", "url"],
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+        "retrieved_at": { "type": "string" },
+        "methodology_version": { "type": "string" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["council_file", "title", "role", "date", "outcome", "term"],
+        "properties": {
+          "council_file": { "type": "string" },
+          "title": { "type": "string" },
+          "role": { "type": "string", "enum": ["proposed", "seconded", "voted_yes", "voted_no"] },
+          "date": { "type": "string" },
+          "outcome": { "type": "string", "enum": ["passed", "failed", "pending"] },
+          "term": { "type": "string", "enum": ["current", "previous"] },
+          "source_url": { "type": ["string", "null"] },
+          "provenance": { "$ref": "provenance.schema.json" }
+        }
+      }
+    }
+  }
+}

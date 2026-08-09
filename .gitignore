@@ -1,3 +1,11 @@
+# la-money-votes data pipeline: locally-downloaded/fetched raw source data and
+# build artifacts are never committed. Only validated, final JSON under
+# data/officials/ is committed.
+la-money-votes/data/raw/
+la-money-votes/data/.cache/
+la-money-votes/build_report.json
+la-money-votes/data/build_report.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

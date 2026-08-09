@@ -1,0 +1,101 @@
+{
+  "official_id": "mayor-bass",
+  "items": [
+    {
+      "council_file": "ED-1",
+      "title": "Expedition of Permits and Clearances for Temporary Shelters and Affordable Housing Types",
+      "role": "proposed",
+      "date": "2022-12-16",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "ED-2",
+      "title": "Inside Safe Initiative",
+      "role": "proposed",
+      "date": "2022-12-21",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "ED-3",
+      "title": "Emergency Use of Viable City-Owned Property",
+      "role": "proposed",
+      "date": "2023-02-10",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "ED-4",
+      "title": "Identifying Barriers to Small Business Creation, Development and Growth",
+      "role": "proposed",
+      "date": "2023-06-22",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "ED-5",
+      "title": "Improving Customer Experience",
+      "role": "proposed",
+      "date": "2023-10-30",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "ED-7",
+      "title": "Streamlining and Accelerating Housing Production",
+      "role": "proposed",
+      "date": "2023-11-08",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "ED-8",
+      "title": "Uplifting Our Economy Through Entertainment Production",
+      "role": "proposed",
+      "date": "2024-08-06",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "ED-9",
+      "title": "Streamlining Capital Project Delivery and Equitably Investing in the Public Right of Way",
+      "role": "proposed",
+      "date": "2024-10-16",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "EO-1",
+      "title": "Emergency Executive Order \u2014 Expedited Community Rebuilding and Recovery (Palisades Fire)",
+      "role": "proposed",
+      "date": "2025-01-13",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "ED-10",
+      "title": "Artificial Intelligence Pilot Program",
+      "role": "proposed",
+      "date": "2025-04-22",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "EO-9",
+      "title": "Local Prohibition on SB 9 in Burn Areas",
+      "role": "proposed",
+      "date": "2025-07-30",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "ED-15",
+      "title": "Mayoral Review of Proprietary Department Actions and Streamlining of Procurement Processes",
+      "role": "proposed",
+      "date": "2025-09-24",
+      "outcome": "passed",
+      "term": "current"
+    }
+  ]
+}

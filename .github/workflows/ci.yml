@@ -1,0 +1,63 @@
+name: la-money-votes CI
+
+# Runs on every PR that touches the pipeline. This intentionally does NOT
+# fetch live from the LA Ethics Commission's Socrata API (that would make
+# every unrelated PR depend on a third-party API being reachable) — the
+# scheduled refresh workflow (.github/workflows/refresh-data.yml) is the one
+# that exercises --fetch-socrata. This workflow instead:
+#   1. runs the unit test suite (fixtures only, no network)
+#   2. schema/cross-reference validates whatever is already committed
+#   3. dry-runs build_all.py against the real registry + curated record
+#      fixtures (funding is skipped here, for lack of a committed CSV --
+#      that's expected and does not fail the job)
+on:
+  pull_request:
+    paths:
+      - "la-money-votes/**"
+      - ".github/workflows/ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "la-money-votes/**"
+      - ".github/workflows/ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: la-money-votes
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Lint (syntax check every module)
+        run: python3 -m compileall -q scripts
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -v
+
+      - name: Validate committed data (schema + cross-reference)
+        run: python3 scripts/validate_data.py
+
+      - name: Dry-run build_all.py against real registry + record fixtures
+        run: |
+          python3 scripts/build_all.py \
+            --report-path /tmp/ci-build-report.json \
+            --skip-freshness
+
+      - name: Upload build report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-build-report
+          path: /tmp/ci-build-report.json
+          if-no-files-found: ignore

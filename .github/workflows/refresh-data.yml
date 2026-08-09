@@ -1,0 +1,87 @@
+name: Refresh la-money-votes data
+
+# Twice-weekly automated refresh from the LA Ethics Commission's public
+# Socrata API. This workflow NEVER pushes to main — it always opens (or
+# updates) a pull request via peter-evans/create-pull-request, which a
+# maintainer must review and merge by hand. See README "How refresh PRs are
+# reviewed" and CONTRACT.md "Known limitations" for what to check before
+# merging one, in particular: automated funding.json runs read from the
+# public Socrata contributions dataset, which does not expose donor
+# employer/occupation the way the manually-downloaded CSV export does (see
+# build_funding.py's module docstring) — merging a refresh PR as-is will
+# drop that field going forward. This is a known, currently-unresolved
+# trade-off; see the PR body / build report for exactly which officials it
+# affects on a given run.
+on:
+  schedule:
+    # 08:00 UTC Monday and Thursday. GitHub Actions cron is always UTC —
+    # convert to your own timezone when reasoning about "twice weekly".
+    - cron: "0 8 * * 1,4"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: la-money-votes
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run build_all.py against the live Socrata API
+        id: build
+        continue-on-error: true # let the PR still open below even if some officials failed
+        env:
+          # Optional. The m6g2-gc6c / br3a-db9a datasets are public and work
+          # without a token; set this repo secret only to raise Socrata's
+          # anonymous rate limit if the twice-weekly schedule ever needs it.
+          SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
+        run: |
+          python3 scripts/build_all.py \
+            --fetch-socrata \
+            --report-path build_report.json \
+            --markdown-path build_report.md
+
+      - name: Read build summary
+        id: summary
+        if: always()
+        run: |
+          {
+            echo 'body<<BUILD_REPORT_EOF'
+            cat build_report.md 2>/dev/null || echo "(no build_report.md produced)"
+            echo 'BUILD_REPORT_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Open or update data-refresh pull request
+        if: always()
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automated/data-refresh
+          delete-branch: true
+          commit-message: "data: automated refresh from LA Ethics Commission API"
+          title: "Automated data refresh (LA Ethics Commission)"
+          body: |
+            Automated twice-weekly data refresh. **Do not merge without reading the build report below** — see README "How refresh PRs are reviewed".
+
+            ${{ steps.summary.outputs.body }}
+          add-paths: |
+            la-money-votes/data/officials/**
+            la-money-votes/data/freshness.json
+          labels: automated-data-refresh
+
+      - name: Fail the job if the build itself failed
+        if: steps.build.outcome == 'failure'
+        run: |
+          echo "build_all.py reported failures -- see the opened/updated PR's build report for details."
+          exit 1

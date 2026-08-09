@@ -1,117 +1,63 @@
 #!/usr/bin/env python3
-"""la-money-votes — build_funding.py, Person 1 owns this file.
+"""la-money-votes — build_funding.py
 
-Reads a locally downloaded LA Ethics Commission "City Campaign Contributions
-(and Misc Increases to Cash)" export and writes data/officials/<id>/funding.json
-for each official listed in data/officials.json, per the schema frozen in
-CONTRACT.md.
+Writes data/officials/<id>/funding.json for one or more officials listed in
+data/officials.json, per the schema frozen in CONTRACT.md (with additive
+provenance/source fields — see CONTRACT.md "Additions").
+
+Two ways to get input rows, in order of preference:
+
+1. --fetch-socrata (recommended, used by the scheduled refresh workflow):
+   pulls live from the LA Ethics Commission's public Socrata API —
+   dataset m6g2-gc6c "City Campaign Contributions (and Misc. Increases to
+   Cash)" and (for contributions[].source_url) br3a-db9a "City Campaign
+   Statements Filed" — both unauthenticated, no API key required. Responses
+   are cached under the gitignored data/raw/ so a flaky network doesn't
+   block every rebuild, and a failed fetch falls back to that cache instead
+   of failing the whole run.
+
+2. --csv-path (offline/manual fallback, also what tests use): a locally
+   downloaded CSV export of the same two datasets. Never committed to the
+   repo.
+
+Which committee names, election results, and (for --fetch-socrata) which
+Socrata dataset each official's data comes from is configured centrally in
+data/sources/registry.json — not hard-coded in this file — so that both
+build_funding.py and build_record.py, and the cross-reference validator, all
+agree on one place. See scripts/pipeline/registry.py.
 
 Usage:
-    python3 scripts/build_funding.py [path/to/contributions.csv]
-
-The CSV itself is not committed to the repo — download it locally from the
-LA Ethics Commission and pass its path, or drop it at the DEFAULT_CSV path
-below.
+    python3 scripts/build_funding.py --fetch-socrata
+    python3 scripts/build_funding.py --fetch-socrata --official mayor-bass
+    python3 scripts/build_funding.py --csv-path data/raw/contributions.csv
 """
+
+from __future__ import annotations
 
 import argparse
 import csv
 import json
 import re
+import sys
 from datetime import date, datetime
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pipeline import atomic_io, provenance as prov, registry as reg, schemas, socrata, validation
+
 ROOT = Path(__file__).resolve().parent.parent
-OFFICIALS_INDEX = ROOT / "data" / "officials.json"
 DEFAULT_CSV = ROOT / "data" / "raw" / "contributions.csv"
-# Second bulk export, used only to resolve donors[].contributions[].source_url
-# (see CONTRACT.md). Same convention as DEFAULT_CSV: downloaded locally, never
-# committed. Optional — its absence just means no contribution gets a
-# source_url this build, not an error.
 DEFAULT_STATEMENTS_CSV = ROOT / "data" / "raw" / "statements_filed.csv"
+CONTRIBUTIONS_CACHE = ROOT / "data" / "raw" / ".cache" / "m6g2-gc6c.json"
+STATEMENTS_CACHE = ROOT / "data" / "raw" / ".cache" / "br3a-db9a.json"
+CONTRIBUTIONS_RESOURCE_ID = "m6g2-gc6c"
+STATEMENTS_RESOURCE_ID = "br3a-db9a"
 TOP_N_DONORS = 30
 
-# Primary source for every number in the output. Only verified, stable URLs
-# belong here — a dead or guessed link on a transparency site is worse than no
-# link at all. The Ethics Commission publishes contributions in bulk, with no
-# per-donor permalink, so this is a dataset-level citation and the UI presents
-# it that way (one note under the donor table, not a link per row).
-SOURCE = {
-    "name": "Los Angeles City Ethics Commission — City Campaign Contributions (and Misc. Increases to Cash)",
-    "url": "https://ethics.lacity.org/",
-}
-
-# Election outcomes, hand-curated. The contributions export records who gave to
-# which committee for which election — it never records who won, so this cannot
-# be derived from the CSV and lives here instead of being inferred. Keeping it
-# in the script (rather than editing funding.json directly) means a regenerate
-# doesn't silently drop it.
-#
-# - cd11-official (Traci Park): won outright in the June 2, 2026 primary,
-#   second term began ~2026-07-01. Same curation as build_record.py's term
-#   cutoffs — see that file's docstring.
-# - cd14-official (Ysabel Jurado): won the November 5, 2024 CD14 general.
-# - cd2-official (Adrin Nazarian): the LA City Clerk's "Current Elected
-#   Officials" roster confirms he assumed office 12/9/24 for his first term
-#   (https://clerk.lacity.gov/articles/current-elected-officials), which is
-#   only possible if he won the November 5, 2024 CD2 general — the contribution
-#   export itself never says this, so it's recorded here rather than derived.
-# - mayor-bass: 2026 election is still ahead, so there is no result yet.
-#
-# V1-roster completion (2026-08-09), all confirmed via news coverage of the
-# certified June 2, 2026 primary (LAist, ABC7, NBC LA, LA Times, Wikipedia —
-# see the verification report for per-official URLs) or via the City Clerk's
-# roster confirming the officeholder's current, already-underway term:
-# - cd1-official (Eunisses Hernandez): won outright in the June 2, 2026
-#   primary (~58%), no runoff — her CURRENT term is still her first (elected
-#   2022); the 2026 committee is her (already-decided) reelection campaign.
-# - cd3-official (Bob Blumenfield): termed out, not on the 2026 ballot at all
-#   (confirmed by LA Times/ABC7 reporting and by the absence of any 2026
-#   committee in the Ethics Commission data). His current, final term began
-#   with his 2022 win, hence "won" against the 2022 committee.
-# - cd4-official (Nithya Raman): her current CD4 term began with her 2024
-#   win. She is also actively running for Mayor in 2026 with a separate
-#   committee ("Nithya Raman for Mayor 2026") — deliberately NOT used here
-#   since this profile's office is Council District 4, not Mayor; see the
-#   verification report.
-# - cd5-official (Katy Young Yaroslavsky): won outright in the June 2, 2026
-#   primary (~64%), no runoff.
-# - cd6-official (Imelda Padilla): current term began with her March 2024
-#   win (following an earlier 2023 special election).
-# - cd7-official (Monica Rodriguez): ran unopposed and won outright in the
-#   June 2, 2026 primary.
-# - cd8-official (Marqueece Harris-Dawson): current term began with his 2024
-#   win.
-# - cd9-official (Curren D. Price Jr.): termed out, not on the 2026 ballot
-#   (confirmed by LA Times/LAist reporting and by the absence of any 2026
-#   committee in the Ethics Commission data). His current, final term began
-#   with his 2022 win.
-# - cd10-official (Heather Hutt): current term began with her November 2024
-#   general win.
-# - cd12-official (John Lee): current term began with his 2024 win.
-# - cd13-official (Hugo Soto-Martinez): won outright in the June 2, 2026
-#   primary (~68%), no runoff.
-# - cd15-official (Tim McOsker): won outright in the June 2, 2026 primary
-#   (~77%), no runoff.
-ELECTION_RESULTS = {
-    "cd1-official": "won",
-    "cd2-official": "won",
-    "cd3-official": "won",
-    "cd4-official": "won",
-    "cd5-official": "won",
-    "cd6-official": "won",
-    "cd7-official": "won",
-    "cd8-official": "won",
-    "cd9-official": "won",
-    "cd10-official": "won",
-    "cd11-official": "won",
-    "cd12-official": "won",
-    "cd13-official": "won",
-    "cd14-official": "won",
-    "cd15-official": "won",
-}
-
-# CSV column names, as they appear in the LA Ethics Commission export header.
+# CSV column names, as they appear in the LA Ethics Commission's *export*
+# (not its Socrata API — see normalize_api_row() for that mapping). Every
+# other function in this file works against these column names regardless
+# of which input source populated them.
 COL_DATE = "Contribution Date"
 COL_CONTRIBUTOR = "Contributor"
 COL_OCCUPATION = "Contrib Occupation"
@@ -136,94 +82,7 @@ DONOR_CONTRIBUTION_TYPES = {
     "non-monetary contributions (itemized)",
 }
 
-# Map each official id -> the campaign committee name(s) exactly as they
-# appear in the CSV's Committee Name column, ordered [primary, general, ...].
-# Rows across all of an official's committees are merged into one donor list.
-# The first name is used as the canonical "committee" shown in the output.
-# Matched case-insensitively. Found by inspecting the real LA Ethics export
-# (Committee Type 'C' = candidate-controlled, confirmed against Office/
-# District/Candidate columns) — not placeholders.
-COMMITTEES = {
-    # Karen Bass, current mayor, running for reelection in 2026.
-    "mayor-bass": ["Re-Elect Karen Bass for Mayor 2026", "Re-Elect Karen Bass for Mayor 2026-General"],
-    # Ysabel Jurado, elected CD14 in Nov 2024; her current term runs to 2028,
-    # so she has no 2026 committee yet — these are her 2024 election committees.
-    "cd14-official": ["Jurado for City Council 2024", "Ysabel Jurado for City Council 2024-General"],
-    # Traci Park, current CD11 councilmember, running for reelection in 2026.
-    "cd11-official": ["Traci Park for City Council 2026"],
-    # Adrin Nazarian, elected CD2 in Nov 2024; current term runs to 2028, so
-    # these are his 2024 election committees (primary + general). Confirmed
-    # via a live query against the same Ethics Commission dataset SOURCE
-    # cites (data.lacity.org resource m6g2-gc6c), grouped by cand_name =
-    # 'Nazarian, Adrin' — not copied from a secondary aggregator.
-    "cd2-official": [
-        "Adrin Nazarian for City Council 2024",
-        "Adrin Nazarian for City Council 2024-General",
-    ],
-
-    # --- V1-roster completion (2026-08-09) ---
-    # All committee names below were confirmed the same way as cd2-official:
-    # a live $where query against data.lacity.org resource m6g2-gc6c grouped
-    # by cand_name and cross-checked against seat_desc/dist_num, then the
-    # chosen committee(s) cross-checked against news coverage of the
-    # certified June 2, 2026 primary where relevant. See the verification
-    # report for full source URLs and per-official rationale.
-
-    # Eunisses Hernandez, CD1. Won outright in the June 2, 2026 primary (no
-    # runoff); this is her (already-decided) reelection committee.
-    "cd1-official": ["Eunisses Hernandez for City Council 2026"],
-
-    # Bob Blumenfield, CD3. Termed out -- no 2026 committee exists in the
-    # Ethics Commission data. His current (final) term's committee is 2022.
-    "cd3-official": ["Bob Blumenfield for City Council 2022"],
-
-    # Nithya Raman, CD4. Committee ID 1425985 is a continuously-operating
-    # committee reused across the 2020 and 2024 cycles under two cmt_nm
-    # labels in the Ethics Commission data; only the 2024-labeled rows (her
-    # current term) are kept -- the 2020 cycle was filtered out of the raw
-    # CSV before this script ever sees it (see convert_v1_csv.py). She is
-    # also actively running for Mayor in 2026 under a separate committee
-    # ("Nithya Raman for Mayor 2026") -- deliberately not used here since
-    # this profile's office is Council District 4, not Mayor.
-    "cd4-official": ["Nithya Raman for City Council 2024"],
-
-    # Katy Young Yaroslavsky, CD5. Won outright in the June 2, 2026 primary.
-    "cd5-official": ["Katy Yaroslavsky for City Council 2026"],
-
-    # Imelda Padilla, CD6. Current term's committee is her March 2024 win
-    # (following an earlier 2023 special election, a separate committee).
-    "cd6-official": ["Imelda Padilla for LA City Council 2024"],
-
-    # Monica Rodriguez, CD7. Ran unopposed and won outright in the June 2,
-    # 2026 primary.
-    "cd7-official": ["MONICA RODRIGUEZ FOR CITY COUNCIL 2026"],
-
-    # Marqueece Harris-Dawson, CD8. Current term's committee is his 2024 win.
-    "cd8-official": ["Harris-Dawson for City Council 2024"],
-
-    # Curren D. Price Jr., CD9. Termed out -- no 2026 committee exists in the
-    # Ethics Commission data. His current (final) term's committee is 2022.
-    "cd9-official": ["Curren Price, Jr. for City Council 2022"],
-
-    # Heather Hutt, CD10. Elected Nov 2024; primary + general committees.
-    "cd10-official": [
-        "Heather Hutt for City Council 2024",
-        "Heather Hutt for City Council 2024-General",
-    ],
-
-    # John Lee, CD12. Current term's committee is his 2024 win.
-    "cd12-official": ["John Lee for City Council 2024"],
-
-    # Hugo Soto-Martinez, CD13. Won outright in the June 2, 2026 primary.
-    "cd13-official": ["Hugo Soto-Martinez for City Council 2026"],
-
-    # Tim McOsker, CD15. Won outright in the June 2, 2026 primary.
-    "cd15-official": ["Tim McOsker for City Council 2026"],
-}
-
-PAC_PATTERN = re.compile(
-    r"\b(PAC|POLITICAL ACTION|COMMITTEE?|UNION|LOCAL \d+)\b", re.I
-)
+PAC_PATTERN = re.compile(r"\b(PAC|POLITICAL ACTION|COMMITTEE?|UNION|LOCAL \d+)\b", re.I)
 BUSINESS_PATTERN = re.compile(
     r"\b(INC|LLC|LLP|LP|CORP|CORPORATION|CO|COMPANY|GROUP|PARTNERS|ASSOCIATES|"
     r"ENTERPRISES|HOLDINGS|TRUST|FOUNDATION|LTD|REALTY|PROPERTIES|VENTURES)\.?\b",
@@ -245,7 +104,7 @@ def clean_field(raw):
 def parse_amount(raw):
     if not raw:
         return None
-    cleaned = raw.strip().replace("$", "").replace(",", "")
+    cleaned = str(raw).strip().replace("$", "").replace(",", "")
     if not cleaned:
         return None
     try:
@@ -256,13 +115,17 @@ def parse_amount(raw):
 
 
 def parse_date(raw):
+    """Accepts either the CSV export's 'MM/DD/YYYY' or the Socrata API's
+    ISO 'YYYY-MM-DDTHH:MM:SS.mmm' (only the date part is kept either way)."""
     raw = (raw or "").strip()
     if not raw:
         return None
-    try:
-        return datetime.strptime(raw, "%m/%d/%Y").strftime("%Y-%m-%d")
-    except ValueError:
-        return None
+    for fmt in ("%m/%d/%Y", "%Y-%m-%dT%H:%M:%S.%f", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(raw, fmt).strftime("%Y-%m-%d")
+        except ValueError:
+            continue
+    return None
 
 
 def infer_donor_type(name, has_occupation_or_employer):
@@ -273,66 +136,125 @@ def infer_donor_type(name, has_occupation_or_employer):
     return "individual"
 
 
-def load_statement_links(csv_path: Path):
-    """Map (Committee ID, Period Beg Date, Period End Date) -> stmt_link.
+def normalize_api_row(row: dict) -> dict:
+    """Map one m6g2-gc6c Socrata JSON record to the CSV column-name shape.
 
-    Source: the Ethics Commission's "City Campaign Statements Filed" export
-    (data.lacity.org resource br3a-db9a) — see CONTRACT.md for the full
-    citation and the reasoning for using a period-match join instead of a
-    per-transaction link that doesn't exist. Returns {} if the file isn't
-    present locally; that's a normal, expected state (see DEFAULT_STATEMENTS_CSV),
-    not an error — contributions just come out with no source_url.
+    The Socrata contributions dataset does not expose occupation/employer
+    (Schedule A itemized detail only breaks those out in the full paper
+    filing, not this rolled-up dataset) — those two columns are left absent
+    rather than guessed. This is a known, documented gap, not a bug: see
+    README "Source policy / known limitations".
     """
+    return {
+        COL_DATE: row.get("con_date"),
+        COL_CONTRIBUTOR: row.get("con_name"),
+        COL_OCCUPATION: None,
+        COL_EMPLOYER: None,
+        COL_COMMITTEE: row.get("cmt_nm"),
+        COL_COMMITTEE_ID: row.get("cmt_id"),
+        COL_PERIOD_BEG: row.get("per_beg_date"),
+        COL_PERIOD_END: row.get("per_end_date"),
+        COL_AMOUNT: row.get("con_amount"),
+        COL_TYPE: row.get("con_type"),
+        COL_ELECTION_DATE: row.get("election_date"),
+    }
+
+
+def normalize_api_statement(row: dict) -> dict:
+    link = row.get("stmt_link")
+    if isinstance(link, dict):
+        link = link.get("url")
+    return {
+        "cmt_id": row.get("cmt_id"),
+        "period_from_date": row.get("period_from_date"),
+        "period_to_date": row.get("period_to_date"),
+        "stmt_link": link,
+    }
+
+
+def load_statement_links_from_csv(csv_path: Path):
     if not csv_path.exists():
-        print(f"note: {csv_path} not found; contributions will have no source_url")
         return {}
     lookup = {}
     with csv_path.open(newline="", encoding="utf-8-sig") as f:
         for row in csv.DictReader(f):
             key = (
                 (row.get("cmt_id") or "").strip(),
-                (row.get("period_from_date") or "").strip(),
-                (row.get("period_to_date") or "").strip(),
+                parse_date(row.get("period_from_date")) or "",
+                parse_date(row.get("period_to_date")) or "",
             )
             link = (row.get("stmt_link") or "").strip()
             if all(key) and link:
-                # Later rows don't overwrite earlier ones: if a period is ever
-                # refiled/duplicated in the export, keep the first stable link
-                # rather than silently swapping which document a contribution
-                # points to between runs.
                 lookup.setdefault(key, link)
     return lookup
 
 
-def committee_lookup():
+def load_statement_links_from_rows(rows):
+    lookup = {}
+    for row in rows:
+        norm = normalize_api_statement(row)
+        key = (
+            (norm["cmt_id"] or "").strip(),
+            parse_date(norm["period_from_date"]) or "",
+            parse_date(norm["period_to_date"]) or "",
+        )
+        link = (norm["stmt_link"] or "").strip() if norm["stmt_link"] else ""
+        if all(key) and link:
+            lookup.setdefault(key, link)
+    return lookup
+
+
+def committee_lookup(committees_by_official: dict):
     """Map lowercased committee name -> official id, across all officials."""
     lookup = {}
-    for official_id, names in COMMITTEES.items():
+    for official_id, names in committees_by_official.items():
         for name in names:
             lookup[name.strip().lower()] = official_id
     return lookup
 
 
-def load_rows_by_official(csv_path: Path):
-    """Stream the CSV once, keeping only rows for configured committees.
+def group_rows_by_official(rows, committees_by_official: dict):
+    lookup = committee_lookup(committees_by_official)
+    grouped = {official_id: [] for official_id in committees_by_official}
+    for row in rows:
+        official_id = lookup.get((row.get(COL_COMMITTEE) or "").strip().lower())
+        if official_id:
+            grouped[official_id].append(row)
+    return grouped
 
-    The real export can be hundreds of MB, so we filter as we read instead
-    of materializing every row (most of which belong to committees we don't
-    care about) into memory.
-    """
-    lookup = committee_lookup()
-    rows_by_official = {official_id: [] for official_id in COMMITTEES}
+
+def load_rows_by_official_from_csv(csv_path: Path, committees_by_official: dict):
     with csv_path.open(newline="", encoding="utf-8-sig") as f:
-        for row in csv.DictReader(f):
-            official_id = lookup.get((row.get(COL_COMMITTEE) or "").strip().lower())
-            if official_id:
-                rows_by_official[official_id].append(row)
-    return rows_by_official
+        rows = list(csv.DictReader(f))
+    return group_rows_by_official(rows, committees_by_official)
 
 
-def build_donors(rows, statement_links=None):
+def load_rows_by_official_from_api(committees_by_official: dict, use_cache_only: bool = False):
+    raw_rows = socrata.fetch_dataset(
+        CONTRIBUTIONS_RESOURCE_ID,
+        cache_path=CONTRIBUTIONS_CACHE,
+        use_cache_only=use_cache_only,
+    )
+    rows = [normalize_api_row(r) for r in raw_rows]
+    return group_rows_by_official(rows, committees_by_official)
+
+
+def build_donors(rows, statement_links=None, retrieved_at=None, methodology_version=None, source_name=None, source_notes=None):
     statement_links = statement_links or {}
     grouped = {}
+    # normalize_api_row() leaves COL_OCCUPATION/COL_EMPLOYER unset (the public
+    # Socrata dataset does not expose them); flag that gap once per call
+    # rather than silently writing every donor's employer as null with no
+    # explanation. CSV-sourced rows always carry these two columns (even if
+    # sometimes blank per-row), so this only fires for --fetch-socrata runs.
+    if source_notes is not None and rows and all(
+        row.get(COL_OCCUPATION) is None and row.get(COL_EMPLOYER) is None for row in rows
+    ):
+        source_notes.append(
+            "employer/occupation not available from the automated Socrata fetch "
+            "(the public API dataset does not expose them); only present when "
+            "built from a manually-downloaded CSV export via --csv-path"
+        )
     for row in rows:
         if (row.get(COL_TYPE) or "").strip().lower() not in DONOR_CONTRIBUTION_TYPES:
             continue
@@ -350,18 +272,27 @@ def build_donors(rows, statement_links=None):
         has_occupation_or_employer = False
         for row, amount in entries:
             total += amount
-            entry = {"date": parse_date(row.get(COL_DATE)), "amount": amount}
-            # See CONTRACT.md — exact-key join to the filing that disclosed
-            # this contribution; absent (not guessed) when the key doesn't
-            # match anything in the statements export.
+            contrib_date = parse_date(row.get(COL_DATE))
+            entry = {"date": contrib_date, "amount": amount}
             link_key = (
                 (row.get(COL_COMMITTEE_ID) or "").strip(),
-                (row.get(COL_PERIOD_BEG) or "").strip(),
-                (row.get(COL_PERIOD_END) or "").strip(),
+                parse_date(row.get(COL_PERIOD_BEG)) or "",
+                parse_date(row.get(COL_PERIOD_END)) or "",
             )
             source_url = statement_links.get(link_key)
             if source_url:
                 entry["source_url"] = source_url
+            entry["provenance"] = prov.make_provenance(
+                source_name=source_name,
+                source_url=source_url,
+                retrieved_at=retrieved_at,
+                reporting_period={
+                    "from": parse_date(row.get(COL_PERIOD_BEG)),
+                    "to": parse_date(row.get(COL_PERIOD_END)),
+                },
+                record_id=(row.get(COL_COMMITTEE_ID) or "").strip() or None,
+                methodology_version=methodology_version,
+            )
             contributions.append(entry)
             occupation = clean_field(row.get(COL_OCCUPATION))
             row_employer = clean_field(row.get(COL_EMPLOYER))
@@ -386,19 +317,15 @@ def build_donors(rows, statement_links=None):
     return donors[:TOP_N_DONORS]
 
 
-def build_reelection(official_id, committee_names, rows, today=None):
+def build_reelection(official_id, committee_names, rows, election_result, today=None):
     """Re-election status for one official.
 
-    "active" means the campaign is still ahead of its election, so it has to be
-    checked against the election date, not just the year in the committee name:
-    a committee called "... 2026" is still named that the day after the 2026
-    election, and a build that only looked at the name would keep reporting a
-    finished campaign as live. The date is authoritative; the committee year is
-    only a fallback for rows that carry no election date.
-
-    This is still a build-time snapshot. Consumers that can go stale between
-    builds should compare election_date against the current date themselves —
-    js/app.js does exactly that when it picks the banner's tense.
+    "active" means the campaign is still ahead of its election, so it has to
+    be checked against the election date, not just the year in the committee
+    name. The date is authoritative; the committee-name year is only a
+    fallback for rows that carry no election date. This is still a
+    build-time snapshot — js/app.js independently re-derives the banner's
+    tense against the live current date on every page load.
     """
     today = today or date.today().isoformat()
 
@@ -417,82 +344,166 @@ def build_reelection(official_id, committee_names, rows, today=None):
         "active": active,
         "election_date": election_date,
         "committee": committee_names[0] if committee_names else None,
-        # Absent until the election has actually happened; see ELECTION_RESULTS.
-        "result": ELECTION_RESULTS.get(official_id) if not active else None,
+        "result": election_result if not active else None,
     }
 
 
-def build_funding(official, rows_by_official, today=None, statement_links=None) -> None:
+def build_funding_payload(official, rows, entry, statement_links, today, retrieved_at, source_notes):
     official_id = official.get("id")
-    committee_names = COMMITTEES.get(official_id, [])
-    rows = rows_by_official.get(official_id, [])
+    committee_names = entry["funding"]["committees"]
+    election_result = entry["funding"].get("election_result")
 
     if not committee_names:
-        print(f"warning: no committee configured for {official_id!r}; writing empty donor list")
+        source_notes.append(f"{official_id}: no committee configured in registry.json")
     elif not rows:
-        print(f"warning: no CSV rows matched {committee_names!r} for {official_id!r}")
+        source_notes.append(f"{official_id}: no rows matched committees {committee_names!r}")
+
+    source_block = {
+        "name": "Los Angeles City Ethics Commission — City Campaign Contributions (and Misc. Increases to Cash)",
+        "url": "https://ethics.lacity.org/",
+        "committees": committee_names,
+        "retrieved_at": retrieved_at,
+        "methodology_version": prov.METHODOLOGY_VERSION,
+    }
 
     payload = {
         "official": {
             "id": official_id,
             "name": official.get("name"),
             "office": official.get("office"),
-            "reelection": build_reelection(official_id, committee_names, rows, today),
+            "reelection": build_reelection(official_id, committee_names, rows, election_result, today),
         },
-        "source": dict(SOURCE, committees=committee_names),
-        "donors": build_donors(rows, statement_links),
+        "source": source_block,
+        "donors": build_donors(
+            rows,
+            statement_links,
+            retrieved_at=retrieved_at,
+            methodology_version=prov.METHODOLOGY_VERSION,
+            source_name=source_block["name"],
+            source_notes=source_notes,
+        ),
     }
+    return payload
+
+
+def build_funding_for_official(official, rows_by_official, sources_registry, statement_links, today, retrieved_at):
+    """Build, validate, and write funding.json for one official.
+
+    Returns (status, record_count, problems, source_notes) — never raises;
+    callers (main() and build_all.py) decide what to do with a "failed"
+    status. On any validation problem, the previously-written funding.json
+    (if any) is left untouched — see pipeline.atomic_io.write_if_valid.
+    """
+    official_id = official.get("id")
+    problems = []
+    source_notes = []
+    try:
+        entry = reg.registry_entry(sources_registry, official_id)
+    except KeyError as exc:
+        return "failed", 0, [str(exc)], source_notes
+
+    rows = rows_by_official.get(official_id, [])
+    payload = build_funding_payload(official, rows, entry, statement_links, today, retrieved_at, source_notes)
+
+    problems.extend(validation.validate_schema(payload, schemas.get("funding")))
+    for donor in payload["donors"]:
+        if not validation.is_valid_amount(donor["total"]):
+            problems.append(f"{official_id}: donor '{donor['name']}' has invalid total {donor['total']!r}")
+        for c in donor["contributions"]:
+            if c["date"] and not validation.is_valid_date(c["date"]):
+                problems.append(f"{official_id}: donor '{donor['name']}' has invalid contribution date {c['date']!r}")
+            if not validation.is_valid_amount(c["amount"]):
+                problems.append(f"{official_id}: donor '{donor['name']}' has invalid contribution amount {c['amount']!r}")
+            if c.get("source_url") and not validation.is_valid_url(c["source_url"], validation.ALLOWED_SOURCE_DOMAINS):
+                problems.append(f"{official_id}: donor '{donor['name']}' has an untrusted source_url {c['source_url']!r}")
+    dupe_names = validation.find_duplicates(payload["donors"], key_fn=lambda d: d["name"])
+    for name in dupe_names:
+        problems.append(f"{official_id}: duplicate donor name '{name}' in output")
 
     out_path = ROOT / "data" / "officials" / official_id / "funding.json"
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(payload, indent=2) + "\n")
-    print(f"wrote {out_path.relative_to(ROOT)} ({len(payload['donors'])} donors)")
+    written = atomic_io.write_if_valid(out_path, payload, problems)
+    if not written:
+        return "failed", 0, problems, source_notes
+    return "ok", len(payload["donors"]), problems, source_notes
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "csv_path",
-        nargs="?",
-        default=str(DEFAULT_CSV),
-        help=f"path to the LA Ethics Commission contributions CSV (default: {DEFAULT_CSV})",
-    )
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument(
         "--official",
         action="append",
-        help=(
-            "only (re)build funding.json for this official id; may be repeated. "
-            "Default: every official in data/officials.json. Use this when the "
-            "CSV on hand only covers one official's committee(s), so the others' "
-            "already-committed funding.json isn't overwritten with an empty "
-            "donor list for rows it can't find."
-        ),
+        help="only (re)build funding.json for this official id; may be repeated. Default: every official in the registry.",
+    )
+    source_group = parser.add_mutually_exclusive_group()
+    source_group.add_argument(
+        "--fetch-socrata",
+        action="store_true",
+        help="fetch live from the LA Ethics Commission's public Socrata API instead of reading a local CSV",
+    )
+    source_group.add_argument(
+        "--csv-path",
+        default=None,
+        help=f"path to a locally-downloaded contributions CSV export (default when neither flag is given: {DEFAULT_CSV})",
     )
     parser.add_argument(
         "--statements-csv",
         default=str(DEFAULT_STATEMENTS_CSV),
-        help=(
-            "path to the LA Ethics Commission 'City Campaign Statements Filed' "
-            f"CSV, used only to resolve contributions[].source_url (default: "
-            f"{DEFAULT_STATEMENTS_CSV}). Optional — if missing, contributions "
-            "are written with no source_url rather than a guessed one."
-        ),
+        help=f"path to a locally-downloaded 'City Campaign Statements Filed' CSV, used only with --csv-path (default: {DEFAULT_STATEMENTS_CSV})",
+    )
+    parser.add_argument(
+        "--use-cache-only",
+        action="store_true",
+        help="with --fetch-socrata, never hit the network — read the last cached response only (used by tests / offline dry-runs)",
     )
     args = parser.parse_args()
 
-    csv_path = Path(args.csv_path)
-    if not csv_path.exists():
-        raise SystemExit(f"CSV not found: {csv_path}")
+    officials = reg.load_officials()
+    sources_registry = reg.load_registry()
+    cross_ref_problems = reg.validate_cross_reference(officials, sources_registry)
+    if cross_ref_problems:
+        for p in cross_ref_problems:
+            print(f"error: {p}")
+        raise SystemExit(1)
 
-    rows_by_official = load_rows_by_official(csv_path)
-    statement_links = load_statement_links(Path(args.statements_csv))
+    committees_by_official = {
+        oid: entry["funding"]["committees"] for oid, entry in sources_registry["officials"].items()
+    }
 
     today = date.today().isoformat()
-    officials = json.loads(OFFICIALS_INDEX.read_text())
-    if args.official:
-        officials = [o for o in officials if o.get("id") in args.official]
+    retrieved_at = today
+
+    if args.fetch_socrata:
+        rows_by_official = load_rows_by_official_from_api(committees_by_official, use_cache_only=args.use_cache_only)
+        api_statements = socrata.fetch_dataset(
+            STATEMENTS_RESOURCE_ID, cache_path=STATEMENTS_CACHE, use_cache_only=args.use_cache_only
+        )
+        statement_links = load_statement_links_from_rows(api_statements)
+    else:
+        csv_path = Path(args.csv_path) if args.csv_path else DEFAULT_CSV
+        if not csv_path.exists():
+            raise SystemExit(f"CSV not found: {csv_path} (pass --csv-path or use --fetch-socrata)")
+        rows_by_official = load_rows_by_official_from_csv(csv_path, committees_by_official)
+        statement_links = load_statement_links_from_csv(Path(args.statements_csv))
+
+    target_ids = set(args.official) if args.official else None
+    exit_code = 0
     for official in officials:
-        build_funding(official, rows_by_official, today, statement_links)
+        official_id = official.get("id")
+        if target_ids and official_id not in target_ids:
+            continue
+        status, count, problems, notes = build_funding_for_official(
+            official, rows_by_official, sources_registry, statement_links, today, retrieved_at
+        )
+        for note in notes:
+            print(f"note: {note}")
+        if status == "ok":
+            print(f"wrote data/officials/{official_id}/funding.json ({count} donors)")
+        else:
+            exit_code = 1
+            print(f"error: {official_id}: funding.json NOT written — {'; '.join(problems)}")
+
+    if exit_code:
+        raise SystemExit(exit_code)
 
 
 if __name__ == "__main__":

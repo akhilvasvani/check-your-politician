@@ -1,0 +1,45 @@
+{
+  "official_id": "cd10-official",
+  "items": [
+    {
+      "council_file": "25-0932",
+      "title": "Community DASH Buses / Special Events Advertisement / Commercial and Promotional Advertising",
+      "role": "proposed",
+      "date": "2025-08-13",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "24-0600-S14",
+      "title": "Budget Motion / Transportation Committee Jurisdiction / Transportation Grant Funds",
+      "role": "proposed",
+      "date": "2024-05-23",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "24-0600-S11",
+      "title": "Budget Motion / Aging / Rapid Response Senior Meals Program / Funding / Reserve for Extraordinary Liability / Unappropriated Balance Fund",
+      "role": "proposed",
+      "date": "2024-05-23",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "25-0600-S12",
+      "title": "Budget Motion / Los Angeles Fire Department / Critical Staffing Needs / Innovation Fund",
+      "role": "proposed",
+      "date": "2025-05-22",
+      "outcome": "pending",
+      "term": "current"
+    },
+    {
+      "council_file": "25-0006-S4",
+      "title": "Special Motion 4 / Disaster Center Site / Emergency Management Department / Federal Emergency Management Agency (FEMA) / Council District 11 / 2025 Windstorm and Wildfire Recovery",
+      "role": "seconded",
+      "date": "2025-01-14",
+      "outcome": "passed",
+      "term": "current"
+    }
+  ]
+}
