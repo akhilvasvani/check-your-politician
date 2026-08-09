@@ -21,7 +21,7 @@ V1 includes:
 - Expandable contribution detail with filing links where a verified source match is available
 - Filterable legislative-record tables, split into current and previous terms
 - Council-file source links where an item-level primary record is available
-- A static GitHub Pages deployment workflow
+- A Vercel deployment (static site + one serverless function for Ask-AI)
 
 A later addition (still V1, same data contract) adds two more views on top of the same underlying data:
 
@@ -231,8 +231,8 @@ maintainer should:
    linked `source_url` before trusting the diff.
 4. Confirm CI (schema validation + tests) passed on the PR.
 
-Only then merge — which then triggers the existing GitHub Pages deploy
-workflow on push to `main`.
+Only then merge — Vercel Production picks up the push to `main` and
+redeploys automatically.
 
 ## Methodology and known limitations
 
@@ -278,18 +278,22 @@ Key rules:
 
 ## Deployment
 
-The repository includes a GitHub Actions workflow that deploys `la-money-votes/` to GitHub Pages on pushes to `main`. In GitHub, enable **Settings → Pages → Source → GitHub Actions** once for the repository. This is the site's production home at the root domain and is untouched by anything below.
+The site is deployed on **Vercel**, which serves the static site (`index.html`,
+`official.html`, `css/`, `js/`, `data/`) and the one serverless function
+that powers the "Ask about this official" feature (`api/ask-official.js`).
+A static-only host (like GitHub Pages, previously used here) can't run that
+function, which is why the project moved to Vercel.
 
-### Optional: Vercel deployment on a subdomain (for the Ask-AI feature)
+- **Production** — pushes to `main` auto-deploy to Vercel Production
+  (`check-your-politician.vercel.app`).
+- **Preview** — every other branch/PR gets its own Vercel Preview
+  deployment; the `feature/ask-ai-vercel-district-label` branch is
+  additionally bound to the `lapolitician.akhilvasvani.com` custom
+  subdomain for pre-merge testing.
 
-`la-money-votes/` can additionally be deployed to Vercel on its own
-subdomain (e.g. `politician.akhilvasvani.com`), which is required to run the
-"Ask about this official" serverless search feature (`api/ask-official.js`) —
-GitHub Pages can only serve static files, not serverless functions. This is
-fully additive: the root domain and GitHub Pages deployment above are not
-affected. See [`la-money-votes/DEPLOYMENT.md`](la-money-votes/DEPLOYMENT.md)
-for the full step-by-step (importing into Vercel, adding the subdomain, the
-CNAME record to add at your registrar, and setting `PERPLEXITY_API_KEY`).
+See [`la-money-votes/DEPLOYMENT.md`](la-money-votes/DEPLOYMENT.md) for the
+full step-by-step (importing into Vercel, custom-domain/CNAME setup,
+`PERPLEXITY_API_KEY`, and the rate-limiting env vars for Ask-AI).
 
 ## License
 
