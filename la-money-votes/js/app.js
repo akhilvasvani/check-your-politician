@@ -548,6 +548,17 @@ async function loadOfficialPage() {
 
   renderReelectionBanner(official.reelection);
   renderFunding(funding);
+
+  // Ask-AI Q&A module is optional/additive (js/ask-ai.js) — a missing
+  // script or failed init must not break the rest of the profile page.
+  if (typeof initAskAI === "function") {
+    try {
+      initAskAI(id, official);
+    } catch (err) {
+      console.warn("[app.js] Ask-AI module failed to init:", err);
+    }
+  }
+
   wireRecordFilters(record.items || []);
   renderRecord(record.items || [], "all");
   renderSourceNote(document.getElementById("record-source"), record.source);

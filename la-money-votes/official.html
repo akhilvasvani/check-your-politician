@@ -82,6 +82,38 @@
       <p class="source-note" id="funding-source" hidden></p>
     </section>
 
+    <section id="ask-ai-section" aria-labelledby="ask-ai-heading">
+      <h2 id="ask-ai-heading">Ask about <span id="ask-ai-official-name">this official</span></h2>
+      <p class="ask-ai-intro">
+        Ask a question and get an AI-generated answer with cited sources, powered by
+        Perplexity search. Answers are generated on the fly and may not be fully accurate
+        &mdash; always check the citations and the funding/record data above.
+      </p>
+      <form id="ask-ai-form" class="ask-ai-form" novalidate>
+        <label for="ask-ai-input" class="ask-ai-label">Your question</label>
+        <textarea
+          id="ask-ai-input"
+          name="question"
+          class="ask-ai-input"
+          rows="2"
+          maxlength="300"
+          placeholder="e.g. What policies does this official support?"
+          aria-describedby="ask-ai-hint"
+          required
+        ></textarea>
+        <div class="ask-ai-form-footer">
+          <p id="ask-ai-hint" class="ask-ai-hint">Up to 300 characters. AI-generated &mdash; verify anything important.</p>
+          <button type="submit" id="ask-ai-submit" class="ask-ai-submit">Ask</button>
+        </div>
+      </form>
+      <div id="ask-ai-status" class="ask-ai-status" role="status" aria-live="polite" hidden></div>
+      <div id="ask-ai-result" class="ask-ai-result" hidden>
+        <h3 class="ask-ai-answer-heading">Answer</h3>
+        <p id="ask-ai-answer" class="ask-ai-answer"></p>
+        <div id="ask-ai-citations" class="ask-ai-citations"></div>
+      </div>
+    </section>
+
     <section id="record-section">
       <h2>Voting &amp; Proposal Record</h2>
 
@@ -134,9 +166,19 @@
     </section>
   </main>
 
+  <button
+    type="button"
+    id="ask-ai-float-btn"
+    class="ask-ai-float-btn"
+    aria-label="Ask AI about this official"
+  >
+    Ask&nbsp;AI
+  </button>
+
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="js/map.js"></script>
   <script src="js/treemap.js"></script>
+  <script src="js/ask-ai.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

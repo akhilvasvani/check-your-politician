@@ -158,6 +158,11 @@ activemq-data/
 # Environments
 .env
 .envrc
+
+# Vercel CLI local project link/config (never commit; contains project IDs
+# tied to a specific Vercel account, not secrets, but still local-machine
+# state that has no business in the repo)
+.vercel
 .venv
 env/
 venv/

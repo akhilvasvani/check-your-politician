@@ -822,6 +822,173 @@ button:focus-visible,
   outline-offset: 2px;
 }
 
+/* ---------------------------------------------------------------- */
+/* Ask-AI Q&A module (official.html)                                 */
+/* ---------------------------------------------------------------- */
+
+#ask-ai-section {
+  margin: 2rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+}
+
+.ask-ai-intro {
+  margin: 0.25rem 0 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.ask-ai-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ask-ai-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.ask-ai-input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 2.6rem;
+}
+
+.ask-ai-input:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 1px;
+  border-color: var(--color-accent);
+}
+
+.ask-ai-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ask-ai-hint {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.ask-ai-submit {
+  padding: 0.5rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+  background: var(--color-accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ask-ai-submit:hover:not(:disabled) {
+  background: #245a92;
+}
+
+.ask-ai-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ask-ai-submit:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.ask-ai-status {
+  margin-top: 0.85rem;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+.ask-ai-status-error {
+  color: var(--color-failed-text);
+}
+
+.ask-ai-result {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.ask-ai-answer-heading {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+}
+
+.ask-ai-answer {
+  margin: 0 0 0.75rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.ask-ai-citations-heading {
+  margin: 0 0 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.ask-ai-citations-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.85rem;
+}
+
+.ask-ai-citations-list li {
+  margin-bottom: 0.25rem;
+}
+
+.ask-ai-citations-list a {
+  color: var(--color-accent);
+  word-break: break-word;
+}
+
+/* Persistent floating "Ask AI" button — mobile only (see breakpoint below).
+   Hidden by default on wider viewports where the module is already
+   reachable without scrolling far, so it never permanently occupies header
+   space. */
+.ask-ai-float-btn {
+  display: none;
+  position: fixed;
+  bottom: 1.1rem;
+  right: 1.1rem;
+  z-index: 1200;
+  padding: 0.7rem 1.1rem;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  background: var(--color-accent);
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.ask-ai-float-btn:focus-visible {
+  outline: 3px solid var(--color-text);
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -864,5 +1031,15 @@ button:focus-visible,
 
   .treemap-tile-amount {
     font-size: 0.58rem;
+  }
+
+  .ask-ai-float-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ask-ai-form-footer {
+    justify-content: flex-start;
   }
 }

@@ -109,7 +109,7 @@
     var cls = isMayor ? 'citymap-marker citymap-marker-mayor' : 'citymap-marker citymap-marker-district';
     var ariaLabel = isMayor
       ? entry.name + ', Mayor of Los Angeles'
-      : entry.name + ', Council District ' + entry.district + ' — view profile';
+      : entry.name + ', LA City Council District ' + entry.district + ' — view profile';
     var html =
       '<a href="official.html?id=' + encodeURIComponent(entry.officialId) + '" class="' + cls + '" ' +
       'aria-label="' + escapeHtml(ariaLabel) + '" data-official-id="' + escapeHtml(entry.officialId) + '">' +
@@ -278,7 +278,7 @@
         role: 'council',
         district: d.district,
         name: o.name || 'District ' + d.district,
-        title: 'Council District ' + d.district,
+        title: 'LA City Council District ' + d.district,
         party: o.party && o.party.affiliation,
         center: d.center,
         summary: summaries[d.official_id]

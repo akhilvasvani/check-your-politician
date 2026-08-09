@@ -103,7 +103,12 @@ la-money-votes/
 ├── js/
 │   ├── app.js                         # Data loading and UI rendering
 │   ├── map.js                         # Leaflet citywide map + per-official mini map (district markers + Mayor marker)
-│   └── treemap.js                     # Squarified donor treemap (from-scratch squarify() implementation, no charting dependency)
+│   ├── treemap.js                     # Squarified donor treemap (from-scratch squarify() implementation, no charting dependency)
+│   └── ask-ai.js                      # "Ask about this official" Q&A module + mobile floating button (official.html)
+├── api/
+│   └── ask-official.js                # Vercel serverless function: calls the Perplexity Sonar API server-side, returns answer + citations
+├── vercel.json                        # Vercel config (function timeout) — see DEPLOYMENT.md for the full deploy guide
+├── DEPLOYMENT.md                      # Step-by-step: importing into Vercel, subdomain + CNAME setup, PERPLEXITY_API_KEY
 ├── data/
 │   ├── officials.json                 # Official index, including optional party affiliation + source (frozen shape plus additive `party` field, read by the frontend)
 │   ├── officials/<official-id>/
@@ -273,7 +278,18 @@ Key rules:
 
 ## Deployment
 
-The repository includes a GitHub Actions workflow that deploys `la-money-votes/` to GitHub Pages on pushes to `main`. In GitHub, enable **Settings → Pages → Source → GitHub Actions** once for the repository.
+The repository includes a GitHub Actions workflow that deploys `la-money-votes/` to GitHub Pages on pushes to `main`. In GitHub, enable **Settings → Pages → Source → GitHub Actions** once for the repository. This is the site's production home at the root domain and is untouched by anything below.
+
+### Optional: Vercel deployment on a subdomain (for the Ask-AI feature)
+
+`la-money-votes/` can additionally be deployed to Vercel on its own
+subdomain (e.g. `politician.akhilvasvani.com`), which is required to run the
+"Ask about this official" serverless search feature (`api/ask-official.js`) —
+GitHub Pages can only serve static files, not serverless functions. This is
+fully additive: the root domain and GitHub Pages deployment above are not
+affected. See [`la-money-votes/DEPLOYMENT.md`](la-money-votes/DEPLOYMENT.md)
+for the full step-by-step (importing into Vercel, adding the subdomain, the
+CNAME record to add at your registrar, and setting `PERPLEXITY_API_KEY`).
 
 ## License
 
