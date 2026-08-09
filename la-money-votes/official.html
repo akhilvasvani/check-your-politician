@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Official — LA Money &amp; Votes</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -15,10 +16,41 @@
   </header>
 
   <main>
+    <section id="district-section" aria-labelledby="district-heading">
+      <h2 id="district-heading">District &amp; Contact</h2>
+      <p id="district-summary" class="district-summary"></p>
+      <p id="district-contact" class="district-contact"></p>
+      <div id="official-mini-map" role="application" aria-label="Map showing this official's district or citywide role"></div>
+      <p class="citymap-fallback-note" id="district-map-fallback" hidden>
+        The map above could not load. See district and contact details above.
+      </p>
+    </section>
+
+    <section id="spectrum-section" aria-labelledby="spectrum-heading">
+      <h2 id="spectrum-heading">Political Spectrum</h2>
+      <div id="spectrum-card"></div>
+    </section>
+
     <section id="funding-section">
       <h2>Funding</h2>
       <p id="funding-stats" class="funding-stats"></p>
       <div id="graph"></div>
+
+      <h3 class="treemap-heading">Donor Contribution Map</h3>
+      <p class="treemap-caption" id="donor-treemap-caption"></p>
+      <div class="treemap-legend">
+        <span class="treemap-legend-item"><span class="treemap-legend-swatch treemap-legend-swatch-individual" aria-hidden="true"></span> Individual</span>
+        <span class="treemap-legend-item"><span class="treemap-legend-swatch treemap-legend-swatch-pac" aria-hidden="true"></span> PAC</span>
+        <span class="treemap-legend-item"><span class="treemap-legend-swatch treemap-legend-swatch-business" aria-hidden="true"></span> Business</span>
+        <span class="treemap-legend-item"><span class="treemap-legend-swatch treemap-legend-swatch-unknown" aria-hidden="true"></span> Unknown / unclassified</span>
+      </div>
+      <div id="donor-treemap" class="treemap-grid" hidden></div>
+      <div id="donor-treemap-detail" class="treemap-detail" hidden></div>
+      <p id="donor-treemap-empty" class="record-empty" hidden></p>
+      <p class="treemap-fallback-note">
+        Prefer a table? Every donor tile above is also listed in the
+        <a href="#donor-table">sortable donor table below</a>.
+      </p>
 
       <h3 class="donor-heading">Donors</h3>
       <div class="donor-filters" role="group" aria-label="Filter donors by type"></div>
@@ -107,8 +139,12 @@
     </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.0/dist/cytoscape.min.js"></script>
   <script src="js/graph.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/treemap.js"></script>
+  <script src="js/spectrum.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

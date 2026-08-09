@@ -1,0 +1,69 @@
+{
+  "$id": "spectrum.schema.json",
+  "title": "spectrum.json (data/officials/<id>/spectrum.json)",
+  "description": "Structured, editable political-spectrum assessment for one official. Modeled as data, not a hard-coded visual value, so a placement can be added, sourced, or revised without touching rendering code. When status is 'not_assessed' (the default until a maintainer curates cited evidence), the UI must render 'Not yet assessed' rather than inferring a placement. New, additive file — see CONTRACT.md.",
+  "type": "object",
+  "required": ["official_id", "status", "methodology_note", "reviewed_at"],
+  "properties": {
+    "official_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["assessed", "not_assessed"] },
+    "methodology_note": {
+      "type": "string",
+      "description": "Fixed disclosure string shown with every placement: assessment is based on documented public positions and voting record, not an objective fact."
+    },
+    "reviewed_at": { "type": ["string", "null"] },
+    "confidence": {
+      "type": ["string", "null"],
+      "enum": ["low", "medium", "high", null]
+    },
+    "overall": {
+      "type": ["object", "null"],
+      "properties": {
+        "position": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "label": { "type": ["string", "null"] }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dimension", "status"],
+        "properties": {
+          "dimension": {
+            "type": "string",
+            "enum": ["housing", "policing_public_safety", "labor", "climate", "transportation"]
+          },
+          "status": { "type": "string", "enum": ["assessed", "not_assessed"] },
+          "position": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+          "label": { "type": ["string", "null"] },
+          "confidence": { "type": ["string", "null"], "enum": ["low", "medium", "high", null] },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["title", "url"],
+              "properties": {
+                "title": { "type": "string" },
+                "url": { "type": "string" },
+                "date": { "type": ["string", "null"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Evidence supporting the overall placement (as opposed to a single issue dimension).",
+      "items": {
+        "type": "object",
+        "required": ["title", "url"],
+        "properties": {
+          "title": { "type": "string" },
+          "url": { "type": "string" },
+          "date": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

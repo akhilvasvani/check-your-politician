@@ -24,6 +24,12 @@ V1 includes:
 - Council-file source links where an item-level primary record is available
 - A static GitHub Pages deployment workflow
 
+A later addition (still V1, same data contract) adds three more views on top of the same underlying data:
+
+- A citywide Leaflet map with one marker per Council district plus a separate, clearly-labeled Mayor marker, hover/focus tooltips, keyboard navigation, and a no-JS fallback list
+- A squarified donor treemap (area proportional to contribution total, color-coded by donor type) with an accessible legend and a click/focus detail panel, alongside the existing sortable donor table
+- A political-spectrum card driven entirely by data (`spectrum.json`) rather than hard-coded visuals — every official currently renders "Not yet assessed" because no cited ideology assessment has been researched yet (see "Political spectrum data" below)
+
 ## V1 scope
 
 V1 covers the **Mayor and City Council Districts 1–15**. City Attorney and Controller profiles are deliberately out of scope because their work should be represented with an office-appropriate public-actions model, rather than being forced into a City Council voting schema.
@@ -38,20 +44,29 @@ data/officials.json
         ├── data/officials/<official-id>/funding.json
         │       └── campaign donors and contribution history
         │
-        └── data/officials/<official-id>/record.json
-                └── council files, roles, outcomes, and terms
+        ├── data/officials/<official-id>/record.json
+        │       └── council files, roles, outcomes, and terms
+        │
+        └── data/officials/<official-id>/spectrum.json
+                └── political-spectrum placement, evidence, issue positions (or "not_assessed")
+
+data/districts.json + data/geo/council_districts.geojson
+        └── district centroids/boundaries and the Mayor's citywide location, read by js/map.js
 
 index.html ──> official.html?id=<official-id> ──> js/app.js
-                                                   └── js/graph.js (Cytoscape.js)
+                                                   ├── js/graph.js (Cytoscape.js funding graph)
+                                                   ├── js/map.js (Leaflet citywide + mini map)
+                                                   ├── js/treemap.js (donor treemap)
+                                                   └── js/spectrum.js (political-spectrum card)
 ```
 
-1. `index.html` reads `data/officials.json` and lists the covered officials.
-2. Each card opens `official.html?id=<official-id>`.
-3. `js/app.js` loads the funding and public-action JSON for that official.
-4. `js/graph.js` renders a donor graph with the official at the center and donors sized by contribution total.
-5. The profile page renders donor controls, contribution details, and the official's record of proposals, seconding, and votes.
+1. `index.html` reads `data/officials.json` and lists the covered officials, and `js/map.js` reads `data/districts.json`/`council_districts.geojson` to render the citywide map above that list.
+2. Each card, and each map marker, opens `official.html?id=<official-id>`.
+3. `js/app.js` loads the funding, public-action, district, and spectrum JSON for that official.
+4. `js/graph.js` renders a donor graph with the official at the center and donors sized by contribution total; `js/treemap.js` renders the same funding data as a squarified treemap; `js/spectrum.js` renders the political-spectrum card from `spectrum.json`.
+5. The profile page renders donor controls, contribution details, the official's record of proposals, seconding, and votes, a district mini-map, and the spectrum card.
 
-There is no framework or build step: the site is vanilla HTML, CSS, JavaScript, static JSON, and Python standard-library data scripts.
+There is no framework or build step: the site is vanilla HTML, CSS, JavaScript, static JSON, and Python standard-library data scripts. The map uses the Leaflet CDN build (no API key, no bundler) with OpenStreetMap tiles.
 
 ## Data sources and methodology
 
@@ -74,25 +89,44 @@ Each item describes the official's role (`proposed`, `seconded`, `voted_yes`, or
 - A profile can have incomplete contribution-level source links when the local disclosure snapshot lacks a verified committee/filing match. The interface labels that limitation rather than fabricating a link.
 - Legislative records are curated, verifiable public actions—not a complete account of every action an official has taken.
 
+### District boundaries and the citywide map
+
+District centroids and the citywide map (`data/districts.json`, `data/geo/council_districts.geojson`) use the City of Los Angeles's own adopted Council District boundaries: [LA GeoHub, "LA City Council Districts (Adopted 2021)"](https://geohub.lacity.org/datasets/lahub::la-city-council-districts-adopted-2021/about), also served from the [Boundaries MapServer](https://maps.lacity.org/lahub/rest/services/Boundaries/MapServer/13). The Mayor's marker uses Los Angeles City Hall's public address/coordinates and is rendered with a visually distinct marker and label — it is never plotted as, or implied to be, a district. `js/map.js` loads the Leaflet library from its public CDN and map tile imagery from the public OpenStreetMap tile servers; no API key or secret is required or stored anywhere in this repo.
+
+### Political spectrum data
+
+`data/officials/<official-id>/spectrum.json` (schema: `data/schemas/spectrum.schema.json`) models an official's political-spectrum placement as structured, editable data — never a hard-coded visual value. Each file has a `status` of either `assessed` or `not_assessed`:
+
+- `not_assessed` (the status for **all 16 officials as shipped**): the UI renders a "Not yet assessed" tag instead of a placement, because no reliably-sourced public-position/voting-record research has been done yet for any official in this dataset. This is a deliberate placeholder-avoidance choice, not an oversight — see Requirement C's own escape hatch.
+- `assessed`: the UI would render the `progressive` / `liberal` / `center` / `conservative` placement, a `confidence` indicator, `reviewed_at` date, cited `evidence` links, and any populated `issues` (housing, policing, labor, climate, transportation) dimensions.
+
+Populating real `assessed` entries — sourced entirely from documented public positions, votes, and endorsements, each with a citation — is listed as follow-up work in "Methodology and known limitations" below. The card always displays a disclaimer that the placement is a research summary, not an objective fact.
+
 ## Project structure
 
 ```text
 la-money-votes/
-├── index.html                         # Official directory
-├── official.html                      # Per-official profile
+├── index.html                         # Official directory + citywide map
+├── official.html                      # Per-official profile (district map, spectrum, funding treemap + graph, record)
 ├── css/style.css                      # Site styles
 ├── js/
 │   ├── app.js                         # Data loading and UI rendering
-│   └── graph.js                       # Cytoscape funding graph
+│   ├── graph.js                       # Cytoscape funding graph
+│   ├── map.js                         # Leaflet citywide map + per-official mini map (district markers + Mayor marker)
+│   ├── treemap.js                     # Squarified donor treemap (from-scratch squarify() implementation, no charting dependency)
+│   └── spectrum.js                    # Political-spectrum card, renders spectrum.json (or "Not yet assessed")
 ├── data/
 │   ├── officials.json                 # Official index (frozen shape, read by the frontend)
 │   ├── officials/<official-id>/
 │   │   ├── funding.json               # Donors and contribution detail (published)
-│   │   └── record.json                # Public-action records (published)
+│   │   ├── record.json                # Public-action records (published)
+│   │   └── spectrum.json              # Political-spectrum placement/evidence/issues, or status: "not_assessed" (published)
+│   ├── districts.json                 # District centroids + official website links + Mayor's citywide entry (published)
+│   ├── geo/council_districts.geojson  # City of Los Angeles adopted (2021) Council District boundaries (published)
 │   ├── sources/
 │   │   ├── registry.json              # Builder config per official (committees, election result, record fixture path)
 │   │   └── records/<official-id>.json # Curated record items, one file per official (build_record.py's input)
-│   ├── schemas/*.schema.json          # JSON Schema documentation for every file above
+│   ├── schemas/*.schema.json          # JSON Schema documentation for every file above, including districts.schema.json and spectrum.schema.json
 │   ├── build_report.json              # Machine-readable report from the last build_all.py run (gitignored)
 │   └── freshness.json                 # Per-official build status/timestamps (published, not yet read by the frontend)
 ├── scripts/
@@ -226,6 +260,18 @@ workflow on push to `main`.
 - `data/freshness.json` is generated on every build but is not yet
   surfaced in the UI — see "suggested next phase" in the PR that introduced
   the current data pipeline.
+- All 16 `spectrum.json` files currently ship with `status: "not_assessed"`.
+  No official in this dataset has a cited political-spectrum placement yet;
+  populating one requires documented public positions, votes, or endorsements
+  with a citation per official, which is future work — see "Political
+  spectrum data" above.
+- The donor treemap visualizes the same itemized-contribution snapshot as the
+  existing funding graph and table (same `funding.json`, same reporting
+  period); it does not introduce any new donor amounts or identities.
+- District centroids in `data/districts.json` are simplified single points
+  (not full polygon renders) for marker placement; the full adopted boundary
+  polygons are in `data/geo/council_districts.geojson` for any future choropleth
+  or overlay use.
 
 ## Data contract
 
