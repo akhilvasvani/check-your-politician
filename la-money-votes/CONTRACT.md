@@ -335,6 +335,7 @@ field blank. This keeps `party` fully additive: a consumer that only reads
 | `tests/` | Whoever touches the code a given test file covers |
 | `data/districts.json`, `data/geo/council_districts.geojson`, `js/map.js`, `css/style.css` (map/legend rules) | Owner of the citywide map feature |
 | `js/treemap.js`, `css/style.css` (treemap rules) | Owner of the donor-treemap feature |
+| `js/ask-ai.js`, `api/ask-official.js`, `vercel.json`, `DEPLOYMENT.md`, `css/style.css` (`.ask-ai-*` rules) | Owner of the Ask-AI Q&A feature. `api/ask-official.js` is the only code that reads `PERPLEXITY_API_KEY`; it is never read by, or exposed to, any frontend file. This feature is additive and Vercel-only — it does not change how `index.html`/`official.html` behave on the existing GitHub Pages deployment, since a missing `/api/ask-official` route there just means the module's fetch calls fail gracefully into the existing error-handling fallback message. |
 
 Everyone commits only to their own files. Zero merge conflicts possible. The
 shared `scripts/pipeline/` module is the one deliberate exception to that
