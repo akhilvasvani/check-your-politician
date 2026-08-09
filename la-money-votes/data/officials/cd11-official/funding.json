@@ -4,10 +4,18 @@
     "name": "Traci Park",
     "office": "Council District 11",
     "reelection": {
-      "active": true,
+      "active": false,
       "election_date": "2026-06-02",
-      "committee": "Traci Park for City Council 2026"
+      "committee": "Traci Park for City Council 2026",
+      "result": "won"
     }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Traci Park for City Council 2026"
+    ]
   },
   "donors": [
     {

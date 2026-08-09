@@ -1,5 +1,9 @@
 {
   "official_id": "mayor-bass",
+  "source": {
+    "name": "Office of the Mayor \u2014 Executive Directives and Emergency Executive Orders",
+    "url": "https://mayor.lacity.gov/"
+  },
   "items": [
     {
       "council_file": "ED-1",
@@ -7,7 +11,8 @@
       "role": "proposed",
       "date": "2022-12-16",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "ED-2",
@@ -15,7 +20,8 @@
       "role": "proposed",
       "date": "2022-12-21",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "ED-3",
@@ -23,7 +29,8 @@
       "role": "proposed",
       "date": "2023-02-10",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "ED-4",
@@ -31,7 +38,8 @@
       "role": "proposed",
       "date": "2023-06-22",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "ED-5",
@@ -39,7 +47,8 @@
       "role": "proposed",
       "date": "2023-10-30",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "ED-7",
@@ -47,7 +56,8 @@
       "role": "proposed",
       "date": "2023-11-08",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "ED-8",
@@ -55,7 +65,8 @@
       "role": "proposed",
       "date": "2024-08-06",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "ED-9",
@@ -63,7 +74,8 @@
       "role": "proposed",
       "date": "2024-10-16",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "EO-1",
@@ -71,7 +83,8 @@
       "role": "proposed",
       "date": "2025-01-13",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "ED-10",
@@ -79,7 +92,8 @@
       "role": "proposed",
       "date": "2025-04-22",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "EO-9",
@@ -87,7 +101,8 @@
       "role": "proposed",
       "date": "2025-07-30",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     },
     {
       "council_file": "ED-15",
@@ -95,7 +110,8 @@
       "role": "proposed",
       "date": "2025-09-24",
       "outcome": "passed",
-      "term": "current"
+      "term": "current",
+      "source_url": null
     }
   ]
 }

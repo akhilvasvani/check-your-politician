@@ -76,13 +76,19 @@ _(Deployed link: TBD — see [Getting started](#getting-started) to run locally.
 1. `index.html` lists every official from `data/officials.json`.
 2. Clicking an official opens `official.html?id=<official-id>`.
 3. `app.js` fetches that official's `funding.json` and `record.json`, and
-   renders a reelection banner from `funding.official.reelection`.
+   renders a reelection banner from `funding.official.reelection`. The banner
+   compares `election_date` against today on every page load, so an election
+   that has already happened reads as held rather than upcoming even if the
+   data hasn't been rebuilt since.
 4. `graph.js` renders the funding data as an interactive node graph —
    the official in the center, donors as nodes sized/colored by amount
    and type, click a donor for a contribution-history tooltip.
-5. The voting/proposal record renders as a table, filterable by role
+5. The same donors also render as a table, filterable by type and sortable
+   by any column (donor, type, employer, gift count, latest gift, total).
+6. The voting/proposal record renders as a table, filterable by role
    (proposed / passed / voted) and split into current-term vs.
-   previous-term sections.
+   previous-term sections. Each council file links to its record in the
+   City Clerk's CFMS, and each section cites its primary source.
 
 No build step, no framework, no bundler — open `index.html` and go.
 
@@ -153,7 +159,10 @@ Read it before touching anything under `data/`. tl;dr:
 ```jsonc
 // funding.json
 {
-  "official": { "id", "name", "office", "reelection": { "active", "election_date", "committee" } },
+  "official": { "id", "name", "office",
+                "reelection": { "active", "election_date", "committee",
+                                "result": "won|lost|runoff|null" } },
+  "source": { "name", "url", "committees": [] },
   "donors": [
     { "name", "type": "individual|pac|business", "total", "employer",
       "contributions": [{ "date", "amount" }] }
@@ -165,12 +174,19 @@ Read it before touching anything under `data/`. tl;dr:
 // record.json
 {
   "official_id": "...",
+  "source": { "name", "url" },
   "items": [
     { "council_file", "title", "role": "proposed|voted_yes|voted_no|seconded",
-      "date", "outcome": "passed|failed|pending", "term": "current|previous" }
+      "date", "outcome": "passed|failed|pending", "term": "current|previous",
+      "source_url": "…|null" }
   ]
 }
 ```
+
+`reelection.active` is a build-time snapshot — it means "this campaign is still
+ahead of its election" *as of the last build*, and goes stale the moment the
+election passes. Treat `election_date` as authoritative and compare it against
+the current date; see the Additions section of `CONTRACT.md`.
 
 ## Tech stack
 
@@ -210,12 +226,22 @@ frozen schemas.
   voting/proposal record split by term), `.github/workflows/deploy-pages.yml`
   — repo owner still needs to flip Settings → Pages → Source to
   "GitHub Actions" (one-time, GitHub UI only)
+- [x] Donor table under the funding graph — filter by donor type, sort by
+  donor, type, employer, gift count, latest gift or total
+- [x] Primary-source links — every council file links to its CFMS record, and
+  the funding and record sections each cite where their numbers came from
+- [x] Re-election banner reads the election date at page load, so a finished
+  campaign stops being reported as an active one
 
 ## Roadmap
 
 - [ ] Add remaining officials beyond the initial three
-- [ ] Sort/filter donor list by type, amount, date
-- [ ] Link each council file / donor to its primary source
+- [ ] Per-donor primary-source links. The Ethics Commission publishes
+  contributions in bulk with no per-donor permalink, so the donor table cites
+  the dataset and committees rather than linking row by row.
+- [ ] Per-directive links for the Mayor's Executive Directives and Emergency
+  Executive Orders. They're published individually on `mayor.lacity.gov` but
+  under no URL pattern we've verified, so those rows are currently unlinked.
 
 ## License
 

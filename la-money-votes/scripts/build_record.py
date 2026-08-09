@@ -22,15 +22,43 @@ Term cutoffs used to classify "current" vs "previous":
   No confirmed, sourced Council File exists yet for her second term as of
   this script's last update, so every item below is "previous".
 
+Every item also carries a "source_url" pointing at the primary record it was
+read from, so a reader can check any row without taking our word for it. See
+source_url_for() for which items can be deep-linked and which cannot.
+
 To regenerate: update RECORDS below only with entries you can point to a
 real council_file / activity for, then run this script.
 """
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OFFICIALS_INDEX = ROOT / "data" / "officials.json"
+
+# Primary-source roots. Only verified, stable URLs belong here — a dead or
+# guessed link on a transparency site is worse than no link at all.
+CFMS_ROOT = "https://cityclerk.lacity.org/lacityclerkconnect/"
+CFMS_VIEWRECORD = CFMS_ROOT + "index.cfm?fa=ccfi.viewrecord&cfnumber={council_file}"
+MAYOR_ROOT = "https://mayor.lacity.gov/"
+
+# Council file numbers look like "25-0542", with an optional "-S<n>" suffix for
+# a numbered sub-file ("25-0600-S17").
+COUNCIL_FILE_PATTERN = re.compile(r"^\d{2}-\d{4}(?:-S\d+)?$")
+
+# Where each official's items come from, shown once under the record table.
+DEFAULT_SOURCE = {
+    "name": "LA City Clerk — Council File Management System",
+    "url": CFMS_ROOT,
+}
+SOURCES = {
+    # Bass files no Council Files; her items are her own numbered directives.
+    "mayor-bass": {
+        "name": "Office of the Mayor — Executive Directives and Emergency Executive Orders",
+        "url": MAYOR_ROOT,
+    },
+}
 
 RECORDS = {
     "cd14-official": [
@@ -100,13 +128,36 @@ RECORDS = {
 }
 
 
+def source_url_for(council_file: str):
+    """Primary-source URL for one record item, or None when none is verified.
+
+    Council files resolve to their own CFMS record page. Mayoral Executive
+    Directives and Emergency Executive Orders ("ED-9", "EO-1") are published as
+    individual PDFs on mayor.lacity.gov under no URL pattern we've been able to
+    verify, so they get no per-item link and fall back to the source note that
+    the UI renders under the table.
+    """
+    council_file = (council_file or "").strip()
+    if COUNCIL_FILE_PATTERN.match(council_file):
+        return CFMS_VIEWRECORD.format(council_file=council_file)
+    return None
+
+
 def build_record(official_id: str) -> None:
     out_path = ROOT / "data" / "officials" / official_id / "record.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     items = RECORDS.get(official_id)
     if items is None:
         raise NotImplementedError(f"No curated record data for {official_id}")
-    payload = {"official_id": official_id, "items": items}
+    items = [
+        dict(item, source_url=source_url_for(item.get("council_file")))
+        for item in items
+    ]
+    payload = {
+        "official_id": official_id,
+        "source": SOURCES.get(official_id, DEFAULT_SOURCE),
+        "items": items,
+    }
     out_path.write_text(json.dumps(payload, indent=2) + "\n")
 
 
