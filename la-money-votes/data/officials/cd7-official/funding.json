@@ -1,0 +1,410 @@
+{
+  "official": {
+    "id": "cd7-official",
+    "name": "Monica Rodriguez",
+    "office": "Council District 7",
+    "reelection": {
+      "active": false,
+      "election_date": "2026-06-02",
+      "committee": "MONICA RODRIGUEZ FOR CITY COUNCIL 2026",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "MONICA RODRIGUEZ FOR CITY COUNCIL 2026"
+    ]
+  },
+  "donors": [
+    {
+      "name": "Juan Rodriguez",
+      "type": "individual",
+      "total": 2000,
+      "employer": "Rjs Demolition And Disposal",
+      "contributions": [
+        {
+          "date": "2025-12-31",
+          "amount": 1000
+        },
+        {
+          "date": "2025-12-31",
+          "amount": 500
+        },
+        {
+          "date": "2025-12-31",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Jose Hernandez",
+      "type": "individual",
+      "total": 1145,
+      "employer": "Ideate",
+      "contributions": [
+        {
+          "date": "2025-12-02",
+          "amount": 1000
+        },
+        {
+          "date": "2026-01-07",
+          "amount": 145
+        }
+      ]
+    },
+    {
+      "name": "Arnie Abramyan",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Advibe Inc",
+      "contributions": [
+        {
+          "date": "2025-10-13",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Accor Management Us Inc",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-12-08",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Acsgroup",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-11-19",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Madelyn Alfano",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Marias Italian Kitchen",
+      "contributions": [
+        {
+          "date": "2025-12-31",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Apartment Association of Greater Los Angeles PAC",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-10-06",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Robert Arcos",
+      "type": "individual",
+      "total": 1000,
+      "employer": "LA County Probation",
+      "contributions": [
+        {
+          "date": "2025-10-10",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Jaime Ashton",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Elderoak Properties Inc",
+      "contributions": [
+        {
+          "date": "2025-11-03",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Kristiyan Assouri",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Tutor Perini Corporation",
+      "contributions": [
+        {
+          "date": "2025-12-04",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Aaron Aszkenazy",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Aszkenazy Development Inc",
+      "contributions": [
+        {
+          "date": "2025-12-17",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Severyn Aszkenazy",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Aszkenazy Development",
+      "contributions": [
+        {
+          "date": "2025-11-05",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Tarak Badawi",
+      "type": "individual",
+      "total": 1000,
+      "employer": "STM Canna",
+      "contributions": [
+        {
+          "date": "2025-12-15",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Yuval Bar Zemer",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Linear City Development Llc",
+      "contributions": [
+        {
+          "date": "2025-11-27",
+          "amount": 1000
+        },
+        {
+          "date": "2025-12-04",
+          "amount": 500
+        },
+        {
+          "date": "2025-12-08",
+          "amount": -500
+        }
+      ]
+    },
+    {
+      "name": "Adam Bass",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Abington Emerson",
+      "contributions": [
+        {
+          "date": "2025-10-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Amy Bass",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Abington Emerson",
+      "contributions": [
+        {
+          "date": "2025-10-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Arturo Becerra Fraijo",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Toledo Capital Development Llc",
+      "contributions": [
+        {
+          "date": "2025-12-01",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Diego Berdakin",
+      "type": "individual",
+      "total": 1000,
+      "employer": "USC-University of Southern California",
+      "contributions": [
+        {
+          "date": "2025-10-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Dilip Bhavnani",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Sun Coast Merchandise Corp",
+      "contributions": [
+        {
+          "date": "2025-12-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Raymond Bidenost",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Chef Robert Catering Inc",
+      "contributions": [
+        {
+          "date": "2025-10-17",
+          "amount": 500
+        },
+        {
+          "date": "2025-12-31",
+          "amount": 1000
+        },
+        {
+          "date": "2025-12-31",
+          "amount": -500
+        }
+      ]
+    },
+    {
+      "name": "Bizfed PAC",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-12-15",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Raul Bocanegra",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Capstone Strategies",
+      "contributions": [
+        {
+          "date": "2025-10-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Herbert Boeckmann III",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Galpin Motors Inc",
+      "contributions": [
+        {
+          "date": "2025-11-07",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Roger Bojarski",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Teamsters",
+      "contributions": [
+        {
+          "date": "2025-11-11",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Jon Bortz",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Pebblebrook Hotel Trust",
+      "contributions": [
+        {
+          "date": "2025-12-07",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Gabriela Brajevich",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-12-31",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Steve Bram",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Arizona Third Street Partnership Lp",
+      "contributions": [
+        {
+          "date": "2025-12-21",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Michael Broukhim",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Fabfitfun Inc",
+      "contributions": [
+        {
+          "date": "2025-12-11",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Building A Stronger California sponsored by Western States Regional Council of Carpenters",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-12-10",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Building Owners & Managers Association of Greater LA PAC",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-11-25",
+          "amount": 1000
+        }
+      ]
+    }
+  ]
+}

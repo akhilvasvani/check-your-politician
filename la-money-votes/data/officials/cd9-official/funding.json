@@ -1,0 +1,410 @@
+{
+  "official": {
+    "id": "cd9-official",
+    "name": "Curren D. Price Jr.",
+    "office": "Council District 9",
+    "reelection": {
+      "active": false,
+      "election_date": "2022-06-07",
+      "committee": "Curren Price, Jr. for City Council 2022",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Curren Price, Jr. for City Council 2022"
+    ]
+  },
+  "donors": [
+    {
+      "name": "Curren Price, Jr.",
+      "type": "individual",
+      "total": 1550.34,
+      "employer": "City of Los Angeles",
+      "contributions": [
+        {
+          "date": "2025-01-28",
+          "amount": 1550.34
+        }
+      ]
+    },
+    {
+      "name": "Advance Consultant",
+      "type": "individual",
+      "total": 800,
+      "employer": "Advance Consultant",
+      "contributions": [
+        {
+          "date": "2021-06-30",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Butterfli Technologi",
+      "type": "individual",
+      "total": 800,
+      "employer": "Butterfli Technologies, Inc.",
+      "contributions": [
+        {
+          "date": "2021-06-25",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Gateway Science & En",
+      "type": "individual",
+      "total": 800,
+      "employer": "Gateway Science & Engineering, Inc.",
+      "contributions": [
+        {
+          "date": "2021-06-28",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "J Perez Associates,",
+      "type": "individual",
+      "total": 800,
+      "employer": "J Perez Associates, Inc.",
+      "contributions": [
+        {
+          "date": "2021-05-12",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Arnold Abramyan",
+      "type": "individual",
+      "total": 800,
+      "employer": "Advibe.com",
+      "contributions": [
+        {
+          "date": "2021-04-07",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Roberta Achtenberg",
+      "type": "individual",
+      "total": 800,
+      "employer": "Bank of San Francisco",
+      "contributions": [
+        {
+          "date": "2021-05-04",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Active USA Inc.",
+      "type": "business",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-06-23",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Chante Adams",
+      "type": "individual",
+      "total": 800,
+      "employer": "CRCD Enterprises",
+      "contributions": [
+        {
+          "date": "2020-12-16",
+          "amount": 500
+        },
+        {
+          "date": "2020-12-30",
+          "amount": 366.81
+        },
+        {
+          "date": "2021-04-07",
+          "amount": -66.81
+        }
+      ]
+    },
+    {
+      "name": "Isis Aguilar Moreno",
+      "type": "individual",
+      "total": 800,
+      "employer": "Isis Aguilar Moreno",
+      "contributions": [
+        {
+          "date": "2021-06-07",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Jessica Aguilera",
+      "type": "individual",
+      "total": 800,
+      "employer": "Jessica Aguilera",
+      "contributions": [
+        {
+          "date": "2021-06-11",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "American Investment Holdings",
+      "type": "business",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-06-30",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Amplify Development Company",
+      "type": "business",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-06-30",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Kimberly Anthony-Morrow",
+      "type": "individual",
+      "total": 800,
+      "employer": "Urban Excellence Coaching Academy",
+      "contributions": [
+        {
+          "date": "2021-05-27",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Arang Restaurant Inc.",
+      "type": "business",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-04-15",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Obdulia Araujo-Myles",
+      "type": "individual",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-06-11",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Reginald Arnold",
+      "type": "individual",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-04-20",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Autumn Burke for Assembly 2022",
+      "type": "individual",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-03-31",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Yuval Bar-Zemer",
+      "type": "individual",
+      "total": 800,
+      "employer": "Linear City Development LLC",
+      "contributions": [
+        {
+          "date": "2021-03-09",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Jack Barbour",
+      "type": "individual",
+      "total": 800,
+      "employer": "Jack Barbour",
+      "contributions": [
+        {
+          "date": "2021-06-30",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Luis Barnfield",
+      "type": "individual",
+      "total": 800,
+      "employer": "Classic Security",
+      "contributions": [
+        {
+          "date": "2021-06-30",
+          "amount": 500
+        },
+        {
+          "date": "2021-12-20",
+          "amount": 300
+        }
+      ]
+    },
+    {
+      "name": "Keysha Baynes",
+      "type": "individual",
+      "total": 800,
+      "employer": "Art Active",
+      "contributions": [
+        {
+          "date": "2021-06-12",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Carl Beverly",
+      "type": "individual",
+      "total": 800,
+      "employer": "Carl Beverly",
+      "contributions": [
+        {
+          "date": "2021-03-15",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Black Business Development PAC",
+      "type": "pac",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-02-23",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Darrell Blanton",
+      "type": "individual",
+      "total": 800,
+      "employer": "South Central United",
+      "contributions": [
+        {
+          "date": "2021-06-24",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Steve Bram",
+      "type": "individual",
+      "total": 800,
+      "employer": "George Smith Partners",
+      "contributions": [
+        {
+          "date": "2021-05-13",
+          "amount": 500
+        },
+        {
+          "date": "2022-05-16",
+          "amount": 500
+        },
+        {
+          "date": "2022-05-25",
+          "amount": -200
+        }
+      ]
+    },
+    {
+      "name": "Christopher Burton",
+      "type": "individual",
+      "total": 800,
+      "employer": "LAUSD",
+      "contributions": [
+        {
+          "date": "2021-06-09",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Susan Burton",
+      "type": "individual",
+      "total": 800,
+      "employer": "A New Way of Life",
+      "contributions": [
+        {
+          "date": "2021-06-30",
+          "amount": 500
+        },
+        {
+          "date": "2021-12-30",
+          "amount": 800
+        },
+        {
+          "date": "2022-03-10",
+          "amount": -500
+        }
+      ]
+    },
+    {
+      "name": "CA Conference Board Amalgamated Transit Union SCC",
+      "type": "pac",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-02-23",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Cal Ned, Inc.",
+      "type": "business",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-02-23",
+          "amount": 800
+        }
+      ]
+    }
+  ]
+}

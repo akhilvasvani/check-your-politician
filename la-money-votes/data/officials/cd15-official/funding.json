@@ -1,0 +1,422 @@
+{
+  "official": {
+    "id": "cd15-official",
+    "name": "Tim McOsker",
+    "office": "Council District 15",
+    "reelection": {
+      "active": false,
+      "election_date": "2026-06-02",
+      "committee": "Tim McOsker for City Council 2026",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Tim McOsker for City Council 2026"
+    ]
+  },
+  "donors": [
+    {
+      "name": "Janet Crown",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-01-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Christian Ortiz",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Spacex",
+      "contributions": [
+        {
+          "date": "2025-01-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Kimberly Perttula",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Loyola Marymount University",
+      "contributions": [
+        {
+          "date": "2025-01-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Henry Peterson",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Motion Picture Corporation of America",
+      "contributions": [
+        {
+          "date": "2025-01-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Jack Peterson",
+      "type": "individual",
+      "total": 1000,
+      "employer": "New York Yankees",
+      "contributions": [
+        {
+          "date": "2025-01-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Steve Robinson",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-01-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Heather Rozman",
+      "type": "individual",
+      "total": 1000,
+      "employer": "HER Consulting",
+      "contributions": [
+        {
+          "date": "2025-01-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Marci Rose",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-01-31",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Briana Knabe",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-02-01",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Shomari Davis",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Building Decarbonization Coalition",
+      "contributions": [
+        {
+          "date": "2025-02-03",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Mark Gonzalez for Assembly 2026",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-02-19",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Irene Choe",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Irene Choe Law",
+      "contributions": [
+        {
+          "date": "2025-02-22",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Gregory Smith",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Law Offices of Gregory W. Smith",
+      "contributions": [
+        {
+          "date": "2025-02-22",
+          "amount": 1000
+        },
+        {
+          "date": "2025-06-19",
+          "amount": 1000
+        },
+        {
+          "date": "2025-06-24",
+          "amount": -1000
+        }
+      ]
+    },
+    {
+      "name": "Patricia Glaser",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Glaser Weil",
+      "contributions": [
+        {
+          "date": "2025-02-24",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Brian Hishinuma",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-03-10",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Janet Porush",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-03-10",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Bill Riley",
+      "type": "individual",
+      "total": 1000,
+      "employer": "The Garden Church",
+      "contributions": [
+        {
+          "date": "2025-03-10",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Peter Weil",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Glaser Weil",
+      "contributions": [
+        {
+          "date": "2025-03-10",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Mario Amalfitano",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Circuits Unlimited, Inc.",
+      "contributions": [
+        {
+          "date": "2025-03-17",
+          "amount": 143
+        },
+        {
+          "date": "2025-11-13",
+          "amount": 250
+        },
+        {
+          "date": "2026-03-12",
+          "amount": 500
+        },
+        {
+          "date": "2026-03-12",
+          "amount": 500
+        },
+        {
+          "date": "2026-03-13",
+          "amount": -393
+        }
+      ]
+    },
+    {
+      "name": "Geralyn Buscaino",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Geralyn Buscaino",
+      "contributions": [
+        {
+          "date": "2025-03-17",
+          "amount": 1000
+        },
+        {
+          "date": "2026-02-05",
+          "amount": 1000
+        },
+        {
+          "date": "2026-02-10",
+          "amount": -1000
+        }
+      ]
+    },
+    {
+      "name": "EBS Realty Partners(Patrick Remolacio)",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-03-17",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Elizabeth Johnson",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Grand Vision Foundation",
+      "contributions": [
+        {
+          "date": "2025-03-17",
+          "amount": 50
+        },
+        {
+          "date": "2025-06-29",
+          "amount": 950
+        }
+      ]
+    },
+    {
+      "name": "Leslie Jones",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Omelette and Waffle Shop",
+      "contributions": [
+        {
+          "date": "2025-03-17",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Doane Liu",
+      "type": "individual",
+      "total": 1000,
+      "employer": "City of Los Angeles",
+      "contributions": [
+        {
+          "date": "2025-03-17",
+          "amount": 143
+        },
+        {
+          "date": "2026-02-05",
+          "amount": 857
+        }
+      ]
+    },
+    {
+      "name": "Dilip Bhavnani",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Sun Coast Mdse Corp.",
+      "contributions": [
+        {
+          "date": "2025-03-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Dayana Fralin",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-03-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "LAFC Sports",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-03-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Maria Jarquin",
+      "type": "individual",
+      "total": 1000,
+      "employer": "UCLA",
+      "contributions": [
+        {
+          "date": "2025-03-19",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Lisa Shah",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-03-19",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Marc Castellani",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Aspirant LLC",
+      "contributions": [
+        {
+          "date": "2025-03-20",
+          "amount": 1000
+        }
+      ]
+    }
+  ]
+}

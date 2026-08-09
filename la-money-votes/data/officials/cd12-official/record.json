@@ -1,0 +1,54 @@
+{
+  "official_id": "cd12-official",
+  "source": {
+    "name": "LA City Clerk \u2014 Council File Management System",
+    "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+  },
+  "items": [
+    {
+      "council_file": "26-1045",
+      "title": "Speed Tables and T-Curbs Installation / Sesnon East Speed Reduction Project / Sunshine Canyon Community Amenities Trust Fund / Council District 12",
+      "role": "proposed",
+      "date": "2026-08-04",
+      "outcome": "pending",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-1045"
+    },
+    {
+      "council_file": "26-0474",
+      "title": "Additional Police Services / AB 1290 Fund / Topanga Division / Council District 12",
+      "role": "proposed",
+      "date": "2026-03-27",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0474"
+    },
+    {
+      "council_file": "26-0378",
+      "title": "FIFA World Cup Community Celebration / Neighborhood Service Enhancements / Department of Recreation and Parks (RAP) / Transfer of Funds / Council District 12",
+      "role": "proposed",
+      "date": "2026-03-13",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0378"
+    },
+    {
+      "council_file": "26-0333",
+      "title": "Friends of Oakridge / Sunshine Canyon Community Amenities Trust Fund / Council District 12",
+      "role": "proposed",
+      "date": "2026-03-10",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0333"
+    },
+    {
+      "council_file": "26-0206",
+      "title": "AB1290 Fund / Supporting Community Programs and Groups / General City Purposes Fund / Council District 12",
+      "role": "proposed",
+      "date": "2026-02-13",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0206"
+    }
+  ]
+}

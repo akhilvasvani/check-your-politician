@@ -1,0 +1,450 @@
+{
+  "official": {
+    "id": "cd12-official",
+    "name": "John Lee",
+    "office": "Council District 12",
+    "reelection": {
+      "active": false,
+      "election_date": "2024-03-05",
+      "committee": "John Lee for City Council 2024",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "John Lee for City Council 2024"
+    ]
+  },
+  "donors": [
+    {
+      "name": "Jodi Perlman",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Soto & Soto Lifestyle",
+      "contributions": [
+        {
+          "date": "2022-12-27",
+          "amount": 900
+        },
+        {
+          "date": "2023-11-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Jason Vuong",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Rabbitswag, Inc",
+      "contributions": [
+        {
+          "date": "2022-12-29",
+          "amount": 900
+        },
+        {
+          "date": "2023-12-21",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Asian American Hotel Owners Association",
+      "type": "individual",
+      "total": 1800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-01-03",
+          "amount": 900
+        },
+        {
+          "date": "2024-01-03",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Jennifer Coots",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2024-01-03",
+          "amount": 900
+        },
+        {
+          "date": "2024-01-03",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Orange County Attorneys Association PAC",
+      "type": "pac",
+      "total": 1800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-01-03",
+          "amount": 900
+        },
+        {
+          "date": "2024-01-03",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Harry Wong",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Technology Trading Company",
+      "contributions": [
+        {
+          "date": "2024-01-09",
+          "amount": 900
+        },
+        {
+          "date": "2024-01-09",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Jae Chung",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Mac Construction Builders Inc",
+      "contributions": [
+        {
+          "date": "2022-12-17",
+          "amount": 900
+        },
+        {
+          "date": "2024-02-27",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Richard J. Shapiro",
+      "type": "individual",
+      "total": 1700,
+      "employer": "Sierra Canyon School",
+      "contributions": [
+        {
+          "date": "2022-12-04",
+          "amount": 800
+        },
+        {
+          "date": "2023-04-12",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Valley Seafood Market",
+      "type": "individual",
+      "total": 1600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-01-13",
+          "amount": 800
+        },
+        {
+          "date": "2024-01-13",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Eric Steinhauer",
+      "type": "individual",
+      "total": 1400,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2022-12-22",
+          "amount": 900
+        },
+        {
+          "date": "2023-03-31",
+          "amount": 500
+        },
+        {
+          "date": "2023-12-08",
+          "amount": 900
+        },
+        {
+          "date": "2023-12-29",
+          "amount": -900
+        }
+      ]
+    },
+    {
+      "name": "Jerry E Weeks",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2023-03-26",
+          "amount": 250
+        },
+        {
+          "date": "2024-01-09",
+          "amount": 250
+        },
+        {
+          "date": "2024-01-09",
+          "amount": 250
+        },
+        {
+          "date": "2024-02-01",
+          "amount": 250
+        }
+      ]
+    },
+    {
+      "name": "Kari Negri",
+      "type": "individual",
+      "total": 1000,
+      "employer": "SKY Properties Inc",
+      "contributions": [
+        {
+          "date": "2024-01-12",
+          "amount": 500
+        },
+        {
+          "date": "2024-01-12",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Tajinder Bhullar",
+      "type": "individual",
+      "total": 1000,
+      "employer": "7-11",
+      "contributions": [
+        {
+          "date": "2022-12-11",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Robert Aaron",
+      "type": "individual",
+      "total": 900,
+      "employer": "Le Club Gymnastics",
+      "contributions": [
+        {
+          "date": "2023-04-12",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Shannon Abdul-Wahab",
+      "type": "individual",
+      "total": 900,
+      "employer": "Shangri-La Construction",
+      "contributions": [
+        {
+          "date": "2023-04-06",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Ace Escrow",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-02-22",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Amalgamated Transit Union Local 1277",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-15",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Lupe M. Amezola",
+      "type": "individual",
+      "total": 900,
+      "employer": "Clifton Larson Allen LLP",
+      "contributions": [
+        {
+          "date": "2023-06-01",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Andrew Friedman Attorney at Law",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-02-27",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Apartment Association of Greater Los Angeles PAC",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-02-09",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Pamela Aronoff",
+      "type": "individual",
+      "total": 900,
+      "employer": "Turnberry Property Management, Inc.",
+      "contributions": [
+        {
+          "date": "2023-06-30",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Richard Aronoff",
+      "type": "individual",
+      "total": 900,
+      "employer": "Sunburst Industrial Development Co.",
+      "contributions": [
+        {
+          "date": "2023-06-02",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Robert Aronoff",
+      "type": "individual",
+      "total": 900,
+      "employer": "Aronoff Law Group",
+      "contributions": [
+        {
+          "date": "2023-06-11",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Avo Benlian",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-21",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Vahe Benlian",
+      "type": "individual",
+      "total": 900,
+      "employer": "Benlian Brothers Construction, Inc.",
+      "contributions": [
+        {
+          "date": "2023-06-21",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Best Western Hollywood Plaza Inn",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-10",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Jackson Biers",
+      "type": "individual",
+      "total": 900,
+      "employer": "7th Street Garage",
+      "contributions": [
+        {
+          "date": "2023-06-06",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "BizFed PAC",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-04-10",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Bradley Boyajian",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-21",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Bruce Miller and Associates",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2022-12-16",
+          "amount": 500
+        },
+        {
+          "date": "2023-04-20",
+          "amount": 400
+        }
+      ]
+    }
+  ]
+}
