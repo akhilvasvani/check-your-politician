@@ -1,0 +1,531 @@
+{
+  "official": {
+    "id": "cd2-official",
+    "name": "Adrin Nazarian",
+    "office": "Council District 2",
+    "reelection": {
+      "active": false,
+      "election_date": "2024-11-05",
+      "committee": "Adrin Nazarian for City Council 2024",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Adrin Nazarian for City Council 2024",
+      "Adrin Nazarian for City Council 2024-General"
+    ]
+  },
+  "donors": [
+    {
+      "name": "Armen Vartany",
+      "type": "individual",
+      "total": 2700,
+      "employer": "Armen Vartany, Md, Apc",
+      "contributions": [
+        {
+          "date": "2022-12-20",
+          "amount": 900
+        },
+        {
+          "date": "2023-06-01",
+          "amount": 900
+        },
+        {
+          "date": "2024-08-20",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Armen Arslanian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Natco Llc",
+      "contributions": [
+        {
+          "date": "2022-12-29",
+          "amount": 900
+        },
+        {
+          "date": "2024-05-30",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-03",
+          "amount": 500
+        },
+        {
+          "date": "2024-10-14",
+          "amount": -500
+        }
+      ]
+    },
+    {
+      "name": "Alec Baghdasaryan",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Information Integration Group",
+      "contributions": [
+        {
+          "date": "2022-12-20",
+          "amount": 900
+        },
+        {
+          "date": "2024-06-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Peter Baghdassarian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "International Grill Inc",
+      "contributions": [
+        {
+          "date": "2022-12-19",
+          "amount": 900
+        },
+        {
+          "date": "2024-05-30",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Jack Bayramyan",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Optimize Practice Services",
+      "contributions": [
+        {
+          "date": "2022-12-20",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-30",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Anne Boland",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Bob Smith Bmw",
+      "contributions": [
+        {
+          "date": "2022-12-21",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-18",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Edgar Boryan",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Ajr Trucking",
+      "contributions": [
+        {
+          "date": "2022-12-31",
+          "amount": 900
+        },
+        {
+          "date": "2024-05-20",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Diana Buckhantz",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2022-12-27",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-10",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Chad Mayes for Lieutenant Governor 2026",
+      "type": "individual",
+      "total": 1800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2022-12-20",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-25",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Mary Daoheuang",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Mary Daoheuang",
+      "contributions": [
+        {
+          "date": "2022-12-26",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-17",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Yervant Demirjian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Partners Bank Of Ca",
+      "contributions": [
+        {
+          "date": "2022-12-21",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-11",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Aida Gasparian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Gata 19 Llc",
+      "contributions": [
+        {
+          "date": "2022-12-27",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-10",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Vigen Ghazarian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Vigen Ghazarian",
+      "contributions": [
+        {
+          "date": "2022-10-28",
+          "amount": 900
+        },
+        {
+          "date": "2024-10-17",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Ara Gulesserian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "A Gulesserian Dds Inc.",
+      "contributions": [
+        {
+          "date": "2022-12-22",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-10",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Helen Haig",
+      "type": "individual",
+      "total": 1800,
+      "employer": "The Haig Group",
+      "contributions": [
+        {
+          "date": "2022-10-03",
+          "amount": 900
+        },
+        {
+          "date": "2024-06-30",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Hoori Jivalagian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Closet World Inc",
+      "contributions": [
+        {
+          "date": "2022-12-22",
+          "amount": 900
+        },
+        {
+          "date": "2024-06-17",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Mariam Kuregyan",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Davana Law Firm",
+      "contributions": [
+        {
+          "date": "2022-12-01",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-11",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Lisa Calderon For Assembly",
+      "type": "individual",
+      "total": 1800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2022-10-31",
+          "amount": 900
+        },
+        {
+          "date": "2025-10-15",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Haig Manjikian",
+      "type": "individual",
+      "total": 1800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2022-12-19",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-18",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Hilda Manjikian",
+      "type": "individual",
+      "total": 1800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2022-12-13",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-18",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Hayk Martirosyan",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Martirosyan & Associates",
+      "contributions": [
+        {
+          "date": "2022-12-01",
+          "amount": 500
+        },
+        {
+          "date": "2023-06-26",
+          "amount": 500
+        },
+        {
+          "date": "2023-06-30",
+          "amount": -100
+        },
+        {
+          "date": "2024-10-25",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Apik Minassian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Samko LLC",
+      "contributions": [
+        {
+          "date": "2022-12-21",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-17",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Michel Minassian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Mina Group Inc",
+      "contributions": [
+        {
+          "date": "2022-12-21",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-19",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Alexia Movsessian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "My 360 Wealth",
+      "contributions": [
+        {
+          "date": "2022-12-20",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-13",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Erik Movsessian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "My360wealth",
+      "contributions": [
+        {
+          "date": "2022-12-20",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-16",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Levon Muradyan",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Sea Jewelry",
+      "contributions": [
+        {
+          "date": "2022-12-19",
+          "amount": 900
+        },
+        {
+          "date": "2024-06-26",
+          "amount": 900
+        },
+        {
+          "date": "2024-10-26",
+          "amount": 900
+        },
+        {
+          "date": "2025-11-04",
+          "amount": -900
+        }
+      ]
+    },
+    {
+      "name": "Anna Oruncakciel",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2022-12-21",
+          "amount": 900
+        },
+        {
+          "date": "2024-09-26",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Rafi Ourfalian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Ourfalian & Ourfalian Attorneys at Law",
+      "contributions": [
+        {
+          "date": "2022-12-27",
+          "amount": 900
+        },
+        {
+          "date": "2024-05-13",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Sarkis Ourfalian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Ourfalian & Ourfalian Attorneys at Law",
+      "contributions": [
+        {
+          "date": "2022-12-31",
+          "amount": 900
+        },
+        {
+          "date": "2024-05-13",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Sofia Pogosian",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2022-12-31",
+          "amount": 900
+        },
+        {
+          "date": "2024-05-23",
+          "amount": 900
+        }
+      ]
+    }
+  ]
+}

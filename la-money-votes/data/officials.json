@@ -1,5 +1,6 @@
 [
   { "id": "mayor-bass", "name": "Karen Bass", "office": "Mayor" },
   { "id": "cd14-official", "name": "Ysabel Jurado", "office": "Council District 14" },
-  { "id": "cd11-official", "name": "Traci Park", "office": "Council District 11" }
+  { "id": "cd11-official", "name": "Traci Park", "office": "Council District 11" },
+  { "id": "cd2-official", "name": "Adrin Nazarian", "office": "Council District 2" }
 ]
