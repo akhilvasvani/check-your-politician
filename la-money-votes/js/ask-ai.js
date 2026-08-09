@@ -66,6 +66,7 @@
     }
 
     currentOfficialContext = {
+      id: id || null,
       name: official.name || "this official",
       title: official.office || "",
       district: districtFromTitle(official.office),
@@ -148,7 +149,7 @@
         return;
       }
 
-      answerEl.textContent = data.answer;
+      renderAnswer(answerEl, data.answer);
       renderCitations(citationsEl, data.citations || []);
       resultEl.hidden = false;
       hideStatus();
@@ -161,6 +162,48 @@
     } finally {
       setLoading(false);
       startCooldown(submitBtn);
+    }
+  }
+
+  // Renders the AI answer as sanitized HTML so Markdown (bold, italics,
+  // lists, links) displays properly instead of showing raw "**...**"
+  // syntax. Uses the vendored `marked` (Markdown -> HTML) and `DOMPurify`
+  // (HTML sanitizer) libraries loaded via <script> tags in official.html --
+  // see js/vendor/. The API response is external/untrusted content, so it
+  // is always run through DOMPurify before being inserted into the DOM,
+  // even though it also passes through marked's own escaping.
+  function renderAnswer(container, rawAnswer) {
+    if (!container) return;
+    var text = rawAnswer == null ? "" : String(rawAnswer);
+
+    if (typeof global.marked === "undefined" || typeof global.DOMPurify === "undefined") {
+      // Vendored libraries failed to load for some reason -- fail safe to
+      // plain text rather than showing broken markup or, worse, raw HTML.
+      console.warn("[ask-ai.js] marked/DOMPurify not available; falling back to plain text.");
+      container.textContent = text;
+      return;
+    }
+
+    try {
+      var rawHtml = global.marked.parse(text, { breaks: true });
+      var safeHtml = global.DOMPurify.sanitize(rawHtml, {
+        ALLOWED_TAGS: [
+          "p", "br", "strong", "em", "b", "i", "ul", "ol", "li", "a",
+          "blockquote", "code", "pre", "h1", "h2", "h3", "h4",
+        ],
+        ALLOWED_ATTR: ["href", "target", "rel"],
+      });
+      container.innerHTML = safeHtml;
+      // Harden any links the model's markdown produced (marked doesn't add
+      // target/rel by default) so they behave like the citations list.
+      var links = container.querySelectorAll("a[href]");
+      for (var i = 0; i < links.length; i++) {
+        links[i].setAttribute("target", "_blank");
+        links[i].setAttribute("rel", "noopener noreferrer");
+      }
+    } catch (err) {
+      console.warn("[ask-ai.js] Markdown rendering failed; falling back to plain text:", err);
+      container.textContent = text;
     }
   }
 

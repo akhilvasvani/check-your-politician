@@ -935,7 +935,44 @@ button:focus-visible,
 .ask-ai-answer {
   margin: 0 0 0.75rem;
   line-height: 1.5;
-  white-space: pre-wrap;
+}
+
+/* The answer is rendered from sanitized Markdown (see js/ask-ai.js), so it
+   can contain paragraphs, lists, bold/italic text, and links -- style
+   those block-level elements explicitly rather than relying on
+   white-space: pre-wrap (which only works for plain text). */
+.ask-ai-answer p {
+  margin: 0 0 0.6rem;
+}
+
+.ask-ai-answer p:last-child {
+  margin-bottom: 0;
+}
+
+.ask-ai-answer ul,
+.ask-ai-answer ol {
+  margin: 0 0 0.6rem;
+  padding-left: 1.3rem;
+}
+
+.ask-ai-answer li {
+  margin-bottom: 0.25rem;
+}
+
+.ask-ai-answer strong {
+  font-weight: 700;
+}
+
+.ask-ai-answer a {
+  color: var(--color-accent);
+  word-break: break-word;
+}
+
+.ask-ai-answer code {
+  background: var(--color-surface-muted, #f1f1f1);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9em;
 }
 
 .ask-ai-citations-heading {

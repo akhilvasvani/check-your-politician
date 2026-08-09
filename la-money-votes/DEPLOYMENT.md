@@ -96,6 +96,39 @@ must never appear in any committed file or in client-side code.
 `api/ask-official.js` reads this via `process.env.PERPLEXITY_API_KEY` at
 request time and never returns it in any response.
 
+## 5b. Rate limiting: add a Redis store + configure the limit
+
+Ask-AI is rate-limited server-side (by IP + official page) to keep API cost
+predictable. This needs a durable, shared store — an in-process `Map` alone
+doesn't work reliably across multiple serverless instances/regions.
+
+1. In the Vercel dashboard: project → **Storage** tab → **Create Database**
+   (or **Browse Marketplace**) → choose **Upstash for Redis** → select the
+   **Free** plan → connect it to this project for **Production** and
+   **Preview** environments.
+2. This automatically adds `KV_REST_API_URL` and `KV_REST_API_TOKEN` (plus
+   a read-only token and raw Redis URLs) to the project's environment
+   variables — no manual copy/paste of secrets needed. (If you instead
+   connect an Upstash database directly through Upstash rather than via
+   Vercel's marketplace integration, it may name these
+   `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` instead —
+   `api/ask-official.js` checks for both naming conventions.)
+3. Add two more environment variables to configure the limit itself
+   (Settings → Environment Variables), for Production and Preview:
+   - **Key:** `RATE_LIMIT_MAX_REQUESTS` — **Value:** `5` (max questions per
+     window)
+   - **Key:** `RATE_LIMIT_WINDOW_SECONDS` — **Value:** `600` (10-minute
+     window)
+   These are read from `process.env` at request time, so the limit can be
+   tuned without a code change or redeploy of the function's logic — just
+   update the value and redeploy (or wait for the next deploy).
+4. If the Redis store isn't configured yet (e.g. in a fresh environment),
+   `api/ask-official.js` falls back to a best-effort in-memory counter with
+   the same limits — the feature still works, but the count isn't shared
+   across serverless instances or regions, so it's not a durable substitute
+   for step 1 above. Set up Redis before relying on this for real abuse
+   prevention.
+
 ## 6. Verify
 
 Once deployed and DNS has propagated:
