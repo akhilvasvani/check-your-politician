@@ -116,7 +116,9 @@
     for (var i = 0; i < raw.length; i++) {
       var c = raw[i];
       if (!c || typeof c !== 'object') continue;
-      out.push({ date: toText(c.date), amount: toNumber(c.amount) });
+      // source_url is optional (see CONTRACT.md) — carried through as-is so
+      // the tooltip can link to it when present, plain text otherwise.
+      out.push({ date: toText(c.date), amount: toNumber(c.amount), sourceUrl: c.source_url ? toText(c.source_url) : null });
     }
     // Newest first. Undated entries sink to the bottom rather than scrambling the list.
     out.sort(function (a, b) {
@@ -406,10 +408,15 @@
       var rows = [];
       for (var i = 0; i < donor.contributions.length; i++) {
         var c = donor.contributions[i];
+        var sourceHtml = c.sourceUrl
+          ? '<a href="' + escapeHtml(c.sourceUrl) + '" target="_blank" rel="noopener noreferrer" ' +
+            'style="color:#2b6cb0;font-size:11px;">Source</a>'
+          : '<span style="color:#c1c5cb;font-size:11px;">No filing link</span>';
         rows.push(
-          '<div style="display:flex;justify-content:space-between;gap:12px;padding:3px 0;">' +
+          '<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:3px 0;">' +
             '<span style="color:#4b5563;">' + escapeHtml(formatDate(c.date)) + '</span>' +
             '<span style="font-variant-numeric:tabular-nums;">' + escapeHtml(formatMoney(c.amount)) + '</span>' +
+            sourceHtml +
           '</div>'
         );
       }

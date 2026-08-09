@@ -26,11 +26,13 @@
       "contributions": [
         {
           "date": "2021-12-03",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=89999"
         },
         {
           "date": "2022-04-29",
-          "amount": 600
+          "amount": 600,
+          "source_url": "https://ethics.lacity.org/view/?document_id=93899"
         }
       ]
     },
@@ -42,11 +44,13 @@
       "contributions": [
         {
           "date": "2021-03-30",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         },
         {
           "date": "2021-11-22",
-          "amount": 500
+          "amount": 500,
+          "source_url": "https://ethics.lacity.org/view/?document_id=89999"
         }
       ]
     },
@@ -58,7 +62,8 @@
       "contributions": [
         {
           "date": "2021-06-24",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -70,7 +75,8 @@
       "contributions": [
         {
           "date": "2021-04-21",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -82,7 +88,8 @@
       "contributions": [
         {
           "date": "2021-05-04",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -94,7 +101,8 @@
       "contributions": [
         {
           "date": "2021-06-29",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -106,7 +114,8 @@
       "contributions": [
         {
           "date": "2021-05-06",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -118,7 +127,8 @@
       "contributions": [
         {
           "date": "2021-06-29",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -130,7 +140,8 @@
       "contributions": [
         {
           "date": "2021-04-11",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -142,7 +153,8 @@
       "contributions": [
         {
           "date": "2021-04-10",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -154,7 +166,8 @@
       "contributions": [
         {
           "date": "2021-04-21",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -166,7 +179,8 @@
       "contributions": [
         {
           "date": "2021-05-04",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -178,7 +192,8 @@
       "contributions": [
         {
           "date": "2021-05-25",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -190,7 +205,8 @@
       "contributions": [
         {
           "date": "2021-05-10",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -202,7 +218,8 @@
       "contributions": [
         {
           "date": "2021-04-23",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -214,7 +231,8 @@
       "contributions": [
         {
           "date": "2021-05-04",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -226,7 +244,8 @@
       "contributions": [
         {
           "date": "2021-06-10",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -238,7 +257,8 @@
       "contributions": [
         {
           "date": "2021-06-30",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -250,7 +270,8 @@
       "contributions": [
         {
           "date": "2021-06-17",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -262,7 +283,8 @@
       "contributions": [
         {
           "date": "2021-04-26",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -274,7 +296,8 @@
       "contributions": [
         {
           "date": "2021-06-16",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -286,15 +309,18 @@
       "contributions": [
         {
           "date": "2021-04-14",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         },
         {
           "date": "2021-06-29",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         },
         {
           "date": "2021-06-30",
-          "amount": -800
+          "amount": -800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -306,7 +332,8 @@
       "contributions": [
         {
           "date": "2021-05-18",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -318,7 +345,8 @@
       "contributions": [
         {
           "date": "2021-06-30",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -330,7 +358,8 @@
       "contributions": [
         {
           "date": "2021-06-27",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -342,7 +371,8 @@
       "contributions": [
         {
           "date": "2021-04-28",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -354,7 +384,8 @@
       "contributions": [
         {
           "date": "2021-04-23",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -366,7 +397,8 @@
       "contributions": [
         {
           "date": "2021-06-30",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -378,7 +410,8 @@
       "contributions": [
         {
           "date": "2021-06-30",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     },
@@ -390,7 +423,8 @@
       "contributions": [
         {
           "date": "2021-04-21",
-          "amount": 800
+          "amount": 800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=85735"
         }
       ]
     }
