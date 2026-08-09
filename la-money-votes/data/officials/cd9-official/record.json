@@ -1,0 +1,54 @@
+{
+  "official_id": "cd9-official",
+  "source": {
+    "name": "LA City Clerk \u2014 Council File Management System",
+    "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+  },
+  "items": [
+    {
+      "council_file": "26-1048",
+      "title": "2026 Latino Heritage Month / Celebrations and Special Events / Council District 9 / General City Purpose Fund",
+      "role": "proposed",
+      "date": "2026-08-04",
+      "outcome": "pending",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-1048"
+    },
+    {
+      "council_file": "26-0929",
+      "title": "Enforcement and Investigation of Illegal Dumping / Council District 9 / AB1290 Fund",
+      "role": "proposed",
+      "date": "2026-06-24",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0929"
+    },
+    {
+      "council_file": "25-1072",
+      "title": "Additional Street Sweeping Services / Council District 9 / AB1290 Fund",
+      "role": "proposed",
+      "date": "2025-09-12",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-1072"
+    },
+    {
+      "council_file": "25-0340",
+      "title": "South Los Angeles Wetlands Improvements Project / Council District 9 / AB 1290 Fund",
+      "role": "proposed",
+      "date": "2025-03-28",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0340"
+    },
+    {
+      "council_file": "26-0204",
+      "title": "Executive Directive 17 / Ensure Protection for City Residents / Federal Immigration Enforcement Operations / Ordinance",
+      "role": "seconded",
+      "date": "2026-02-13",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0204"
+    }
+  ]
+}

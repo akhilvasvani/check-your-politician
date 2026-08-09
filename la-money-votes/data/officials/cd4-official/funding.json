@@ -1,0 +1,414 @@
+{
+  "official": {
+    "id": "cd4-official",
+    "name": "Nithya Raman",
+    "office": "Council District 4",
+    "reelection": {
+      "active": false,
+      "election_date": "2024-03-05",
+      "committee": "Nithya Raman for City Council 2024",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Nithya Raman for City Council 2024"
+    ]
+  },
+  "donors": [
+    {
+      "name": "Josh Kamensky",
+      "type": "individual",
+      "total": 1187.5,
+      "employer": "Fifth Road Inc",
+      "contributions": [
+        {
+          "date": "2023-04-25",
+          "amount": 500
+        },
+        {
+          "date": "2023-12-07",
+          "amount": 400
+        },
+        {
+          "date": "2024-01-23",
+          "amount": 250
+        },
+        {
+          "date": "2024-02-12",
+          "amount": 37.5
+        }
+      ]
+    },
+    {
+      "name": "Parvesh Cheena",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Neena's Boy Inc.",
+      "contributions": [
+        {
+          "date": "2023-05-16",
+          "amount": 500
+        },
+        {
+          "date": "2024-03-04",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Daniel Schofield",
+      "type": "individual",
+      "total": 1000,
+      "employer": "NBC Universal",
+      "contributions": [
+        {
+          "date": "2023-10-08",
+          "amount": 500
+        },
+        {
+          "date": "2024-01-21",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Jeffrey Abrams",
+      "type": "individual",
+      "total": 900,
+      "employer": "Bad Robot Productions",
+      "contributions": [
+        {
+          "date": "2023-05-31",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Christina Angelides",
+      "type": "individual",
+      "total": 900,
+      "employer": "Elemental Excelerator",
+      "contributions": [
+        {
+          "date": "2023-05-20",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Flora Birdzell",
+      "type": "individual",
+      "total": 900,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2023-06-22",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Jeff Bornstein",
+      "type": "individual",
+      "total": 900,
+      "employer": "Bornstein Co Inc",
+      "contributions": [
+        {
+          "date": "2023-06-30",
+          "amount": 500
+        },
+        {
+          "date": "2023-12-22",
+          "amount": 400
+        }
+      ]
+    },
+    {
+      "name": "Marianne Eagan Burrows",
+      "type": "individual",
+      "total": 900,
+      "employer": "PHAR LLC",
+      "contributions": [
+        {
+          "date": "2023-06-01",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Kathryn Cannon",
+      "type": "individual",
+      "total": 900,
+      "employer": "Sony",
+      "contributions": [
+        {
+          "date": "2023-05-19",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Alice Carbone Tench",
+      "type": "individual",
+      "total": 900,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2023-04-25",
+          "amount": 258
+        },
+        {
+          "date": "2024-02-20",
+          "amount": 900
+        },
+        {
+          "date": "2024-02-22",
+          "amount": -258
+        }
+      ]
+    },
+    {
+      "name": "Casey Chandrasekaran",
+      "type": "individual",
+      "total": 900,
+      "employer": "Tesla",
+      "contributions": [
+        {
+          "date": "2023-06-01",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Dhana Chandrasekaran",
+      "type": "individual",
+      "total": 900,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2023-06-01",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Suma Chandrasekaran",
+      "type": "individual",
+      "total": 900,
+      "employer": "Montefiore medical center",
+      "contributions": [
+        {
+          "date": "2023-06-01",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Vali Chandrasekaran",
+      "type": "individual",
+      "total": 900,
+      "employer": "20th century fox television",
+      "contributions": [
+        {
+          "date": "2023-06-26",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Christopher Chang",
+      "type": "individual",
+      "total": 900,
+      "employer": "Congressional Plastic Surgery",
+      "contributions": [
+        {
+          "date": "2023-06-30",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Agnes Chu",
+      "type": "individual",
+      "total": 900,
+      "employer": "Cond Nast Entertainment",
+      "contributions": [
+        {
+          "date": "2023-05-11",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Daniel Chun",
+      "type": "individual",
+      "total": 900,
+      "employer": "abc studios",
+      "contributions": [
+        {
+          "date": "2023-05-25",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Micah Clasper-Torch",
+      "type": "individual",
+      "total": 900,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2023-06-17",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Sean Clements",
+      "type": "individual",
+      "total": 900,
+      "employer": "Netflix",
+      "contributions": [
+        {
+          "date": "2023-05-23",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Adam Conover",
+      "type": "individual",
+      "total": 900,
+      "employer": "Adam Conover",
+      "contributions": [
+        {
+          "date": "2023-06-04",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Adam Countee",
+      "type": "individual",
+      "total": 900,
+      "employer": "Disney",
+      "contributions": [
+        {
+          "date": "2023-05-02",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Charles D Cheever",
+      "type": "individual",
+      "total": 900,
+      "employer": "Expo / 650 Industries Inc.",
+      "contributions": [
+        {
+          "date": "2023-06-28",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Chase Davenport",
+      "type": "individual",
+      "total": 900,
+      "employer": "Accenture",
+      "contributions": [
+        {
+          "date": "2023-06-11",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Hayes Davenport",
+      "type": "individual",
+      "total": 900,
+      "employer": "Death Productions",
+      "contributions": [
+        {
+          "date": "2023-05-01",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Joan Davenport",
+      "type": "individual",
+      "total": 900,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2023-06-28",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Thomas Davenport",
+      "type": "individual",
+      "total": 900,
+      "employer": "Babson College",
+      "contributions": [
+        {
+          "date": "2023-06-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Keith Davis",
+      "type": "individual",
+      "total": 900,
+      "employer": "Dream Tech",
+      "contributions": [
+        {
+          "date": "2023-05-08",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Alice DuBois",
+      "type": "individual",
+      "total": 900,
+      "employer": "BuzzFeed",
+      "contributions": [
+        {
+          "date": "2023-05-18",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Tara Duncan",
+      "type": "individual",
+      "total": 900,
+      "employer": "Disney",
+      "contributions": [
+        {
+          "date": "2023-06-23",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Laurence Dworet",
+      "type": "individual",
+      "total": 900,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2023-06-04",
+          "amount": 900
+        }
+      ]
+    }
+  ]
+}

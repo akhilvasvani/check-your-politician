@@ -1,0 +1,45 @@
+{
+  "official_id": "cd7-official",
+  "source": {
+    "name": "LA City Clerk \u2014 Council File Management System",
+    "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+  },
+  "items": [
+    {
+      "council_file": "25-1178",
+      "title": "Los Angeles Tourism and Convention Board / Dine LA / Waive Participation Fee",
+      "role": "proposed",
+      "date": "2025-10-07",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-1178"
+    },
+    {
+      "council_file": "26-0425",
+      "title": "Bert and Jane Boeckmann / Roscoe Boulevard / Langdon Avenue / Permanent Ceremonial Signage",
+      "role": "proposed",
+      "date": "2026-03-24",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0425"
+    },
+    {
+      "council_file": "26-0029",
+      "title": "Illegal Cannabis Operators / Cannabis Support Units / Improvement and Enforcement /Current Procedures and Practices",
+      "role": "proposed",
+      "date": "2026-01-09",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0029"
+    },
+    {
+      "council_file": "26-0963",
+      "title": "Additional CARE+ Service Day and Overtime Costs / Council District 7 / Bureau of Sanitaion Fund / General City Purposes Fund",
+      "role": "proposed",
+      "date": "2026-06-30",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0963"
+    }
+  ]
+}

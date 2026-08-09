@@ -1,0 +1,63 @@
+{
+  "official_id": "cd8-official",
+  "source": {
+    "name": "LA City Clerk \u2014 Council File Management System",
+    "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+  },
+  "items": [
+    {
+      "council_file": "26-0974",
+      "title": "9402 South Broadway (Site) / City-owned Property / Community Development Block Grant (CDBG) funds / Exclusive Negotiating Agreement Extension",
+      "role": "proposed",
+      "date": "2026-07-01",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0974"
+    },
+    {
+      "council_file": "26-0438",
+      "title": "Purpose Driven Solutions Consulting, LLC / Management and Production of Community Events / General City Purpose Fund / Council District 8 / Transfer of Funds",
+      "role": "proposed",
+      "date": "2026-03-24",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0438"
+    },
+    {
+      "council_file": "25-0331",
+      "title": "Unarmed Crisis Response / Single City-Wide Program / Crisis and Incident Response Through Community Led Engagement (CIRCLE) / Unarmed Model of Crisis Response (UMCR)",
+      "role": "proposed",
+      "date": "2025-03-25",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0331"
+    },
+    {
+      "council_file": "25-0605",
+      "title": "BRIDGE Housing Corporation / 8505 Evermont Place / Vermont and Manchester Project / Sustainable Transit Infrastructure Improvements / Affordable Housing and Sustainable Communities (AHSC) Fund",
+      "role": "proposed",
+      "date": "2025-06-04",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0605"
+    },
+    {
+      "council_file": "25-0219",
+      "title": "Office of Strategic Partnership / Harbor Freight Tools Foundation / Donation",
+      "role": "proposed",
+      "date": "2025-02-28",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0219"
+    },
+    {
+      "council_file": "25-1509-S1",
+      "title": "Keep Hollywood Home / Special Conditions Repeal / Unified Filming Framework / FilmLA",
+      "role": "seconded",
+      "date": "2025-12-12",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-1509-S1"
+    }
+  ]
+}

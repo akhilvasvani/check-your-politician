@@ -1,0 +1,410 @@
+{
+  "official": {
+    "id": "cd8-official",
+    "name": "Marqueece Harris-Dawson",
+    "office": "Council District 8",
+    "reelection": {
+      "active": false,
+      "election_date": "2024-03-05",
+      "committee": "Harris-Dawson for City Council 2024",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Harris-Dawson for City Council 2024"
+    ]
+  },
+  "donors": [
+    {
+      "name": "George Pla",
+      "type": "individual",
+      "total": 1800,
+      "employer": "Cordoba Corporation",
+      "contributions": [
+        {
+          "date": "2023-04-12",
+          "amount": 900
+        },
+        {
+          "date": "2023-09-30",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Juan Rodriguez",
+      "type": "individual",
+      "total": 1800,
+      "employer": "RJS Supplies",
+      "contributions": [
+        {
+          "date": "2023-04-11",
+          "amount": 900
+        },
+        {
+          "date": "2023-06-23",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "John Manulis",
+      "type": "individual",
+      "total": 1400,
+      "employer": "Forward Fortune",
+      "contributions": [
+        {
+          "date": "2023-04-12",
+          "amount": 900
+        },
+        {
+          "date": "2024-02-13",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Stephen Tarzynski",
+      "type": "individual",
+      "total": 1400,
+      "employer": "Southern California Permanente Medical Group",
+      "contributions": [
+        {
+          "date": "2023-03-19",
+          "amount": 800
+        },
+        {
+          "date": "2023-06-09",
+          "amount": 100
+        },
+        {
+          "date": "2023-09-29",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Cathy Salser",
+      "type": "individual",
+      "total": 1150,
+      "employer": "A Window Between Worlds",
+      "contributions": [
+        {
+          "date": "2023-06-09",
+          "amount": 900
+        },
+        {
+          "date": "2023-12-30",
+          "amount": 250
+        }
+      ]
+    },
+    {
+      "name": "Ariel Handelman",
+      "type": "individual",
+      "total": 1000,
+      "employer": "New York Botanical Garden",
+      "contributions": [
+        {
+          "date": "2023-04-12",
+          "amount": 500
+        },
+        {
+          "date": "2023-09-29",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Maile Borthwick",
+      "type": "individual",
+      "total": 900,
+      "employer": "Veterans Health Administration",
+      "contributions": [
+        {
+          "date": "2024-02-20",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Maribeth Borthwick",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-02-20",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Los Angeles League of Conservation Voters",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-02-22",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "SG Property Services, LLC (S. Paul Shailendra)",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-02-19",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "4 G Management Inc.",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-23",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Jeffrey Jacob Abrams",
+      "type": "individual",
+      "total": 900,
+      "employer": "Bad Robot Productions",
+      "contributions": [
+        {
+          "date": "2023-06-12",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Akin Co LLC (Ariel Lawrence)",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-15",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "All City Employees Association Local 3090 AFSCME Political Action Committee",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-04-11",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Amalgamated Transit Union Local 1277 PAC",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-15",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "American Airlines Inc. Political Action Committee (AAPAC) (FED. PAC ID # C00107300)",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-04-17",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Ashphill Design, Inc",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-14",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Atlanta Restaurant Partners, LLC (Daniel Halpern)",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-20",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Autumn Burke for Lieutenant Governor 2026",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-22",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Talish Babaian",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-06-23",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Danny Bakewell Jr",
+      "type": "individual",
+      "total": 900,
+      "employer": "The Bakewell Company",
+      "contributions": [
+        {
+          "date": "2023-06-01",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Danny Bakewell Sr",
+      "type": "individual",
+      "total": 900,
+      "employer": "The Los Angeles Sentinel",
+      "contributions": [
+        {
+          "date": "2023-06-08",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Pamela Bakewell",
+      "type": "individual",
+      "total": 900,
+      "employer": "The Bakewell Company",
+      "contributions": [
+        {
+          "date": "2023-06-12",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Yuval Bar-Zemer",
+      "type": "individual",
+      "total": 900,
+      "employer": "Linear City Development LLC",
+      "contributions": [
+        {
+          "date": "2023-04-12",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Kathleen Bartolo",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-04-05",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Allan Bates",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-04-13",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Frank Baxter",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-03-27",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Linda Berghoff",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-04-04",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Black Los Angeles Young Democrats",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-05-02",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Renee Blythwood",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-04-12",
+          "amount": 900
+        }
+      ]
+    }
+  ]
+}

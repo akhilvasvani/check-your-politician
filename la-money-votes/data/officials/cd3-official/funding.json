@@ -1,0 +1,398 @@
+{
+  "official": {
+    "id": "cd3-official",
+    "name": "Bob Blumenfield",
+    "office": "Council District 3",
+    "reelection": {
+      "active": false,
+      "election_date": "2022-06-07",
+      "committee": "Bob Blumenfield for City Council 2022",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Bob Blumenfield for City Council 2022"
+    ]
+  },
+  "donors": [
+    {
+      "name": "Stephanie Wolfson",
+      "type": "individual",
+      "total": 1400,
+      "employer": "The David Labkovski Project",
+      "contributions": [
+        {
+          "date": "2021-12-03",
+          "amount": 800
+        },
+        {
+          "date": "2022-04-29",
+          "amount": 600
+        }
+      ]
+    },
+    {
+      "name": "Adler Realty Investments",
+      "type": "business",
+      "total": 1300,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-03-30",
+          "amount": 800
+        },
+        {
+          "date": "2021-11-22",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "9712 Oak Pass Rd LLC(Shannon Melick)",
+      "type": "business",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-06-24",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Richard Acheson",
+      "type": "individual",
+      "total": 800,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2021-04-21",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Affirmed Housing Group",
+      "type": "business",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-05-04",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Sharon Alonso",
+      "type": "individual",
+      "total": 800,
+      "employer": "Mount Sinai",
+      "contributions": [
+        {
+          "date": "2021-06-29",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Linda Berghoff",
+      "type": "individual",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-05-06",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Jay Blumenfield",
+      "type": "individual",
+      "total": 800,
+      "employer": "Jay Blumenfield",
+      "contributions": [
+        {
+          "date": "2021-06-29",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Michael Blumenfield",
+      "type": "individual",
+      "total": 800,
+      "employer": "Michael Blumenfield, M.D.",
+      "contributions": [
+        {
+          "date": "2021-04-11",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Susan Blumenfield",
+      "type": "individual",
+      "total": 800,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2021-04-10",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Marji Boething",
+      "type": "individual",
+      "total": 800,
+      "employer": "Boething Treeland Farms, Inc",
+      "contributions": [
+        {
+          "date": "2021-04-21",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Joan Borsten",
+      "type": "individual",
+      "total": 800,
+      "employer": "Films by Jove Inc",
+      "contributions": [
+        {
+          "date": "2021-05-04",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Omar Brownson",
+      "type": "individual",
+      "total": 800,
+      "employer": "Omar Brownson",
+      "contributions": [
+        {
+          "date": "2021-05-25",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Cal Ned Inc.",
+      "type": "business",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-05-10",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Jason Caramanis",
+      "type": "individual",
+      "total": 800,
+      "employer": "YaYa Holdings LLC",
+      "contributions": [
+        {
+          "date": "2021-04-23",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Marc Castellani",
+      "type": "individual",
+      "total": 800,
+      "employer": "Aspiriant LLC",
+      "contributions": [
+        {
+          "date": "2021-05-04",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Committee to Expand the Middle Class Candidate Committee",
+      "type": "pac",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-06-10",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "COPE Preparedness",
+      "type": "individual",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-06-30",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Bruce C Corwin",
+      "type": "individual",
+      "total": 800,
+      "employer": "Metropolitan Theatres",
+      "contributions": [
+        {
+          "date": "2021-06-17",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "JERRY DAVIS",
+      "type": "individual",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-04-26",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Jeanne De Sa",
+      "type": "individual",
+      "total": 800,
+      "employer": "Healthsperien, LLC",
+      "contributions": [
+        {
+          "date": "2021-06-16",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Kathleen Delle Donne",
+      "type": "individual",
+      "total": 800,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2021-04-14",
+          "amount": 800
+        },
+        {
+          "date": "2021-06-29",
+          "amount": 800
+        },
+        {
+          "date": "2021-06-30",
+          "amount": -800
+        }
+      ]
+    },
+    {
+      "name": "Drive Committee",
+      "type": "pac",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-05-18",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Afshin Etebar",
+      "type": "individual",
+      "total": 800,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2021-06-30",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "William Fujioka",
+      "type": "individual",
+      "total": 800,
+      "employer": "Retired",
+      "contributions": [
+        {
+          "date": "2021-06-27",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Patricia Gagan",
+      "type": "individual",
+      "total": 800,
+      "employer": "LAUSD",
+      "contributions": [
+        {
+          "date": "2021-04-28",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "David Garcia",
+      "type": "individual",
+      "total": 800,
+      "employer": "Sandstone Properties, Inc.",
+      "contributions": [
+        {
+          "date": "2021-04-23",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "James Garrison",
+      "type": "individual",
+      "total": 800,
+      "employer": "Pacific Federal LLC",
+      "contributions": [
+        {
+          "date": "2021-06-30",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Rachel L Garrison",
+      "type": "individual",
+      "total": 800,
+      "employer": "Law Offices of Robert Brennan",
+      "contributions": [
+        {
+          "date": "2021-06-30",
+          "amount": 800
+        }
+      ]
+    },
+    {
+      "name": "Timothy Gaspar",
+      "type": "individual",
+      "total": 800,
+      "employer": "Gaspar Insurance Services",
+      "contributions": [
+        {
+          "date": "2021-04-21",
+          "amount": 800
+        }
+      ]
+    }
+  ]
+}

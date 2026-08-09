@@ -1,0 +1,510 @@
+{
+  "official": {
+    "id": "cd1-official",
+    "name": "Eunisses Hernandez",
+    "office": "Council District 1",
+    "reelection": {
+      "active": false,
+      "election_date": "2026-06-02",
+      "committee": "Eunisses Hernandez for City Council 2026",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Eunisses Hernandez for City Council 2026"
+    ]
+  },
+  "donors": [
+    {
+      "name": "Sharon Kyle",
+      "type": "individual",
+      "total": 1306,
+      "employer": "LA Progressive",
+      "contributions": [
+        {
+          "date": "2025-07-26",
+          "amount": 1000
+        },
+        {
+          "date": "2026-03-29",
+          "amount": 286
+        },
+        {
+          "date": "2026-06-01",
+          "amount": 20
+        }
+      ]
+    },
+    {
+      "name": "Edw Pfiester",
+      "type": "individual",
+      "total": 1072,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2025-09-30",
+          "amount": 500
+        },
+        {
+          "date": "2025-10-01",
+          "amount": 429
+        },
+        {
+          "date": "2026-02-10",
+          "amount": 143
+        }
+      ]
+    },
+    {
+      "name": "Glenn Backes",
+      "type": "individual",
+      "total": 1050,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2025-05-07",
+          "amount": 200
+        },
+        {
+          "date": "2025-12-04",
+          "amount": 100
+        },
+        {
+          "date": "2026-04-09",
+          "amount": 250
+        },
+        {
+          "date": "2026-05-11",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Andy Bean",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Andrew Bean",
+      "contributions": [
+        {
+          "date": "2025-05-29",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "shalomyah bowers",
+      "type": "individual",
+      "total": 1000,
+      "employer": "bowers*",
+      "contributions": [
+        {
+          "date": "2025-06-04",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Emily Caesar",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-04-01",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Carrillo Law Firm LLP",
+      "type": "business",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-05-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Luis Carrillo",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Luis Carrillo Law Office",
+      "contributions": [
+        {
+          "date": "2025-05-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Adam Conover",
+      "type": "individual",
+      "total": 1000,
+      "employer": "SwizzleCorp",
+      "contributions": [
+        {
+          "date": "2025-04-09",
+          "amount": 250
+        },
+        {
+          "date": "2025-11-06",
+          "amount": 143
+        },
+        {
+          "date": "2025-12-19",
+          "amount": 202.34
+        },
+        {
+          "date": "2025-12-19",
+          "amount": 404.66
+        }
+      ]
+    },
+    {
+      "name": "Susan Cooley",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Quinn Delaney",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-06-05",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Rebecca Dennison",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-04-01",
+          "amount": 500
+        },
+        {
+          "date": "2025-09-13",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Tim Disney",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Tim Disney",
+      "contributions": [
+        {
+          "date": "2025-04-03",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Jodie Dolan",
+      "type": "individual",
+      "total": 1000,
+      "employer": "DOLAN Scrubs",
+      "contributions": [
+        {
+          "date": "2025-05-15",
+          "amount": 500
+        },
+        {
+          "date": "2025-12-23",
+          "amount": 1000
+        },
+        {
+          "date": "2026-01-25",
+          "amount": -500
+        }
+      ]
+    },
+    {
+      "name": "Wendy Greuel",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Self CSUN Manatt",
+      "contributions": [
+        {
+          "date": "2025-03-27",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Karen Grove",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-06-30",
+          "amount": 1200
+        },
+        {
+          "date": "2025-06-30",
+          "amount": -200
+        }
+      ]
+    },
+    {
+      "name": "emiliana guereca",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Ez Event",
+      "contributions": [
+        {
+          "date": "2025-04-07",
+          "amount": 500
+        },
+        {
+          "date": "2025-08-15",
+          "amount": 500
+        },
+        {
+          "date": "2026-03-27",
+          "amount": 500
+        },
+        {
+          "date": "2026-06-05",
+          "amount": -500
+        }
+      ]
+    },
+    {
+      "name": "Justin Halpern",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Warner Brothers",
+      "contributions": [
+        {
+          "date": "2025-05-31",
+          "amount": 1000
+        },
+        {
+          "date": "2025-12-18",
+          "amount": 1000
+        },
+        {
+          "date": "2026-01-28",
+          "amount": -1000
+        }
+      ]
+    },
+    {
+      "name": "Ursula Heise",
+      "type": "individual",
+      "total": 1000,
+      "employer": "UCLA",
+      "contributions": [
+        {
+          "date": "2025-06-09",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Leticia Hernandez",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Levy's",
+      "contributions": [
+        {
+          "date": "2025-03-29",
+          "amount": 285
+        },
+        {
+          "date": "2025-12-08",
+          "amount": 715
+        }
+      ]
+    },
+    {
+      "name": "Pedro Hernandez",
+      "type": "individual",
+      "total": 1000,
+      "employer": "SpaceX",
+      "contributions": [
+        {
+          "date": "2025-04-30",
+          "amount": 143
+        },
+        {
+          "date": "2025-05-17",
+          "amount": 1000
+        },
+        {
+          "date": "2025-05-22",
+          "amount": -143
+        }
+      ]
+    },
+    {
+      "name": "Wayne Jordan",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-06-29",
+          "amount": 1200
+        },
+        {
+          "date": "2025-06-30",
+          "amount": -200
+        }
+      ]
+    },
+    {
+      "name": "Josh Kamensky",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Fifth Road Inc",
+      "contributions": [
+        {
+          "date": "2025-05-17",
+          "amount": 500
+        },
+        {
+          "date": "2026-02-17",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Benjamin Kramer",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Hertz Lichtenstein Young & Polk LLP",
+      "contributions": [
+        {
+          "date": "2025-03-29",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Laborers' Local 300",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-06-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Carlos M Lopez",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Cazuelas",
+      "contributions": [
+        {
+          "date": "2025-05-17",
+          "amount": 100
+        },
+        {
+          "date": "2025-06-28",
+          "amount": 100
+        },
+        {
+          "date": "2025-07-28",
+          "amount": 100
+        },
+        {
+          "date": "2025-08-28",
+          "amount": 100
+        },
+        {
+          "date": "2025-09-28",
+          "amount": 100
+        },
+        {
+          "date": "2025-10-28",
+          "amount": 100
+        },
+        {
+          "date": "2025-11-28",
+          "amount": 100
+        },
+        {
+          "date": "2025-12-28",
+          "amount": 100
+        },
+        {
+          "date": "2026-01-28",
+          "amount": 200
+        }
+      ]
+    },
+    {
+      "name": "Erica M Gross",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-06-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "David Mandel",
+      "type": "individual",
+      "total": 1000,
+      "employer": "HBO Max",
+      "contributions": [
+        {
+          "date": "2025-06-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Nickolas Mata",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Mata Construction",
+      "contributions": [
+        {
+          "date": "2025-05-17",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Raymond Meza",
+      "type": "individual",
+      "total": 1000,
+      "employer": "SEIU Local 721",
+      "contributions": [
+        {
+          "date": "2025-06-23",
+          "amount": 1000
+        }
+      ]
+    }
+  ]
+}

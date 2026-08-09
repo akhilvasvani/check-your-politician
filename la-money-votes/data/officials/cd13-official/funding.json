@@ -1,0 +1,390 @@
+{
+  "official": {
+    "id": "cd13-official",
+    "name": "Hugo Soto-Martinez",
+    "office": "Council District 13",
+    "reelection": {
+      "active": false,
+      "election_date": "2026-06-02",
+      "committee": "Hugo Soto-Martinez for City Council 2026",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Hugo Soto-Martinez for City Council 2026"
+    ]
+  },
+  "donors": [
+    {
+      "name": "Patty Quillin",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-06-26",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Elizabeth D Simons",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-06-26",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Smart Justice CA Action Fund",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-06-26",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "United Nurses Association of CA/Union of Health Care Professionals PAC",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-06-26",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Tal Adam Levy",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Second Spectrum",
+      "contributions": [
+        {
+          "date": "2025-08-27",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "AFSCME 2626-Librarians Guild PAC Fund",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-12-17",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Jo Marie Agriesti",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-09-15",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Lucia Aniello",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-12-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Building A Stronger CA sponsored by Western States Regional Council of Carpenteres",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-09-11",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Cement Masons Local 600",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-09-02",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Madeleine Colvin",
+      "type": "individual",
+      "total": 1000,
+      "employer": "TreePeople",
+      "contributions": [
+        {
+          "date": "2025-12-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Kobi Danan",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Owner",
+      "contributions": [
+        {
+          "date": "2025-12-26",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Valeria De Gonzalez",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Hadsell Stormer Renick and Dai LLP",
+      "contributions": [
+        {
+          "date": "2025-11-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "M. Quinn Delaney",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-12-19",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Peter Dickinson",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Bush Gottlieb",
+      "contributions": [
+        {
+          "date": "2025-12-14",
+          "amount": 500
+        },
+        {
+          "date": "2026-03-27",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Dignity CA SEIU Local 2015",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-12-30",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Tim Disney",
+      "type": "individual",
+      "total": 1000,
+      "employer": "self",
+      "contributions": [
+        {
+          "date": "2025-12-29",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Engineers and Architects Association",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-08-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Anne Freiermuth",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Mission Math",
+      "contributions": [
+        {
+          "date": "2025-12-29",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "David Fu",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Self",
+      "contributions": [
+        {
+          "date": "2025-11-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Julie Gutman Dickinson",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Bush Gottlieb",
+      "contributions": [
+        {
+          "date": "2025-10-29",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Justin Halpern",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Warner Brothers",
+      "contributions": [
+        {
+          "date": "2025-08-17",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "International Brotherhood of Electrical Workers, Local 11",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-11-06",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "International Union of Operating Engineers Local 12",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-07-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "LA County Federation of Labor",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-12-15",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Laborers' International Union of North America Local 1309",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-12-04",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Laborers' Local 300",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-10-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Laureen Lazarovici",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-08-22",
+          "amount": 500
+        },
+        {
+          "date": "2025-09-24",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Marion lefebre",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Not Employed",
+      "contributions": [
+        {
+          "date": "2025-12-16",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "LIUNA Local 777 PAC",
+      "type": "pac",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-09-19",
+          "amount": 1000
+        }
+      ]
+    }
+  ]
+}

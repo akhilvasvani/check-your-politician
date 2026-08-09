@@ -1,0 +1,426 @@
+{
+  "official": {
+    "id": "cd6-official",
+    "name": "Imelda Padilla",
+    "office": "Council District 6",
+    "reelection": {
+      "active": false,
+      "election_date": "2024-03-05",
+      "committee": "Imelda Padilla for LA City Council 2024",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Imelda Padilla for LA City Council 2024"
+    ]
+  },
+  "donors": [
+    {
+      "name": "Imelda Padilla",
+      "type": "individual",
+      "total": 1125,
+      "employer": "City Of Los Angeles",
+      "contributions": [
+        {
+          "date": "2025-06-27",
+          "amount": 550
+        },
+        {
+          "date": "2025-09-30",
+          "amount": 575
+        }
+      ]
+    },
+    {
+      "name": "Gagik Balayan",
+      "type": "individual",
+      "total": 900,
+      "employer": "Sun Valley Caregivers",
+      "contributions": [
+        {
+          "date": "2023-08-23",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Linda Berghoff",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-09-30",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Building Owners & Managers Association of Greater L.A. PAC",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-08-23",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "CA Apartment Association PAC",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-09-11",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "CAL Ned, Inc.",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-09-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Karla Donovan",
+      "type": "individual",
+      "total": 900,
+      "employer": "Bates Carey",
+      "contributions": [
+        {
+          "date": "2023-09-28",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Joseph Ehrlichmann",
+      "type": "individual",
+      "total": 900,
+      "employer": "Larchmont Charter Schools",
+      "contributions": [
+        {
+          "date": "2023-09-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Omar Gutierrez",
+      "type": "individual",
+      "total": 900,
+      "employer": "Farm Table Inc",
+      "contributions": [
+        {
+          "date": "2023-09-27",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Jose Hernandez",
+      "type": "individual",
+      "total": 900,
+      "employer": "Ideate California",
+      "contributions": [
+        {
+          "date": "2023-08-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Hollywood Chamber PAC",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-09-23",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Kirsten Howland",
+      "type": "individual",
+      "total": 900,
+      "employer": "Peninsula Montessori School",
+      "contributions": [
+        {
+          "date": "2023-09-28",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "International Union of Operating Engineers",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-09-23",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Jake Itzkowitz",
+      "type": "individual",
+      "total": 900,
+      "employer": "Manatt Phelps  Phillips Llp",
+      "contributions": [
+        {
+          "date": "2023-09-28",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Mitchell Kramar",
+      "type": "individual",
+      "total": 900,
+      "employer": "Kramars Iron And Metal",
+      "contributions": [
+        {
+          "date": "2023-08-22",
+          "amount": 500
+        },
+        {
+          "date": "2023-10-26",
+          "amount": 900
+        },
+        {
+          "date": "2023-12-31",
+          "amount": -500
+        }
+      ]
+    },
+    {
+      "name": "L.A. Taxi Cooperative, Inc. dba Yellow Cab",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-07-25",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Laborers' Local 300",
+      "type": "pac",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-09-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Amanda Lipitz",
+      "type": "individual",
+      "total": 900,
+      "employer": "Amanda Lipitz Productions",
+      "contributions": [
+        {
+          "date": "2023-09-28",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Michael Lizarraga",
+      "type": "individual",
+      "total": 900,
+      "employer": "Telacu Industries",
+      "contributions": [
+        {
+          "date": "2023-09-28",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Christian Ortiz",
+      "type": "individual",
+      "total": 900,
+      "employer": "Spacex",
+      "contributions": [
+        {
+          "date": "2023-09-27",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Jonathan Parfrey",
+      "type": "individual",
+      "total": 900,
+      "employer": "Climate Resolve",
+      "contributions": [
+        {
+          "date": "2023-08-22",
+          "amount": 900
+        },
+        {
+          "date": "2024-02-04",
+          "amount": 250
+        },
+        {
+          "date": "2025-06-26",
+          "amount": -250
+        }
+      ]
+    },
+    {
+      "name": "Yvonne Pena",
+      "type": "individual",
+      "total": 900,
+      "employer": "KpmgMbo Partners",
+      "contributions": [
+        {
+          "date": "2023-09-14",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Alexandra Louise Pool-Jeffre",
+      "type": "individual",
+      "total": 900,
+      "employer": "ADP",
+      "contributions": [
+        {
+          "date": "2023-09-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Cori Sampson",
+      "type": "individual",
+      "total": 900,
+      "employer": "Cori Sampson",
+      "contributions": [
+        {
+          "date": "2023-09-07",
+          "amount": 900
+        },
+        {
+          "date": "2023-12-31",
+          "amount": 900
+        },
+        {
+          "date": "2023-12-31",
+          "amount": -900
+        }
+      ]
+    },
+    {
+      "name": "Victor Sampson",
+      "type": "individual",
+      "total": 900,
+      "employer": "Coldwell Banker",
+      "contributions": [
+        {
+          "date": "2023-08-28",
+          "amount": 900
+        },
+        {
+          "date": "2023-12-31",
+          "amount": 900
+        },
+        {
+          "date": "2023-12-31",
+          "amount": -900
+        }
+      ]
+    },
+    {
+      "name": "South Bay Cooperative, Inc. dba United Checker, Inc.",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-07-25",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Sun Valley Paper Stock, Inc.",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-07-30",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Surcal Enterprises, LLC(Pablo Leon)",
+      "type": "business",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-09-29",
+          "amount": 900
+        }
+      ]
+    },
+    {
+      "name": "Michael Trujillo",
+      "type": "individual",
+      "total": 900,
+      "employer": "TGP Strategies",
+      "contributions": [
+        {
+          "date": "2023-07-27",
+          "amount": 100
+        },
+        {
+          "date": "2024-01-22",
+          "amount": 900
+        },
+        {
+          "date": "2024-02-05",
+          "amount": -100
+        }
+      ]
+    },
+    {
+      "name": "Gayle Tyerman",
+      "type": "individual",
+      "total": 900,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2023-08-15",
+          "amount": 900
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,502 @@
+{
+  "official": {
+    "id": "cd5-official",
+    "name": "Katy Young Yaroslavsky",
+    "office": "Council District 5",
+    "reelection": {
+      "active": false,
+      "election_date": "2026-06-02",
+      "committee": "Katy Yaroslavsky for City Council 2026",
+      "result": "won"
+    }
+  },
+  "source": {
+    "name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+    "url": "https://ethics.lacity.org/",
+    "committees": [
+      "Katy Yaroslavsky for City Council 2026"
+    ]
+  },
+  "donors": [
+    {
+      "name": "David Abel",
+      "type": "individual",
+      "total": 1000,
+      "employer": "ABL Inc.",
+      "contributions": [
+        {
+          "date": "2024-12-20",
+          "amount": 1000
+        },
+        {
+          "date": "2025-05-01",
+          "amount": 500
+        },
+        {
+          "date": "2025-05-16",
+          "amount": -500
+        },
+        {
+          "date": "2025-12-22",
+          "amount": 250
+        },
+        {
+          "date": "2025-12-31",
+          "amount": -250
+        }
+      ]
+    },
+    {
+      "name": "Michele Andelson",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Michele Andelson",
+      "contributions": [
+        {
+          "date": "2024-12-15",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Wayne Avrashow",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Wayne Avrashow",
+      "contributions": [
+        {
+          "date": "2024-12-21",
+          "amount": 250
+        },
+        {
+          "date": "2025-11-06",
+          "amount": 750
+        }
+      ]
+    },
+    {
+      "name": "James Bancroft",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-18",
+          "amount": 1000
+        },
+        {
+          "date": "2026-05-12",
+          "amount": 1000
+        },
+        {
+          "date": "2026-05-13",
+          "amount": -1000
+        }
+      ]
+    },
+    {
+      "name": "Juliana Bancroft",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Allan Bates",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-21",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Joel Bellman",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-14",
+          "amount": 250
+        },
+        {
+          "date": "2025-04-10",
+          "amount": 250
+        },
+        {
+          "date": "2025-05-23",
+          "amount": 250
+        },
+        {
+          "date": "2025-12-20",
+          "amount": 250
+        }
+      ]
+    },
+    {
+      "name": "Linda Berghoff",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-28",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Bill Bloomfield",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-31",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Wendy Brandchaft",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-03",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Elizabeth Brauer",
+      "type": "individual",
+      "total": 1000,
+      "employer": "USC",
+      "contributions": [
+        {
+          "date": "2024-12-17",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Michele Breslauer",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Children's Law Center of LA",
+      "contributions": [
+        {
+          "date": "2024-12-17",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Dan Bressler",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Meridius LLC",
+      "contributions": [
+        {
+          "date": "2024-12-19",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Judy Bressler",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-28",
+          "amount": 500
+        },
+        {
+          "date": "2025-11-11",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "Bruce Broillet",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Greene Broillet and Wheeler LLP",
+      "contributions": [
+        {
+          "date": "2024-12-10",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Norah Broillet",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-18",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Stephanie Nemeth Bronson",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Stephanie Nemeth Bronson",
+      "contributions": [
+        {
+          "date": "2024-12-13",
+          "amount": 1000
+        },
+        {
+          "date": "2025-07-17",
+          "amount": 1000
+        },
+        {
+          "date": "2025-07-18",
+          "amount": -1000
+        }
+      ]
+    },
+    {
+      "name": "Diana Buckhantz",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-19",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Richard Chaskin",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Richard Chaskin",
+      "contributions": [
+        {
+          "date": "2024-12-23",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Sangtip Chienpradap",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Radian Mortgage Capital",
+      "contributions": [
+        {
+          "date": "2024-12-31",
+          "amount": 1000
+        },
+        {
+          "date": "2025-12-31",
+          "amount": 1000
+        },
+        {
+          "date": "2025-12-31",
+          "amount": -1000
+        }
+      ]
+    },
+    {
+      "name": "Jon Christensen",
+      "type": "individual",
+      "total": 1000,
+      "employer": "University of California, Los Angeles",
+      "contributions": [
+        {
+          "date": "2024-12-31",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Cynthia Chvatal",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-31",
+          "amount": 500
+        },
+        {
+          "date": "2025-08-26",
+          "amount": 250
+        },
+        {
+          "date": "2026-04-06",
+          "amount": 250
+        }
+      ]
+    },
+    {
+      "name": "Elise Cohen",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-31",
+          "amount": 500
+        },
+        {
+          "date": "2025-04-10",
+          "amount": 500
+        }
+      ]
+    },
+    {
+      "name": "James And Lynne Dewitt",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-03",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Francine Diamond",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-17",
+          "amount": 250
+        },
+        {
+          "date": "2025-07-08",
+          "amount": 500
+        },
+        {
+          "date": "2026-01-21",
+          "amount": 300
+        },
+        {
+          "date": "2026-03-10",
+          "amount": 250
+        },
+        {
+          "date": "2026-05-15",
+          "amount": -300
+        }
+      ]
+    },
+    {
+      "name": "Sarah Dusseault",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-05",
+          "amount": 1000
+        }
+      ]
+    },
+    {
+      "name": "Debra Edelston",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-04",
+          "amount": 180
+        },
+        {
+          "date": "2025-04-11",
+          "amount": 360
+        },
+        {
+          "date": "2025-06-29",
+          "amount": 360
+        },
+        {
+          "date": "2025-07-01",
+          "amount": 180
+        },
+        {
+          "date": "2025-08-20",
+          "amount": -80
+        }
+      ]
+    },
+    {
+      "name": "John Edelston",
+      "type": "individual",
+      "total": 1000,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-12-03",
+          "amount": 250
+        },
+        {
+          "date": "2024-12-31",
+          "amount": 100
+        },
+        {
+          "date": "2025-08-28",
+          "amount": 650
+        }
+      ]
+    },
+    {
+      "name": "Pepper Edmiston",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Pepper Edmiston",
+      "contributions": [
+        {
+          "date": "2024-12-03",
+          "amount": 1000
+        },
+        {
+          "date": "2025-12-30",
+          "amount": 500
+        },
+        {
+          "date": "2025-12-31",
+          "amount": -500
+        }
+      ]
+    },
+    {
+      "name": "Craig Ehrlich",
+      "type": "individual",
+      "total": 1000,
+      "employer": "Novare Technologies",
+      "contributions": [
+        {
+          "date": "2024-12-30",
+          "amount": 1000
+        }
+      ]
+    }
+  ]
+}

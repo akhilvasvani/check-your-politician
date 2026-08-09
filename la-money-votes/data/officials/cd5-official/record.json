@@ -1,0 +1,45 @@
+{
+  "official_id": "cd5-official",
+  "source": {
+    "name": "LA City Clerk \u2014 Council File Management System",
+    "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+  },
+  "items": [
+    {
+      "council_file": "25-0647-S2",
+      "title": "Special 1 Motion / Fiscal Year 2024-25 and 2025-26 / Los Angeles Police Department / Reserve Fund Loan / June 10, 2025 Local Emergency / Overtime Cost",
+      "role": "proposed",
+      "date": "2025-06-18",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0647-S2"
+    },
+    {
+      "council_file": "25-0006-S18",
+      "title": "Special Motion 18 / City Budget Impacts / Front-Funding Strategies / FEMA Reimbursement / 2025 Windstorm and Wildfire Recovery",
+      "role": "proposed",
+      "date": "2025-02-26",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0006-S18"
+    },
+    {
+      "council_file": "24-1360",
+      "title": "Leave Time Expansion / Late Term and Term Stillbirth / Emotional and Physical Recovery Resources / Los Angeles Administrative Code / Amendment",
+      "role": "proposed",
+      "date": "2024-12-11",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=24-1360"
+    },
+    {
+      "council_file": "25-0006-S17",
+      "title": "Special Motion 17 / Low Water Pressure / Dry Hydrants / Santa Ynez Reservoir / 2025 Windstorm and Wildfire Recovery",
+      "role": "seconded",
+      "date": "2025-07-01",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0006-S17"
+    }
+  ]
+}

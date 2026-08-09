@@ -1,0 +1,54 @@
+{
+  "official_id": "cd4-official",
+  "source": {
+    "name": "LA City Clerk \u2014 Council File Management System",
+    "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+  },
+  "items": [
+    {
+      "council_file": "26-0600-S7",
+      "title": "Budget Motion / Recreation and Parks / Runyon Canyon Park / Daily Security Services 7 p.m. to 1 a.m. / Funding",
+      "role": "proposed",
+      "date": "2026-05-21",
+      "outcome": "pending",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0600-S7"
+    },
+    {
+      "council_file": "25-0600-S22",
+      "title": "Budget Motion / Los Angeles Housing Department / Controller / Quarterly Advances / Interim Housing Contracts / Los Angeles Homeless Services Authority",
+      "role": "proposed",
+      "date": "2025-05-22",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0600-S22"
+    },
+    {
+      "council_file": "25-0006-S13",
+      "title": "Special Motion 13 / Impacted Workers / Resources and Assistance / 2025 Windstorm and Wildfire Recovery",
+      "role": "seconded",
+      "date": "2025-01-14",
+      "outcome": "passed",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0006-S13"
+    },
+    {
+      "council_file": "25-0600-S28",
+      "title": "Budget Motion / Civil + Human Rights and Equity Department / Public Information Director / Funding",
+      "role": "seconded",
+      "date": "2025-05-22",
+      "outcome": "pending",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0600-S28"
+    },
+    {
+      "council_file": "26-0600-S8",
+      "title": "Budget Motion / North Atwater East Bank Riverway Project / Capital and Technology Improvement Expenditure Program Funding",
+      "role": "seconded",
+      "date": "2026-05-21",
+      "outcome": "pending",
+      "term": "current",
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0600-S8"
+    }
+  ]
+}

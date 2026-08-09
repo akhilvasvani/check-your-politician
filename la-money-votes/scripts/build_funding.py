@@ -52,10 +52,58 @@ SOURCE = {
 #   only possible if he won the November 5, 2024 CD2 general — the contribution
 #   export itself never says this, so it's recorded here rather than derived.
 # - mayor-bass: 2026 election is still ahead, so there is no result yet.
+#
+# V1-roster completion (2026-08-09), all confirmed via news coverage of the
+# certified June 2, 2026 primary (LAist, ABC7, NBC LA, LA Times, Wikipedia —
+# see the verification report for per-official URLs) or via the City Clerk's
+# roster confirming the officeholder's current, already-underway term:
+# - cd1-official (Eunisses Hernandez): won outright in the June 2, 2026
+#   primary (~58%), no runoff — her CURRENT term is still her first (elected
+#   2022); the 2026 committee is her (already-decided) reelection campaign.
+# - cd3-official (Bob Blumenfield): termed out, not on the 2026 ballot at all
+#   (confirmed by LA Times/ABC7 reporting and by the absence of any 2026
+#   committee in the Ethics Commission data). His current, final term began
+#   with his 2022 win, hence "won" against the 2022 committee.
+# - cd4-official (Nithya Raman): her current CD4 term began with her 2024
+#   win. She is also actively running for Mayor in 2026 with a separate
+#   committee ("Nithya Raman for Mayor 2026") — deliberately NOT used here
+#   since this profile's office is Council District 4, not Mayor; see the
+#   verification report.
+# - cd5-official (Katy Young Yaroslavsky): won outright in the June 2, 2026
+#   primary (~64%), no runoff.
+# - cd6-official (Imelda Padilla): current term began with her March 2024
+#   win (following an earlier 2023 special election).
+# - cd7-official (Monica Rodriguez): ran unopposed and won outright in the
+#   June 2, 2026 primary.
+# - cd8-official (Marqueece Harris-Dawson): current term began with his 2024
+#   win.
+# - cd9-official (Curren D. Price Jr.): termed out, not on the 2026 ballot
+#   (confirmed by LA Times/LAist reporting and by the absence of any 2026
+#   committee in the Ethics Commission data). His current, final term began
+#   with his 2022 win.
+# - cd10-official (Heather Hutt): current term began with her November 2024
+#   general win.
+# - cd12-official (John Lee): current term began with his 2024 win.
+# - cd13-official (Hugo Soto-Martinez): won outright in the June 2, 2026
+#   primary (~68%), no runoff.
+# - cd15-official (Tim McOsker): won outright in the June 2, 2026 primary
+#   (~77%), no runoff.
 ELECTION_RESULTS = {
-    "cd11-official": "won",
-    "cd14-official": "won",
+    "cd1-official": "won",
     "cd2-official": "won",
+    "cd3-official": "won",
+    "cd4-official": "won",
+    "cd5-official": "won",
+    "cd6-official": "won",
+    "cd7-official": "won",
+    "cd8-official": "won",
+    "cd9-official": "won",
+    "cd10-official": "won",
+    "cd11-official": "won",
+    "cd12-official": "won",
+    "cd13-official": "won",
+    "cd14-official": "won",
+    "cd15-official": "won",
 }
 
 # CSV column names, as they appear in the LA Ethics Commission export header.
@@ -104,6 +152,65 @@ COMMITTEES = {
         "Adrin Nazarian for City Council 2024",
         "Adrin Nazarian for City Council 2024-General",
     ],
+
+    # --- V1-roster completion (2026-08-09) ---
+    # All committee names below were confirmed the same way as cd2-official:
+    # a live $where query against data.lacity.org resource m6g2-gc6c grouped
+    # by cand_name and cross-checked against seat_desc/dist_num, then the
+    # chosen committee(s) cross-checked against news coverage of the
+    # certified June 2, 2026 primary where relevant. See the verification
+    # report for full source URLs and per-official rationale.
+
+    # Eunisses Hernandez, CD1. Won outright in the June 2, 2026 primary (no
+    # runoff); this is her (already-decided) reelection committee.
+    "cd1-official": ["Eunisses Hernandez for City Council 2026"],
+
+    # Bob Blumenfield, CD3. Termed out -- no 2026 committee exists in the
+    # Ethics Commission data. His current (final) term's committee is 2022.
+    "cd3-official": ["Bob Blumenfield for City Council 2022"],
+
+    # Nithya Raman, CD4. Committee ID 1425985 is a continuously-operating
+    # committee reused across the 2020 and 2024 cycles under two cmt_nm
+    # labels in the Ethics Commission data; only the 2024-labeled rows (her
+    # current term) are kept -- the 2020 cycle was filtered out of the raw
+    # CSV before this script ever sees it (see convert_v1_csv.py). She is
+    # also actively running for Mayor in 2026 under a separate committee
+    # ("Nithya Raman for Mayor 2026") -- deliberately not used here since
+    # this profile's office is Council District 4, not Mayor.
+    "cd4-official": ["Nithya Raman for City Council 2024"],
+
+    # Katy Young Yaroslavsky, CD5. Won outright in the June 2, 2026 primary.
+    "cd5-official": ["Katy Yaroslavsky for City Council 2026"],
+
+    # Imelda Padilla, CD6. Current term's committee is her March 2024 win
+    # (following an earlier 2023 special election, a separate committee).
+    "cd6-official": ["Imelda Padilla for LA City Council 2024"],
+
+    # Monica Rodriguez, CD7. Ran unopposed and won outright in the June 2,
+    # 2026 primary.
+    "cd7-official": ["MONICA RODRIGUEZ FOR CITY COUNCIL 2026"],
+
+    # Marqueece Harris-Dawson, CD8. Current term's committee is his 2024 win.
+    "cd8-official": ["Harris-Dawson for City Council 2024"],
+
+    # Curren D. Price Jr., CD9. Termed out -- no 2026 committee exists in the
+    # Ethics Commission data. His current (final) term's committee is 2022.
+    "cd9-official": ["Curren Price, Jr. for City Council 2022"],
+
+    # Heather Hutt, CD10. Elected Nov 2024; primary + general committees.
+    "cd10-official": [
+        "Heather Hutt for City Council 2024",
+        "Heather Hutt for City Council 2024-General",
+    ],
+
+    # John Lee, CD12. Current term's committee is his 2024 win.
+    "cd12-official": ["John Lee for City Council 2024"],
+
+    # Hugo Soto-Martinez, CD13. Won outright in the June 2, 2026 primary.
+    "cd13-official": ["Hugo Soto-Martinez for City Council 2026"],
+
+    # Tim McOsker, CD15. Won outright in the June 2, 2026 primary.
+    "cd15-official": ["Tim McOsker for City Council 2026"],
 }
 
 PAC_PATTERN = re.compile(
