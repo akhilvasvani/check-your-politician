@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "name": "City of Los Angeles Bureau of Engineering \u2014 LA City Council Districts (Adopted 2021, Resolution No. 2021-04)",
+    "url": "https://geohub.lacity.org/datasets/lahub::la-city-council-districts-adopted-2021/about",
+    "retrieved_at": "2026-08-09",
+    "note": "District center points are representative points computed from the official adopted district polygons (guaranteed to fall inside each district's boundary), not self-reported office addresses. Mayor location is Los Angeles City Hall, the seat of the Office of the Mayor."
+  },
+  "mayor": {
+    "official_id": "mayor-bass",
+    "role": "mayor",
+    "center": [
+      34.0537767,
+      -118.2428987
+    ],
+    "location_label": "Los Angeles City Hall, 200 N Spring St, Los Angeles, CA 90012",
+    "official_url": "https://mayor.lacity.gov/"
+  },
+  "districts": [
+    {
+      "district": 1,
+      "official_id": "cd1-official",
+      "center": [
+        34.07635,
+        -118.22988
+      ],
+      "official_url": "https://councildistrict1.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 2,
+      "official_id": "cd2-official",
+      "center": [
+        34.18315,
+        -118.39971
+      ],
+      "official_url": "https://councildistrict2.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 3,
+      "official_id": "cd3-official",
+      "center": [
+        34.18073,
+        -118.59773
+      ],
+      "official_url": "https://councildistrict3.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 4,
+      "official_id": "cd4-official",
+      "center": [
+        34.15604,
+        -118.46556
+      ],
+      "official_url": "https://councildistrict4.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 5,
+      "official_id": "cd5-official",
+      "center": [
+        34.07252,
+        -118.35865
+      ],
+      "official_url": "https://councildistrict5.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 6,
+      "official_id": "cd6-official",
+      "center": [
+        34.21298,
+        -118.46748
+      ],
+      "official_url": "https://councildistrict6.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 7,
+      "official_id": "cd7-official",
+      "center": [
+        34.27923,
+        -118.39431
+      ],
+      "official_url": "https://councildistrict7.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 8,
+      "official_id": "cd8-official",
+      "center": [
+        33.983,
+        -118.325
+      ],
+      "official_url": "https://councildistrict8.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 9,
+      "official_id": "cd9-official",
+      "center": [
+        33.99858,
+        -118.26946
+      ],
+      "official_url": "https://councildistrict9.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 10,
+      "official_id": "cd10-official",
+      "center": [
+        34.04192,
+        -118.34408
+      ],
+      "official_url": "https://councildistrict10.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 11,
+      "official_id": "cd11-official",
+      "center": [
+        34.02397,
+        -118.43865
+      ],
+      "official_url": "https://councildistrict11.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 12,
+      "official_id": "cd12-official",
+      "center": [
+        34.26029,
+        -118.55234
+      ],
+      "official_url": "https://councildistrict12.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 13,
+      "official_id": "cd13-official",
+      "center": [
+        34.10746,
+        -118.25135
+      ],
+      "official_url": "https://councildistrict13.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 14,
+      "official_id": "cd14-official",
+      "center": [
+        34.08188,
+        -118.18174
+      ],
+      "official_url": "https://councildistrict14.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    },
+    {
+      "district": 15,
+      "official_id": "cd15-official",
+      "center": [
+        33.82884,
+        -118.30406
+      ],
+      "official_url": "https://councildistrict15.lacity.gov/?nla_win=p,75,75&nla_target=1"
+    }
+  ],
+  "boundary_geometry": {
+    "path": "data/geo/council_districts.geojson",
+    "description": "Simplified (topology-preserving) polygon boundaries derived from the same official adopted district geometry, for on-map district shading.",
+    "source_url": "https://geohub.lacity.org/datasets/lahub::la-city-council-districts-adopted-2021/about"
+  }
+}

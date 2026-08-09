@@ -1,0 +1,62 @@
+{
+  "$id": "districts.schema.json",
+  "title": "districts.json (data/districts.json)",
+  "description": "Geographic reference data for the citywide map: the Mayor's location and one center point per City Council district, plus a pointer to the simplified boundary GeoJSON used for the on-map district shading. Center points are representative points computed from the official adopted City Council district polygons (City of Los Angeles Bureau of Engineering / LA GeoHub), not self-reported office addresses. New, additive file — see CONTRACT.md.",
+  "type": "object",
+  "required": ["schema_version", "source", "mayor", "districts"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "source": {
+      "type": "object",
+      "required": ["name", "url"],
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+        "retrieved_at": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "mayor": {
+      "type": "object",
+      "required": ["official_id", "role", "center", "location_label"],
+      "properties": {
+        "official_id": { "type": "string" },
+        "role": { "type": "string", "enum": ["mayor"] },
+        "center": {
+          "type": "array",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "location_label": { "type": "string" },
+        "official_url": { "type": ["string", "null"] }
+      }
+    },
+    "districts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["district", "official_id", "center"],
+        "properties": {
+          "district": { "type": "number" },
+          "official_id": { "type": "string" },
+          "center": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "official_url": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "boundary_geometry": {
+      "type": "object",
+      "properties": {
+        "path": { "type": "string" },
+        "description": { "type": "string" },
+        "source_url": { "type": "string" }
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Check Your Politician — LA Money &amp; Votes</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -13,9 +14,36 @@
   </header>
 
   <main>
-    <div id="official-list" class="official-grid"></div>
+    <section id="map-section" aria-labelledby="map-heading">
+      <h2 id="map-heading">Citywide Map</h2>
+      <p class="map-intro">
+        One marker per City Council district, plus a separate Mayor marker at Los Angeles City Hall.
+        District shapes are the City of Los Angeles's own adopted boundaries
+        (<a href="https://geohub.lacity.org/datasets/lahub::la-city-council-districts-adopted-2021/about" target="_blank" rel="noopener noreferrer">LA GeoHub, adopted 2021</a>).
+        Hover or focus a marker for a name and funding summary; select it to open the full profile.
+      </p>
+
+      <div class="map-legend" aria-hidden="false">
+        <span class="map-legend-item"><span class="map-legend-swatch map-legend-swatch-district" aria-hidden="true">1</span> Council district marker (click for profile)</span>
+        <span class="map-legend-item"><span class="map-legend-swatch map-legend-swatch-mayor" aria-hidden="true">&#9733;</span> Mayor marker (citywide, not a district)</span>
+        <span class="map-legend-item"><span class="map-legend-swatch map-legend-swatch-boundary" aria-hidden="true"></span> Council district boundary</span>
+      </div>
+
+      <div id="la-map" role="application" aria-label="Interactive map of Los Angeles City Council districts and the Mayor"></div>
+      <p class="citymap-fallback-note">
+        If the map above doesn't load, every official is still listed and linked below.
+      </p>
+      <noscript>
+        <p class="citymap-fallback-note">JavaScript is required for the interactive map. All 16 officials are listed below.</p>
+      </noscript>
+    </section>
+
+    <h2 id="officials-heading" class="officials-heading">All Officials</h2>
+    <div id="official-list" class="official-grid" aria-labelledby="officials-heading"></div>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/map.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

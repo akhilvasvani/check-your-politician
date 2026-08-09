@@ -18,8 +18,8 @@
   --color-pending-text: #8a6212;
   --color-failed-bg: #fbebea;
   --color-failed-text: #a3352c;
-  /* Donor type colors, kept in step with TYPE_COLORS in js/graph.js so a donor
-     reads the same in the table as it does in the graph. */
+  /* Donor type colors, kept in step with TYPE_COLORS in js/treemap.js so a
+     donor reads the same in the table as it does in the treemap. */
   --color-type-individual: #4a6fa5;
   --color-type-pac: #c67b4a;
   --color-type-business: #5d8a6f;
@@ -114,6 +114,21 @@ main {
   color: var(--color-pending-text);
 }
 
+.official-party {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  color: var(--color-text);
+}
+
+.official-party-source {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.official-party-source a {
+  color: var(--color-accent);
+}
+
 .reelection-banner {
   margin-top: 1rem;
   padding: 0.85rem 1rem;
@@ -166,13 +181,6 @@ main {
   margin: 0 0 0.75rem;
   color: var(--color-text-muted);
   font-size: 0.92rem;
-}
-
-#graph {
-  height: 520px;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  background: var(--color-surface);
 }
 
 /* ---------------------------------------------------------------- */
@@ -478,4 +486,383 @@ main {
   color: var(--color-text-muted);
   font-style: italic;
   font-size: 0.9rem;
+}
+
+/* ================================================================== */
+/* Citywide map (index.html) + district mini-map (official.html)     */
+/* ================================================================== */
+
+.map-intro {
+  max-width: 68ch;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  margin: 0.25rem 0 1rem;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.map-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.map-legend-swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+  flex: 0 0 auto;
+}
+
+.map-legend-swatch-district {
+  background: var(--color-accent);
+}
+
+.map-legend-swatch-mayor {
+  background: #8a3fa0;
+}
+
+.map-legend-swatch-boundary {
+  width: 1.2rem;
+  height: 0.7rem;
+  border-radius: 3px;
+  background: #c9d3e0;
+  box-shadow: inset 0 0 0 1px #8a94a6;
+}
+
+#la-map,
+#official-mini-map {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  z-index: 0;
+}
+
+#official-mini-map {
+  height: 320px;
+  margin-top: 0.5rem;
+}
+
+.citymap-fallback-note,
+.treemap-fallback-note {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.citymap-error {
+  padding: 1.5rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Leaflet renders markers as .leaflet-marker-icon wrapping our own <a>; the
+   wrapper itself must not intercept pointer/keyboard focus box styling. */
+.citymap-marker-wrap {
+  background: transparent;
+  border: none;
+}
+
+.citymap-marker,
+.citymap-marker-mayor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  border: 2px solid #fff;
+}
+
+.citymap-marker-district {
+  background: var(--color-accent);
+}
+
+.citymap-marker-mayor {
+  background: #8a3fa0;
+  font-size: 1.1rem;
+}
+
+.citymap-marker:hover,
+.citymap-marker-mayor:hover {
+  filter: brightness(1.1);
+}
+
+.citymap-marker:focus-visible,
+.citymap-marker-mayor:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 2px;
+}
+
+/* Highlight ring used on official.html's mini-map to show "you are here"
+   without needing a second color scale. */
+.citymap-marker-focused {
+  box-shadow: 0 0 0 4px rgba(255, 191, 71, 0.9), 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.citymap-tooltip {
+  position: absolute;
+  z-index: 1000;
+  max-width: 260px;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.citymap-tip-name {
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+
+.citymap-tip-title {
+  color: var(--color-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.citymap-tip-party {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
+}
+
+.citymap-tip-funding {
+  margin-bottom: 0.15rem;
+}
+
+.citymap-tip-topdonor {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.citymap-tip-cta {
+  margin-top: 0.4rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.officials-heading {
+  margin-top: 2.5rem;
+}
+
+.district-summary {
+  margin: 0.25rem 0 0.35rem;
+  font-size: 0.95rem;
+}
+
+.district-contact {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.district-contact a {
+  color: var(--color-accent);
+}
+
+/* ================================================================== */
+/* Donor contribution treemap                                        */
+/* ================================================================== */
+
+.treemap-heading {
+  margin: 2rem 0 0.4rem;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.treemap-caption {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  max-width: 68ch;
+}
+
+.treemap-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.25rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.treemap-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.treemap-legend-swatch {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 3px;
+  flex: 0 0 auto;
+}
+
+.treemap-legend-swatch-individual { background: var(--color-type-individual); }
+.treemap-legend-swatch-pac { background: var(--color-type-pac); }
+.treemap-legend-swatch-business { background: var(--color-type-business); }
+.treemap-legend-swatch-unknown { background: var(--color-type-unknown); }
+
+.treemap-grid {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.treemap-tile {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  padding: 0.3rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.1rem;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.treemap-tile:hover,
+.treemap-tile.active {
+  filter: brightness(1.08);
+  border-color: #fff;
+  z-index: 1;
+}
+
+.treemap-tile:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: -3px;
+  z-index: 2;
+}
+
+.treemap-tile-name {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.78rem;
+  line-height: 1.15;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.treemap-tile-amount {
+  color: #fff;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.treemap-detail {
+  margin-top: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  font-size: 0.9rem;
+}
+
+.treemap-detail-name {
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.treemap-detail-row {
+  margin: 0.25rem 0;
+}
+
+.treemap-detail-row a {
+  color: var(--color-accent);
+}
+
+/* ================================================================== */
+/* Accessibility: focus states, reduced motion, mobile                */
+/* ================================================================== */
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #la-map {
+    height: 360px;
+  }
+
+  #official-mini-map {
+    height: 260px;
+  }
+
+  .map-legend,
+  .treemap-legend {
+    gap: 0.5rem 0.9rem;
+    font-size: 0.78rem;
+  }
+
+  .citymap-tooltip {
+    max-width: 200px;
+    font-size: 0.8rem;
+  }
+
+  .treemap-tile {
+    padding: 0.15rem 0.25rem;
+  }
+
+  .treemap-tile-name {
+    font-size: 0.62rem;
+    line-height: 1.05;
+  }
+
+  .treemap-tile-amount {
+    font-size: 0.58rem;
+  }
 }

@@ -55,6 +55,42 @@ function displayName(official) {
   return isPlaceholderName(official.name) ? official.office : official.name;
 }
 
+// Renders the "Party" field on official.html from data/officials.json's
+// optional/additive `party` field (see CONTRACT.md). Looks the official up
+// by id rather than reusing the funding.json copy of `official`, since
+// party affiliation lives only in officials.json. A missing `party` block,
+// or a lookup/fetch failure, renders "Not publicly listed" rather than
+// leaving the field blank or fabricating a value.
+async function renderPartyField(id) {
+  const el = document.getElementById("official-party");
+  if (!el) return;
+
+  let officials;
+  try {
+    const res = await fetch("data/officials.json");
+    if (!res.ok) throw new Error("officials.json not found");
+    officials = await res.json();
+  } catch (err) {
+    el.hidden = true;
+    return;
+  }
+
+  const entry = officials.find((o) => o.id === id);
+  const party = entry && entry.party;
+  const affiliation = (party && party.affiliation) || "Not publicly listed";
+
+  el.hidden = false;
+  let html = `<strong>Party:</strong> ${escapeHtml(affiliation)}`;
+  if (party && party.source && party.source.name) {
+    const label = escapeHtml(party.source.name);
+    const linked = party.source.url
+      ? `<a href="${escapeHtml(party.source.url)}" target="_blank" rel="noopener noreferrer">${label}</a>`
+      : label;
+    html += ` <span class="official-party-source">(Source: ${linked})</span>`;
+  }
+  el.innerHTML = html;
+}
+
 // Renders "Source: <name>" into el, linked when the source carries a URL.
 // `detail` is appended in parentheses — used to name the exact committees a
 // donor list was drawn from.
@@ -488,6 +524,27 @@ async function loadOfficialPage() {
   const official = funding.official;
   nameEl.textContent = displayName(official);
   document.getElementById("official-office").textContent = official.office;
+  renderPartyField(id);
+
+  // District/contact context is optional/additive (see CONTRACT.md) — a
+  // missing or failed districts.json fetch must not break the rest of the
+  // profile page, it just leaves this section blank.
+  try {
+    const districtsRes = await fetch("data/districts.json");
+    if (districtsRes.ok) {
+      const districts = await districtsRes.json();
+      renderDistrictContact(id, districts);
+      if (typeof initCitywideMap === "function" && document.getElementById("official-mini-map")) {
+        initCitywideMap("official-mini-map", { focusId: id }).catch((err) => {
+          console.warn("[app.js] Official mini-map failed to init:", err);
+          const fallback = document.getElementById("district-map-fallback");
+          if (fallback) fallback.hidden = false;
+        });
+      }
+    }
+  } catch (err) {
+    console.warn("[app.js] Could not load district/contact context:", err);
+  }
 
   renderReelectionBanner(official.reelection);
   renderFunding(funding);
@@ -495,10 +552,54 @@ async function loadOfficialPage() {
   renderRecord(record.items || [], "all");
   renderSourceNote(document.getElementById("record-source"), record.source);
 
-  if (typeof renderFundingGraph === "function") {
-    renderFundingGraph("graph", funding);
+  if (typeof renderDonorTreemap === "function") {
+    renderDonorTreemap("donor-treemap", funding);
   }
+}
+
+// Renders the "District & Contact" section on a profile page from
+// data/districts.json. Looks up the current official by id among either the
+// 15 council districts or the mayor entry; if not found (e.g. districts.json
+// is missing or the id doesn't match), the section is simply left blank
+// rather than showing incorrect or invented contact information.
+function renderDistrictContact(id, districts) {
+  const summaryEl = document.getElementById("district-summary");
+  const contactEl = document.getElementById("district-contact");
+  if (!summaryEl || !contactEl) return;
+
+  const mayorEntry = districts.mayor && districts.mayor.official_id === id ? districts.mayor : null;
+  const districtEntry = (districts.districts || []).find((d) => d.official_id === id) || null;
+
+  if (mayorEntry) {
+    summaryEl.textContent =
+      "Elected citywide as Mayor of Los Angeles \u2014 not tied to a single Council district.";
+    contactEl.innerHTML = mayorEntry.location_label
+      ? `Office: ${escapeHtml(mayorEntry.location_label)}`
+      : "";
+    if (mayorEntry.official_url) {
+      contactEl.innerHTML += ` &middot; <a href="${escapeHtml(mayorEntry.official_url)}" target="_blank" rel="noopener noreferrer">Official website</a>`;
+    }
+    return;
+  }
+
+  if (districtEntry) {
+    summaryEl.textContent = `Represents Los Angeles City Council District ${districtEntry.district}.`;
+    contactEl.innerHTML = districtEntry.official_url
+      ? `<a href="${escapeHtml(districtEntry.official_url)}" target="_blank" rel="noopener noreferrer">Official district website</a>`
+      : "";
+    return;
+  }
+
+  summaryEl.textContent = "";
+  contactEl.textContent = "";
 }
 
 loadOfficialsIndex();
 loadOfficialPage();
+
+// Independent of both loaders above: a citywide map failure (e.g. Leaflet
+// didn't load, or a data file 404s) must never block the officials grid or
+// the profile page, so it is wired on its own and swallows its own errors.
+if (typeof initCitywideMap === "function" && document.getElementById("la-map")) {
+  initCitywideMap("la-map").catch((err) => console.warn("[app.js] Citywide map failed to init:", err));
+}
