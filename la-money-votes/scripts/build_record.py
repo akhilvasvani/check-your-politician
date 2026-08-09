@@ -21,6 +21,9 @@ Term cutoffs used to classify "current" vs "previous":
   term (won outright in the June 2, 2026 primary) starting ~2026-07-01.
   No confirmed, sourced Council File exists yet for her second term as of
   this script's last update, so every item below is "previous".
+- cd2-official    (Adrin Nazarian): single term in progress since 2024-12-09
+  (per https://clerk.lacity.gov/articles/current-elected-officials) ->
+  everything "current".
 
 Every item also carries a "source_url" pointing at the primary record it was
 read from, so a reader can check any row without taking our word for it. See
@@ -98,6 +101,26 @@ RECORDS = {
          "role": "voted_yes", "date": "2026-03-27", "outcome": "passed", "term": "previous"},
         {"council_file": "25-0006-S88", "title": "Sales Tax Relief for Purchases / Palisades Reconstruction / 1% Share of Sales Tax",
          "role": "proposed", "date": "2026-03-27", "outcome": "pending", "term": "previous"},
+    ],
+    "cd2-official": [
+        # Verified directly on cityclerk.lacity.org's CFMS record page for
+        # each file (fetched 2026-08-08/09) — not from a secondary aggregator
+        # or press writeup. Roles reflect exactly what each page's Mover/
+        # Second fields showed for Nazarian; items where he only appears in
+        # the roll-call vote table (not as mover/seconder) were left out
+        # rather than guessed into "voted_yes" rows, per the no-inference
+        # rule — see the verification report for the full list of items
+        # considered and excluded.
+        {"council_file": "25-0057", "title": "648 and 800 West Avenue 37 / Mt. Washington / Criminal Activity / Illegal Dumping / Temporary Closure",
+         "role": "seconded", "date": "2025-07-30", "outcome": "passed", "term": "current"},
+        {"council_file": "25-0964", "title": "New Financial Policy / Exceeding Contract Spending",
+         "role": "seconded", "date": "2025-08-20", "outcome": "pending", "term": "current"},
+        {"council_file": "25-1036", "title": "Chapter 11.20 of Title 11 / Health and Safety of the Los Angeles County Code / Maximum Indoor Temperature / Rental Housing",
+         "role": "proposed", "date": "2025-09-03", "outcome": "passed", "term": "current"},
+        {"council_file": "26-0195-S4", "title": "Keep Hollywood Home / FilmLA / Episodic Series / Feature Film / Commercial Production Retention Program",
+         "role": "proposed", "date": "2026-02-13", "outcome": "pending", "term": "current"},
+        {"council_file": "26-0705", "title": "Non-Profit Private Country/Golf Clubs (Social Clubs) / Annual Parcel Tax / November 2026 Ballot",
+         "role": "proposed", "date": "2026-05-08", "outcome": "pending", "term": "current"},
     ],
     "mayor-bass": [
         {"council_file": "ED-1", "title": "Expedition of Permits and Clearances for Temporary Shelters and Affordable Housing Types",

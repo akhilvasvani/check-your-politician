@@ -46,10 +46,16 @@ SOURCE = {
 #   second term began ~2026-07-01. Same curation as build_record.py's term
 #   cutoffs — see that file's docstring.
 # - cd14-official (Ysabel Jurado): won the November 5, 2024 CD14 general.
+# - cd2-official (Adrin Nazarian): the LA City Clerk's "Current Elected
+#   Officials" roster confirms he assumed office 12/9/24 for his first term
+#   (https://clerk.lacity.gov/articles/current-elected-officials), which is
+#   only possible if he won the November 5, 2024 CD2 general — the contribution
+#   export itself never says this, so it's recorded here rather than derived.
 # - mayor-bass: 2026 election is still ahead, so there is no result yet.
 ELECTION_RESULTS = {
     "cd11-official": "won",
     "cd14-official": "won",
+    "cd2-official": "won",
 }
 
 # CSV column names, as they appear in the LA Ethics Commission export header.
@@ -89,6 +95,15 @@ COMMITTEES = {
     "cd14-official": ["Jurado for City Council 2024", "Ysabel Jurado for City Council 2024-General"],
     # Traci Park, current CD11 councilmember, running for reelection in 2026.
     "cd11-official": ["Traci Park for City Council 2026"],
+    # Adrin Nazarian, elected CD2 in Nov 2024; current term runs to 2028, so
+    # these are his 2024 election committees (primary + general). Confirmed
+    # via a live query against the same Ethics Commission dataset SOURCE
+    # cites (data.lacity.org resource m6g2-gc6c), grouped by cand_name =
+    # 'Nazarian, Adrin' — not copied from a secondary aggregator.
+    "cd2-official": [
+        "Adrin Nazarian for City Council 2024",
+        "Adrin Nazarian for City Council 2024-General",
+    ],
 }
 
 PAC_PATTERN = re.compile(
@@ -283,6 +298,17 @@ def main() -> None:
         default=str(DEFAULT_CSV),
         help=f"path to the LA Ethics Commission contributions CSV (default: {DEFAULT_CSV})",
     )
+    parser.add_argument(
+        "--official",
+        action="append",
+        help=(
+            "only (re)build funding.json for this official id; may be repeated. "
+            "Default: every official in data/officials.json. Use this when the "
+            "CSV on hand only covers one official's committee(s), so the others' "
+            "already-committed funding.json isn't overwritten with an empty "
+            "donor list for rows it can't find."
+        ),
+    )
     args = parser.parse_args()
 
     csv_path = Path(args.csv_path)
@@ -293,6 +319,8 @@ def main() -> None:
 
     today = date.today().isoformat()
     officials = json.loads(OFFICIALS_INDEX.read_text())
+    if args.official:
+        officials = [o for o in officials if o.get("id") in args.official]
     for official in officials:
         build_funding(official, rows_by_official, today)
 
