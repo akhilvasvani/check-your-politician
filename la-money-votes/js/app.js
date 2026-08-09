@@ -219,26 +219,47 @@ function sortedDonors(donors, key, dir) {
     .map((entry) => entry.donor);
 }
 
-function donorRowHtml(donor) {
+// One <li> per contribution, with a "Source" link when build_funding.py
+// resolved one (see CONTRACT.md's donors[].contributions[].source_url) —
+// plain text otherwise, never a guessed link.
+function contributionDetailHtml(c) {
+  const dateLabel = escapeHtml(formatDate(c.date) || "Undated");
+  const amountLabel = escapeHtml(formatMoney(c.amount));
+  const sourceLink = c.source_url
+    ? `<a href="${escapeHtml(c.source_url)}" target="_blank" rel="noopener noreferrer">Source</a>`
+    : '<span class="muted">No filing link on file</span>';
+  return `<li><span class="contribution-date">${dateLabel}</span><span class="contribution-amount">${amountLabel}</span><span class="contribution-source">${sourceLink}</span></li>`;
+}
+
+function donorRowHtml(donor, rowIndex) {
   const type = String(donor.type || "");
   const typeLabel = DONOR_TYPE_LABELS[type] || type || "Unknown";
   const contributions = donorContributions(donor);
   const latest = donorLatestDate(donor);
-  // The graph has click-through tooltips for the full history; in the table the
-  // breakdown rides along as a title so the count stays one glanceable number.
-  const breakdown = contributions
-    .map((c) => `${formatDate(c.date) || "Undated"}: ${formatMoney(c.amount)}`)
-    .join("\n");
+  const detailsId = `donor-details-${rowIndex}`;
 
   return `
     <tr>
       <td class="donor-name">${escapeHtml(donor.name)}</td>
       <td><span class="type-badge type-${escapeHtml(type || "unknown")}">${escapeHtml(typeLabel)}</span></td>
       <td class="donor-employer">${donor.employer ? escapeHtml(donor.employer) : '<span class="muted">—</span>'}</td>
-      <td class="num"${breakdown ? ` title="${escapeHtml(breakdown)}"` : ""}>${contributions.length}</td>
+      <td class="num">${
+        contributions.length
+          ? `<button type="button" class="donor-details-toggle" aria-expanded="false" aria-controls="${detailsId}">${contributions.length}</button>`
+          : contributions.length
+      }</td>
       <td class="donor-date">${latest ? escapeHtml(formatDate(latest)) : '<span class="muted">—</span>'}</td>
       <td class="num donor-total">${escapeHtml(formatMoney(donorTotal(donor)))}</td>
     </tr>
+    ${
+      contributions.length
+        ? `<tr class="donor-details-row" id="${detailsId}" hidden>
+            <td colspan="6">
+              <ul class="donor-details-list">${contributions.map(contributionDetailHtml).join("")}</ul>
+            </td>
+          </tr>`
+        : ""
+    }
   `;
 }
 
@@ -252,9 +273,10 @@ function renderDonors() {
   const filtered = type === "all" ? donors.slice() : donors.filter((d) => d.type === type);
   const rows = sortedDonors(filtered, sortKey, sortDir);
 
-  table.querySelector("tbody").innerHTML = rows.map(donorRowHtml).join("");
+  table.querySelector("tbody").innerHTML = rows.map((donor, i) => donorRowHtml(donor, i)).join("");
   table.hidden = rows.length === 0;
   emptyEl.hidden = rows.length !== 0;
+  wireDonorDetailToggles();
 
   if (summaryEl) {
     const shownTotal = rows.reduce((sum, d) => sum + donorTotal(d), 0);
@@ -272,6 +294,20 @@ function renderDonors() {
     th.classList.toggle("sorted", isActive);
     const indicator = th.querySelector(".sort-indicator");
     if (indicator) indicator.textContent = isActive ? (sortDir === "asc" ? "▲" : "▼") : "";
+  });
+}
+
+// Every render rebuilds the tbody from scratch, so toggles are re-wired each
+// time rather than persisted — a re-sort or re-filter always starts collapsed.
+function wireDonorDetailToggles() {
+  document.querySelectorAll(".donor-details-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const row = document.getElementById(btn.getAttribute("aria-controls"));
+      if (!row) return;
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      row.hidden = expanded;
+    });
   });
 }
 

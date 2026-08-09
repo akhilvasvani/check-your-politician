@@ -24,6 +24,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OFFICIALS_INDEX = ROOT / "data" / "officials.json"
 DEFAULT_CSV = ROOT / "data" / "raw" / "contributions.csv"
+# Second bulk export, used only to resolve donors[].contributions[].source_url
+# (see CONTRACT.md). Same convention as DEFAULT_CSV: downloaded locally, never
+# committed. Optional — its absence just means no contribution gets a
+# source_url this build, not an error.
+DEFAULT_STATEMENTS_CSV = ROOT / "data" / "raw" / "statements_filed.csv"
 TOP_N_DONORS = 30
 
 # Primary source for every number in the output. Only verified, stable URLs
@@ -112,6 +117,9 @@ COL_CONTRIBUTOR = "Contributor"
 COL_OCCUPATION = "Contrib Occupation"
 COL_EMPLOYER = "Contrib Employer"
 COL_COMMITTEE = "Committee Name"
+COL_COMMITTEE_ID = "Committee ID"
+COL_PERIOD_BEG = "Period Beg Date"
+COL_PERIOD_END = "Period End Date"
 COL_AMOUNT = "Contribution Amount"
 COL_TYPE = "Contribution Type"
 COL_ELECTION_DATE = "Election Date"
@@ -265,6 +273,37 @@ def infer_donor_type(name, has_occupation_or_employer):
     return "individual"
 
 
+def load_statement_links(csv_path: Path):
+    """Map (Committee ID, Period Beg Date, Period End Date) -> stmt_link.
+
+    Source: the Ethics Commission's "City Campaign Statements Filed" export
+    (data.lacity.org resource br3a-db9a) — see CONTRACT.md for the full
+    citation and the reasoning for using a period-match join instead of a
+    per-transaction link that doesn't exist. Returns {} if the file isn't
+    present locally; that's a normal, expected state (see DEFAULT_STATEMENTS_CSV),
+    not an error — contributions just come out with no source_url.
+    """
+    if not csv_path.exists():
+        print(f"note: {csv_path} not found; contributions will have no source_url")
+        return {}
+    lookup = {}
+    with csv_path.open(newline="", encoding="utf-8-sig") as f:
+        for row in csv.DictReader(f):
+            key = (
+                (row.get("cmt_id") or "").strip(),
+                (row.get("period_from_date") or "").strip(),
+                (row.get("period_to_date") or "").strip(),
+            )
+            link = (row.get("stmt_link") or "").strip()
+            if all(key) and link:
+                # Later rows don't overwrite earlier ones: if a period is ever
+                # refiled/duplicated in the export, keep the first stable link
+                # rather than silently swapping which document a contribution
+                # points to between runs.
+                lookup.setdefault(key, link)
+    return lookup
+
+
 def committee_lookup():
     """Map lowercased committee name -> official id, across all officials."""
     lookup = {}
@@ -291,7 +330,8 @@ def load_rows_by_official(csv_path: Path):
     return rows_by_official
 
 
-def build_donors(rows):
+def build_donors(rows, statement_links=None):
+    statement_links = statement_links or {}
     grouped = {}
     for row in rows:
         if (row.get(COL_TYPE) or "").strip().lower() not in DONOR_CONTRIBUTION_TYPES:
@@ -310,7 +350,19 @@ def build_donors(rows):
         has_occupation_or_employer = False
         for row, amount in entries:
             total += amount
-            contributions.append({"date": parse_date(row.get(COL_DATE)), "amount": amount})
+            entry = {"date": parse_date(row.get(COL_DATE)), "amount": amount}
+            # See CONTRACT.md — exact-key join to the filing that disclosed
+            # this contribution; absent (not guessed) when the key doesn't
+            # match anything in the statements export.
+            link_key = (
+                (row.get(COL_COMMITTEE_ID) or "").strip(),
+                (row.get(COL_PERIOD_BEG) or "").strip(),
+                (row.get(COL_PERIOD_END) or "").strip(),
+            )
+            source_url = statement_links.get(link_key)
+            if source_url:
+                entry["source_url"] = source_url
+            contributions.append(entry)
             occupation = clean_field(row.get(COL_OCCUPATION))
             row_employer = clean_field(row.get(COL_EMPLOYER))
             if occupation or row_employer:
@@ -370,7 +422,7 @@ def build_reelection(official_id, committee_names, rows, today=None):
     }
 
 
-def build_funding(official, rows_by_official, today=None) -> None:
+def build_funding(official, rows_by_official, today=None, statement_links=None) -> None:
     official_id = official.get("id")
     committee_names = COMMITTEES.get(official_id, [])
     rows = rows_by_official.get(official_id, [])
@@ -388,7 +440,7 @@ def build_funding(official, rows_by_official, today=None) -> None:
             "reelection": build_reelection(official_id, committee_names, rows, today),
         },
         "source": dict(SOURCE, committees=committee_names),
-        "donors": build_donors(rows),
+        "donors": build_donors(rows, statement_links),
     }
 
     out_path = ROOT / "data" / "officials" / official_id / "funding.json"
@@ -416,6 +468,16 @@ def main() -> None:
             "donor list for rows it can't find."
         ),
     )
+    parser.add_argument(
+        "--statements-csv",
+        default=str(DEFAULT_STATEMENTS_CSV),
+        help=(
+            "path to the LA Ethics Commission 'City Campaign Statements Filed' "
+            f"CSV, used only to resolve contributions[].source_url (default: "
+            f"{DEFAULT_STATEMENTS_CSV}). Optional — if missing, contributions "
+            "are written with no source_url rather than a guessed one."
+        ),
+    )
     args = parser.parse_args()
 
     csv_path = Path(args.csv_path)
@@ -423,13 +485,14 @@ def main() -> None:
         raise SystemExit(f"CSV not found: {csv_path}")
 
     rows_by_official = load_rows_by_official(csv_path)
+    statement_links = load_statement_links(Path(args.statements_csv))
 
     today = date.today().isoformat()
     officials = json.loads(OFFICIALS_INDEX.read_text())
     if args.official:
         officials = [o for o in officials if o.get("id") in args.official]
     for official in officials:
-        build_funding(official, rows_by_official, today)
+        build_funding(official, rows_by_official, today, statement_links)
 
 
 if __name__ == "__main__":

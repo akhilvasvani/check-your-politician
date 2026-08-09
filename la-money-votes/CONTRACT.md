@@ -117,6 +117,45 @@ Only verified URLs belong in either field. On a site whose whole claim is that
 you can check the numbers yourself, a link that goes somewhere approximate is
 worse than no link.
 
+### `funding.json` → `donors[].contributions[].source_url`
+
+`source_url` is the primary-source link for one itemized contribution, or
+absent/`null` when no stable filing link could be resolved. The Ethics
+Commission does not publish a per-transaction permalink (see `source` above),
+but it does publish every campaign statement (Form CA460) it received, each
+at its own stable document URL, in a second bulk dataset: "City Campaign
+Statements Filed" (`data.lacity.org` resource `br3a-db9a`, download:
+`https://data.lacity.org/api/v3/views/br3a-db9a/query.json?accessType=DOWNLOAD`,
+landing page `https://data.lacity.org/d/br3a-db9a`).
+
+`build_funding.py` joins each contribution row to the exact statement that
+disclosed it — on `Committee ID` + `Period Beg Date` + `Period End Date`
+against that dataset's `cmt_id` + `period_from_date` + `period_to_date` — and,
+on a match, takes that filing's `stmt_link` as the contribution's
+`source_url`. This is a link to the actual regulatory filing (a scanned CA460
+document) that reported the contribution, not a link to the single line item
+inside it — the Commission does not offer anything more granular — but it is
+a verified, non-guessed primary-source document, and it is exact about which
+filing to check. The join is on record identifiers already present in both
+official datasets, never on name-matching or inference.
+
+Because the join needs a second local input file
+(`data/raw/statements_filed.csv`, same as `contributions.csv`: downloaded
+locally, never committed) that a given local checkout may not have, this
+field can legitimately be absent even for a contribution that in principle
+has a matching filing. Absence must always be read as "not resolved in this
+build," never as "does not exist."
+
+```json
+{
+  "name": "Sample PAC A", "type": "pac", "total": 5400, "employer": null,
+  "contributions": [
+    { "date": "2025-03-01", "amount": 5400,
+      "source_url": "https://ethics.lacity.org/view/?document_id=133955" }
+  ]
+}
+```
+
 ## Ownership
 
 | Path | Owner |
