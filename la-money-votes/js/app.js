@@ -386,8 +386,8 @@ function renderRecordTerm(items, term, filterKey) {
   if (!table || !emptyEl) return;
 
   const filterFn = RECORD_FILTERS[filterKey] || RECORD_FILTERS.all;
-  const filtered = items
-    .filter((item) => item.term === term)
+  const inTerm = items.filter((item) => item.term === term);
+  const filtered = inTerm
     .filter(filterFn)
     .slice()
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)); // newest first
@@ -395,6 +395,12 @@ function renderRecordTerm(items, term, filterKey) {
   table.querySelector("tbody").innerHTML = filtered.map(recordRowHtml).join("");
   table.hidden = filtered.length === 0;
   emptyEl.hidden = filtered.length !== 0;
+  // An empty term and an empty filter result look identical but mean very
+  // different things — a councilmember who just started a new term has nothing
+  // on file yet, which shouldn't read as "your filter matched nothing".
+  emptyEl.textContent = inTerm.length
+    ? "No matching items."
+    : "Nothing on file for this term yet.";
 }
 
 function renderRecord(items, filterKey) {
