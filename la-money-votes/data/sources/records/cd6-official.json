@@ -1,0 +1,45 @@
+{
+  "official_id": "cd6-official",
+  "items": [
+    {
+      "council_file": "26-1063",
+      "title": "CARE+ Cleanup Efforts / Council District 6 / AB1290 Fund / Police Department Fund",
+      "role": "proposed",
+      "date": "2026-08-04",
+      "outcome": "pending",
+      "term": "current"
+    },
+    {
+      "council_file": "26-1064",
+      "title": "Northeast Graffiti Busters (NEGB) / AB1290 Fund / Supplemental Beautification Services / Council District 6",
+      "role": "proposed",
+      "date": "2026-08-04",
+      "outcome": "pending",
+      "term": "current"
+    },
+    {
+      "council_file": "25-1434",
+      "title": "Illegal Dumping Enforcement / Trash Collection / Council District 6 / AB1290 Fund",
+      "role": "proposed",
+      "date": "2025-12-03",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "25-1435",
+      "title": "AB1290 Fund / CARE+ Cleanup / Police Department Fund / Overtime / Council District 6",
+      "role": "proposed",
+      "date": "2025-12-03",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "23-0973-S1",
+      "title": "Northeast Graffiti Busters (NEGB) / Beautification Services / Council District 6 / Neighborhood Service Enhancements / General City Purposes Fund / Transfer / Contractual Services / 2024-25",
+      "role": "proposed",
+      "date": "2024-11-08",
+      "outcome": "passed",
+      "term": "current"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "$id": "sources_registry.schema.json",
+  "title": "Builder configuration registry (data/sources/registry.json)",
+  "description": "Per-official pipeline configuration: which committees fund an official, the curated-record source and fixture path. Not read by the frontend. Every key under 'officials' must have a matching entry in data/officials.json (enforced by pipeline.registry.validate_cross_reference).",
+  "type": "object",
+  "required": ["schema_version", "officials"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "officials": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["funding", "record"],
+        "properties": {
+          "funding": {
+            "type": "object",
+            "required": ["committees"],
+            "properties": {
+              "committees": { "type": "array", "items": { "type": "string" } },
+              "election_result": { "type": ["string", "null"], "enum": ["won", "lost", "runoff", null] }
+            }
+          },
+          "record": {
+            "type": "object",
+            "required": ["source", "fixture"],
+            "properties": {
+              "source": {
+                "type": "object",
+                "required": ["name", "url"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "url": { "type": "string" }
+                }
+              },
+              "fixture": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

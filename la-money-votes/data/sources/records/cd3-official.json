@@ -1,0 +1,45 @@
+{
+  "official_id": "cd3-official",
+  "items": [
+    {
+      "council_file": "26-1078",
+      "title": "Additional Police Services / AB1290 Fund / Council District 3 / Police Fund",
+      "role": "proposed",
+      "date": "2026-08-05",
+      "outcome": "pending",
+      "term": "current"
+    },
+    {
+      "council_file": "26-0071-S1",
+      "title": "Permanent Supportive Housing Projects / Elderberry and the Nova / 2026-27 Street Strategies / Supplemental Funding / Council District 3",
+      "role": "proposed",
+      "date": "2026-06-30",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "25-0863",
+      "title": "Los Angeles Municipal Code Section 56.16 / Repeal",
+      "role": "proposed",
+      "date": "2025-08-01",
+      "outcome": "pending",
+      "term": "current"
+    },
+    {
+      "council_file": "25-0916",
+      "title": "Interim Control Ordinance / Tobacco, Nicotine, and Related Products / Prohibition of Establishment or Expansion / Operations Near Sensitive Uses",
+      "role": "seconded",
+      "date": "2025-08-12",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "26-2000",
+      "title": "2026 City Council Standing Committees / New Committee Structure",
+      "role": "seconded",
+      "date": "2026-08-04",
+      "outcome": "pending",
+      "term": "current"
+    }
+  ]
+}

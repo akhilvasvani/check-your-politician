@@ -1,0 +1,64 @@
+{
+  "$id": "funding.schema.json",
+  "title": "funding.json (data/officials/<id>/funding.json)",
+  "description": "Campaign donors and contribution history for one official. The original frozen shape (official, donors[].{name,type,total,employer,contributions[].{date,amount}}) is unchanged; provenance/source fields documented here are additive — see CONTRACT.md.",
+  "type": "object",
+  "required": ["official", "source", "donors"],
+  "properties": {
+    "official": {
+      "type": "object",
+      "required": ["id", "name", "office"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "office": { "type": "string" },
+        "reelection": {
+          "type": ["object", "null"],
+          "properties": {
+            "active": { "type": "boolean" },
+            "election_date": { "type": ["string", "null"] },
+            "committee": { "type": ["string", "null"] },
+            "result": { "type": ["string", "null"], "enum": ["won", "lost", "runoff", null] }
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["name", "url"],
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+        "committees": { "type": "array", "items": { "type": "string" } },
+        "retrieved_at": { "type": "string" },
+        "methodology_version": { "type": "string" }
+      }
+    },
+    "donors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "total", "contributions"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["individual", "pac", "business"] },
+          "total": { "type": "number" },
+          "employer": { "type": ["string", "null"] },
+          "contributions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["date", "amount"],
+              "properties": {
+                "date": { "type": "string" },
+                "amount": { "type": "number" },
+                "source_url": { "type": ["string", "null"] },
+                "provenance": { "$ref": "provenance.schema.json" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

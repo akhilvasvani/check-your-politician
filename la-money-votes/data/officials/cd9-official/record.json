@@ -2,7 +2,9 @@
   "official_id": "cd9-official",
   "source": {
     "name": "LA City Clerk \u2014 Council File Management System",
-    "url": "https://cityclerk.lacity.org/lacityclerkconnect/"
+    "url": "https://cityclerk.lacity.org/lacityclerkconnect/",
+    "retrieved_at": "2026-08-09",
+    "methodology_version": "1.0"
   },
   "items": [
     {
@@ -12,7 +14,16 @@
       "date": "2026-08-04",
       "outcome": "pending",
       "term": "current",
-      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-1048"
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-1048",
+      "provenance": {
+        "source_name": "LA City Clerk \u2014 Council File Management System",
+        "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-1048",
+        "retrieved_at": "2026-08-09",
+        "reporting_period": null,
+        "meeting_date": "2026-08-04",
+        "record_id": "26-1048",
+        "methodology_version": "1.0"
+      }
     },
     {
       "council_file": "26-0929",
@@ -21,7 +32,16 @@
       "date": "2026-06-24",
       "outcome": "passed",
       "term": "current",
-      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0929"
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0929",
+      "provenance": {
+        "source_name": "LA City Clerk \u2014 Council File Management System",
+        "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0929",
+        "retrieved_at": "2026-08-09",
+        "reporting_period": null,
+        "meeting_date": "2026-06-24",
+        "record_id": "26-0929",
+        "methodology_version": "1.0"
+      }
     },
     {
       "council_file": "25-1072",
@@ -30,7 +50,16 @@
       "date": "2025-09-12",
       "outcome": "passed",
       "term": "current",
-      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-1072"
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-1072",
+      "provenance": {
+        "source_name": "LA City Clerk \u2014 Council File Management System",
+        "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-1072",
+        "retrieved_at": "2026-08-09",
+        "reporting_period": null,
+        "meeting_date": "2025-09-12",
+        "record_id": "25-1072",
+        "methodology_version": "1.0"
+      }
     },
     {
       "council_file": "25-0340",
@@ -39,7 +68,16 @@
       "date": "2025-03-28",
       "outcome": "passed",
       "term": "current",
-      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0340"
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0340",
+      "provenance": {
+        "source_name": "LA City Clerk \u2014 Council File Management System",
+        "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0340",
+        "retrieved_at": "2026-08-09",
+        "reporting_period": null,
+        "meeting_date": "2025-03-28",
+        "record_id": "25-0340",
+        "methodology_version": "1.0"
+      }
     },
     {
       "council_file": "26-0204",
@@ -48,7 +86,16 @@
       "date": "2026-02-13",
       "outcome": "passed",
       "term": "current",
-      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0204"
+      "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0204",
+      "provenance": {
+        "source_name": "LA City Clerk \u2014 Council File Management System",
+        "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0204",
+        "retrieved_at": "2026-08-09",
+        "reporting_period": null,
+        "meeting_date": "2026-02-13",
+        "record_id": "26-0204",
+        "methodology_version": "1.0"
+      }
     }
   ]
 }

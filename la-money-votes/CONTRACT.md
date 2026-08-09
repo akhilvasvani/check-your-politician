@@ -156,6 +156,113 @@ build," never as "does not exist."
 }
 ```
 
+### `funding.json` / `record.json` → `source.retrieved_at` and `source.methodology_version`
+
+Two more optional/additive fields on the existing `source` block (both
+`funding.json`'s top-level `source` and `record.json`'s top-level `source`):
+
+```json
+{
+  "name": "Los Angeles City Ethics Commission — City Campaign Contributions (and Misc. Increases to Cash)",
+  "url": "https://ethics.lacity.org/",
+  "committees": ["Traci Park for City Council 2026"],
+  "retrieved_at": "2026-08-08",
+  "methodology_version": "1.0"
+}
+```
+
+- `retrieved_at` — the date (`YYYY-MM-DD`) this build actually ran, i.e. when
+  the underlying source was read. Distinct from any date inside the source
+  data itself (a filing date, a contribution date, a meeting date).
+- `methodology_version` — the pipeline's own methodology version string (see
+  `scripts/pipeline/provenance.py`'s `METHODOLOGY_VERSION`), bumped whenever
+  a change to *how* a field is computed (not just its committed value) could
+  make a reader's prior understanding of a number wrong — e.g. changing which
+  `Contribution Type` values count as a "donor," or changing how re-election
+  status is derived. Consumers can use this to detect "the shape of the
+  computation changed" independent of "the underlying civic data changed."
+
+### `funding.json` → `donors[].contributions[].provenance` and `record.json` → `items[].provenance`
+
+Every individual factual record (one itemized contribution; one record item)
+now additionally carries its own `provenance` block, on top of (not instead
+of) the dataset-level `source` block above. The dataset-level `source` says
+"this whole file came from the LA Ethics Commission, fetched on this date";
+`provenance` says the same thing again at the level of one row, plus
+whatever that specific row can add — reporting period, meeting date, and a
+stable record/filing ID when one exists — so a single contribution or vote
+can be traced without having to fall back to the file-level citation.
+
+```json
+{
+  "source_name": "Los Angeles City Ethics Commission — City Campaign Contributions (and Misc. Increases to Cash)",
+  "source_url": "https://ethics.lacity.org/view/?document_id=133955",
+  "retrieved_at": "2026-08-08",
+  "reporting_period": { "from": "2026-01-01", "to": "2026-06-30" },
+  "meeting_date": null,
+  "record_id": "9999001",
+  "methodology_version": "1.0"
+}
+```
+
+`reporting_period` is populated for funding contributions (the campaign
+statement's filing period) and is `null` for record items; `meeting_date` is
+populated for record items (the council-file action or executive-directive
+date) and is `null` for contributions — a given record only ever fills in
+the one that applies to its source type. `record_id` is the Committee ID for
+a contribution or the council-file / ED / EO number for a record item, or
+`null` when no stable identifier is available. See
+`scripts/pipeline/provenance.py:make_provenance()` — every builder calls this
+same function, so the shape is identical across both files.
+
+### New: `data/schemas/*.schema.json`
+
+Each of `officials.json`, `sources_registry.json`, `funding.json`,
+`record.json`, `build_report.json`, `freshness.json`, and the shared
+`provenance` block now has a companion JSON Schema file documenting its
+shape precisely (types, required fields, enums). These are validated against
+by `scripts/pipeline/validation.py:validate_schema()` — a small hand-rolled
+subset of JSON Schema (`type`, `required`, `properties`, `items`, `enum`,
+`additionalProperties`), not a general implementation and not a third-party
+dependency; see that module's docstring for exactly what is and isn't
+supported, and extend it there (not with a new dependency) if a schema ever
+needs a keyword it doesn't yet handle.
+
+### New: `data/sources/registry.json` and `data/sources/records/<official-id>.json`
+
+Builder configuration (which Ethics Commission committee names map to which
+official, that official's known election result, and which curated-record
+fixture file to read) used to be hard-coded directly in `build_funding.py`
+and `build_record.py` as Python dicts. It now lives in
+`data/sources/registry.json` (schema: `data/schemas/sources_registry.schema.json`)
+and per-official curated record items live in
+`data/sources/records/<official-id>.json` (schema:
+`data/schemas/record.schema.json`'s `items` shape, minus the generated
+`source_url`/`provenance` fields the builder adds). Neither of these is a new
+*published* schema the frontend reads — `officials.json`, `funding.json`,
+and `record.json` are still the only files `js/app.js` touches — they are
+build-time input config, versioned so a `registry.json` change is reviewable
+like any other data change. `scripts/pipeline/registry.py` is the only code
+that should read `registry.json`; `scripts/build_record.py:load_fixture()`
+is the only code that should read a `data/sources/records/*.json` fixture.
+
+### New: `data/build_report.json` (gitignored) and `data/freshness.json` (committed)
+
+`build_report.json` is `scripts/pipeline/report.py:BuildReport.to_dict()` —
+a machine-readable summary of the most recent `build_all.py` run (per-
+official, per-builder status/record-count/problems, unavailable sources,
+fatal errors). It is regenerated by every run and gitignored; nothing reads
+it except CI and the scheduled-refresh PR body.
+
+`freshness.json` (schema: `data/schemas/freshness.schema.json`) IS committed,
+because its entire purpose is to honestly show, at a glance, how fresh each
+official's published data is — including a builder that failed on the most
+recent run. It is not gated on the overall build succeeding; only a fatal
+cross-reference error (which means there is nothing per-official to report)
+skips writing it. `js/app.js` does not currently read this file — it is a
+maintainer/reviewer-facing artifact for now, not yet wired into the UI; see
+the "suggested next phase" note in the PR this was introduced in.
+
 ## Ownership
 
 | Path | Owner |
@@ -165,5 +272,15 @@ build," never as "does not exist."
 | `data/officials/*/funding.json`, `scripts/build_funding.py` | Person 1 |
 | `data/officials/*/record.json`, `scripts/build_record.py` | Person 2 |
 | `data/officials.json` | Person 4 (frozen after minute-0 huddle) |
+| `scripts/pipeline/*` (shared validation, provenance, atomic writes, registry loading, Socrata client, schema loading) | Shared — both `build_funding.py` and `build_record.py` depend on it; changes here affect both, so treat it like a shared library, not either person's private file |
+| `scripts/build_all.py`, `scripts/validate_data.py` | Person 1 + Person 2 jointly (orchestrates both builders) |
+| `data/sources/registry.json` | Person 1 + Person 2 jointly (funding config + record fixture paths in one file, per official) |
+| `data/sources/records/<official-id>.json` | Person 2 (curated record items — same content that used to live in `build_record.py`'s `RECORDS` dict) |
+| `data/schemas/*.schema.json` | Shared documentation — update alongside whichever file's shape it describes |
+| `data/build_report.json` (gitignored), `data/freshness.json` | Generated by `build_all.py`; do not hand-edit |
+| `.github/workflows/ci.yml`, `.github/workflows/refresh-data.yml` | Whoever touches the pipeline scripts they run |
+| `tests/` | Whoever touches the code a given test file covers |
 
-Everyone commits only to their own files. Zero merge conflicts possible.
+Everyone commits only to their own files. Zero merge conflicts possible. The
+shared `scripts/pipeline/` module is the one deliberate exception to that
+rule — see the row above.

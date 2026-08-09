@@ -1,0 +1,34 @@
+{
+  "$id": "freshness.schema.json",
+  "title": "freshness.json (data/freshness.json)",
+  "description": "Committed, persistent freshness/status metadata: when each official's funding and record data last built successfully, and how many records it had. Unlike build_report.json (gitignored, per-run diagnostics), this file is small, always present, and safe for the frontend to read to show a 'data last updated' note.",
+  "type": "object",
+  "required": ["generated_at", "officials"],
+  "properties": {
+    "generated_at": { "type": "string" },
+    "officials": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "funding": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["ok", "failed", "skipped"] },
+              "last_success_at": { "type": ["string", "null"] },
+              "donor_count": { "type": "integer" }
+            }
+          },
+          "record": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["ok", "failed", "skipped"] },
+              "last_success_at": { "type": ["string", "null"] },
+              "item_count": { "type": "integer" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

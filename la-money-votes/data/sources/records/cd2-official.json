@@ -1,0 +1,45 @@
+{
+  "official_id": "cd2-official",
+  "items": [
+    {
+      "council_file": "25-0057",
+      "title": "648 and 800 West Avenue 37 / Mt. Washington / Criminal Activity / Illegal Dumping / Temporary Closure",
+      "role": "seconded",
+      "date": "2025-07-30",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "25-0964",
+      "title": "New Financial Policy / Exceeding Contract Spending",
+      "role": "seconded",
+      "date": "2025-08-20",
+      "outcome": "pending",
+      "term": "current"
+    },
+    {
+      "council_file": "25-1036",
+      "title": "Chapter 11.20 of Title 11 / Health and Safety of the Los Angeles County Code / Maximum Indoor Temperature / Rental Housing",
+      "role": "proposed",
+      "date": "2025-09-03",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "26-0195-S4",
+      "title": "Keep Hollywood Home / FilmLA / Episodic Series / Feature Film / Commercial Production Retention Program",
+      "role": "proposed",
+      "date": "2026-02-13",
+      "outcome": "pending",
+      "term": "current"
+    },
+    {
+      "council_file": "26-0705",
+      "title": "Non-Profit Private Country/Golf Clubs (Social Clubs) / Annual Parcel Tax / November 2026 Ballot",
+      "role": "proposed",
+      "date": "2026-05-08",
+      "outcome": "pending",
+      "term": "current"
+    }
+  ]
+}

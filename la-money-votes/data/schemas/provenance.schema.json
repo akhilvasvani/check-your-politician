@@ -1,0 +1,22 @@
+{
+  "$id": "provenance.schema.json",
+  "title": "Provenance",
+  "description": "Canonical provenance block attached to every factual record (one contribution, one legislative item). Shared by funding.schema.json and record.schema.json.",
+  "type": "object",
+  "required": ["source_name", "retrieved_at", "methodology_version"],
+  "properties": {
+    "source_name": { "type": "string" },
+    "source_url": { "type": ["string", "null"] },
+    "retrieved_at": { "type": "string", "description": "YYYY-MM-DD build/verification date" },
+    "reporting_period": {
+      "type": ["object", "null"],
+      "properties": {
+        "from": { "type": ["string", "null"] },
+        "to": { "type": ["string", "null"] }
+      }
+    },
+    "meeting_date": { "type": ["string", "null"] },
+    "record_id": { "type": ["string", "null"] },
+    "methodology_version": { "type": "string" }
+  }
+}

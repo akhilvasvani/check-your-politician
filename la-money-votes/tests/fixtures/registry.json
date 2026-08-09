@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "officials": {
+    "official-a": {
+      "funding": {
+        "committees": ["Officer A Test Committee 2026"],
+        "election_result": null
+      },
+      "record": {
+        "source": { "name": "Test Source A", "url": "https://cityclerk.lacity.org/" },
+        "fixture": "data/sources/records/official-a.json"
+      }
+    },
+    "official-b": {
+      "funding": {
+        "committees": ["Officer B Test Committee 2026"],
+        "election_result": "won"
+      },
+      "record": {
+        "source": { "name": "Test Source B", "url": "https://mayor.lacity.gov/" },
+        "fixture": "data/sources/records/official-b.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$id": "officials.schema.json",
+  "title": "Officials registry (data/officials.json)",
+  "description": "Frozen index of covered officials, read directly by the frontend. Additive fields only — see CONTRACT.md.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "name", "office"],
+    "properties": {
+      "id": { "type": "string" },
+      "name": { "type": "string" },
+      "office": { "type": "string" }
+    }
+  }
+}

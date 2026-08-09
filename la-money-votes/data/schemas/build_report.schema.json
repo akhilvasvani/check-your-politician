@@ -1,0 +1,30 @@
+{
+  "$id": "build_report.schema.json",
+  "title": "build_report.json (written by scripts/build_all.py, never committed)",
+  "description": "Machine-readable summary of a build_all.py run. Consumed by CI (to fail the job) and by the scheduled refresh workflow (to compose the data-refresh pull request body).",
+  "type": "object",
+  "required": ["started_at", "finished_at", "ok", "results", "unavailable_sources", "fatal_errors", "summary"],
+  "properties": {
+    "started_at": { "type": "string" },
+    "finished_at": { "type": "string" },
+    "ok": { "type": "boolean" },
+    "summary": { "type": "string" },
+    "unavailable_sources": { "type": "array", "items": { "type": "string" } },
+    "fatal_errors": { "type": "array", "items": { "type": "string" } },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["official_id", "builder", "status", "record_count", "problems"],
+        "properties": {
+          "official_id": { "type": "string" },
+          "builder": { "type": "string", "enum": ["funding", "record"] },
+          "status": { "type": "string", "enum": ["ok", "failed", "skipped"] },
+          "record_count": { "type": "integer" },
+          "problems": { "type": "array", "items": { "type": "string" } },
+          "source_notes": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

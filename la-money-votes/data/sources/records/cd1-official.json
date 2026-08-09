@@ -1,0 +1,45 @@
+{
+  "official_id": "cd1-official",
+  "items": [
+    {
+      "council_file": "24-1219-S1",
+      "title": "Street Sweeping Policies and Routes / Department of Transportation / No Parking Restrictions Compliance",
+      "role": "proposed",
+      "date": "2025-08-01",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "26-0955",
+      "title": "Bureau of Street Lighting / Assessment Ballot Failure / Funding / Maintain Workforce / Baseline Services",
+      "role": "proposed",
+      "date": "2026-06-26",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "26-1075",
+      "title": "North Alameda Street / Alhambra Avenue / Main Street / Alameda Triangle / Triangular Parcel / Street Vacation Proceedings",
+      "role": "proposed",
+      "date": "2026-08-05",
+      "outcome": "pending",
+      "term": "current"
+    },
+    {
+      "council_file": "24-1577",
+      "title": "Salaries / Contractual Services / Field Equipment / Operating Supplies / General City Purposes Fund",
+      "role": "proposed",
+      "date": "2026-06-23",
+      "outcome": "passed",
+      "term": "current"
+    },
+    {
+      "council_file": "26-0864",
+      "title": "Strengthen Emergency Preparedness and Response Capabilities / Pre-Incident Vendor Qualification Programs / Emergency Response Agreements / Port Related Disasters",
+      "role": "seconded",
+      "date": "2026-06-10",
+      "outcome": "pending",
+      "term": "current"
+    }
+  ]
+}

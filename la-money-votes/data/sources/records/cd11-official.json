@@ -1,0 +1,61 @@
+{
+  "official_id": "cd11-official",
+  "items": [
+    {
+      "council_file": "23-0839",
+      "title": "Temescal Canyon Road / Pacific Coast Highway / West Bowdoin Street / Structural Instability / Water Seepage / Roadway Damage",
+      "role": "proposed",
+      "date": "2023-08-11",
+      "outcome": "passed",
+      "term": "previous"
+    },
+    {
+      "council_file": "24-1563",
+      "title": "Additional Patrols / Interim Homeless Housing Sites / Council District 11 / General City Purposes Fund",
+      "role": "proposed",
+      "date": "2024-12-10",
+      "outcome": "passed",
+      "term": "previous"
+    },
+    {
+      "council_file": "25-0006-S58",
+      "title": "LA Region Small Business Relief Fund / LA Region Worker Relief Fund / 2025 Windstorm and Wildfire Recovery",
+      "role": "voted_yes",
+      "date": "2025-02-07",
+      "outcome": "passed",
+      "term": "previous"
+    },
+    {
+      "council_file": "25-0006-S67",
+      "title": "Burn Zone Soil / Testing and Remediation / Park Property / Parkways / Medians / Pacific Palisades / 2025 Windstorm and Wildfire Recovery",
+      "role": "voted_yes",
+      "date": "2025-04-23",
+      "outcome": "passed",
+      "term": "previous"
+    },
+    {
+      "council_file": "26-0011-S6",
+      "title": "Repair Work / Street Lighting Crew / Street Furniture Fund / Council District 5 and 11 / Overtime Funding",
+      "role": "proposed",
+      "date": "2026-02-13",
+      "outcome": "passed",
+      "term": "previous"
+    },
+    {
+      "council_file": "25-0006-S38",
+      "title": "Climate Resilience District / Pacific Palisades / 2025 Windstorm and Wildfire Recovery",
+      "role": "voted_yes",
+      "date": "2026-03-27",
+      "outcome": "passed",
+      "term": "previous"
+    },
+    {
+      "council_file": "25-0006-S88",
+      "title": "Sales Tax Relief for Purchases / Palisades Reconstruction / 1% Share of Sales Tax",
+      "role": "proposed",
+      "date": "2026-03-27",
+      "outcome": "pending",
+      "term": "previous"
+    }
+  ]
+}
