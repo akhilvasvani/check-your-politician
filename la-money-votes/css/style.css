@@ -857,7 +857,7 @@ main {
 .spectrum-zone-progressive { background: #a23b6c; }
 .spectrum-zone-liberal { background: #4a6fa5; }
 .spectrum-zone-center { background: #6b7076; }
-.spectrum-zone-conservative { background: #c6553f; }
+.spectrum-zone-conservative { background: #b24c38; }
 
 .spectrum-marker {
   position: absolute;
@@ -871,7 +871,14 @@ main {
 }
 
 .spectrum-bar-unassessed .spectrum-track {
-  opacity: 0.35;
+  /* The zone bar stays at full contrast (legible white-on-color labels)
+     even when unassessed -- it's a static reference scale, not a claim
+     about this official. "Not yet assessed" is instead communicated by
+     the tag above, the absence of a placement marker, and the
+     "Date last reviewed: Not yet reviewed" line, so dimming the whole
+     bar (previously opacity: 0.35) only hurt label contrast without
+     adding any real information. */
+  border-style: dashed;
 }
 
 .spectrum-not-assessed-tag {
