@@ -4,7 +4,7 @@
  * A treemap-style donor visualization: every donor is a tile, tile AREA
  * scales proportionally to that donor's total contributions, and color
  * encodes donor type (individual / PAC / business), matching the same
- * TYPE_COLORS convention already used by js/graph.js and css/style.css.
+ * TYPE_COLORS convention used by css/style.css.
  * This is not a geographic heat map — see the on-page caption this module
  * renders, which states that explicitly.
  *

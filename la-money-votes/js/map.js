@@ -78,6 +78,9 @@
     var parts = [];
     parts.push('<div class="citymap-tip-name">' + escapeHtml(entry.name) + '</div>');
     parts.push('<div class="citymap-tip-title">' + escapeHtml(entry.title) + '</div>');
+    if (entry.party) {
+      parts.push('<div class="citymap-tip-party">Party: ' + escapeHtml(entry.party) + '</div>');
+    }
     if (entry.summary) {
       parts.push(
         '<div class="citymap-tip-funding">' +
@@ -276,6 +279,7 @@
         district: d.district,
         name: o.name || 'District ' + d.district,
         title: 'Council District ' + d.district,
+        party: o.party && o.party.affiliation,
         center: d.center,
         summary: summaries[d.official_id]
       });
@@ -287,6 +291,7 @@
       role: 'mayor',
       name: mo.name || 'Mayor',
       title: 'Mayor of Los Angeles — elected citywide, not tied to a district',
+      party: mo.party && mo.party.affiliation,
       center: districts.mayor.center,
       summary: summaries[districts.mayor.official_id]
     });

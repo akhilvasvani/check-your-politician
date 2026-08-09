@@ -18,8 +18,8 @@
   --color-pending-text: #8a6212;
   --color-failed-bg: #fbebea;
   --color-failed-text: #a3352c;
-  /* Donor type colors, kept in step with TYPE_COLORS in js/graph.js so a donor
-     reads the same in the table as it does in the graph. */
+  /* Donor type colors, kept in step with TYPE_COLORS in js/treemap.js so a
+     donor reads the same in the table as it does in the treemap. */
   --color-type-individual: #4a6fa5;
   --color-type-pac: #c67b4a;
   --color-type-business: #5d8a6f;
@@ -114,6 +114,21 @@ main {
   color: var(--color-pending-text);
 }
 
+.official-party {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  color: var(--color-text);
+}
+
+.official-party-source {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.official-party-source a {
+  color: var(--color-accent);
+}
+
 .reelection-banner {
   margin-top: 1rem;
   padding: 0.85rem 1rem;
@@ -166,13 +181,6 @@ main {
   margin: 0 0 0.75rem;
   color: var(--color-text-muted);
   font-size: 0.92rem;
-}
-
-#graph {
-  height: 520px;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  background: var(--color-surface);
 }
 
 /* ---------------------------------------------------------------- */
@@ -638,6 +646,12 @@ main {
   margin-bottom: 0.35rem;
 }
 
+.citymap-tip-party {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
+}
+
 .citymap-tip-funding {
   margin-bottom: 0.15rem;
 }
@@ -671,10 +685,6 @@ main {
 
 .district-contact a {
   color: var(--color-accent);
-}
-
-#spectrum-section {
-  margin-top: 2.5rem;
 }
 
 /* ================================================================== */
@@ -802,186 +812,6 @@ main {
 }
 
 /* ================================================================== */
-/* Political spectrum card                                           */
-/* ================================================================== */
-
-.spectrum-methodology {
-  margin: 0 0 1rem;
-  font-size: 0.88rem;
-  color: var(--color-text-muted);
-  max-width: 68ch;
-}
-
-.spectrum-overall {
-  margin-bottom: 0.75rem;
-}
-
-.spectrum-overall-label,
-.spectrum-overall-label-compact {
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-}
-
-.spectrum-overall-label-compact {
-  font-size: 0.85rem;
-  display: block;
-}
-
-.spectrum-bar {
-  width: 100%;
-}
-
-.spectrum-track {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 1.75rem;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-}
-
-.spectrum-zone {
-  flex: 1 1 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.68rem;
-  font-weight: 600;
-  color: #fff;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.spectrum-zone-progressive { background: #a23b6c; }
-.spectrum-zone-liberal { background: #4a6fa5; }
-.spectrum-zone-center { background: #6b7076; }
-.spectrum-zone-conservative { background: #b24c38; }
-
-.spectrum-marker {
-  position: absolute;
-  top: -3px;
-  bottom: -3px;
-  width: 4px;
-  margin-left: -2px;
-  background: #fff;
-  border: 2px solid #1a1a1a;
-  border-radius: 2px;
-}
-
-.spectrum-bar-unassessed .spectrum-track {
-  /* The zone bar stays at full contrast (legible white-on-color labels)
-     even when unassessed -- it's a static reference scale, not a claim
-     about this official. "Not yet assessed" is instead communicated by
-     the tag above, the absence of a placement marker, and the
-     "Date last reviewed: Not yet reviewed" line, so dimming the whole
-     bar (previously opacity: 0.35) only hurt label contrast without
-     adding any real information. */
-  border-style: dashed;
-}
-
-.spectrum-not-assessed-tag {
-  display: inline-block;
-  margin-bottom: 0.4rem;
-  padding: 0.2rem 0.65rem;
-  border-radius: 999px;
-  background: var(--color-inactive-bg);
-  color: var(--color-inactive-text);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.spectrum-not-assessed-tag-compact {
-  margin-bottom: 0.25rem;
-  font-size: 0.72rem;
-}
-
-.spectrum-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  align-items: center;
-  margin: 0.6rem 0 1.25rem;
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-}
-
-.spectrum-confidence-badge {
-  display: inline-block;
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-  background: var(--color-surface);
-  box-shadow: inset 0 0 0 1px var(--color-border);
-  font-size: 0.78rem;
-}
-
-.spectrum-evidence-heading,
-.spectrum-issues-heading {
-  margin: 1rem 0 0.5rem;
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.spectrum-evidence-list {
-  margin: 0;
-  padding-left: 1.2rem;
-  font-size: 0.88rem;
-}
-
-.spectrum-evidence-list li {
-  margin-bottom: 0.35rem;
-}
-
-.spectrum-evidence-list a {
-  color: var(--color-accent);
-}
-
-.spectrum-evidence-empty {
-  font-size: 0.88rem;
-  font-style: italic;
-}
-
-.spectrum-issues {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.spectrum-issue-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.5rem;
-  margin-bottom: 0.3rem;
-  font-size: 0.88rem;
-}
-
-.spectrum-issue-label {
-  font-weight: 600;
-}
-
-.spectrum-issue-value {
-  color: var(--color-text-muted);
-  font-size: 0.82rem;
-}
-
-.spectrum-issue .spectrum-track {
-  height: 1.3rem;
-}
-
-.spectrum-issue .spectrum-zone {
-  font-size: 0;
-}
-
-.spectrum-issue .spectrum-evidence-list {
-  margin-top: 0.35rem;
-  font-size: 0.82rem;
-}
-
-/* ================================================================== */
 /* Accessibility: focus states, reduced motion, mobile                */
 /* ================================================================== */
 
@@ -1016,15 +846,6 @@ button:focus-visible,
   .treemap-legend {
     gap: 0.5rem 0.9rem;
     font-size: 0.78rem;
-  }
-
-  .spectrum-zone {
-    font-size: 0;
-  }
-
-  .spectrum-issue-head {
-    flex-direction: column;
-    gap: 0.15rem;
   }
 
   .citymap-tooltip {

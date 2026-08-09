@@ -9,7 +9,26 @@
     "properties": {
       "id": { "type": "string" },
       "name": { "type": "string" },
-      "office": { "type": "string" }
+      "office": { "type": "string" },
+      "party": {
+        "description": "Optional/additive (see CONTRACT.md). Structured party-affiliation data, sourced from a credible public record — never guessed.",
+        "type": "object",
+        "required": ["affiliation", "source"],
+        "properties": {
+          "affiliation": {
+            "type": "string",
+            "enum": ["Democrat", "Republican", "Independent", "Not publicly listed"]
+          },
+          "source": {
+            "description": "Citation for the affiliation. May be null only when affiliation is 'Not publicly listed' and no source could be found.",
+            "type": ["object", "null"],
+            "properties": {
+              "name": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        }
+      }
     }
   }
 }

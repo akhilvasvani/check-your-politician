@@ -263,12 +263,12 @@ skips writing it. `js/app.js` does not currently read this file — it is a
 maintainer/reviewer-facing artifact for now, not yet wired into the UI; see
 the "suggested next phase" note in the PR this was introduced in.
 
-## New: `data/districts.json`, `data/geo/council_districts.geojson`, `data/officials/<id>/spectrum.json`
+## New: `data/districts.json`, `data/geo/council_districts.geojson`
 
-Three more additive, optional files, introduced for the citywide map, the
-donor treemap, and the political-spectrum card. None of them change the
-shape of `officials.json`, `funding.json`, or `record.json` — a consumer that
-only reads the original three files keeps working exactly as before.
+Two more additive, optional files, introduced for the citywide map and the
+donor treemap. Neither changes the shape of `officials.json`, `funding.json`,
+or `record.json` — a consumer that only reads the original three files keeps
+working exactly as before.
 
 ### `data/districts.json` (schema: `data/schemas/districts.schema.json`)
 
@@ -290,40 +290,38 @@ polygons (~43 KB vs. ~1.3 MB for the full-resolution source), used only to
 shade district shapes on the map. It carries `district` and `name` per
 feature and nothing else; the frontend never treats it as a source of
 contact info, funding, or any other fact about an official — that always
-comes from `officials.json` / `funding.json` / `record.json` / `spectrum.json`.
+comes from `officials.json` / `funding.json` / `record.json`.
 
-### `data/officials/<id>/spectrum.json` (schema: `data/schemas/spectrum.schema.json`)
+## Additions: `data/officials.json` → `party` (optional/additive)
 
-A structured, editable political-spectrum placement for one official —
-deliberately data, not a hard-coded visual value, so a future maintainer can
-add a sourced placement (or revise one) without touching `js/spectrum.js`.
+Each entry in `data/officials.json` may carry an optional `party` object:
 
-Every file ships with `status: "not_assessed"` and every issue dimension
-(`housing`, `policing_public_safety`, `labor`, `climate`, `transportation`)
-also `not_assessed`, because this change does not introduce a sourced
-ideology pipeline — placing a real elected official on a partisan spectrum
-without individually verified, citable evidence for that specific placement
-would be exactly the kind of unsupported claim this project's whole premise
-is against (see "Interpretation and limitations" in README). The frontend
-must render "Not yet assessed" whenever `status` is `not_assessed`, at both
-the `overall` level and per issue dimension, never a default/blank label
-that could be misread as neutral-on-the-merits or centrist.
+```json
+"party": {
+  "affiliation": "Democrat",
+  "source": { "name": "Ballotpedia", "url": "https://ballotpedia.org/..." }
+}
+```
 
-A future assessed record sets `status: "assessed"`, fills in `overall.position`
-(0–100), `overall.label`, `confidence`, `reviewed_at` (ISO date), and
-`evidence[]` (each item a `{title, url}` pair — a specific public statement,
-vote, or filing, not a general profile page), and the same shape per issue
-dimension it has evidence for. Dimensions without evidence stay
-`not_assessed` even if `overall` is assessed — this is deliberately partial-
-friendly; an assessor is never forced to guess a dimension just to fill in
-the row.
+`affiliation` is one of `"Democrat"`, `"Republican"`, `"Independent"`, or
+`"Not publicly listed"`. LA municipal races are officially nonpartisan (party
+does not appear on the ballot), so every value here is sourced from a
+credible secondary public record — an official's own Ballotpedia or
+Wikipedia biography page, an official city bio, or equivalent — never
+guessed or inferred from voting record, endorsements, or ideology. `source`
+names that record and links to it; it is `null` only when `affiliation` is
+`"Not publicly listed"` and no credible source could be found. An official
+with no `party` field at all is treated identically to `"Not publicly
+listed"` by the frontend — `js/app.js`'s `renderPartyField()` and
+`js/map.js`'s tooltip both fall back to that label rather than leaving the
+field blank. This keeps `party` fully additive: a consumer that only reads
+`id`/`name`/`office` keeps working exactly as before.
 
 ## Ownership
 
 | Path | Owner |
 | --- | --- |
 | `index.html`, `official.html`, `js/app.js`, `css/style.css` | Person 4 |
-| `js/graph.js` | Person 3 |
 | `data/officials/*/funding.json`, `scripts/build_funding.py` | Person 1 |
 | `data/officials/*/record.json`, `scripts/build_record.py` | Person 2 |
 | `data/officials.json` | Person 4 (frozen after minute-0 huddle) |
@@ -337,7 +335,6 @@ the row.
 | `tests/` | Whoever touches the code a given test file covers |
 | `data/districts.json`, `data/geo/council_districts.geojson`, `js/map.js`, `css/style.css` (map/legend rules) | Owner of the citywide map feature |
 | `js/treemap.js`, `css/style.css` (treemap rules) | Owner of the donor-treemap feature |
-| `data/officials/*/spectrum.json`, `data/schemas/spectrum.schema.json`, `js/spectrum.js`, `css/style.css` (spectrum-card rules) | Owner of the political-spectrum feature |
 
 Everyone commits only to their own files. Zero merge conflicts possible. The
 shared `scripts/pipeline/` module is the one deliberate exception to that

@@ -12,6 +12,7 @@
     <a href="index.html">&larr; Back</a>
     <h1 id="official-name">Loading&hellip;</h1>
     <p id="official-office"></p>
+    <p id="official-party" class="official-party" hidden></p>
     <div id="reelection-banner" class="reelection-banner" hidden></div>
   </header>
 
@@ -26,15 +27,9 @@
       </p>
     </section>
 
-    <section id="spectrum-section" aria-labelledby="spectrum-heading">
-      <h2 id="spectrum-heading">Political Spectrum</h2>
-      <div id="spectrum-card"></div>
-    </section>
-
     <section id="funding-section">
       <h2>Funding</h2>
       <p id="funding-stats" class="funding-stats"></p>
-      <div id="graph"></div>
 
       <h3 class="treemap-heading">Donor Contribution Map</h3>
       <p class="treemap-caption" id="donor-treemap-caption"></p>
@@ -140,11 +135,8 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.0/dist/cytoscape.min.js"></script>
-  <script src="js/graph.js"></script>
   <script src="js/map.js"></script>
   <script src="js/treemap.js"></script>
-  <script src="js/spectrum.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
