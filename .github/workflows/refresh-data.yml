@@ -12,6 +12,14 @@ name: Refresh la-money-votes data
 # drop that field going forward. This is a known, currently-unresolved
 # trade-off; see the PR body / build report for exactly which officials it
 # affects on a given run.
+#
+# Prerequisite: this workflow's "Open or update data-refresh pull request"
+# step needs the repo setting Settings > Actions > General > Workflow
+# permissions > "Allow GitHub Actions to create and approve pull requests"
+# enabled, in addition to the `pull-requests: write` permission below. If
+# that repo setting is off, peter-evans/create-pull-request fails with
+# "GitHub Actions is not permitted to create or approve pull requests"
+# even though the build itself succeeded — see the diagnostic step after it.
 on:
   schedule:
     # 08:00 UTC Monday and Thursday. GitHub Actions cron is always UTC —
@@ -63,7 +71,9 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Open or update data-refresh pull request
+        id: pr
         if: always()
+        continue-on-error: true # surface the diagnostic below instead of a bare action failure
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -79,6 +89,16 @@ jobs:
             la-money-votes/data/officials/**
             la-money-votes/data/freshness.json
           labels: automated-data-refresh
+
+      - name: Diagnose PR-creation permission failure
+        if: steps.pr.outcome == 'failure'
+        run: |
+          echo "::error::Could not open/update the data-refresh PR. This is almost" \
+               "always a repo setting, not a code bug: enable Settings > Actions >" \
+               "General > Workflow permissions > 'Allow GitHub Actions to create" \
+               "and approve pull requests' (in addition to this workflow's own" \
+               "'permissions: pull-requests: write'), then re-run this workflow."
+          exit 1
 
       - name: Fail the job if the build itself failed
         if: steps.build.outcome == 'failure'
