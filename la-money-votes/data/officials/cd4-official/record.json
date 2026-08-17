@@ -3,7 +3,7 @@
   "source": {
     "name": "LA City Clerk \u2014 Council File Management System",
     "url": "https://cityclerk.lacity.org/lacityclerkconnect/",
-    "retrieved_at": "2026-08-10",
+    "retrieved_at": "2026-08-17",
     "methodology_version": "1.0"
   },
   "items": [
@@ -18,7 +18,7 @@
       "provenance": {
         "source_name": "LA City Clerk \u2014 Council File Management System",
         "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0600-S7",
-        "retrieved_at": "2026-08-10",
+        "retrieved_at": "2026-08-17",
         "reporting_period": null,
         "meeting_date": "2026-05-21",
         "record_id": "26-0600-S7",
@@ -36,7 +36,7 @@
       "provenance": {
         "source_name": "LA City Clerk \u2014 Council File Management System",
         "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0600-S22",
-        "retrieved_at": "2026-08-10",
+        "retrieved_at": "2026-08-17",
         "reporting_period": null,
         "meeting_date": "2025-05-22",
         "record_id": "25-0600-S22",
@@ -54,7 +54,7 @@
       "provenance": {
         "source_name": "LA City Clerk \u2014 Council File Management System",
         "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0006-S13",
-        "retrieved_at": "2026-08-10",
+        "retrieved_at": "2026-08-17",
         "reporting_period": null,
         "meeting_date": "2025-01-14",
         "record_id": "25-0006-S13",
@@ -72,7 +72,7 @@
       "provenance": {
         "source_name": "LA City Clerk \u2014 Council File Management System",
         "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-0600-S28",
-        "retrieved_at": "2026-08-10",
+        "retrieved_at": "2026-08-17",
         "reporting_period": null,
         "meeting_date": "2025-05-22",
         "record_id": "25-0600-S28",
@@ -90,7 +90,7 @@
       "provenance": {
         "source_name": "LA City Clerk \u2014 Council File Management System",
         "source_url": "https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=26-0600-S8",
-        "retrieved_at": "2026-08-10",
+        "retrieved_at": "2026-08-17",
         "reporting_period": null,
         "meeting_date": "2026-05-21",
         "record_id": "26-0600-S8",
