@@ -211,11 +211,14 @@ for before merging.
 
 ## Refresh schedule
 
-`.github/workflows/refresh-data.yml` runs `build_all.py --fetch-socrata`
-twice a week (Monday and Thursday, 08:00 UTC) and on manual dispatch. It
-never pushes to `main` — it opens or updates a pull request on the
-`automated/data-refresh` branch containing whatever data actually changed,
-with the full build report embedded in the PR body.
+`.github/workflows/refresh-data.yml` checks every Monday at 15:00 UTC and 
+runs `build_all.py --fetch-socrata` only when that Monday is the first Monday 
+of the month in `America/Los_Angeles`. This corresponds to 8:00 AM Pacific 
+during daylight saving time and 7:00 AM Pacific during standard time. It can 
+also be run manually with `workflow_dispatch`. It never pushes to `main`—it 
+opens or updates a pull request on the `automated/data-refresh` branch 
+containing whatever data actually changed, with the full build report embedded 
+in the PR body.
 
 ## How refresh PRs are reviewed
 
