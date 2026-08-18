@@ -1,195 +1,195 @@
 {
-  "generated_at": "2026-08-10T15:26:17+00:00",
+  "generated_at": "2026-08-17T08:42:34+00:00",
   "officials": {
     "mayor-bass": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 12
       }
     },
     "cd1-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 5
       }
     },
     "cd2-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 5
       }
     },
     "cd3-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 5
       }
     },
     "cd4-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 5
       }
     },
     "cd5-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 4
       }
     },
     "cd6-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 5
       }
     },
     "cd7-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 4
       }
     },
     "cd8-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 6
       }
     },
     "cd9-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 5
       }
     },
     "cd10-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 5
       }
     },
     "cd11-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 7
       }
     },
     "cd12-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 5
       }
     },
     "cd13-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 5
       }
     },
     "cd14-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 10
       }
     },
     "cd15-official": {
       "funding": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "donor_count": 30
       },
       "record": {
         "status": "ok",
-        "last_success_at": "2026-08-10",
+        "last_success_at": "2026-08-17",
         "item_count": 5
       }
     }
