@@ -1,6 +1,6 @@
 name: Refresh la-money-votes data
 
-# Twice-weekly automated refresh from the LA Ethics Commission's public
+# Monthly automated refresh from the LA Ethics Commission's public
 # Socrata API. This workflow NEVER pushes to main — it always opens (or
 # updates) a pull request via peter-evans/create-pull-request, which a
 # maintainer must review and merge by hand. See README "How refresh PRs are
@@ -22,9 +22,10 @@ name: Refresh la-money-votes data
 # even though the build itself succeeded — see the diagnostic step after it.
 on:
   schedule:
-    # 08:00 UTC Monday and Thursday. GitHub Actions cron is always UTC —
-    # convert to your own timezone when reasoning about "twice weekly".
-    - cron: "0 8 * * 1,4"
+    # Every Monday at 15:00 UTC. This is 08:00 Pacific during daylight
+    # saving time and 07:00 Pacific during standard time. The gate below
+    # permits the refresh only on the first Monday in America/Los_Angeles.
+    - cron: "0 15 * * 1"
   workflow_dispatch: {}
 
 permissions:
@@ -41,18 +42,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Decide whether to run the scheduled refresh
+        id: schedule
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run_refresh=true" >> "$GITHUB_OUTPUT"
+            echo "Manual run: proceeding regardless of the date."
+          else
+            pacific_day="$(TZ=America/Los_Angeles date +%-d)"
+            pacific_weekday="$(TZ=America/Los_Angeles date +%u)"
+            if [ "$pacific_weekday" -eq 1 ] && [ "$pacific_day" -le 7 ]; then
+              echo "run_refresh=true" >> "$GITHUB_OUTPUT"
+              echo "First Monday in Pacific time: proceeding."
+            else
+              echo "run_refresh=false" >> "$GITHUB_OUTPUT"
+              echo "Not the first Monday in Pacific time: skipping refresh."
+            fi
+          fi
+
       - name: Set up Python
+        if: steps.schedule.outputs.run_refresh == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Run build_all.py against the live Socrata API
         id: build
+        if: steps.schedule.outputs.run_refresh == 'true'
         continue-on-error: true # let the PR still open below even if some officials failed
         env:
           # Optional. The m6g2-gc6c / br3a-db9a datasets are public and work
           # without a token; set this repo secret only to raise Socrata's
-          # anonymous rate limit if the twice-weekly schedule ever needs it.
+          # anonymous rate limit if the monthly schedule ever needs it.
           SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
         run: |
           python3 scripts/build_all.py \
@@ -62,7 +84,7 @@ jobs:
 
       - name: Read build summary
         id: summary
-        if: always()
+        if: always() && steps.schedule.outputs.run_refresh == 'true'
         run: |
           {
             echo 'body<<BUILD_REPORT_EOF'
@@ -72,7 +94,7 @@ jobs:
 
       - name: Open or update data-refresh pull request
         id: pr
-        if: always()
+        if: always() && steps.schedule.outputs.run_refresh == 'true'
         continue-on-error: true # surface the diagnostic below instead of a bare action failure
         uses: peter-evans/create-pull-request@v6
         with:
@@ -82,7 +104,7 @@ jobs:
           commit-message: "data: automated refresh from LA Ethics Commission API"
           title: "Automated data refresh (LA Ethics Commission)"
           body: |
-            Automated twice-weekly data refresh. **Do not merge without reading the build report below** — see README "How refresh PRs are reviewed".
+            Automated monthly data refresh. **Do not merge without reading the build report below** — see README "How refresh PRs are reviewed".
 
             ${{ steps.summary.outputs.body }}
           add-paths: |
@@ -91,7 +113,7 @@ jobs:
           labels: automated-data-refresh
 
       - name: Diagnose PR-creation permission failure
-        if: steps.pr.outcome == 'failure'
+        if: steps.schedule.outputs.run_refresh == 'true' && steps.pr.outcome == 'failure'
         run: |
           echo "::error::Could not open/update the data-refresh PR. This is almost" \
                "always a repo setting, not a code bug: enable Settings > Actions >" \
@@ -101,7 +123,7 @@ jobs:
           exit 1
 
       - name: Fail the job if the build itself failed
-        if: steps.build.outcome == 'failure'
+        if: steps.schedule.outputs.run_refresh == 'true' && steps.build.outcome == 'failure'
         run: |
           echo "build_all.py reported failures -- see the opened/updated PR's build report for details."
           exit 1
