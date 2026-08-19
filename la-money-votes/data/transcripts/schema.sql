@@ -63,13 +63,22 @@ create index if not exists transcript_chunks_official_idx on transcript_chunks (
 --   - p_official_id filters to a single councilmember (matches the "mounted panel
 --     on official.html" MVP scope).
 --   - p_date_from / p_date_to are optional ISO dates.
+--   - p_min_similarity floors the cosine similarity of returned chunks.
+--     Defaults to 0.35. Rationale: in the M0.2 v2 re-eval
+--     (spike-m0/embed_bakeoff_v2_pplx.json, 2026-08-19), pplx-embed-v1-0.6b
+--     scores off-topic chunks in the ~0.25-0.32 range and on-topic chunks
+--     at ~0.37+. A 0.35 floor drops the false-positive class ("no chunk in
+--     this corpus is about the query, but here are 5 procedural ones")
+--     without dropping any documented true positive from that eval.
+--     Set to 0 at call time to disable and see raw ranking.
 create or replace function search_transcripts(
     p_query_embedding vector(1024),
     p_official_id text,
     p_date_from date default null,
     p_date_to date default null,
     p_embedding_model text default 'pplx-embed-v1-0.6b',
-    p_match_count int default 8
+    p_match_count int default 8,
+    p_min_similarity real default 0.35
 )
 returns table (
     id bigint,
@@ -105,6 +114,11 @@ as $$
       and c.resolved_official_id = p_official_id
       and (p_date_from is null or c.meeting_date >= p_date_from)
       and (p_date_to   is null or c.meeting_date <= p_date_to)
+      -- pgvector's `<=>` returns cosine *distance* (0 identical, 2 opposite),
+      -- so `1 - distance` is similarity. Filtering on the raw distance keeps
+      -- the ORDER BY able to use the HNSW `vector_cosine_ops` index.
+      and (p_min_similarity <= 0
+           or c.embedding <=> p_query_embedding <= (1 - p_min_similarity))
     order by c.embedding <=> p_query_embedding
     limit p_match_count;
 $$;

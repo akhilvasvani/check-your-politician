@@ -54,6 +54,14 @@ const MAX_LIMIT = 20;
 const EMBED_MODEL_NAME = "pplx-embed-v1-0.6b";
 const EMBED_DIM = 1024;
 
+// Cosine-similarity floor for returned chunks. Any hit below this is treated
+// as "no chunk in this corpus is actually about the query" and dropped.
+// Rationale: M0.2 v2 re-eval (spike-m0/embed_bakeoff_v2_pplx.json, 2026-08-19)
+// showed off-topic chunks scoring ~0.25-0.32 and on-topic chunks ~0.37+.
+// The SQL RPC applies the same default; this constant just lets the API
+// override it if we ever want to tune per-request.
+const MIN_SIMILARITY = 0.35;
+
 const DEFAULT_PER_MIN = 10;
 const DEFAULT_PER_HOUR = 60;
 
@@ -197,7 +205,7 @@ async function embedQuery(queryText) {
 }
 
 // -------- Supabase RPC --------
-async function searchTranscriptsRpc({ embedding, officialId, dateFrom, dateTo, limit }) {
+async function searchTranscriptsRpc({ embedding, officialId, dateFrom, dateTo, limit, minSimilarity }) {
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey =
     process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -219,6 +227,7 @@ async function searchTranscriptsRpc({ embedding, officialId, dateFrom, dateTo, l
       p_date_to: dateTo || null,
       p_embedding_model: EMBED_MODEL_NAME,
       p_match_count: limit,
+      p_min_similarity: minSimilarity,
     }),
   });
   if (!resp.ok) {
@@ -300,12 +309,24 @@ module.exports = async function handler(req, res) {
       dateFrom,
       dateTo,
       limit,
+      minSimilarity: MIN_SIMILARITY,
     });
+
+    const resultArray = Array.isArray(results) ? results : [];
+    if (resultArray.length === 0) {
+      // Useful signal for tuning the floor: this fires when the model had
+      // an opinion but every hit was below MIN_SIMILARITY, vs. "the
+      // official has no chunks in the index at all."
+      console.log(
+        `[search-transcripts] no results above similarity=${MIN_SIMILARITY} ` +
+          `for official=${officialId} query=${query.slice(0, 80)}`
+      );
+    }
 
     res.status(200).json({
       query,
-      count: Array.isArray(results) ? results.length : 0,
-      results: Array.isArray(results) ? results : [],
+      count: resultArray.length,
+      results: resultArray,
     });
   } catch (err) {
     console.error("[search-transcripts] search failed:", err);
