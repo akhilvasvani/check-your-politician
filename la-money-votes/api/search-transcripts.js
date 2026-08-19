@@ -88,6 +88,92 @@ const RATE_LIMIT_PER_HOUR =
 const RATE_LIMIT_EXCEEDED_MESSAGE =
   "You've searched a lot recently. Please wait a minute before searching again.";
 
+// --- Snippet extraction -----------------------------------------------------
+// Chunks are currently ~180s CART windows (often 400-800 words spanning a
+// topic change), which is unreadable as a raw search result. Until the M1
+// chunking rewrite lands (speaker-turn-scoped chunks), extract a short
+// query-relevant snippet server-side so the UI can show 1-3 sentences by
+// default with the full passage behind an expander.
+//
+// Deterministic keyword scoring, not embeddings: one embedding call per
+// result row would add latency + Perplexity API cost on every search, and
+// keyword overlap against the user's own query is a good-enough centering
+// heuristic for a band-aid the M1 rewrite will obsolete.
+
+const SNIPPET_STOPWORDS = new Set([
+  "a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "has",
+  "have", "in", "is", "it", "its", "of", "on", "or", "that", "the", "this",
+  "to", "was", "were", "what", "when", "where", "which", "who", "will",
+  "with", "about", "does", "do", "did", "how", "why", "their", "they",
+]);
+
+const SNIPPET_CONTEXT_SENTENCES = 1; // neighbors on each side of best hit
+const SNIPPET_MAX_CHARS = 420;
+const SNIPPET_FALLBACK_CHARS = 280;
+
+function splitSentences(text) {
+  // CART output is ALL-CAPS prose with conventional terminators. Split on
+  // sentence-ending punctuation followed by whitespace; keep the terminator.
+  const parts = String(text)
+    .split(/(?<=[.?!])\s+/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0);
+  return parts.length > 0 ? parts : [String(text).trim()];
+}
+
+function queryTerms(query) {
+  return String(query)
+    .toLowerCase()
+    .split(/[^a-z0-9']+/)
+    .filter((t) => t.length > 2 && !SNIPPET_STOPWORDS.has(t));
+}
+
+function extractSnippet(text, query) {
+  const sentences = splitSentences(text);
+  if (sentences.length <= 2) {
+    // Chunk is already short; no snippet needed.
+    return null;
+  }
+
+  const terms = queryTerms(query);
+  let bestIdx = -1;
+  let bestScore = 0;
+  for (let i = 0; i < sentences.length; i++) {
+    const lower = sentences[i].toLowerCase();
+    let score = 0;
+    for (const t of terms) {
+      if (lower.includes(t)) score += 1;
+    }
+    if (score > bestScore) {
+      bestScore = score;
+      bestIdx = i;
+    }
+  }
+
+  if (bestIdx === -1) {
+    // Semantic-only match: no query term appears verbatim. Fall back to the
+    // head of the chunk so the reader gets the opening context.
+    const head = sentences.slice(0, 2).join(" ");
+    return head.length > SNIPPET_FALLBACK_CHARS
+      ? head.slice(0, SNIPPET_FALLBACK_CHARS).replace(/\s+\S*$/, "") + "\u2026"
+      : head + (sentences.length > 2 ? " \u2026" : "");
+  }
+
+  const start = Math.max(0, bestIdx - SNIPPET_CONTEXT_SENTENCES);
+  const end = Math.min(sentences.length, bestIdx + SNIPPET_CONTEXT_SENTENCES + 1);
+  let snippet = sentences.slice(start, end).join(" ");
+  if (snippet.length > SNIPPET_MAX_CHARS) {
+    // Center on the best sentence alone if the 3-sentence window is huge.
+    snippet = sentences[bestIdx];
+    if (snippet.length > SNIPPET_MAX_CHARS) {
+      snippet = snippet.slice(0, SNIPPET_MAX_CHARS).replace(/\s+\S*$/, "") + "\u2026";
+    }
+  }
+  const prefix = start > 0 ? "\u2026 " : "";
+  const suffix = end < sentences.length ? " \u2026" : "";
+  return prefix + snippet + suffix;
+}
+
 const memoryHits = new Map(); // key -> { count, windowStart }
 
 function getClientIp(req) {
@@ -322,7 +408,10 @@ module.exports = async function handler(req, res) {
       minSimilarity: MIN_SIMILARITY,
     });
 
-    const resultArray = Array.isArray(results) ? results : [];
+    const resultArray = (Array.isArray(results) ? results : []).map((row) => {
+      const snippet = extractSnippet(row.text, query);
+      return snippet ? { ...row, snippet } : row;
+    });
     if (resultArray.length === 0) {
       // Useful signal for tuning the floor: this fires when the model had
       // an opinion but every hit was below MIN_SIMILARITY, vs. "the

@@ -1236,6 +1236,22 @@ button:focus-visible,
   color: var(--color-text);
 }
 
+.transcript-search-result-toggle {
+  margin-top: 0.35rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 0.82rem;
+  color: var(--color-accent, #1d4ed8);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.transcript-search-result-toggle:hover,
+.transcript-search-result-toggle:focus-visible {
+  text-decoration: none;
+}
+
 .transcript-search-empty {
   margin-top: 1rem;
   padding: 0.85rem;

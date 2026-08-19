@@ -243,9 +243,26 @@
 
       var body = document.createElement("p");
       body.className = "transcript-search-result-text";
-      // The text field is untrusted CART output; escape before insertion.
-      body.innerHTML = escapeHtml(r.text);
+      // The text/snippet fields are untrusted CART output; escape before insertion.
+      var hasSnippet = typeof r.snippet === "string" && r.snippet.length > 0 &&
+        r.snippet.length < String(r.text || "").length;
+      body.innerHTML = escapeHtml(hasSnippet ? r.snippet : r.text);
       li.appendChild(body);
+
+      if (hasSnippet) {
+        var toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "transcript-search-result-toggle";
+        toggle.textContent = "Show full passage";
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.addEventListener("click", function () {
+          var expanded = toggle.getAttribute("aria-expanded") === "true";
+          body.innerHTML = escapeHtml(expanded ? r.snippet : r.text);
+          toggle.textContent = expanded ? "Show full passage" : "Show snippet";
+          toggle.setAttribute("aria-expanded", expanded ? "false" : "true");
+        });
+        li.appendChild(toggle);
+      }
 
       list.appendChild(li);
     });
