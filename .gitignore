@@ -6,6 +6,12 @@ la-money-votes/data/.cache/
 la-money-votes/build_report.json
 la-money-votes/data/build_report.json
 
+# Transcript ingestion pipeline: raw VTTs from YouTube are cached locally and
+# never committed. Only the canonical flattened JSON under data/transcripts/
+# is committed (matching the data/officials/ convention above).
+la-money-votes/.cache/
+la-money-votes/.venv-transcripts/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

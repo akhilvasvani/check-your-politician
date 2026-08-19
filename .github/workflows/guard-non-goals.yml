@@ -1,0 +1,130 @@
+name: Guard non-goals (transcript-rag branches)
+
+# When a transcript-rag branch touches a file it was explicitly scoped OUT
+# of, this workflow fails the PR so the change is either intentional (in
+# which case the paths list below needs updating) or reverted.
+#
+# The transcript-rag feature was designed additively: it adds a new
+# `data/transcripts/` tree, a new `scripts/transcripts/` module (with its
+# own third-party requirements file, isolated from the stdlib-only
+# `scripts/pipeline/`), a new search endpoint + frontend module, and NO
+# changes to the existing officials/funding/record data files, builders,
+# schemas, or refresh workflow. This guard enforces that "additive-only"
+# promise at PR time.
+#
+# It ONLY runs on branches named `computer/add-transcript-*` so it doesn't
+# get in the way of legitimate ETL / builder PRs coming from any other
+# branch. If we want a permanent guard on those files independent of this
+# feature branch, that's a separate conversation (and probably a CODEOWNERS
+# entry, not a workflow).
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "la-money-votes/**"
+      - ".github/workflows/**"
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    # Only run on the transcript-rag feature branch(es). Legitimate PRs to
+    # the funding/record pipeline from any other branch skip this entirely.
+    if: startsWith(github.head_ref, 'computer/add-transcript-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          # Fetch enough history to diff against the base ref.
+          fetch-depth: 0
+
+      - name: Check forbidden paths
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+
+          # Files/globs this feature must not touch. Kept as literal
+          # patterns rather than a script because the list itself is the
+          # thing under review — a reviewer should be able to read this
+          # workflow file and understand the whole contract without also
+          # opening a helper script.
+          #
+          # Bash extended glob (globstar) so `**` matches nested dirs.
+          shopt -s globstar nullglob extglob
+
+          FORBIDDEN_PATTERNS=(
+            # === Frozen data files ===
+            "la-money-votes/data/officials.json"
+            "la-money-votes/data/officials/**"
+            "la-money-votes/data/districts.json"
+            "la-money-votes/data/geo/**"
+            "la-money-votes/data/schemas/**"
+            "la-money-votes/data/sources/**"
+            "la-money-votes/data/freshness.json"
+
+            # === Existing pipeline (stdlib-only invariant) ===
+            "la-money-votes/scripts/pipeline/**"
+            "la-money-votes/scripts/build_funding.py"
+            "la-money-votes/scripts/build_record.py"
+            "la-money-votes/scripts/build_all.py"
+            "la-money-votes/scripts/validate_data.py"
+
+            # === Existing frontend feature modules ===
+            # (We do modify official.html + js/app.js + css/style.css to
+            # mount the search panel — those are explicitly allowed. The
+            # existing feature modules themselves are not.)
+            "la-money-votes/js/ask-ai.js"
+            "la-money-votes/api/ask-official.js"
+            "la-money-votes/js/map.js"
+            "la-money-votes/js/treemap.js"
+
+            # === Existing scheduled workflow ===
+            ".github/workflows/refresh-data.yml"
+          )
+
+          # Get the changed-file list for this PR. `git diff --name-only`
+          # against the merge-base is what GitHub itself uses to compute
+          # the "Files changed" tab.
+          MERGE_BASE=$(git merge-base "$BASE_SHA" "$HEAD_SHA")
+          echo "Merge base: $MERGE_BASE"
+          echo ""
+          echo "Changed files in this PR:"
+          git diff --name-only "$MERGE_BASE" "$HEAD_SHA" | sed 's/^/  /'
+          echo ""
+
+          # Match each changed file against every forbidden pattern. Bash
+          # native pattern matching (`[[ x == pattern ]]`) with globstar
+          # + extglob is enough — no need for `find` or Python here.
+          violations=()
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            for pat in "${FORBIDDEN_PATTERNS[@]}"; do
+              # shellcheck disable=SC2053  # intentional glob match
+              if [[ "$file" == $pat ]]; then
+                violations+=("$file  (matches: $pat)")
+                break
+              fi
+            done
+          done < <(git diff --name-only "$MERGE_BASE" "$HEAD_SHA")
+
+          if [ ${#violations[@]} -gt 0 ]; then
+            echo "::error::This PR modifies files the transcript-rag feature is scoped OUT of."
+            echo ""
+            echo "Forbidden changes:"
+            for v in "${violations[@]}"; do
+              echo "  - $v"
+            done
+            echo ""
+            echo "If a change is intentional (a legitimate reason to edit"
+            echo "one of these files exists), remove the corresponding pattern"
+            echo "from .github/workflows/guard-non-goals.yml in the SAME PR"
+            echo "and re-request review. Otherwise, revert the file."
+            exit 1
+          fi
+
+          echo "OK — no forbidden paths touched."

@@ -1,0 +1,3561 @@
+{
+  "video_id": "hyhgFSAqBRM",
+  "meeting_date": "2026-08-19",
+  "primegov_id": -1,
+  "title": "(m1.3 re-ingest)",
+  "language_code": "en-uYU-mmqFLq8",
+  "ingested_at": "2026-08-19T17:02:52.344801+00:00",
+  "utterance_count": 355,
+  "utterances": [
+    {
+      "start_sec": 2794.658,
+      "end_sec": 2803.233,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BLUMENFIELD, HARRIS-DAWSON, HERNANDEZ, HUTT, JURADO, LEE, MCOSKER, NAZARIAN, PADILLA, PARK, PRICE, RAMAN, RODRIGUEZ, SOTO-MARTINEZ, YAROSLAVSKY. TEN MEMBERS AND A QUORUM, MR. PRESIDENT."
+    },
+    {
+      "start_sec": 2803.266,
+      "end_sec": 2805.068,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "FIRST ORDER OF BUSINESS."
+    },
+    {
+      "start_sec": 2805.101,
+      "end_sec": 2806.67,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "APPROVAL OF MINUTES."
+    },
+    {
+      "start_sec": 2806.703,
+      "end_sec": 2810.741,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "COUNCILMEMBER HERNANDEZ MOFPZ COUNCILMEMBER McOSKER SECONDS. WHAT'S NEXT?"
+    },
+    {
+      "start_sec": 2810.774,
+      "end_sec": 2813.676,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "COMMEND TORE RERESOLUTIONS FOR APPROVAL."
+    },
+    {
+      "start_sec": 2813.71,
+      "end_sec": 2819.216,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "COUNCILMEMBER MARTINEZ MOVES, COUNCILMEMBER HUTT SECONDS. CAN WE RUN THROUGH THE AGENDA."
+    },
+    {
+      "start_sec": 2819.249,
+      "end_sec": 2862.626,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU MR. PRESIDENT. ITEM 1, THE ARTS PARKS AND COMMUNITY ENRICHMENT REPORT HAS BEEN CIRCULATE ASKED POSTED ONLINE TO COUNCIL FILE 26-0737. PLEASE NOTE A MOTION IS REQUIRED FOR ITEM 1 AS IT HAS BEEN SUBMITTED WITHOUT RECOMMENDATION. 2 THROUGH 18 ARE PUBLIC HEARINGS FOR WHICH WESTBOUND HEARINGS HAVE BEEN HELD. NEIGHBORHOOD COUNCIL WAS SUBMITTED FOR THE ITEM AND POSTED OB THE RESPECTIVE COUNCIL FILE. FOR ITEM 11, REPORT HAS BEEN CIRCULATED TO COUNCIL FILE 26-0681. 19 THROUGH 44 ARE ITEMS FOR WHICH PUBLIC HEARINGS HAVE BEEN HELD. TEN VOTES ARE REQUIRED FOR CONSIDERATION."
+    },
+    {
+      "start_sec": 2862.659,
+      "end_sec": 2870.867,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, WITHOUT OBJECTION, THOSE ITEMS ARE BEFORE US. ANY SPECIALS, MEMBERS? ANY SPECIALS TO MY LEFT? COUNCILMEMBER JURADO?"
+    },
+    {
+      "start_sec": 2870.9,
+      "end_sec": 2887.484,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "YES, THANK YOU, COUNCIL PRESIDENT, I WOULD LIKE TO CALL ITEM 1 SPECIAL WHICH A MOTION SHOULD BE CIRCULATED SHORTLY AND 12 SPECIAL FOR COMMENT SXZ CONTINUE 16, 17, 18 TO TUESDAY JUNE 30th."
+    },
+    {
+      "start_sec": 2887.517,
+      "end_sec": 2895.959,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, WITHOUT OBJECTION, ON THE CONTINUANCES AND HOLDING 1 FOR COMMENTS AND 1 FOR AMENDMENT. COUNCILMEMBER McOSKER."
+    },
+    {
+      "start_sec": 2895.992,
+      "end_sec": 2930.694,
+      "source_label": "T. McOsker",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd15-official",
+      "resolved_name": "Tim McOsker",
+      "resolution_method": "exact-councilmember",
+      "text": "THANK YOU, VERY MUCH MR. PRESIDENT. I WOULD LIKE TO, CONTINUE RELUCTANTLY BUT IT'S FOR SCHEDULING AND FOR MAKING SURE WE COMPLY WITH 6558 OF THE GOVERNMENT CODE, I WOULD LIKE TO CONTINUE THE SMOKE SHOP ICO FOR ONE WEEK TO WEDNESDAY JULY 1. AND WE'LL ENCOURAGE EVERYONE TO BE PRESENT ON WEDNESDAY JULY FIRST, I'M SORRY EVERYONE WILL BE THERE AND READY TO GO. ON THE SPECIAL AGENDA, WE HAVE A SPECIAL ITEM 1, I WOULD LIKE TO CALL THAT JUST FOR COMMENTS."
+    },
+    {
+      "start_sec": 2930.727,
+      "end_sec": 2932.062,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT."
+    },
+    {
+      "start_sec": 2932.095,
+      "end_sec": 2938.335,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "AND ONCE WE GO INTO THE SPECIAL MEETING, WE'LL HAVE TO MAKE SURE THAT WE NOTE THAT FOR ITEM 1, THANK YOU."
+    },
+    {
+      "start_sec": 2938.368,
+      "end_sec": 2945.575,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, ANY OTHER SPECIALS, MEMBERS? ALL RIGHT, SEEING NO OTHER SPECIALS, WHICH ITEMS ARE AVAILABLE FOR VOTES AT THIS TIME."
+    },
+    {
+      "start_sec": 2945.608,
+      "end_sec": 2951.314,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "THE COUNCIL MAY VOTE ON 2 THROUGH 11, AND 13 THROUGH 15."
+    },
+    {
+      "start_sec": 2951.347,
+      "end_sec": 2957.087,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, LET'S OPEN THE ROLL ON THOSE ITEMS, CLOSE THE ROLL, TABULATE THE VOTE."
+    },
+    {
+      "start_sec": 2957.12,
+      "end_sec": 2968.832,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "10 AYES. AND MR. PRESIDENT, THE ORDINANCE FOR ITEM 13 WILL BE HELD OVER TO WEDNESDAY JULY FIRST FOR A SECOND CONSIDERATION UNLESS RECONSIDERED WITH 12 MEMBERS PRESENT, THANK YOU."
+    },
+    {
+      "start_sec": 2968.865,
+      "end_sec": 2970.8,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, WHAT'S NEXT?"
+    },
+    {
+      "start_sec": 2970.833,
+      "end_sec": 2974.871,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "THE COUNCIL MAY NOW MOVE ON TO PRESENTATION."
+    },
+    {
+      "start_sec": 2974.904,
+      "end_sec": 3005.635,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, WE HAVE A PRESENTATION THIS MORNING THAT WILL BE LEAD BY COUNCILMEMBER HUTT OF THE 10th DISTRICT."
+    },
+    {
+      "start_sec": 3008.304,
+      "end_sec": 3153.316,
+      "source_label": "H. Hutt",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd10-official",
+      "resolved_name": "Heather Hutt",
+      "resolution_method": "exact-councilmember",
+      "text": "GOOD MORNING, COLLEAGUES, THANK YOU, MR. PRESIDENT. TODAY, I WANT TO TALK ABOUT HOW IMPORTANT IT IS TO HAVE GOOD SWIMMING EDUCATION, YEAH, EDUCATION. AND SAFETY, THERE YOU GO. SINCE 2020, DOLPHIN U HAS TAUGHT MORE THAN 10,000 SWIM LESSONS, REACHED OVER 5900 FAMILIES AND BOUGHT WATER SAFETY EDUCATION TO MORE THAN COMMUNITY 25 COMMUNITIES AND LOCAL SCHOOLS THROUGHOUT THE DRY LAND EDUCATION PROGRAMS. WHAT I LOVE MOST ABOUT DOLPHIN U IS THEIR MISSION, THEY PLANT TEMSELVES AT THE HEART OF COMMUNITIES WITH THE PASSION TO CHANGE THE WORLD. THAT'S THE EQUITY WORK LOS ANGELES NEEDS MORE OF. WATER SAFETY IS MEANT TO UP DISTRICT, EDUCATION, SUPERVISION, CPR TRAINING AND MAKING SURE EVERY FAMILY REGARDLESS OF ZIP CODE HAS ACCESS TO TOOLS AND RESOURCE TO SEE STAY SAFE IN AND AROUND THE WATER. I ENCOURAGE EVERY FAMILY IN CD10 AND ACROSS LOS ANGELES TO VISIT DOLPHINU.COM, EN ROLL YOUR CHILDREN IN THE SWIM LESSONS AND TAKE ADVANTAGE OF THE RESOURCES DOLPHIN U OFFERS. THESE ARE ACTION THAT'S CAN SAVE YOUR CHILD'S LIFE TO THE ENTIRE, DOLPHIN U FAMILY, THANK YOU FOR SHOWING UP FOR OUR COMMUNITIES AND THAT'S WHAT WATER SAFETY AWARENESS IS ALL ABOUT. AS FOR ME, I BEGAN, TEACHING MY KIDS WATER SAFETY AND TO TAKE THE FEAR OUT OF THEM AT A VERY YOUNG AGE. THEY WERE NOT EVEN WALKING YET. SOME PEOPLE DON'T HAVE THAT KIND OF ACCESS AND THAT IS REALLY WHAT CALVIN DOES TODAY. HE MAKES SURE THAT PEOPLE HAVE ACCESS AND OPPORTUNITY SO THAT THEY FEEL SAFE IN THEIR COMMUNITIES. I KNOW, ALL OF US HAVE EXCITING POOL EXPERIENCES IN THEIR DISTRICT LIKE IN COUNCILWOMAN RODRIGUEZ'S DISTRICT, I UNDERSTAND SHE HAS THE LARGEST POOL IN THE COUNTRY. AND THAT'S AT HANSEN DAM. THEN MY GOOD FRIEND, COUNCILMEMBER LEE JUST OPENED A BRAND NEW POOL, THAT HE SPLASHED INTO JUST LAST WEEK, RIGHT?"
+    },
+    {
+      "start_sec": 3153.349,
+      "end_sec": 3155.085,
+      "source_label": "J. Lee",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd12-official",
+      "resolved_name": "John Lee",
+      "resolution_method": "exact-councilmember",
+      "text": "RIGHT."
+    },
+    {
+      "start_sec": 3155.118,
+      "end_sec": 3165.362,
+      "source_label": "H. Hutt",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd10-official",
+      "resolved_name": "Heather Hutt",
+      "resolution_method": "exact-councilmember",
+      "text": "SO IT'S FUN TO BE IN THE WATER BUT IT'S ALSO REALLY IMPORTANT TO KNOW ABOUT SAFETY. SO LET ME GIVE IT UP FOR CALVIN, YOU CAN SAY A FEW WORDS."
+    },
+    {
+      "start_sec": 3165.395,
+      "end_sec": 3355.417,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, GOOD MORNING, EVERYONE. THANK YOU TO COUNCILWOMAN HUTT FOR THE OPPORTUNITY TO SPEAK. MY NAME IS CALVIN THOMAS THE SECOND ACCOUNTSER I'M A FOUNDER AND CEO BUT MORE IMPORTANTLY I'M A NATIVE OF LOS ANGELES, I LEARNED HOW TO SWIM AT THE AGE OF THERE AT THE YMCA WHEN MY MOTHER WAS WORKING THERE AND WE RECEIVED SCHOLARSHIPS TO LEARN HOW TO SWIM. MY BROTHER ALSO BEGAN HOW TO SWIM AND WE BEGAN CLUB SWIMMING THROUGH PARKS AND AS WELL AS DORSEY HIGH SCHOOL. THANK YOU FOR LETTING ME TALK ABOUT WATER SAFETY, YOU DON'T THINK ABOUT IT, UNTIL YOU HEAR ABOUT IN THE NEWSPAPER. WE FOUND OUT THAT THERE WAS NINE DROWNINGS THAT HAVE HAPPENED SINCE JUNE FIRST. SO TODAY, I INVITE YOU TO USE YOUR IMAGINATION FOR A FEW SECONDS. REMEMBER WHEN YOU WERE A KID ON THE PLAYGROUND, BASKETBALLS, WHY GOING, JUMP ROPES WERE SWINGING AND ALL YOUR FRIENDS WERE CALLING YOUR NAME AND YOU BEGAN TO COUNT THE BUSES, ONE, TWO, THREE UNTIL YOU GET TO 13. WHAT IF I TOLD THAT YOU 13 SCHOOL BUSES FULL OF CHILDREN ARE THE AMOUNT OF CHILDREN THAT DROWN IN THE UNITED STATES. WOULD YOU WANT TO SOLVE A PROBLEM? THAT'S WHY I STARTED  DOLPHIN U, AT MY APARTMENT. WE STARTED RENTING WATER FROM NEIGHBORHOOD HOTELS AND CITIZENS TO BRING SWIM LESSONS TO KIDS THAT LOOK LIKE EVERY SINGLE ONE OF US IN THIS ROOM. OUR MISSION GOES BEYOND TEACHING KIDS HOW TO SWIM FROM SIDE TO SIDE. WE TEACH WATER SAFETY BY INTRODUCING SAFETY LAWYERS, PUTTING FENCES AROUND YOUR POOL AND TEACHING YOUR KIDS SAFETY WATER RULES. BUT OUR VISION IS SIMPLE BUT IT'S VERY AMBITIOUS TO DROWN PROOF L.A., WE'RE ON A MISSION TO TEACH 2028 SAFER SWIMMERS BY SUMMER 2028 AND WE'RE DOING THAT THROUGH SCHOLARSHIPS AND PARTNERS AND NONPROFITS AS WE LOOK FORWARD TO THE FUTURE, WE REMAIN COMMITTED TO EXPANDING THIS IMPACT AND ENSURING THAT EVERY CHILD GETS AN OPPORTUNITY TO LEARN HOW TO SWIM. WHEN WE PRIORITIZE WATER SAFETY EDUCATION, WE ENCOURAGE SWIM LESSONS AND WATER SAFETY NOT JUST IN THE SUMMERTIME, I KNOW IT'S JUNE AND IT'S 80 DEGREES OUTSIDE, BUT SWIMMING IS YEAR-ROUND, IT'S A ROUTINE SPORT THAT EVERY CHILD SHOULD LEARN, BECAUSE HONESTLY IT'S THE ONLY SPORT THAT WILL SAVE THEIR LIFE. AGAIN, I APPRECIATE THE OPPORTUNITY AND I HOPE YOU PUT WATER SAFETY INTO YOUR COMMUNITIES TODAY. THANK YOU."
+    },
+    {
+      "start_sec": 3355.451,
+      "end_sec": 3358.788,
+      "source_label": "H. Hutt",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd10-official",
+      "resolved_name": "Heather Hutt",
+      "resolution_method": "exact-councilmember",
+      "text": "THAT WAS GREAT, THANK YOU SO MUCH."
+    },
+    {
+      "start_sec": 3358.821,
+      "end_sec": 3365.561,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "BEFORE YOU MAKE THE BIG PRESENTATION, WE GOT A FEW SPEAKERS ON THE QUEUE BEGINNING WITH COUNCILMEMBER PRICE."
+    },
+    {
+      "start_sec": 3365.594,
+      "end_sec": 3366.196,
+      "source_label": "H. Hutt",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd10-official",
+      "resolved_name": "Heather Hutt",
+      "resolution_method": "exact-councilmember",
+      "text": "OKAY."
+    },
+    {
+      "start_sec": 3366.229,
+      "end_sec": 3413.243,
+      "source_label": "C. Price",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd9-official",
+      "resolved_name": "Curren Price",
+      "resolution_method": "exact-councilmember",
+      "text": "THANK YOU, MR. PRESIDENT. COUNCILWOMAN THANK YOU FOR BRINGING THESE HEROES TO US TODAY, WE KNOW HOW IMPORTANT SWIMMING IS, ESPECIALLY DURING SUMMER. AND THANK YOU, BROTHERS FOR DISPELLING THE MOTION THAT BLACK FOLKS CAN'T SWIM, BECAUSE WE CAN SWIM. SWIMMING IS VERY IMPORTANT, I HAVE IN EXPO PARK WHERE WE HAVE A POOL, WE'RE SO EXCITED FOR SOME RENOVATIONS THAT WILL OCCUR PRIOR TO THE OLYMPICS BUT IT WILL BE ANOTHER RESOURCE FOR OUR YOUTH. WE THANK YOU FOR ALL YOU'RE DOING, ENCOURAGING FOLKS TO SWIM AND NOT BE AFRAID OF THE WATER, TO UNDERSTAND THE IMPORTANCE OF SAFETY. AND CONGRATULATIONS TO THE BOTH OF YOU."
+    },
+    {
+      "start_sec": 3413.276,
+      "end_sec": 3414.377,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU."
+    },
+    {
+      "start_sec": 3414.41,
+      "end_sec": 3415.711,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "COUNCILMEMBER PADILLA."
+    },
+    {
+      "start_sec": 3415.744,
+      "end_sec": 3525.888,
+      "source_label": "I. Padilla",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd6-official",
+      "resolved_name": "Imelda Padilla",
+      "resolution_method": "exact-councilmember",
+      "text": "COUNCILMEMBER HUTT, THANK YOU FOR THIS GREAT PRESENTATION. IT MADE ME HAVE FLASH BACKS WHEN I WAS A YOUTH COORDINATOR OUT IN PACOIMA, AND I HAD THE ABILITY TO MOVE KIDS FOR TREATS AND WHENEVER THEY DID FINISH THE PROGRAM AND WHAT NOT. I USED TO LIKE TAKING THEM TO THE BEACH AND CELEBRATING THINGS AT OUR REC CENTER, IN FACT MONICA RODRIGUEZ'S POOL WAS WHERE WE WENT TO. BUT TO MY SURPRISE, SOME OF THE KIDS WERE NERVOUS AND THEY DIDN'T KNOW HOW TO SWIM AND DIDN'T HAVE THE APPROPRIATE GEAR. THEY SAY MEXICANS GO TO THE BEACH IN THEIR CLOTHES, AND THAT WAS WHAT HAPPENED AND IT MADE ME REALIZE THAT I DID HAVE TO BE, MORE INTENTIONAL ABOUT DOING TWO THINGS, IS MAKING SURE THAT THEY KNEW HOW TO SWIM AND THEY KNEW THAT OUR REC CENTERS OFFER THAT AS AN OPPORTUNITY BUT ALSO, FIGURE OUT HOW TO TEACH THEM THAT THEY CAN USE PUBLIC TRANSIT AND EVENTUALLY WHEN THEY ARE DRIVERS, THEY CAN ACCESS THE BEACH. I DON'T KNOW HOW YOUTH GO SOMETIMES WITHOUT KNOWING THE BEACHES THAT ARE IN LOS ANGELES. THANK YOU FOR THIS WORK, IT SOUNDS LIKE YOU'RE VERY INTENTIONAL FOR A SOCIAL PROBLEM, WE ARE LOS ANGELES PEOPLE WANT TO BE ABLE TO ENJOY, YOU KNOW, WATER SPACES. BUT IF YOU, COME FROM A FAMILY WHERE THAT WAS NOT THE NORM, THERE IS DEFINITELY LIKE A LEARNING CURVE THAT WE AS LEADERS NEED TO TAKE ON. I APPRECIATE THE WORK AND I WANT TO MAKE SURE THAT I GIVE YOU MY CARD SO YOU CAN WORK WITH MY CBOs THIS IS STILL VERY REAL FOR SOME COMMUNITIES IN THE LOS ANGELES. THANK YOU. AND CONGRATULATIONS."
+    },
+    {
+      "start_sec": 3525.921,
+      "end_sec": 3527.49,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU."
+    },
+    {
+      "start_sec": 3527.523,
+      "end_sec": 3528.724,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "COUNCILMEMBER HUTT."
+    },
+    {
+      "start_sec": 3528.757,
+      "end_sec": 3599.495,
+      "source_label": "H. Hutt",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd10-official",
+      "resolved_name": "Heather Hutt",
+      "resolution_method": "exact-councilmember",
+      "text": "THANK YOU, MEMBERS FOR SHARING YOUR PERSONAL STORIES ABOUT WHAT WATER SAFETY MEANS. A LITTLE KNOWN FACT ABOUT MYSELF, AS I SAM ON SWIM TEAM AT WESTCHESTER HIGH SCHOOL, AND I GAVE IT UP BECAUSE IT WAS TOO COLD AT 6:00 IN THE MORNING AT OUTDOOR POOL WHEN OUR COACHES HAD SWEATS ON AND WE WERE IN THE ICE WATER, AND I COULD HAVE GONE TO THE OLYMPICS, MAYBE, JUST KIDDING. NOT KIDDING ABOUT SWIM TEAM JUST THE OLYMPICS PART. SO I HAVE CERTIFICATE OF RECOGNITION TO DOLPHIN YOUTH SWIM TOOL AND IT'S SIGNED BY ME AND ALL MEMBERS OF THE CITY COUNCIL. JUST HOW GREAT AND IMPORTANT THIS IS.  MANY OF OUR CHILDREN, BECAUSE OF PANDEMIC, THEY'RE INSIDE, THEY SUFFER DIABETES AND OBESITY, SOMETHING I CALL DIBESETY, SOMETHING THAT WILL GIVE THEM AND FIND THE FUN OF MOVING THEIR BODIES. &gt;&gt; THANK YOU, THIS IS REALLY COOL."
+    },
+    {
+      "start_sec": 3599.528,
+      "end_sec": 3628.758,
+      "source_label": "H. Hutt",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd10-official",
+      "resolved_name": "Heather Hutt",
+      "resolution_method": "exact-councilmember",
+      "text": "AND THIS ONE. [APPLAUSE] THIS ONE IS FOR WATER SAFETY AWARENESS MONTH, SINCE WE PROCLAIM THIS WATER SAFETY AWARENESS. I BELIEVE, ACCORDING TO THE COMMENTS THAT ALL OUR MEMBERS ARE GOING TO TALK ABOUT WATER SAFETY. I KNOW THAT, COUNCILMEMBER LEE REALLY KNOWS WHAT IT'S SAFE TO BE IN THE WATER AND HE'LL BE SHARING THAT WITH OTHERS. SO THANK YOU VERY MUCH. DO YOU WANT TO HOLD THIS."
+    },
+    {
+      "start_sec": 3628.791,
+      "end_sec": 3644.107,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU SO MUCH, COUNCILMEMBER HUTT. AND CONGRATULATIONS TO OUR HONOREES, MR. CITY ATTORNEY, CAN YOU PLEASE PREPARE US FOR PUBLIC COMMENT. &gt;&gt; City --."
+    },
+    {
+      "start_sec": 3644.14,
+      "end_sec": 3650.546,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "MR. PRESIDENT, BEFORE WE GO TO PUBLIC COMMENT WOULD YOU LIKE TO RECONSIDER ITEM 13 WITH 12 MEMBERS."
+    },
+    {
+      "start_sec": 3650.579,
+      "end_sec": 3655.485,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "YES, THAT ITEM IS BEFORE US, OWN THE ROLL, CLOSE THE ROLL, TABULATE THE VOTE."
+    },
+    {
+      "start_sec": 3655.518,
+      "end_sec": 3656.619,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "12 AYES."
+    },
+    {
+      "start_sec": 3656.652,
+      "end_sec": 3658.488,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "AND ONE MORE VOTE FOR THE ITEM."
+    },
+    {
+      "start_sec": 3658.521,
+      "end_sec": 3662.892,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, OPEN THE ROLL, CLOSE THE ROLL, TABULATE THE VOTE."
+    },
+    {
+      "start_sec": 3662.925,
+      "end_sec": 3663.826,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "12 AYES."
+    },
+    {
+      "start_sec": 3663.859,
+      "end_sec": 3665.194,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, MR. PRESIDENT."
+    },
+    {
+      "start_sec": 3665.227,
+      "end_sec": 3669.031,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT."
+    },
+    {
+      "start_sec": 3669.064,
+      "end_sec": 3773.87,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "TO PEOPLE PROVIDING PUBLIC COMMENT, PLEASE STATE WHICH ITEM WOULD YOU LIKE TO SPEAK TO. WHEN SPEAKING ON THE AGENDA ITEMS, UT MUST BE ON TOPIC. OUR GOAL IS TO GET THROUGH AS MANY SPEAKERS AS WE CAN. IF YOU ARE NOT ON TOPIC OR IF WE CANNOT TELL WHETHER YOU'RE ON TOPIC, YOU'LL GET A BRIEF WARNING FROM ME OR THE COUNCIL PRESIDENT. AT THAT POINT, YOU NEED TO GET CLEARLY ON TOPIC, IF YOU DON'T DO SO OR STRAY OFF TOPIC, YOU WILL FORFEIT THE REST OF YOUR SPEAKING TIME AND WE WILL MOVE ON TO THE NEXT SPEAKER. THE ITEMS OPEN FOR PUBLIC COMMENT ON THE AGENDA ARE ITEMS NUMBER 1, AND ITEMS NUMBER 19 THROUGH 55. SO AGAIN, THE ITEMS THAT ARE OPEN FOR PUBLIC COMMENT, I APOLOGIZE. LET ME REPEAT. THE ITEMS THAT ARE OPEN FOR PUBLIC COMMENT ON THE AGENDA ARE ITEMS NUMBER 1 AND ITEMS 19 THROUGH 43 AND ITEMS 45 THROUGH 55. SO AGAIN, ITEM 1, ITEMS 19 THROUGH 43, AND ITEMS 45 THROUGH 55. ITEM NUMBER 4 HAS BEEN --54 HAS BEEN CONTINUED TO NEXT WEEK. WE WILL TELL YOU WHEN YOUR TIME IS UP. I HAVE A FEW MORE ANNOUNCEMENTS IF I CAN HAVE THE INTERPRETERS MAKE THE FIRST ONE ALLOWED TO THE ROOM PLEASE. FUZZ REQUIRE A SPANISH LANGUAGE INTERPRETER, PLEASE MAKE SURE TO PAUSE EVERY FEW SENTENCES SO THE INTERPRETERS CAN INTERPRET."
+    },
+    {
+      "start_sec": 3773.903,
+      "end_sec": 3779.976,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 3780.009,
+      "end_sec": 3787.85,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "DON'T WORRY, WE WILL HOLD YOUR TIME WHILE THE INTERPRETERS ARE INTERPRETING, SO YOU WILL GET THE SAME AMOUNT OF TIME AS EVERYONE ELSE. THANK YOU."
+    },
+    {
+      "start_sec": 3787.883,
+      "end_sec": 3798.628,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 3798.661,
+      "end_sec": 3834.33,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "ADDITIONALLY IF YOU'VE MADE AN ACCOMMODATION REQUEST WITH THE CLERK'S OFFICE IN ORDER TO MAKE USE OF THE WIRELESS MICROPHONE, SO IF YOU WOULD LIKE TO DO SO S ONCE YOU HEAR YOUR NAME YOU SIGNED UP UNDER CALLED ALOUD, PLEASE RAISE YOUR HAND SO IS THE SERGEANT KNOW TO PROVIDE WITH YOU THAT WIRELESS MICROPHONE. FINALLY, IN ORDER TO HELP US RUN EFFICIENT COMMENT PERIOD, WE WOULD ASK THAT YOU PLEASE WAIT UNTIL YOU HEAR THE NAME YOU SIGNED UP UNDER BEFORE LINING UP TO SPEAK. THANK YOU."
+    },
+    {
+      "start_sec": 3834.363,
+      "end_sec": 3854.85,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "I WOULD LIKE TO BEGIN PUBLIC COMMENT BY CALLING UP A FEW NAMES, WILMA P WATTS, LISET, JESSICA, CAM RAN KARR, JOHNNY AND JOHN WALSCH."
+    },
+    {
+      "start_sec": 3854.883,
+      "end_sec": 3896.425,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "NO, MR. HERMAN, WE HAD THIS DISCUSSION YESTERDAY. I'LL ASK TO PLEASE WAIT. AGAIN THIS IS BECAUSE WE'RE DOING OUR BEST TO HONOR YOUR ACCOMMODATION, REQUEST, I ALSO TOLD UZ THAT IF YOU DO THIS AGAIN, BECAUSE YOU HEAR IT EVERY MEETING, I WILL GIVE YOU A WARNING FOR DISRUPTING EVERY MEETING. THIS IS YOUR FIRST AND ONLY WARNING, DO NOT DISRUPT, PLEASE WAIT UNTIL YOU'RE PROVIDED WITH THE WIRELESS MICROPHONE. AGAIN THIS IS PURSUANT TO YOUR ACCOMMODATION REQUEST. YOU HAVE THREE MINUTES FOR THE ITEMS AND ONE MINUTE FOR GENERAL."
+    },
+    {
+      "start_sec": 3896.458,
+      "end_sec": 3902.097,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GRACIAS, PINCHE CABEZA DEMELON."
+    },
+    {
+      "start_sec": 3902.13,
+      "end_sec": 3905.434,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, FUCKEN MELON HEAD LAWYER."
+    },
+    {
+      "start_sec": 3905.467,
+      "end_sec": 3907.369,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 3907.402,
+      "end_sec": 3910.072,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "I'M GOING TO START."
+    },
+    {
+      "start_sec": 3910.105,
+      "end_sec": 3923.686,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 3923.719,
+      "end_sec": 3930.793,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "NUMBER ONE, FAG SAYS THAT JAIM HE T HALL CHANNEL INFORMATION."
+    },
+    {
+      "start_sec": 3930.826,
+      "end_sec": 3942.972,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 3943.005,
+      "end_sec": 3955.484,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "BECAUSE THE FUCKEN HEART PARK DOESN'T COST ANYTHING ON THE STREETS OF FIRST AND BROADWAY, FUCKER."
+    },
+    {
+      "start_sec": 3955.517,
+      "end_sec": 4019.848,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "SO ASSHOLE, YOU LIKE NUMBERS. WHAT ABOUT ALL THE REAP? OR AS YOU CALL THEM RAPE. OH YEAH. LOOK HERE FOLKS, HE WANTS A NUMBER. NUMBER 21, 21, LOS ANGELES HOUSING FUCKED UP THE APARTMENT KNOWN IN THE ACRONYM OF LLHD, RIGHT SMOKE SCAN? THAT FUCKEN BUCKET HEAD, PUMPKIN, SIZE 17 AND A HALF HEAD DON'T FIT A CAP THAT'S WHY HE'S AN IDIOT WITH A MARBLE ROLLING AROUND. BUT THE CURRENT ESCROW IN CURREN PRICE IS UNCONSTITUTIONAL ON PRICE. FUCK THAT ITEM, 21, PRICE. WHAT ABOUT 25? A DICK HEAD, THAT'S A NUMBER. WHY DON'T YOU FUCKEN PAY ATTENTION AND TALK TO THREE-INCH."
+    },
+    {
+      "start_sec": 4019.881,
+      "end_sec": 4029.758,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU'RE OFF TOPIC SO I'M GOING TO GIVE YOU YOUR ONLY WARNING, STAY ON TOPIC OR I'M GOING TO MOVE TO YOU GENERAL."
+    },
+    {
+      "start_sec": 4029.791,
+      "end_sec": 4093.522,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[CLEARING THROAT] WHAT DOES L.A. TAX SYSTEM REPLACEMENT PROJECT MEAN? IT MEANS THAT YOU ANGELINOS WILL BE PAYING HIGHER TAXES WHEN YOU VOTE FOR THESE HIGHER TAXES. YEAH, THIS IS TO SUBJECT THE APPROVAL OF THE CITY ATTORNEY AS TO A FORM. WHAT IS THAT FORM? WELL THE PHYSICIAN IMPACT STATEMENT STATES BY THE DUMB BITCH MAYOR AND COUNCIL THROUGH THE ANNUAL BUDGET PROCESS THAT THERE IS NO IMPACT. AND NONE WAS SUBMITTED. THAT WAS NUMBER 35, [SPEAKING SPANISH] THEN, IN MY OTHER ITEMS, LOOK AT ALL OF THIS FUCKEN ATTORNEY SHIT HERE, ALL OF THESE LAWSUITS. NO WONDER WHY THE FUCKEN CITY IS BROKE. NO WONDERING WHY YOU CAN'T FIX THE STREETS. NO WONDER WHY PEOPLE CAN'T GET HOUSE HADING. NOW TO MY FUCKEN GENERAL PUBLIC COMMENT."
+    },
+    {
+      "start_sec": 4093.555,
+      "end_sec": 4095.391,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU HAVE A MINUTE."
+    },
+    {
+      "start_sec": 4095.424,
+      "end_sec": 4125.354,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "LISTEN, MORON, HEY, MORON, THE REASON WHY I'M SITTING UP HERE, BECAUSE I'M PROTECTING MYSELF FROM THE PEOPLE YOU ALLOW TO ATTACK ME WHILE I HOLD THE FLOOR. HEY, DONKEY, DONKEY DAWSON, CAN YOU LISTENING, WHY DON'T YOU PICK YOUR DAM HEAD UP, SAM BOW, LISTEN. ?IE NEED YOU TO CONNECT IT TO SOMETHING. I NEED YOU TO CONNECT IT WITHIN THE CITY'S JURISDICTION."
+    },
+    {
+      "start_sec": 4125.387,
+      "end_sec": 4162.758,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "YOU LIKE TO INTERRUPT PEOPLE, MOTHER FUCKER, I'M SAYING WHAT I BELIEVE FROM MY HEART FROM MY FUCKEN MENTAL HEALTH. STOP FUCKEN PLAYING KOREAN GAMES WITH ME MOTHER FUCKER, STOP PLAYING THE FUCKEN GAMES. YOU WANT TO FUCK WITH MY MENTAL HEALTH? I BELIEVE IF I GET THAT CHANCE, I WILL FUCKEN VACATE THIS BUILDING AND I WILL PARADE IN FUCKEN KOREA AND SHOW YOU WHAT AMERICA IS ABOUT. THANK GOD, DONALD TRUMP AND MORE FUCKEN ICE GET THESE FUCKEN KOREAN OUT OF HERE!"
+    },
+    {
+      "start_sec": 4162.791,
+      "end_sec": 4199.795,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "AND I JUST WANT TO MAKE THE RECORD CLEAR, I'VE PERSONALLY AND I KNOW OTHER STAFF HAVE GONE ABOVE AND BEYOND TO REMIND MR. HERMAN OF THE RULES, NOT JUST FROM HERE AT THE DAIS BUT ALSO BEHIND THE SCENES AS WELL. SO MR. HERMAN, WE ARE NOT TRYING TO PICK ON YOU, WE'RE TRYING TO MAKE SURE YOU FOLLOW THE RULES JUST LIKE EVERYONE ELSE, BUT YOU REFUSE TO COMPLY WITH THE RULES. YOU ALSO REFUSE TO COMPLY WITH YOUR OWN ACCOMMODATION REQUEST, WHICH IS WHY YOU RECEIVED WARNINGS. IF YOU ABIDE BY THE RULES, YOU'LL GET YOUR FULL-TIME UNINTERRUPTED. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 4199.828,
+      "end_sec": 4201.363,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM NUMBER 1."
+    },
+    {
+      "start_sec": 4201.396,
+      "end_sec": 4202.765,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU HAVE A MINUTE."
+    },
+    {
+      "start_sec": 4202.798,
+      "end_sec": 4257.419,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I'M DOCTOR FRANCO AND I SERVE AS DIRECTOR OF COLLABORATION, WE'RE PROUD TO START FOR EL CORAZON PARK. ARTS AND CULTURE ARE POWERFUL DRIVERS OF COMMUNITY WELL BEING AND CIVIC BELONGING THEY PRESERVE OUR STORY AND CREATE SPACES WHERE FAMILIES, AND CULTURE AND FUTURE GENERATIONS ARE THRIVE. ENSURING THAT ARTS, CULTURE AND RECREATION AND PUBLIC SPACES REMAIN ACCESSIBLE AT A TIME. AT A TIME WHEN MANY ARE SEEKING PLACE WHERE THEY FEEL CONNECTED. THIS PROJECT IS OFFERING EXACTLY THAT. ON BEHALF OF THE 500 LEADERS THAT WE REPRESENT, WE ASK YOU THAT YOU PLEASE REJECT THE CEQA APPEAL AND ALLOW THIS VISION TO BE DRIVEN. THANK YOU."
+    },
+    {
+      "start_sec": 4257.452,
+      "end_sec": 4265.627,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. [APPLAUSE] GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 4265.66,
+      "end_sec": 4267.663,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM NUMBER 1."
+    },
+    {
+      "start_sec": 4267.696,
+      "end_sec": 4269.865,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY, YOU HAVE ONE MINUTE. GO AHEAD."
+    },
+    {
+      "start_sec": 4269.898,
+      "end_sec": 4319.448,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "MY NAME IS LISET AND I SPENT OVER 23 YEARS ORGANIZING AROUND SOCIAL JUSTICE, IMMIGRATION AND WORKERS RIGHTS. FOR THIS PROEJT I'VE GATHERED COMMUNITY INPUT BECAUSE OUR CITY DESERVE THZ PARK. MY EXPERIENCE WORK WITHING WORKING FAMILIES AND THE LABOR MOVEMENT THAT'S SHOWN ME THAT THIS IS WHAT THEY TRULY NEED. THIS IS NOT JUST ABOUT ART IT'S ABOUT GIVING WORKING FAMILIES A PLACE TO CONNECT, FIND RES PID AND WATCH THEIR KIDS DRIVE. THOUGH I'M NOT FROM THE CITY OF L.A., I BRING MY SON TO DOWNTOWN OFTEN, THIS PARK WOULD BE ONE MORE SPACE WHERE HE AS AN  AUTISTIC CHILD CAN BE HIMSELF. THIS PARK IS THAT PROMISE, I URGE YOU TO DENY THIS CEQA APPEAL. THANK YOU. [APPLAUSE]"
+    },
+    {
+      "start_sec": 4319.481,
+      "end_sec": 4322.451,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO."
+    },
+    {
+      "start_sec": 4322.484,
+      "end_sec": 4323.152,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM 1."
+    },
+    {
+      "start_sec": 4323.185,
+      "end_sec": 4325.254,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY, YOU HAVE ONE MINUTE."
+    },
+    {
+      "start_sec": 4325.287,
+      "end_sec": 4386.815,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "HELLO EVERYONE HERE, I'M LEE AND I'M EXECUTIVE AND ARTISTIC DIRECTOR OF URBAN VOICES PROJECT AND ARTS AND WELLNESS PROGRAM IN SKID ROW HERE IN DOWNTOWN LOS ANGELES. AND WHILE SO MUCH OF WHAT WE DO IS TRY TO PROVIDE FOR OUR NEIGHBORS AND PROVIDING SERVICES, WE KNOW THAT WHEN SOMEBODY IS MISSING SOMETHING IN THEIR LIFE, THEY FEEL LESS THAN, BROKEN, BUT I URGE TO REMIND YOU ALL THAT WHILE FOOD MAY FEEL GOOD AND HOUSING AND ALL THE THINGS THAT WE ALL STRUGGLE MORE IN MENTAL HEALTH, ARTS IS THE ONE THING THAT CAN SEE US AS HUMAN FROM THE GET GO, IT REMINDS THAT YOUS WE'RE HUMAN IN THE SIMPLE OF QUESTION OF WHERE YOU'RE GETTING THE NEXT MEAL BUT WHAT MUSIC DO YOU LIKE TO LISTEN TO? THAT REPRESENTS THIS BEAUTIFUL PARK AND WHAT IT'S TRYING TO DO. HOW ART CAN HUMAN EYES US TOGETHER,--HUMANIZE, PLEASE RESECT THE CEQA APPEAL."
+    },
+    {
+      "start_sec": 4386.848,
+      "end_sec": 4403.131,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BEFORE THE NEXT SPEAKER BEGINS, I WOULD LIKE TO CALL UP A FEW MORE NAMES, MAYA, BARNO, TERESA, HUCKLE BERRY FLYNN AND EARNEST MARTINEZ."
+    },
+    {
+      "start_sec": 4403.164,
+      "end_sec": 4406.068,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING,"
+    },
+    {
+      "start_sec": 4406.101,
+      "end_sec": 4549.511,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, AS FOR THE RECORD, I SIGNED UP AS OUR NEWEST LAKERS, CAMERON KARR. ITEM 19 IS A DECLARATION OF OUR EMERGENCY ON OUR LAST FIRE AS WE'RE IN THE MIDST OF DEALING WITH THE NEWS FIRE. IT WAS INTERESTING TO HEAR KAREN BASS SAY, NO THE AIR IS NOT DANGEROUS. FOR PEOPLE WHO LIVE IN L.A., WE KNOW WHAT A WILD BRUSH FIRE SMELLS LIKE, BUT THIS DOES NOT PASS THE SMELL TASTE. I WENT OUT TO WALK MY DOG AND CAME BACK WITH MY EYES BURNING AND THE MAYOR WANTS TO TELL US, NO, DON'T TRUST YOUR NOSE. THERE IS NOTHING TO MISS HERE. I ALSO FIND IT INTERESTING THAT, WE USUALLY, RUSH SOME RULE 23 MOTIONS WHEN THERE IS AN EMERGENCY BECAUSE WE WANT TO SHOW THAT WE CARE. BUT APPARENTLY BOYLE HEIGHTS IS NOT ENOUGH. IF IT WAS THE PALISADES, YEAH, WE'RE GOING TO DO A RULE 23, WE'RE GOING TO MAKE SURE THAT WE TAKE ACTION. I KNOW IT'S NOT A BIG DEAL IN AFFECT BUT IT SHOWS PEOPLE YOU CARE. ITEM NUMBER 1, THIS IS A REALLY INTERESTING ITEM INVOLVING ALTA MED AND THERE IS SOME INTERESTING THINGS ABOUT THIS PROJECT, I DON'T WANT TO STEAL ANYONE'S THUNDER BUT I WANT TO ACKNOWLEDGE THERE WILL BE SOME INTERESTING THINGS COMING OUT. AND 23, THERE IS ZERO TRANSPARENCY ABOUT THIS ITEM UNLESS YOU ACTUALLY FOLLOW WHAT IS HAPPENING WITH WITH THE ETHICS COMMISSION AND OUR COURTS SYSTEM, YOU HAVE NO IDEA THAT ITEM 43 RELATES TO COUNCIL JOHN LEE, HIS NAME IS NOT MENTIONED ANYWHERE. AND, IT'S IMPORTANT TO REMEMBER, HE IS DRAGGED THIS CITY THROUGH HIRING OUTSIDE COUNCIL, FIGHTING HIM IN COURT AND THEN FIGHTING HIM AT THE ADMINISTRATIVE LEVEL AND FIGHTING HIM IN COURT AGAIN, OVER SOMETHING WE ALL KNOW THAT HE DID, JUST LIKE CURREN PRICE, HE HAS SKIRTED AROUND FOR THREE YEARS WITHOUT ACTUALLY FACING A TRIAL FOR HIS CORRUPTION CHARGES. AND THEN YOU? HOW MUCH TIME DO I HAVE?"
+    },
+    {
+      "start_sec": 4549.544,
+      "end_sec": 4551.68,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "53 SECONDS IN THE ITEMS."
+    },
+    {
+      "start_sec": 4551.713,
+      "end_sec": 4662.924,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "AND YOU'VE DONE NOTHING AND YOU WANT TO TRICK VOTERS INTO GIVING YOU THE POWER TO UNILATERALLY GUT THE SCHEDULE WITHOUT ANY ASSURANCES. IF YOU WANT TO BE A PART-TIME COUNCIL, GET PAID LIKE A PART-TIME COUNCIL. I'M A LITTLE ANNOYED, A LITTLE, ABOUT THE WHOLE COUNCIL SIZE PUN THING BUT I GET THAT. WHAT I DON'T GET, IS YOU COULDN'T FIND ONE MAESLY REFORM ACROSS THE BOARD TO THROW A LITTLE BONE AND MAKE IT LOOK LIKE YOU CARE. IT IS CLEAR THAT I DO PROBABLY JUST NEED TO MAKE LIFE HARDER FOR YOU ALL, NOT ALL OF YOU, THERE IS ONE THAT IS NOT BAD. I DO WANT TO START WHERE IS IMELDA? WHERE IS IMELDA? ALL RIGHT. CD6 AND 7, I'M GOING TO START WITH YOU TWO. BECAUSE YOU HAVE BEEN INAPPROPRIATELY DABLING AROUND WITH WHAT LOOKS LIKE ELECTIONIERING, YOU'RE BEING CAREFUL NOT TO CROSS THE LINE BUT IT'S CLEAR TO EVERYBODY WHAT YOU'RE DOING. THE  INTENT AND YOU SHOULD BE ASHAMED AND I'M SURPRISED THAT THE COUNCIL HAS NOT HAD A TALK WITH YOU, THANK YOU, I KNOW YOU HAVING KAREN BASS'S BACK. IMELDA, I KNOW WHAT YOU DID LAST, LAST, LAST SUMMER WHEN YOU WERE TRYING TO GET INTO OFFICE ABOUT THINGS YOU DID AT THE TIME, KNEW WERE GOING TO COME OUT AND IT WAS GOING TO BE PROOFABLE THAT YOU JUST BLATANTLY LIE TO PEOPLE. SO I'LL TALK ABOUT THAT SOME OTHER TIME, SEE IF IT'S NECESSARY. BUT, LET'S, LET'S SEE YOU FIX THIS MEETING THING AND MAYBE I WILL NOT HAVE TO BE SO CRAZY."
+    },
+    {
+      "start_sec": 4662.957,
+      "end_sec": 4664.359,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER."
+    },
+    {
+      "start_sec": 4664.392,
+      "end_sec": 4675.937,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BEFORE THE NEXT SPEAKER BEGINS, I WOULD LIKE TO CALL UP A FEW MORE NAMES, SUSANA, PEDRO AND ALFREDO CAMACHO."
+    },
+    {
+      "start_sec": 4675.97,
+      "end_sec": 4679.641,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT ITEM WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 4679.674,
+      "end_sec": 4682.343,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GENERAL COMMENT. ?AOUF A MINUTE."
+    },
+    {
+      "start_sec": 4682.377,
+      "end_sec": 4744.239,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "JOHNNY TO MOST, LAST DECEMBER I WAS ARRESTED FOR PAINTING CROSSWALKS WITH MY ORGANIZATION, PEOPLE VISION ZERO. WE HAVE TWO GOALS THAT WE COMMIT TO VISION ZERO BY DECLARING A EMERGENCY FOR TRAFFIC VIOLENCE AND MAKE VOLUNTEERS TO MAKE OUR STREETS SAFER. SINCE I WAS ARRESTED, THE CITY HAS REFUSED TO COOPERATE IN GOOD FAITH FM. IN THE MEANTIME DRIVERS ARE KILLING PEOPLE, JAVIER, WE CAN COAND BABY PUSH DRIVE COUNTLESS OTHERS, DO NOT LOOK AWAY. CARS REMAIN THE LEADING CAUSE FOR KIDS IN LOS ANGELES, DO NOT LOOK AWAY. THIS SATURDAY MORNING WE'LL BE PROTESTING FOR SAFER STREETS BY PAINTING CROSSWALKS SOMEWHERE IN L.A., DO NOT LOOK AWAY. IS REFUSE THAT OUR GOALS ARE TOO BIG TO ACHIEVE AND WE'LL CONTINUE TO PAINT UNTIL WE SEE MEANINGFUL PROGRESS. THANK YOU."
+    },
+    {
+      "start_sec": 4744.272,
+      "end_sec": 4750.879,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 4750.912,
+      "end_sec": 4752.08,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM 1, PLEASE."
+    },
+    {
+      "start_sec": 4752.113,
+      "end_sec": 4753.949,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU HAVE A MINUTE, GO AHEAD."
+    },
+    {
+      "start_sec": 4753.982,
+      "end_sec": 4816.111,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, I'M JESSICA HITCHCOCK AND I'M A PROJECT MANAGER FOR SOMUS, OUR FIRM WAS REMIND FOR EL CORAZON PROJECT AND WE PREPARED THE RESPONSE ON BEHALF OF SCIU LOCAL 1121, I'M HERE TO PLAIN WHY THE PROPERTY QUALIFIES FOR A EXEMPTION UNDER CEQA SECTION. IT'S CONSISTENT WITH ZONE ISING PER WRAPS AUTHORITY AND THE CITY CHARTER, IT'S UNDER FIVE ACRES AND THE SITE HAS NO HABITAT VALUE AND NO SIGNIFICANT IMPACT TO AIR, QUALITY, NOISE TRAFFIC OR WATER QUALITY. ADDITIONALLY, THE PROJECT RELIES ON TEMPORARY INFRASTRUCTURE THAT EXISTING UTILITIES CAN EASILY SUPPORT OVERALL, THE PROJECT DOESN'T MEET ANY OF THE EXCEPTIONS TO THE EXCEPTION AND THEREFORE THE PROJECT SHOULD, ALL RIGHT. THAT'S IT. THANK YOU."
+    },
+    {
+      "start_sec": 4816.144,
+      "end_sec": 4821.349,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 4821.382,
+      "end_sec": 4823.251,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM NUMBER 1 AND PUBLIC COMMENT, PLEASE."
+    },
+    {
+      "start_sec": 4823.284,
+      "end_sec": 4829.024,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY, YOU HAVE A MINUTE FOR ITEM NUMBER 1 AND ONE FOR GENERAL. PLEASE BEGIN WITH THE ITEM."
+    },
+    {
+      "start_sec": 4829.057,
+      "end_sec": 4891.586,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, I'M CASSIE HOERTON AND I'M A BOARD MEMBER OF THE DOWNTOWN RESIDENTS ASSOCIATION. DOWNTOWN IS MY HOME. DOWN HOW SOON L.A., THE DOWNTOWN RESIDENTS ASSOCIATION SUPPORTS THE SCIU CEQA APPEAL, THIS PARCEL SITS ACROSS FROM CITY HALL, ARGUABLY THE MOST SIGNIFICANT PIECE OF LAND IN LOS ANGELES, IT DESERVES THE CARE IT HAS NOT RECEIVED. THIS LAND WAS ACQUIRED AS DEDICATED PARKLAND FOR THE COMMUNITY OVER YEARS AND REDIRECTED WITHOUT A COMPETITIVE RFP, PROPER ENVIRONMENTAL REVIEW AND WITHOUT COMMUNITY ENGAGEMENT TOWARDS ALTA MED'S OWN SUPPORT FOR CALL THE GROUNDWORK AND CULTURAL INSTITUTION ON THE SITE. SINCE APRIL, WE HAVE REQUESTED WRITTEN REPORTS FROM ALTAMED THAT THEY ARE HAVE A FULL TRANSPARENT PROCESS."
+    },
+    {
+      "start_sec": 4891.619,
+      "end_sec": 4892.387,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GENERAL."
+    },
+    {
+      "start_sec": 4892.42,
+      "end_sec": 4947.976,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "WE HAVE NOT RECEIVED THAT COMMITMENT TO DATE. YESTERDAY, RAP CALLED THE 20-FOOT DIGITAL LED SPHERE A PERMITTING ISSUE NOT A CEQA ISSUE. THAT IS INCORRECT. CEQA REQUIRES ANALYSIS OF LIGHT TRESPASS, SKY GLOW AND GLARE, THAT SPONSOR LIGHTED SPHERE WAS NEVER PRESENTED TO THE COMMUNITY DESPITE MULTIPLE ENGAGEMENT OPPORTUNITIES WITH THE NEIGHBORHOOD COUNCIL AND OTHER GROUPS. THE HOME TO RESIDENTS WHO FIRST RAISED CONCERNS SITS DIRECTLY IN THE LIGHT PATH. I URGE YOU TO GRANT THIS APPEAL, REQUIRE THE PROCESS THAT THIS SITE DESERVES, THIS IS NOT ABOUT THE VALUE OF OF MUSEUM OR ART OR WHAT THIS SPACE ULTIMATELY BECOMES, IT'S ABUT COMMUNITY TRUST AND ONE OF DOWNTOWN'S MOST IMPORTANT NEIGHBORHOODS SPACED. THANK YOU. [APPLAUSE]"
+    },
+    {
+      "start_sec": 4948.009,
+      "end_sec": 4952.881,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER? GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 4952.914,
+      "end_sec": 4955.45,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, GENERAL PUBLIC COMMENT AND NUMBER 1, PLEASE."
+    },
+    {
+      "start_sec": 4955.483,
+      "end_sec": 4959.554,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY, YOU HAVE ONE MINUTE FOR EACH. GO AHEAD."
+    },
+    {
+      "start_sec": 4959.587,
+      "end_sec": 5000.261,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I'M TERESA Y HILLARY, I'M A 20-YEAR RESIDENT OF DOWNTOWN LOS ANGELES, I SERVE AS VICE PRESIDENT OF THE NEIGHBORHOOD COUNCIL ALSO A FOUNDING BOARD MEMBER OF DT ASSOCIATION. BOTH ORGANIZATIONS HAVE FILED COMMENTS WRITTEN COMMENTS, YOU'VE HEARD ALSO FROM DT LA, RA, IN MY INDIVIDUAL CAPACITY I WANT TO SAY THAT I STAND WITH THE CEIU CEQA APPEAL, I SUPPORT THAT. AS AN OPPORTUNITY TO CREATE A FAIR TRANSPARENT AND IMPROVED PUBLIC ENGAGEMENT PROCESS AND I HOPE THIS COUNCIL SEES IT THAT WAY AS WELL, AND VOTE ACCORDINGLY. THANK YOU."
+    },
+    {
+      "start_sec": 5000.294,
+      "end_sec": 5007.402,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER ? GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5007.435,
+      "end_sec": 5010.905,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, ITEM ONE, PLEASE. ?AOUF A MINUTE, GO AHEAD."
+    },
+    {
+      "start_sec": 5010.938,
+      "end_sec": 5052.18,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, COUNCIL AND COMMUNITY. AS A MEMBER PF ALTA MED COMMUNITY I'M HERE AS A NEIGHBOR WHO BELIEVES IN THE COMMISSION OF EL CORAZON, AS WE WALK AROUND, IT'S OBVIOUS THAT L.A. DOES NOT HAVE SPACE SOUTH SIDE. THIS PARK WILL GIVE THE COMMUNITY JUST THAT, YOUR COMMUNITY IS HERE FOR WHAT DOWNTOWN LOS ANGELES COULD BE. PLEASE DO NOT CREATE FURTHER BARRIERS FOR THE COMMUNITY TO BE SEEN AND ENJOY ART AND ENJOY YOUR COMMUNITIES, I URGE YOU TO VOTE TO REJECT THE CEQA APPEAL AND STOP DELAYING THE EL CORAZON PARK. THANK YOU."
+    },
+    {
+      "start_sec": 5052.213,
+      "end_sec": 5063.158,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5063.191,
+      "end_sec": 5064.759,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I'M SPEAKING TO A GENERAL COMMENT."
+    },
+    {
+      "start_sec": 5064.792,
+      "end_sec": 5067.862,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY, YOU HAVE ONE MINUTE GO AHEAD."
+    },
+    {
+      "start_sec": 5067.895,
+      "end_sec": 5132.359,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I'M SPEAKING ON BEHALF OF THE EAST SIDE ABOUT THE LINAGE WAREHOUSE FIRES, THEY'VE BEEN POISONING THE EAST SIDE FOR SIX DAYS AND HAVE UNSUFFICIENT SUPPRESSING SYSTEMS AND THE CITY OF L.A. NEED TO HOLD THEM ACCOUNTABLE OR THE REPRESENTATIVES WILL BE HELD ACCOUNTABLE NOT ONLY IN A COURT OF LAW BUT IN THE COURT OF GOD. HOLY GHOST IS REAL AND HE'S BACK AND CHRIST IS KING, AND, AGAIN, THE CITY OF L.A. HASN'T DONE ENOUGH TO PUT OUT THESE FIRES. IT'S BEEN SIX DAYS AND IT'S NOT NORMAL FIRE, IT'S WITH AMMONIA AND I'VE ALREADY COUGHING AND HAVING A SORE THROAT AND IT'S BEEN A LACK OF ATTENTION GIVEN TO THIS FIRE AND AGAIN, IF, IF, THE WAREHOUSE IS IS NOT HELD ACCOUNTABLE, THE REPRESENTATIVES MS. JURADO WILL BE HELD ACCOUNTABLE IN A COURT OF LAW. THANK YOU."
+    },
+    {
+      "start_sec": 5132.393,
+      "end_sec": 5138.899,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, SPEAKER. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5138.933,
+      "end_sec": 5139.733,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ISSUE NUMBER 1."
+    },
+    {
+      "start_sec": 5139.767,
+      "end_sec": 5141.936,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY YOU HAVE ONE MINUTE, GO AHEAD."
+    },
+    {
+      "start_sec": 5141.969,
+      "end_sec": 5188.283,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, COUNCILMEMBERS COUNCIL PRESIDENT, MY NAME IS SUSANA BAUTISTA AND I'M I'M ALTA MED AND A RESIDENT OF CD13, WE'VE BEEN SERVING THE COMMUNITY SINCE 1959, WE BELIEVE STRONGLY THAT ARTS, CULTURE AND RECREATION ARE PART OF WELLNESS, WELLNESS FOR OUR MINDS, OUR BODIES AND OUR HEALTHY COMMUNITIES. WE URGE YOU TO DENY THIS APPEAL ON THE LEGAL MERITS OF THE CEQA EXEMPTION THAT YOU HAVE RECEIVED FROM REC AND PARK STAFF, ATTORNEYS AND FROM OUR OWN ATTORNEYS. WE HAVE WORKED CLOSELY WITH REC AND PARKS STAFF, WE HAVE FOLLOWED THE PROCESS AND WE WILL CONTINUE TO DO SO. THANK YOU VERY MUCH."
+    },
+    {
+      "start_sec": 5188.316,
+      "end_sec": 5196.457,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. [APPLAUSE] GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5196.491,
+      "end_sec": 5197.792,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, ITEM 1."
+    },
+    {
+      "start_sec": 5197.825,
+      "end_sec": 5200.695,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY YOU HAVE ONE MINUTE GO AHEAD."
+    },
+    {
+      "start_sec": 5200.728,
+      "end_sec": 5256.517,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, MEMBERS OF THE CITY  COUNCIL I'M ALFRED O, I'M HERE TO ASK YOU TO REJECT IN APPEAL. THIS CREATES A SPACE FOR ART, CULTURE AND CONNECTION WHILE EXPANDING ACCESS TO OPEN SPACE. THE ASK IS STAND WITH THE COMMUNITY AND ALLOW EL CORAZON TO MOVE FORWARD. CEQA WAS INTENDED TO IDENTIFY A VOID AND MITIGATE SIGNIFICANT ENVIRONMENTAL IMPACTS. WHEN CEQA IS INVOKED AS A PROCEDURAL WEAPON TO PREVENT PROJECTS THAT EXPAND ACCESS TO OPEN SPACE AND COMMUNITY BENEFITS, WE HAVE LOST THE PLOT. PLEASE ALLOW THE PROJECT TO MOVE FORWARD. THANK YOU. [APPLAUSE]"
+    },
+    {
+      "start_sec": 5256.55,
+      "end_sec": 5259.754,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5259.787,
+      "end_sec": 5260.287,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM 1."
+    },
+    {
+      "start_sec": 5260.32,
+      "end_sec": 5262.09,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU HAVE ONE MINUTE, GO AHEAD."
+    },
+    {
+      "start_sec": 5262.123,
+      "end_sec": 5310.704,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU. MY NAME IS PEDRO, DIRECTOR OF CHIRLA HUMANE IMMIGRATION RIGHTS. CHIRLA BELIEVES IN THE EFFORTS OF EL CORAZON ART PARKS AS WE BELIEVE IN ARTS AND CULTURE TO OUR COMMUNITY. LOS ANGELES HAS BEEN SUFFERING A LOT OF ATTACKS AROUND RAIDS IN THE PAST YEAR AND, WE ARE, WE UNDERSTAND THE IMPORTANCE OF ARTS, WE HAVE THE NINETH ANNUAL EVENT TOMORROW IN PASADENA BECAUSE THAT AREA WAS HIT NOT ONLY BY THE RAIDS BUT ALSO BY THE FIRES LAST YEAR. THE ARTS INSPIRE, AND BRINGS PETING TOGETHER AND THAT'S WHY WE URGE THIS COMMITTEE TO REJECT THE CEQA APPEAL, SO IT DOES NOT DELAY THIS PROJECT. THANK YOU ALL SO MUCH."
+    },
+    {
+      "start_sec": 5310.737,
+      "end_sec": 5312.173,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER."
+    },
+    {
+      "start_sec": 5312.206,
+      "end_sec": 5326.187,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BEFORE THE NEXT SPEAKER BEGINS, I WOULD LIKE TO CALL UP A FEW MORE NAMES, NWA, ANDY YAM, BUSH AND GABRIELA LOPEZ."
+    },
+    {
+      "start_sec": 5326.22,
+      "end_sec": 5328.99,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5329.023,
+      "end_sec": 5331.058,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM NUMBER 1."
+    },
+    {
+      "start_sec": 5331.091,
+      "end_sec": 5334.095,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU HAVE A MINUTE GO AHEAD."
+    },
+    {
+      "start_sec": 5334.128,
+      "end_sec": 5374.602,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I LIVE IN THE CITY OF LOS ANGELES, I'M NOT HERE AS AN REPRESENTATIVE OF ANY ORGANIZATION I'M HERE AS A NEIGHBORHOOD AND SOMEBODY WHO BELIEVES WHAT EL CORAZON ARTS STANDS FOR, WE DON'T HAVE ENOUGH PLACES WHERE PEOPLE CAN GATHER AND FEEL LIKE THE CITY BELONGS TO THEM. THIS PARK WOULD GIVE US THAT. I'VE SEEN HOW THIS PROJECT HAS BROUGHT PEOPLE TOGETHER AGAIN THROUGH MEETINGS AND COMMITTEES. PLEASE DON'T LET THAT GO. I URGE TO VOTE, I URGE YOU TO VOTE TO REJECT THE CEQA APPEAL AND STOP DELAYING ON EL CORAZON ART PARK. THANK YOU. [APPLAUSE]"
+    },
+    {
+      "start_sec": 5374.635,
+      "end_sec": 5378.539,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK IS IT TO*."
+    },
+    {
+      "start_sec": 5378.572,
+      "end_sec": 5382.977,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I'M PATRICIA BARRET, I WANT TO SPEAK GENERAL COMMENT AND NUMBER ONE."
+    },
+    {
+      "start_sec": 5383.01,
+      "end_sec": 5385.78,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY YOU HAVE A MINUTE FOR EACH. GO AHEAD."
+    },
+    {
+      "start_sec": 5385.813,
+      "end_sec": 5448.342,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I WANT TO EXPRESS MY DEEP CONCERN REGARDING PUBLIC SAFETY IN LOS ANGELES. POLICE TOTALS 8200--WHILE CHICAGO HAS 12,000. THIS DISPARITY FAVORS CRIMINALS ON OUR STREETS. THE FIRE IN THE BOYLE HEIGHTS IS CAUSED HARM TO OUR COMMUNITY, NOT ONLY TO LACK LATINO BUT TO WIPE PEOPLE WHICH SHOULD BE MENTIONED YESTERDAY. THE SITUATION HAS LINGERED DUE TO FIRE DEPARTMENT LACKING RESOURCES AND FUNDS, RAISED IN CHARITY NOT GIVEN TO THEM. DIRECT RESULT OF COUNCIL PRIORITIZING THE DSA AND NOT PROTECTING CITIZENS OF LOS ANGELES. FUNDS HAVE BEEN ALLOCATED FOR LAWSUITS FAVORING MAYOR BASS AND CROWLEY, TOTALING 8 MILLION DOLLARS. LISTEN TO THAT, THAT SHOULD BE HANDLED BY CITY ATTORNEYS. NUMBER ONE, DO NOT BLOCK THE PARK IN COUNCIL, THIS IS FOR NUMBER 1."
+    },
+    {
+      "start_sec": 5448.375,
+      "end_sec": 5450.912,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GO AHEAD."
+    },
+    {
+      "start_sec": 5450.945,
+      "end_sec": 5504.932,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "DO NOT BLOCK THE PARK, IN DISTRICT 14. JURADO, WHO BELIEVES IN THE DSA SHOULD BELIEVE IN WHAT THE CONSTITUENTS WANT AND BELIEVE WHAT THEY WANT AND PASS IT. FOR EXAMPLE, IF WE DIDN'T HAVE THE FUNDS THAT WERE ALLOCATED FOR THE LAWSUITS FOR BASS AND CROWLEY, 8 MILLION DOLLARS PLUS A 5 MILLION DOLLARS THAT HAVE BEEN ALLOCATED FOR THE FIRE, THAT ARE CONTROLLER HAS TOLD HER, WE WOULD HAVE FUNDS FOR THIS FIRE. BELIEVE IN IT, PASS IT THROUGH, AND PUT IT IN. AND DO NOT BELIEVE IN DSA, YOUR CONTRACTOR TO THE DSA, BELIEVE IN THE CONTRACT THAT YOU SIGNED UP FOR AND SWORE IN WHEN YOU WERE IN OFFICE. PASS THE BILL FOR THE PARK TO GET THROUGH. THANK YOU."
+    },
+    {
+      "start_sec": 5504.965,
+      "end_sec": 5558.085,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU. AND BEFORE WE CONTINUE WITH THE NEXT SPEAKER, I KNOW THERE IS BEEN MULTIPLE PEOPLE HERE WHO--I'M SORRY, WAS THAT MR. HERMAN? CAN WE GET CONFIRMATION? OKAY. SO TO THE NOT GOING TO WARN YOU FORMALLY, I'M 99 PERCENT THAT IT THAT WAS. YOU'VE BEEN WARNED, IF YOU DO IT AGAIN, YOU WILL BE REMOVED. AS IFSZ SAYING, THERE HAVE BEEN MULTIPLE PEOPLE WHO HAVE PROVIDED PUBLIC COMMENT RELATED TO THE FIRE IN BOYLE HEIGHTS, JUST WANTED TO STATE FOR THE RECORD, THERE WERE MULTIPLE MOTION THAT'S WERE INTRODUCED AT COUNCIL YESTERDAY RELATED TO THAT, ALSO OBVIOUSLY THE MAYOR HAS DECLARED A EMERGENCY, YOU CAN FIND MORE INFORMATION ON THE CLERK'S WEBSITE BUT THEY WERE INTRODUCED BY COUNCILMEMBER JURADO YESTERDAY AT COUNCIL. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5558.118,
+      "end_sec": 5558.986,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM NUMBER 1."
+    },
+    {
+      "start_sec": 5559.019,
+      "end_sec": 5561.889,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY YOU HAVE A MINUTE. GO AHEAD."
+    },
+    {
+      "start_sec": 5561.922,
+      "end_sec": 5618.612,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, I'M GABRIELA, LOPEZ AND AS A LATINA COLLEGE STUD SENT I KNOW HOW IMPORTANT IT IS TO SEE OUR PUBLIC REPRESENTED IN PUBLIC PLACES. IT REMINDS THE PEOPLE THAT THE CULTURE IS VERY IMPORTANT. THIS PARK IS MORE THAN--IT'S WHERE COMMUNITY MEMBERS CAN LEARN FROM ONE ANOTHER, CELEBRATE DIFFERENT CULTURES AND BUILD CONNECTIONS. IT, IT COULD INSPIRE YOUNG PEOPLE TO EXPLORE ART, DIFFERENT CULTURES AND CIVIC ENGAGEMENT AS WELL. WHILE CREATING A WELCOMING ENVIRONMENT FOR EVERYBODY IN THE CITY. LOS ANGELES IS ONE OF THE MOST DIVERSITIES IN THE WORLD AND THIS PLACE IS GOING TO REFLECT ALL OF IT. THAT'S WHY I SUPPORT THIS PARK AND THIS WILL HELP US A LOT. THANK YOU. [APPLAUSE] &gt;&gt; City Attorney: THANK YOU, NEXT SPEAKER."
+    },
+    {
+      "start_sec": 5618.645,
+      "end_sec": 5631.425,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BEFORE THE NEXT SPEAKER BEGINS, I WOULD LIKE TO CALL UP A FEW MORE NAMES, TOM, LOZANO, LENA, ANGEL, PAULA FERNANDEZ AND ELON SHAPIRO."
+    },
+    {
+      "start_sec": 5631.458,
+      "end_sec": 5635.296,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5635.329,
+      "end_sec": 5638.099,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 5638.132,
+      "end_sec": 5639.9,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 5639.933,
+      "end_sec": 5649.477,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH] BUENOS DIAS. [SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 5649.51,
+      "end_sec": 5660.154,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "YESENIA LOPEZ, HI I'M YESENIA I'M FROM L.A. AND I WOULD LIKE TO MAKE A COMMENT ON THE CARAZON ARTS PROJECT."
+    },
+    {
+      "start_sec": 5660.187,
+      "end_sec": 5665.092,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 5665.125,
+      "end_sec": 5672.533,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "I'M HERE TO SUPPORT THE CORAZON ART PARK PROJECT BECAUSE WE NEED MORE PUBLIC SPACES."
+    },
+    {
+      "start_sec": 5672.566,
+      "end_sec": 5680.207,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 5680.24,
+      "end_sec": 5685.178,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "WHERE OUR FAMILIES CAN GET TOGETHER ENJOY ART AND OUR CULTURE."
+    },
+    {
+      "start_sec": 5685.211,
+      "end_sec": 5706.2,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH] ART CULTURE AND HAVE A PLACE FOR FAMILY."
+    },
+    {
+      "start_sec": 5706.233,
+      "end_sec": 5717.444,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 5717.477,
+      "end_sec": 5729.59,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "I ASK FOR YOU TO REJECT THE CEQA APPEAL SO YOU CAN A LAW FOR CARAZON ART PARK PROJECT TO MOVE FORWARD WITHOUT FURTHER DELAY. THANK YOU."
+    },
+    {
+      "start_sec": 5729.623,
+      "end_sec": 5734.962,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5734.995,
+      "end_sec": 5788.949,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I'M ANDY AND I WOULD LIKE TO SPEAK TO ITEM 1. GOOD MORNING, I'M ANDY AND I FREQUENTLY GO INTO THE CITY OF LOS ANGELES TO SEE FRIENDS AND FAMILY, I'M HERE AS A NEIGHBOR AS SOMEBODY WHO BELIEVES WHAT OUR PARK STANDS FOR. WE DON'T HAVE ENOUGH PLACES HERE IN THE CITY OF LOS ANGELES WHERE EVERY DAY PEOPLE CAN GATHER AND ENJOY ART AND FEEL THAT THE CITY BELONGS TO THEM AND SEE THEMSELVES REPRESENTED IN THE CITY. SO IS THE PARK WILL GIVE US THAT, BEING A PLACE THAT REJECTS CULTURE AND DIVERSITY. I'VE SEEN HOW THIS HAS BROUGHT PEOPLE TOGETHER AND THROUGH CONVERSATIONS AND REAL SENSE OF EXCITEMENT ABOUT WHAT DOWNTOWN LOS ANGELES CAN BE. PLEASE DON'T LET THAT GO AND I URGE TO STOP THE APPEAL AND STOP THE DELAY. THIS IS FOR ALL OF US, THIS IS FOR THE COMMUNITY. THANK YOU SO MUCH. [APPLAUSE]"
+    },
+    {
+      "start_sec": 5788.982,
+      "end_sec": 5797.791,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5797.824,
+      "end_sec": 5863.023,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ALAN SHAPIRO. GOOD MORNING I'M DR. SHAPIRO AND AFTER FOR ALTA MED, FIRST I WANT TO THANK COUNCIL YSABEL JURADO, DURING THE FIRE, SHE DISTRIBUTESED AIR FILTERS AND COUNCILMEMBER JURADO HELPED ENSURE THOSE RESOURCES REACHED THE PEOPLE WHO NEED IT THE MOST. AS A PHYSICIAN, I SEE THE HEALTH FAR BEYOND THE WALLS OF OUR CLINIC, CLEAN AIR, COMMUNITY CONNECTIONS ALL CONTRIBUTE TO A BETTER HEALTH OUTCOME, REMINDED US HOW ENVIRONMENTAL IMPACT OUR NEIGHBORHOODS. THE ANSWER IS IS NOT DELAY, THE ANSWER IS INVESTMENT IN THE COMMUNITY WELL BEING THAT WE HAVE. EL CORAZON WILL CREATE A SPACE OF CULTURE. DELAYING WILL DELAY THE BENEFITS FOR OUR ENTIRE COMMUNITY. I RESPECTFULLY, URGE YOU AND THE COUNCIL TO REJECT CEQA AND APPEAL TO MOVE THIS PROJECT FORWARD. THANK YOU."
+    },
+    {
+      "start_sec": 5863.057,
+      "end_sec": 5868.295,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GENERAL. [APPLAUSE] GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5868.328,
+      "end_sec": 5869.229,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM NUMBER 1."
+    },
+    {
+      "start_sec": 5869.262,
+      "end_sec": 5871.531,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY YOU HAVE ONE MINUTE GO AHEAD."
+    },
+    {
+      "start_sec": 5871.565,
+      "end_sec": 5935.696,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "MY NAME IS TOM GROWED' AND I'M PART OF THE SKID ROW ARTS ALLIANCE, I'M URGING YOU TO OPPOSE THE APPEAL OF THE CEQA EBBSING X EXEMPTION, IT COMES TO FIRST AND BROADWAY, DOWNTOWN STAKEHOLDERS OR BY BEING DIRECTLY ACROSS THE STREET FROM CITY HALL SHOULD FIRST AND BROADWAY BE SEEN THROUGH A LENS OF THE ENTIRE CITY. IT'S BOTH. WHAT I HOPE IS ALTAMED WILL DO A PARTNERSHIP THROUGH THE OLYMPIC. THAT'S TWO YEARS AND THAT'S MORE THAN ENOUGH TIME FOR ALL THE LONG TERM VISIONS FOR FIRST AND BROADWAY THAT MAY EXIST TO COME OUT WITH THE PUBLIC WITH TRANSPARENCY. AS THE FIRST AND BROADWAY SPACE HELPS US LEAD US TOWARDS THE SUMMER OLYMPICS, LET'S SEE WHAT THE DEMOCRACY CAN DO. [APPLAUSE] ."
+    },
+    {
+      "start_sec": 5935.729,
+      "end_sec": 5945.072,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BEFORE THE NEXT SPEAK BEGINS, I WOULD LIKE TO CALL UP A FEW MORE NAMES. NORMA, LINDA CORDERO AND ROB KWAN."
+    },
+    {
+      "start_sec": 5945.105,
+      "end_sec": 5947.808,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 5947.841,
+      "end_sec": 5950.644,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM 1, PLEASE. ?AOUF A MINUTE, GO AHEAD."
+    },
+    {
+      "start_sec": 5950.677,
+      "end_sec": 6000.293,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, MEMBERS OF THE CITY COUNCIL, MY NAME IS PAULA FERNANDEZ AND I'M A RESIDENT OF COUNSEL SI DISTRICT 1, I'M HERE AS A COMMUNITY MEMBER AND SOMEBODY WHO LOVES L.A. AND BELIEVES IN SPACE OPEN TO ALL. I'M IN SUPPORT OF EL CORAZON ART PARK. WE DON'T HAVE ENOUGH OPEN PLACES IN THIS CITY WHERE PEOPLE CAN GATHER AND BUILD COMMUNITY. THE PARK WILL DO THAT. IT'S FOR ALL RESIDENTS OF LOS ANGELES, IT IS FOR THOSE WHO LIVE, WORK AND PLAY IN L.A. PLEASE LET LOS ANGELES BE A CITY THAT CELEBRATES CULTURE AND IS WELCOMING TO ALL. I URGE YOU TO REJECT THE CEQA APPEAL AND STOP THE DELAY OF EL CORAZON ART PARK. THANK YOU."
+    },
+    {
+      "start_sec": 6000.327,
+      "end_sec": 6003.964,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 6003.997,
+      "end_sec": 6004.898,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM 1."
+    },
+    {
+      "start_sec": 6004.931,
+      "end_sec": 6006.967,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "I HAVE A MINUTE."
+    },
+    {
+      "start_sec": 6007.0,
+      "end_sec": 6053.68,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I'M ANGEL AND I'M A RESIDENT OF LOS ANGELES. I'M HERE TO SUPPORT EL CARAZON ART PARK BECAUSE THEY DESERVE MORE OPEN SPACES. THIS WILL TRANSFORM AN EMPTY LOT FOR ART, CULTURE AND CONNECTION, THE LOS ANGELES IS BUILT ON DIVERSE COMMUNITIES AND THIS PARK REFLECT THAT. IT WILL CREATE OPPORTUNITIES FOR LOCAL ARTIST, GIVE FAMILIES A PLACE TO GATHER AND GIVE CHILDREN PRIDE IN THEIR CULTURE. THIS IS MORE THAN JUST A PARK, IT'S AN ACCESSIBILITY FOR EVERYONE AND CULTURE. RESPECTFULLY ASK FOR TO YOU REJECT THE CEQA APPEAL AND ALLOW THE PARK TO MOVE FORWARD WITHOUT FURTHER DELAYS. THANK YOU."
+    },
+    {
+      "start_sec": 6053.714,
+      "end_sec": 6058.986,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 6059.019,
+      "end_sec": 6063.123,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "JUST GENERAL COMMENT ON MOST GENERAL ITEMS. ?AOUF A MINUTE, GO AHEAD."
+    },
+    {
+      "start_sec": 6063.156,
+      "end_sec": 6127.154,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "YES, SIR, I'M BRANDON TORES, NOBODY REALLY KNOWS ME AND BUT THERE IS SOMETHING GOINGANSEDER AND THAT'S THE PROSPERITY OF THE HUMAN ABILITY TO MAINTAIN STANDARDS. WHETHER YOU'RE POPULAR OR NOT, FAMOUS OR NOT FAMOUS, OWN A TACO SHOP OR YOU JUST HAVE A 5.0 AND YOU ARE REALLY TRYING AND POOR IN LIFE. I WANT YOU TO KNOW THAT WORLD OLYMPICS IS A BEAUTY, IT'S GREAT TO HAVE EVERYTHING COME TO L.A. WITH ALL DUE RESPECT, I GO TO L.A. FILM SCHOOL, I'M SURVEYOR, WE DO FEEL THE SOCCER THING COULD HAVE BEEN BETTER. YOU COULD HAVE PUT MORE DECLARATIONS EVEN IN HERE, YOU KNOW WHAT I'M TALKING ABOUT. I'M JUST A FREE MASON, TALK TO GO MASONS, I'M BRANDON ATELIANO."
+    },
+    {
+      "start_sec": 6127.187,
+      "end_sec": 6130.19,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU. WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 6130.223,
+      "end_sec": 6131.357,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6131.39,
+      "end_sec": 6132.726,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6132.759,
+      "end_sec": 6134.995,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6135.028,
+      "end_sec": 6136.196,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "NUMBER ONE, PLEASE."
+    },
+    {
+      "start_sec": 6136.229,
+      "end_sec": 6141.635,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6141.668,
+      "end_sec": 6150.11,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "YES, MY NAME IS VERONICA SANCHEZ AND I LIVE IN LOS ANGELES COUNTY."
+    },
+    {
+      "start_sec": 6150.143,
+      "end_sec": 6152.646,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6152.679,
+      "end_sec": 6160.787,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "I'M HERE TO SUPPORT EL CORAZON BECAUSE OUR CITY NEEDS MORE PUBLIC SPACE SOUTH SIDE."
+    },
+    {
+      "start_sec": 6160.82,
+      "end_sec": 6164.691,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6164.724,
+      "end_sec": 6167.961,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "WHERE FAMILY CAN CONVENE AND CELEBRATE ART AND CULTURE."
+    },
+    {
+      "start_sec": 6167.994,
+      "end_sec": 6173.8,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6173.833,
+      "end_sec": 6182.109,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "EL CORAZON LOOKS FOR A PLACE THAT IS MORE OPEN AND INCLUSIVE FOR EVERYBODY."
+    },
+    {
+      "start_sec": 6182.142,
+      "end_sec": 6193.353,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6193.386,
+      "end_sec": 6203.063,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "THAT'S WHY I'M HERE TO MAKE MY VOICE HEARD, TO SHOW THAT LOS ANGELES IS A DIVERSE CITY AND TO SHOW THAT PUBLIC SPACES ARE FOR EVERYBODY."
+    },
+    {
+      "start_sec": 6203.096,
+      "end_sec": 6211.838,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6211.871,
+      "end_sec": 6227.954,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "THAT IS WHY I ASK THAT YOU REJECT THE CEQA APPEAL AND YOU ALLOW EL CORAZON ART PARK TO MOVE FORWARD WITHOUT ANY DELAYS. THANK YOU SO MUCH. [APPLAUSE]"
+    },
+    {
+      "start_sec": 6227.987,
+      "end_sec": 6230.524,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 6230.557,
+      "end_sec": 6231.891,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM 1 AND PUBLIC COMMENT."
+    },
+    {
+      "start_sec": 6231.925,
+      "end_sec": 6235.862,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY YOU HAVE A MINUTE FOR EACH. PLEASE BEGIN WITH THE ITEM."
+    },
+    {
+      "start_sec": 6235.895,
+      "end_sec": 6238.398,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ONE MINUTE FOR EACH YOU SAID?"
+    },
+    {
+      "start_sec": 6238.431,
+      "end_sec": 6244.037,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YES, YOU'LL SEE A MINUTE AND THEN YOU'LL HEAR A BUZZARD AND THEN YOU'LL GO TO THE NEXT MINUTE."
+    },
+    {
+      "start_sec": 6244.07,
+      "end_sec": 6337.23,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I SUPPORT THE CEQA APPEAL, DESPITE DENIALED ARE RUSHED, LAYS THE GROUNDWORK FOR PARTNERSHIP FOR ALTAMED THAT THIS PROPERTY REQUIRES. ALTAMED AND RAP ARGUE THAT THIS DOES NOT APPLY. NO OFFICIAL ACTIONS HAVE BEEN TAKEN IN THAT REGARD, THAT'S THE PROBLEM. ALL THE SECRET UNOFFICIAL DEALINGS GOING ON BEHIND THE SCENES AND I BELIEVE MANY OF THE GOOD PEOPLE BEHIND ME ARE NOT AWARE. THE ELEPHANT IS EVERYONE IS PRETENDING NOT TO SEE IT. ALSO THE THIRD LARGEST STRUCTURE ON THE SITE AFTER THE PROPOEDS ART GALLERY IS A 20-FOOT LED SCREEN ADVERTISING SPONSORS WHICH WOULD GENERATE NO REVENUE FOR ALTAMED THEY STAND TO GREATLY BENEFIT FROM PLENTY OF FREE ADVERTISING FROM PUBLIC LAND. AGAIN, ELEPHANT IN THE ROOM. COUNCILMEMBERS I KNOW YOU'RE IN A TOUGH POSITION BUT I ENCOURAGE YOU AND URGE YOU TO HIT PAUSE AND GIVE PUBLIC LAND TO MONEY DONORS. WE LONG WANTED SOMETHING FABULOUS FOR FAB, LONG LONG WANTED THIS. THIS IS JUST NOT THE WAY TO GO ABOUT IT. THANK YOU. [APPLAUSE] ."
+    },
+    {
+      "start_sec": 6337.263,
+      "end_sec": 6347.34,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BFP THE NEXT SPEAKER BEGINS, I WOULD LIKE TO CALL UP A FEW MORE NAME. CARVALHO ALBERTO, AND JUAN JOSE GUTIERREZ."
+    },
+    {
+      "start_sec": 6347.373,
+      "end_sec": 6350.577,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 6350.61,
+      "end_sec": 6357.684,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "BUENOS DIAS, MI NOMBRE  ES NORMA. SO NUMBER 1."
+    },
+    {
+      "start_sec": 6357.717,
+      "end_sec": 6359.286,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU HAVE A MINUTE."
+    },
+    {
+      "start_sec": 6359.319,
+      "end_sec": 6367.861,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6367.894,
+      "end_sec": 6377.737,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "HELLO YES, MY NAME IS NORMA I'M NOT HERE AS A REPRESENTATIVE OF ANY ORGANIZATION OR ANYTHING I'M JUST HERE AS A NEIGHBORING, AS A RESIDENT."
+    },
+    {
+      "start_sec": 6377.77,
+      "end_sec": 6390.951,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6390.984,
+      "end_sec": 6407.667,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "WE DON'T HAVE ENOUGH SPACE WHERE THE PEOPLE CAN CONVENE. AND CELEBRATE ART AND FEEL LIKE THIS, CITY BELONGS TO US AND THIS PARK WOULD ALLOW US TO FEEL THAT."
+    },
+    {
+      "start_sec": 6407.7,
+      "end_sec": 6411.271,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6411.304,
+      "end_sec": 6417.276,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "I'VE SEEN HOW THIS PROJECT CAN UNITE PEOPLE THROUGH COMMUNITY MEETINGS."
+    },
+    {
+      "start_sec": 6417.31,
+      "end_sec": 6422.215,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6422.248,
+      "end_sec": 6432.792,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "WITH CONVERSATIONS AND REAL ENTHUSIASM FOR THE POSSIBILITY AND POTENTIAL OF DOWNTOWN LOS ANGELES."
+    },
+    {
+      "start_sec": 6432.825,
+      "end_sec": 6441.568,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6441.601,
+      "end_sec": 6450.31,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "AND WE URGE THIS COUNCIL TO REJECT THE CEQA APPEAL AND TO NOT DELAY ANY FURTHER THE RECONSTRUCTION."
+    },
+    {
+      "start_sec": 6450.343,
+      "end_sec": 6453.747,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 6453.78,
+      "end_sec": 6459.152,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU."
+    },
+    {
+      "start_sec": 6459.185,
+      "end_sec": 6460.787,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER."
+    },
+    {
+      "start_sec": 6460.82,
+      "end_sec": 6461.488,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GENERAL."
+    },
+    {
+      "start_sec": 6461.521,
+      "end_sec": 6465.091,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GENERAL, GO AHEAD YOU HAVE A MINUTE."
+    },
+    {
+      "start_sec": 6465.124,
+      "end_sec": 6529.222,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING I'M ROJELIO MARTINEZ, BOARD OF SUPERVISOR CANDIDATE. DID YOU KNOW THAT JUNE 11th, THERE WAS A FIRE AT A ONE MILLION DOLLARS SQUARE FOOTWEAR HOUSE THAT BURNED FOR SIX DAYS. IRONICALLY, THE DAZE THAT TT FIRE BURNED, A NEW FIRE BROKE OUT HERE IN EAST L.A. THAT BROKE OUT IN A FOOD STORAGE FACILITY WHICH IS 500 SQUARE FEET. THE INCIDENT IS EXPECTED TO LAST UNTIL JUNE 25th AND AS OF YESTERDAY, DEAD FISH WERE REPORTED IN THE L.A. RIVER. CURRENTLY THE AIR MONITORING IS NOT AFFECTIVE. THE COMPANIES THAT ARE, THAT ARE CURRENTLY INVOLVED MIGHT BE FILING FOR BANKRUPTCY SO MAKE SURE THAT YOU FILE YOUR CLAIM. AND THEY DON'T KNOW WHAT THE ACUTE AND LONG TERM HEALTH RISK WILL BE ASSOCIATED TO YOUR HEALTH, WITH  THAT GOOD DAY, GOD BLESS EACH AND EVERYONE OF YOU."
+    },
+    {
+      "start_sec": 6529.255,
+      "end_sec": 6532.025,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 6532.058,
+      "end_sec": 6534.16,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "WOULD I LIKE TO MAKE A GENERAL COMMENT."
+    },
+    {
+      "start_sec": 6534.193,
+      "end_sec": 6535.729,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY, WHAT WAS THAT."
+    },
+    {
+      "start_sec": 6535.762,
+      "end_sec": 6536.496,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GENERAL COMMENT."
+    },
+    {
+      "start_sec": 6536.529,
+      "end_sec": 6537.397,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU HAVE A MINUTE."
+    },
+    {
+      "start_sec": 6537.43,
+      "end_sec": 6606.332,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, LADIES AND GENTLEMEN OF THE CITY COUNCIL I'M I'M MON XA AND ARMY VET BORN AND RAISED IN LOS ANGELES IN DISTRICT 1, AND I WOULD LIKE TO BRING AWARENESS TO THE LAPD RAMPART DIVISION THAT HAS BEEN SUBJECT TO CORRUPTION. I UNFORTUNATELY, WAS SUBJECTED TO FALSE ACCUSATIONS AND FALSE POLICE REPORTING AT THE HANDS OF THE DETECTIVE MICHELLE. SUBSEQUENTLY, DURING THE PROTEST LAST YEAR, UNTIL NOW, WE PEACEFUL PROTESTERS HAVE ALSO BEEN TARGETED WITH RUBBER BULLETS AND TEAR GAS AND WOULD I LIKE TO ASK, NO DEMAND, POLICE ACCOUNTABILITY, TRANSPARENCY AND INTERVENTION AS WELL. IS ALSO WOULD LIKE TO ASK THAT THE CITY COUNCIL INVEST IN YOUTH CENTERS AND AT-RISK NEIGHBORHOODS TO HELP PREVENT GANGS AND DRUGS FROM TOUCHING OUR NEIGHBORHOODS AS WELL. AND ONE LAST THING, I WOULD LIKE TO SAY AS WELL, IS LET'S RECALL, AUNT JA MAIMA KAREN BASS BECAUSE SHE HAS FAILED US ANGELINOS AS A MAYOR."
+    },
+    {
+      "start_sec": 6606.365,
+      "end_sec": 6614.474,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, YOUR TIME HAS EXPIRED. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 6614.507,
+      "end_sec": 6623.983,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, ITEM 1 AND GENERAL PUBLIC COMMENT. AND I ALSO HAVE HERE AN FFICIAL COMMUNITY IMPACT STATEMENT FROM THE DOWN TOWEL LOS ANGELES NEIGHBORHOOD COUNCIL."
+    },
+    {
+      "start_sec": 6624.016,
+      "end_sec": 6632.859,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, WHY DON'T WE START WITH YOUR PUBLIC COMMENT, SO YOU'LL HAVE ONE MINUTE FOR ITEM AND ONE FOR GENERAL, WE'LL START THERE. GO AHEAD."
+    },
+    {
+      "start_sec": 6632.892,
+      "end_sec": 6757.417,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT. THANK YOU. MY NAME IS JANZ, I'M PRESIDENT OF THE NEIGHBORHOOD COUNCIL OF DOWNTOWN. THANK YOU. I'M HERE TO ASK THE COUNCIL TO GRANT THIS CEQA APPEAL AND I WANTED TO SPEAK INTO THE RECORD, IN CASE SOME OF YOU WERE CURIOUS ITEM ENTIRE COMMUNITY IS SO UNIFIEDIN OUR SUPPORT FOR THIS APPEAL AND IN OUR OPPOSITION TO THE PROJECT AS IT STANDS. SO, IN FEBRUARY, THIS ITEM CAME BEFORE THE PARKS COMMISSION AGENDA AND THEY REQUESTED A CONTINUANCE AND WE WITHDREW THAT CONTINUANCE BECAUSE WE WERE ASSURED THAT THERE WOULD BE PUBLIC MEETINGS AND PUBLIC ENGAGE SXMENT THIS PROJECT NEEDED TO HAPPEN QUICKLY TO BE IN TIME FOR THE WORLD CUP. WE CAME TO THE TABLE. AND WE HOSTED SEVERAL PUBLIC MEETINGS AND VIEWED SOME FAIRLY DETAILED PRESENTATIONS, AND WE LOVED COMING TO THE TABLE BUT SOMETIMES YOU MAKE IT SO HARD BECAUSE, AFTER ALL THOSE MEETINGS, AND ALL THOSE PRESENTATIONS, THE 20 FOOT LED SCREEN WAS ADDED TO THE SCOPE SOMETHING THAT WAS NEVER BROUGHT INTO THE DETAILED MEETINGS AND THIS IS THE SORT OF THING THAT WE WERE AFRAID OF. THE ITEM WAS THEN PUT IN THE AGENDA AND WE SENT A LETTER DETAILING CONCERNS AND OUR COMMENTS WERE MISS CONSTRUED AS HAVING NO MATTER. THE ONE THING THEY SAID, IS THIS IS NOT STRONG ENOUGH, YOU NEED TO BE STRONGER BECAUSE THEY LIED TO TUESDAY, SO IN THE INTEREST OF PUBLIC TRANSPARENCY, THE DOWNTOWN L.A. URGES YOU TO STAND WITH THE UNION TO STAND WITH THE DOWNTOWN COMMUNITY IN SUPPORT."
+    },
+    {
+      "start_sec": 6757.45,
+      "end_sec": 6768.695,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "SO THAT IS YOUR TIME AS AN INDIVIDUAL. YOU SAID THAT YOU HAVE, YOU'RE THE DUELY REPRESENTATIVE OF THE NEIGHBORHOOD COUNCIL AND THEY'VE APPROVED A CIS?"
+    },
+    {
+      "start_sec": 6768.728,
+      "end_sec": 6789.482,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "THAT'S CORRECT. ?AOUF THREE MINUTES FOR THAT COMMUNITY IMPACT. MEMBERS OF THE PBL, IF THIS IS YOUR FIRST TIME HEARING A COMMUNITY IMPACT STATEMENT. IT'S SEPARATE FROM PUBLIC COMMENT. THIS IS OFFERED UP BY NEIGHBORHOOD COUNCIL, WHICH NEIGHBORHOOD COUNCIL ARE ALLOWED TO DO THEY FORMALLY APPROVE A COMMUNITY IMPACT STATEMENT. YOU HAVE THREE MINUTES."
+    },
+    {
+      "start_sec": 6789.515,
+      "end_sec": 6799.559,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, LOOK IF YOU HAD ONE SHOT, ONE OPPORTUNITY, TO CEASE EVERYTHING YOU EVER WANT WITHED. I'M JUST KIDDING."
+    },
+    {
+      "start_sec": 6799.592,
+      "end_sec": 6801.394,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "HE'S GOOD."
+    },
+    {
+      "start_sec": 6801.427,
+      "end_sec": 6819.278,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I COVERED THE STRONG OPINIONS IN THE COUNCIL S I THANK YOU FOR THE EXTRA TIME, I WAS ABLE TO GET EVERYTHING OUT SO THANK YOU TO COUNCILMEMBER HERNANDEZ FOR HER SUPPORT YESTERDAY AND, WE CAN'T DO THIS EVERY DAY, BECAUSE I DON'T HAVE THIS MANY SHIRTS. SEE YOU SOON."
+    },
+    {
+      "start_sec": 6819.311,
+      "end_sec": 6824.783,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 6824.817,
+      "end_sec": 6825.652,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM 1."
+    },
+    {
+      "start_sec": 6825.685,
+      "end_sec": 6827.02,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU HAVE A MINUTE."
+    },
+    {
+      "start_sec": 6827.053,
+      "end_sec": 6869.395,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, I'M SANDRA NUNEZ, I'M SPEAKING ON A NONPROFIT ORGANIZATION. WE STAND IN SUPPORT OF EL CORAZON PARK. THIS PROJECT WILL CREATE A WELCOMING WHERE FAMILIES CAN GATHER, ARTIST CAN SHARE THEIR TALENTS AND GENERATION KZ CELEBRATE THE RICH CULTURES THAT MAKE LOS ANGELES SO VIBRANT. WE ASK YOU TO REJECT THE CEQA APPEAL AND ALLOW THIS COMMUNITY VISION TO MOVE FORWARD AND HELP BUILD LOS ANGELES WHERE EVERY COMMUNITY CAN SEE ITSELF REFLECTED. THANK YOU."
+    },
+    {
+      "start_sec": 6869.428,
+      "end_sec": 6871.397,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER."
+    },
+    {
+      "start_sec": 6871.43,
+      "end_sec": 6874.3,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BEFORE THE NEXT SPEAKER, I WOULD LIKE TO CALL A FEW MORE NAMES."
+    },
+    {
+      "start_sec": 6874.333,
+      "end_sec": 6879.172,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "HOLD ON A SECOND. GO AHEAD AND FINISH READING THE NAMES."
+    },
+    {
+      "start_sec": 6879.205,
+      "end_sec": 6883.743,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "CHRISTINA SANCHEZ AND SILVIO."
+    },
+    {
+      "start_sec": 6883.776,
+      "end_sec": 6885.878,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 6885.911,
+      "end_sec": 6887.28,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM NUMBER 1."
+    },
+    {
+      "start_sec": 6887.313,
+      "end_sec": 6888.881,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU HAVE A MINUTE."
+    },
+    {
+      "start_sec": 6888.914,
+      "end_sec": 6949.341,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I'M JUAN JOSE GUTIERREZ AND I'M PART OF THE EDUCATIONAL CENTER. AT A TIME WHEN OUR COMMUNITIES ARE MADE TO FEEL UNWELCOMED, WHEN YOUR PRESENCE AND CULTURE AND CONTRIBUTIONS ARE BEING QUESTIONED, SPACES LIKE EL CORAZON PARK MATTER MORE THAN EVER. THIS PARK SAYS S YOU BELONG HERE, YOUR STORIES BELONG HERE AND YOUR CULTURE BELONGS HERE. WE HELPED BUILD THIS CITY AND CONTINUE TO DO SO. WE WORK HERE, WE RAISE FAMILIES HERE, AND CONTRIBUTE TO EVERY CORNER OF THIS COMMUNITY. WE DESERVE PUBLIC SPACES, THAT REFLECT AND CELEBRATE WHO WE ARE. AND FOR THAT REASON, WE URGE THE CITY COUNCIL IN THIS VERY PROGRESSIVE CITY, TO REJECT THE CEQA APPEAL. THANK YOU!"
+    },
+    {
+      "start_sec": 6949.375,
+      "end_sec": 6960.42,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. [APPLAUSE]"
+    },
+    {
+      "start_sec": 6960.453,
+      "end_sec": 6994.854,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GENERAL COMMENT. IF YOU STOOLLY WANT TO STOP THE CORRUPTION, I URGE YOU TO ASK FOR A MILITARY LEVEL CRIMINAL INVESTIGATION. THINGS WILL NEVER IMPROVE UNTIL WE GET A MILITARY LEVEL INVESTIGATION OF OFFICIAL MISCONDUCT. IT'S THAT BAD. THE  COUNCIL MEMBERS SHOULD HAVE ASKED THE NATIONAL GUARD LOOK INTO EXTREME MISCONDUCT A LONG TIME AGO BUT THEY HAVEN'T AND THE GOVERNOR WILL NEVER STEP IN THE TOES OF OFFICIAL AND IT'S THEIR RESPONSIBLE TO ASK AND IT'S TO YOU THE PUBLIC TO PRESS THEM."
+    },
+    {
+      "start_sec": 6994.887,
+      "end_sec": 6999.324,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "NEXT SPEAKER? GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 6999.358,
+      "end_sec": 7067.894,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "ITEM NUMBER 1 AND GENERAL PUBLIC COMMENT, PLEASE. GOOD MORNING, MY NAME IS CHRISTINA SANCHEZ, I COME TO YOU AS ALTA.MED AS WELL AS FORMER PARK COMMISSIONER AS WELL AS A MEMBER OF CHARTER COMMISSION. THANK YOU FOR HEARING ME TODAY. I WOULD LIKE TO CALL INTO THE RECORD FIRST OF ALL AN ARTICLE PUBLISHED TODAY BY OPINION I DON'T KNOW AND I'M GOING TO READ THE HEADLINE, [SPEAKING SPANISH] I WILL TRANSLATE IT T EL COULD RAZON, THE END OF THE CURSE OF A SITE OVER 50 YEARS. [SPEAKING SPANISH] WE HOPE THAT THIS PARK IS OPEN AFTER SO MANY YEARS. THIS REALLY DELINEATES THE STORY OF 50 YEARS OF CIVIC CENTER ON FIRST AND BROADWAY. TODAY I'M HERE TO ASK YOU TO DENY THE APPEAL AND ALLOW EL CORAZON ART PARK TO GO FORWARD. THE EXCEPTION WAS APPEALED AND THIS APPEAL OFFERS NO LEGAL BASIS TO OVERTURN THAT DETERMINATION."
+    },
+    {
+      "start_sec": 7067.927,
+      "end_sec": 7069.061,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GENERAL."
+    },
+    {
+      "start_sec": 7069.094,
+      "end_sec": 7134.26,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "INSTEAD, THE APPEAL RELIES ON CLAIMS, THE APPELLANT ARGUES THAT IT WILL CONTINUE BE USED AS A PARK SPACE WHEN THE PLANS CLEARLY PROVIDE GREEN SPACE, PROGRAMMING, COMMUNITY GATHERING AREAS AND PUBLIC ACCESS. THE CLAIMANT ALSO STATES THAT THERE IS A MASS PIF DIGITAL BILLBOARD, THERE WILL NOT BE. THE PROJECT INCLUDES AN ART SCULPTURE WITH LED WHICH WILL HAVE TO GO THROUGH PROCESS. WHAT IS BEFORE YOU, IS A TEMPORARY ACTIVATION OF A SITE THAT HAS SAT VACANT FOR MORE THAN A DECADE. I ALSO WANT TO A PLOWED THIS COUNCIL FOR PUT  ING MEMBER, MEMBER JURADO AND RODRIGUEZ RECREATION AND FUNDS FUNDING, THAT I KNOW CHARTER REFORM DELIBERATED. WE ASK THAT YOU PLEASE, DENY THIS CEQA APPEAL. THANK YOU. [APPLAUSE] &gt;&gt; City Attorney: THANK YOU, NEXT SPEAKER. YES, AND IF YOU HAVE DOCUMENTS, YEAH. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 7134.293,
+      "end_sec": 7141.067,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "BUENOS DIAS. [SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7141.1,
+      "end_sec": 7157.849,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "HELLO YES, MY NAME IS S*IL --SYLVIA, I LOOK AT JAM JAM, OR YUMYUM DONUTS, I URGE THAT YOU SUPPORT THE FAIR FOOD ORDINANCE."
+    },
+    {
+      "start_sec": 7157.883,
+      "end_sec": 7162.922,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7162.955,
+      "end_sec": 7174.233,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "THIS  ORDINANCE WOULD MAKE YOU KNOW YOUR RIGHTS TRAINING MANDATORY OF THE JOB SO WE CAN MAKE OUR JOBS FAIR AND SAFER FOR EVERYONE."
+    },
+    {
+      "start_sec": 7174.266,
+      "end_sec": 7197.623,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7199.391,
+      "end_sec": 7220.846,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "YEAH FOR MANY YEARS, I STAYED SILENT WHEN I NOTICED I WAS MISSING HOURS FROM MY PAYCHECK OR BH MY BOSS MADE ME COME INTO WORK SICK I WAS AFRAID OF LOSING MY JOB BUT NOW I HAVE THE COURAGE BECAUSE I'M LEARNING MY RIGHTS AND I AM MORE EMPOWERED NOW THAN I HAVE BEFORE TO SPEAK UP FOR MY WELL BEING, MY COWORKS AND CUSTOMERS."
+    },
+    {
+      "start_sec": 7220.879,
+      "end_sec": 7226.719,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7226.752,
+      "end_sec": 7234.16,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "AND I KNOW I'M NOT ALONE AND I KNOW I HAVE RIGHTS THAT PROTECT ME FROM ABUSES SUCH AS WAGE THEFT."
+    },
+    {
+      "start_sec": 7234.193,
+      "end_sec": 7245.938,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7245.971,
+      "end_sec": 7260.652,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "THAT'S WHY I'M HERE TO ASK ALL YOUR SUPPORT AND EMPOWERING FOR EVERY FAST FOOD WORKER IN LOS ANGELES SO THEY CAN FIGHT FOR THEIR RIGHTS TOO AND KNOW THAT THEY ARE NOT ALONE. SUPPORT THE FAST FOOD WORK ORDINANCE."
+    },
+    {
+      "start_sec": 7260.686,
+      "end_sec": 7269.595,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER? GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 7269.628,
+      "end_sec": 7276.702,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "S*I, BUENOS DIAS. MI NOMBRE IS CHRISTINA SANCHEZ."
+    },
+    {
+      "start_sec": 7276.735,
+      "end_sec": 7283.542,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "HI I'M CHRISTINA SANCHEZ AND I WOULD LIKE TO COMMENT ON THE ART PARK PROJECT."
+    },
+    {
+      "start_sec": 7283.575,
+      "end_sec": 7297.356,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YOU HAVE A MINUTE. BUZZ IF  --BUT IF YOU WOULD LIKE IF YOU CAN MOVE THE MICROPHONE SO YOU CAN LISTEN BETTER."
+    },
+    {
+      "start_sec": 7297.389,
+      "end_sec": 7298.958,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7298.991,
+      "end_sec": 7319.612,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7320.679,
+      "end_sec": 7343.235,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, MY NAME IS CHRISTINA SANCHEZ I'M A RESIDENT OF L.A. COUNTY AND I'M HERE TO SUPPORT THE CORAZON ART PROJECT, THIS IS A GREAT OPPORTUNITY TO HAVE OPEN SPACES IN OUR COMMUNITY AS WE DON'T HAVE ENOUGH OF THOSE AND IT WILL BE A GREAT PLACE FOR US TO ENJOY ART AND CULTURE AS WE LIVE IN A MULTI CULTURAL CITY."
+    },
+    {
+      "start_sec": 7343.268,
+      "end_sec": 7376.936,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7379.371,
+      "end_sec": 7417.543,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "SO THIS PROJECT WOULD ACTUALLY TRANSFORM EMPTY SPACE INTO SPACE INTO THE COMMUNITY FOR ARTIST AND FOR THE YOUTH AND HONESTLY, THAT'S SOMETHING THAT I'M VERY CONCERNED ABOUT, FOR MY CHILDREN, MY FAMILY AND NIECES AND NEPHEWS BECAUSE THERE ARE NOT ENOUGH PUBLIC SPACES OUT THERE, THERE ARE NOT ENOUGH PARKS FOR THEM. I HOPE THAT YOU CAN CONSIDER THIS, YOU CAN DENY THE APPEAL, THE CEQA APPEAL AND THAT WE CAN ACTUALLY CONTINUE TO MOVE FORWARD ON THIS PARK WITHOUT FURTHER DELAY AND I HOPE THAT I CAN SOON SEE AN INAUGURATION CEREMONY FOR THIS PARK WHERE I CAN COME AND CELEBRATE THE OPENING OF THIS PARK WITH MY FAMILY. [APPLAUSE]"
+    },
+    {
+      "start_sec": 7417.576,
+      "end_sec": 7422.181,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 7422.214,
+      "end_sec": 7424.917,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7424.95,
+      "end_sec": 7427.686,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "HI GOOD MORNING I'M HERE TO GIVE A GENERAL PUBLIC COMMENT."
+    },
+    {
+      "start_sec": 7427.719,
+      "end_sec": 7430.322,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY YOU HAVE A MINUTE."
+    },
+    {
+      "start_sec": 7430.355,
+      "end_sec": 7431.357,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7431.39,
+      "end_sec": 7435.427,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7435.46,
+      "end_sec": 7444.203,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "HI MY NAME IS CANNEDDA MA CINN AND I WORK AS A FAST FOOD WORKER HERE IN LOS ANGELES."
+    },
+    {
+      "start_sec": 7444.236,
+      "end_sec": 7448.107,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7448.14,
+      "end_sec": 7458.45,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "WE ARE HERE TO URGE YOU TO PASS THE FAIR WORK FAST FOOD ORDINANCE IN LOS ANGELES WITHOUT FURTHER DELAY."
+    },
+    {
+      "start_sec": 7458.483,
+      "end_sec": 7467.226,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7467.259,
+      "end_sec": 7477.736,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "THE MORE THAN 50,000 FAST FOOD WORKERS IN LOS ANGELES, DEPEND ON YOUR SUPPORT FOR US TO BE ABLE TO HAVE NO YOUR RIGHTS TRAININGS."
+    },
+    {
+      "start_sec": 7477.769,
+      "end_sec": 7484.977,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7485.01,
+      "end_sec": 7493.719,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "AND FOR US TO HAVE A SAFER AND FAIR WORKPLACE WHERE WE ARE AWARE OF OUR RIGHTS AND CAN DEFEND OURSELVES."
+    },
+    {
+      "start_sec": 7493.752,
+      "end_sec": 7502.061,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "[SPEAKING SPANISH]"
+    },
+    {
+      "start_sec": 7502.094,
+      "end_sec": 7512.137,
+      "source_label": "Interpreter",
+      "resolved_role": "interpreter",
+      "resolved_official_id": "interpreter",
+      "resolved_name": "Interpreter",
+      "resolution_method": "exact-role",
+      "text": "SO PLEASE SUPPORT THE WORKING CLASS AND ALSO SUPPORT THIS FAIR WORK FAST FOOD ORDINANCE. THANK YOU. [APPLAUSE]"
+    },
+    {
+      "start_sec": 7512.17,
+      "end_sec": 7518.077,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, NEXT SPEAKER. GOOD MORNING, WHAT WOULD YOU LIKE TO SPEAK TO?"
+    },
+    {
+      "start_sec": 7518.11,
+      "end_sec": 7520.646,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, ITEM 1 AND GENERAL PUBLIC COMMENT."
+    },
+    {
+      "start_sec": 7520.679,
+      "end_sec": 7523.449,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "OKAY YOU HAVE A MINUTE FOR EACH. PLEASE BEGIN WITH THE ITEM."
+    },
+    {
+      "start_sec": 7523.482,
+      "end_sec": 7585.044,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU. GOOD MORNING COUNCILMEMBERS I'M BRIAN LA ROI, LAND USE ATTORNEY AT PEABODY REPRESENTING ALTAMED, WE URGE YOU TO DENY THIS APPEAL, WE SUBMITTED A LETTER RESPONDING IT TO THE APPEAL BUT WOULD I LIKE TO ADDRESS THREE APPEAL POINTS VERY QUICKLY. FILLSER THE APPEAL ARGUES THAT SOME SFT USES ARE NOT ALLOWED IN THE OS ZONE, THAT IS IS NOT TRUE. THEY'RE ALL INCLUDED WITHIN THE PERMITTED CATEGORY OF LOCAL CIVIC FACILITY AND PUBLIC INDOOR RECREATION. THESE CLASSIFICATIONS ARE DEFINED BROADLY IN THE ZONING CODE. SECOND, AS YOU HEARD EARLIER, THE  SOMUS ENVIRONMENTAL TEAM, PREPARED RECORD, SETTING OUT FOR THE CLASS 32 VIE  CRITERIA AND EXPLAINED WHY NONE OF THE EXCEPTIONS APPLIED, THEY ALSO UPDATED AND SUPPLEMENTED THAT MEMO TO RESPOND TO THE APPEAL. THIRD, THERE WERE SOME."
+    },
+    {
+      "start_sec": 7585.077,
+      "end_sec": 7586.211,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "GENERAL."
+    },
+    {
+      "start_sec": 7586.244,
+      "end_sec": 7644.737,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "THIRD, THERE WERE SOME QUESTIONS ABOUT THE SIGNAGE ON THE ART SCULPTURE, TO BE CLEAR, THIS IS ART WORK THAT INCORPORATED ELECTRONIC SIGN, WHICH WILL NOT BE LIT AFTER CLOSING. THE LICENSE AGREEMENT REQUIRES ALL SIGNS TO BE APPROVED BY RAP, THAT THE SIGNS COMPLY WITH THE CITY'S SIGN ORDINANCE AND COMPLIES WITH RAP'S SPONSORSHIP POLICY. THE SOMAS DID INCLUDE LED LIGHTS. THE APPEAL PROVIDES NO EVIDENCE OTHERWISE. THE APPEAL MAKES A LOT OF ARGUMENTS THAT ARE NOT RELEVANT TO THE CEQA EXEMPTION, BUT ALL OF THE CRITERIA FOR THE CLASS 32, EXEMPTION ARE SATISFIED HERE IN THE APPEAL OFFERS NO SUBSTANTIAL EVIDENCE SUPPORTING THE CLAIMS. PLEASE DENY THIS APPEAL. THANK YOU. [APPLAUSE] &gt;&gt; ."
+    },
+    {
+      "start_sec": 7644.77,
+      "end_sec": 7648.474,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "COUNCIL ALL THE TIME FOR PUBLIC COMMENT HAS ELAPSED."
+    },
+    {
+      "start_sec": 7648.507,
+      "end_sec": 7650.609,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, MR. CLERK, WHAT IS BEFORE US."
+    },
+    {
+      "start_sec": 7650.642,
+      "end_sec": 7653.211,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "COUNCIL MAY VOTE ON 19 THROUGH 42."
+    },
+    {
+      "start_sec": 7653.245,
+      "end_sec": 7656.715,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "SO OPEN THE ROLL, CLOSE THE ROLL, TABULATE THE VOTE."
+    },
+    {
+      "start_sec": 7656.748,
+      "end_sec": 7657.649,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "13 AYES."
+    },
+    {
+      "start_sec": 7657.682,
+      "end_sec": 7660.419,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, WHAT'S NEXT?"
+    },
+    {
+      "start_sec": 7660.452,
+      "end_sec": 7670.062,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "COUNCIL MAY VOTE OB THE BUDGET AND FINANCE COMMITTEE ITEMS, 45 THROUGH 55."
+    },
+    {
+      "start_sec": 7670.095,
+      "end_sec": 7674.666,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "COUNCILMEMBER HUTT, OUR BUDGET ITEMS?"
+    },
+    {
+      "start_sec": 7674.699,
+      "end_sec": 7684.777,
+      "source_label": "K. Yaroslavsky",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd5-official",
+      "resolved_name": "Katy Yaroslavsky",
+      "resolution_method": "exact-councilmember",
+      "text": "THANK YOU, COUNCIL PRESIDENT, 45 THROUGH 55 WERE HEARD AND I RECOMMEND APPROVAL OF THE ITEMS."
+    },
+    {
+      "start_sec": 7684.81,
+      "end_sec": 7689.314,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT. MR. CLERK, IF YOU CAN READ THE SETTLEMENTS INTO THE RECORD AND CALL THE ROLL."
+    },
+    {
+      "start_sec": 7689.348,
+      "end_sec": 7799.691,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU, FOR ITEM 45, TAMMY VERSUS CITY OF LOS ANGELES ET AL, THERE IS A RECOMMENDATION TO EXPEND UP 250,000. FOR 46 IN THE CASE JOSE, VERSUS CITY OF LOS ANGELES ET AL, THERE IS A RECOMMENDATION TO EXPEND UP 140,000 IN SETTLEMENT. FOR ITEM 47 IN THE CASE ENTITLED LENA YOON VERSUS CITY OF LOS ANGELES, THERE IS A RECOMMENDATION $200 THOUSANDS IN SETTLEMENT. FOR 48, THERE IS A RECOMMENDATION TO EXPEND UP TO $250,000. IN 49 PENNY VERSUS CITY OF LOS ANGELES ET AL, THERE IS RECOMMENDATION TO EXPEND $300,000. ITEM 50, CARMEN, CHRISTINA SANCHEZ AND HAREMAZ VERSUS CITY OF LOS ANGELES THERE IS A RECOMMENDATION TO EXPEND UP TO $397,000 IN SETTLEMENT. FOR 51, THERE IS A RECOMMENDATION TO EXPEND UP TO $275,000 IN SETTLEMENT. FOR ITEM 52, THERE IS RECOMMENDATION TO REJECT THE SETTLEMENT. FOR ITEM 53 CITY OF LOSS VERSUS PACIFICKA VALLEY CORPORATION, THE TAXPAYER WILL PAY 581,256, VIA 36-PAYMENT PLAN AND THE CITY WILL WAIVE A 154,197.60 IN PENALTIES. 54, VERSUS EXTENDED STATE AMERICA, RECOMMENDATION TO EXPEND UP TO 1,025,000 IN SETTLEMENT. FOR ITEM 25SR WEST PICO, RECOMMENDATION TO APPROVE THE RECOMMENDATION AND THE CONFIDENTIAL REPORT FROM THE CITY ATTORNEY'S OFFICE."
+    },
+    {
+      "start_sec": 7799.724,
+      "end_sec": 7805.563,
+      "source_label": "Council Presiden",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "fuzzy-from:Council Presiden",
+      "text": "ALL RIGHT. LET'S OPEN THE ROLL ON THOSE ITEMS, CLOSE THE ROLL, TABULATE THE VOTE JAO. 12 AYES."
+    },
+    {
+      "start_sec": 7805.596,
+      "end_sec": 7808.4,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, WHAT'S NEXT?"
+    },
+    {
+      "start_sec": 7808.433,
+      "end_sec": 7817.142,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "ITEM NUMBER 1 CALLED SPECIAL BY COUNCILMEMBER JURADO FOR MOTIONS AND AMENDMENT CIRCULATED."
+    },
+    {
+      "start_sec": 7817.175,
+      "end_sec": 7861.686,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "THANK YOU, I WOULD LIKE TO CALL THE CITY ATTORNEY AND RECREATION AND PARKS TO THE TABLE. OKAY. THANK YOU SO MUCH. CAN YOU, TELL ME WHETHER ALL THE CEQA EXEMPTIONS, THE REQUIREMENTS FOR THE CEQA EXEMPTIONS HAVE BEEN SATISFIED? &gt;&gt; ACCORDING."
+    },
+    {
+      "start_sec": 7861.72,
+      "end_sec": 7863.121,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "STATE YOUR NAME."
+    },
+    {
+      "start_sec": 7863.154,
+      "end_sec": 8114.139,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "I'M ANA MAJONI ENVIRONMENTAL SUPERVISOR AT THE DEPARTMENT OF RECREATION AND PARKS. ACCORDING TO OUR REVIEW OF THE PROJECT AND OF THE ENVIRONMENT SURROUNDING THE PROJECT, WE FOUND THAT, THE REQUIREMENTS FOR THE INFILL DEVELOPMENT EXEMPTION PER SECTION 15332 OF THE CALIFORNIA CEQA GUIDELINES, APPLY TO THIS PROJECT. THE FIVE REQUIREMENTS ARE THE FACT THAT THE PROJECT IS IN A, LAND IN A PARCEL NA IS LESS THAN 5 ACRES AND THIS, REQUIREMENT APPLIES. THAT THERE IS NO, IMPACT ON NOISE, TRAFFIC, AIR QUALITY, WE HAVE DONE AN AIR QUALITY STUDY AND AIR QUALITY, THERE IS NO IMPACT ON AIR QUALITY STUDIES, STUDIES ABOUT NOISE AND TRAFFIC ALSO, DEMONSTRATE THAT THERE IS NO IMPACT ON TRAFFIC AND NO NOISE. THE SITE IS NOT, A SITE THAT COULD HOST ENDANGERED SPECIES CAUSE THEY'RE VERY LIMITED TREES AND NO ENDANGERED SPECIES HAVE NEVER BEEN FOUND IN THESE TREES. AND ALSO, THE PROJECT COMPLIES WITH THE LAND USE LIMITATIONS OF THE GENERAL PLAN, OF THIS, DOWNTOWN COMMUNITY PLAN. AND OF THE CITY OF LOS ANGELES, HEALTHY L.A. PLAN. ALSO, THE DEPARTMENT OF RECREATION AND PARKS, IS EXEMPT FROM THE ZONING REGULATIONS THAT TYPICALLY APPLY TO ALL OTHER PROJECTS. THERE IS AN AGREEMENT BETWEEN THE DEPARTMENT OF CITY PLANNING AND THE DEPARTMENT OF RECREATION AND PARK THAT EXEMPTS REC AND PARKS FROM ALL THE REQUIREMENT OF ZONING. SO, ZONING AND REGULATIONS, NOT REALLY APPLY TO OUR PROJECT. THAT'S BASICALLY, THESE ARE THE REQUIREMENT FOR THE APPLICATION OF, EXEMPTION 15332 AND THESE APPLY TO THESE PROJECT. FURTHERMORE, NONE OF THE EXCEPTIONS TO THE EXEMPTIONS APPLY TO THIS PROJECT BECAUSE THIS PROJECT IS NOT, DOES NOT AFFECT HISTORIC PROPERTIES SIGNIFICANTLY, THERE IS NOT IN HAZARDOUS SITE ZONE, IT IS, AND ALSO, IT'S NOT AN UNUSUAL CIRCUMSTANCE FOR REC AND PARKS TO HAVE A PRIVATE DEVELOPER OR TIRD-PARTY USE THEIR FACILITIES. WE HAVE A NUMBER OF VERY DIFFERENT AGREEMENT S WITH THIRD PARTIES TO USE OUR VENUES AND EVEN WIDEN OUR RECREATION CENTERS AND OUR VENUES. SO THIS NOT TYPICALLY, THIS IS NOT UNUSUAL IT'S A TYPICAL CIRCUMSTANCES FOR REC AND PARKS. AND THERE IS NOT ALSO, THERE IS NOT CUMULATIVE IMPACT BECAUSE SPECIFICALLY, ACTIVITIES THAT ARE WILL BE HELD IN THIS PARK ARE LOW IMPACT ACTIVITIES, THAT WILL NOT, ACCUMULATE WITH OTHER ACTIVITIES ORGANIZED IN DOWNTOWN L.A., SPECIFICALLY FOR THE FIFA CLUB, WHEN THE PROJECT WAS APPROVED, WERE SUPPOSE TO BE HELD IN THIS PROJECT. ALL THE ACTIVITIES, BIG AK IF CTIVITIES ORGANIZED FOR BIG ACTIVITIES FOR ORGANIZING FIFA WORLD CUP EVENTS ARE OUTSIDE DOWNTOWN L.A., IT WOULD BE THE ONLY PLACE DOWNTOWN WHERE THESE ACTIVITIES WILL TAKE PLACE. OKAY, SO NONE OF THE EXCEPTIONS APPLY."
+    },
+    {
+      "start_sec": 8114.172,
+      "end_sec": 8130.889,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "SO JUST FOR CLARITY, IT HAS SATISFIED THE FIVE REQUIREMENT FOR THE INFILL EXEMPTION, YES OR NO? SORRY. FOR CLARITY OF THE RECORD, YES OR NO? DOES IT SATISFY THE FIVE REQUIREMENT FOR THE CEQA EXEMPTIONS? &gt;&gt; YES, IT DOES."
+    },
+    {
+      "start_sec": 8130.922,
+      "end_sec": 8136.228,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "AND ALSO, DOES IT SATISFY THE EXCEPTIONS TO THE EXEMPTIONS?"
+    },
+    {
+      "start_sec": 8136.261,
+      "end_sec": 8137.862,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "YES, THEY DON'T APPLY."
+    },
+    {
+      "start_sec": 8137.895,
+      "end_sec": 8144.836,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "THEY DON'T APPLY. SO THE EXEMPTION WITHSTANDS THE CEQA APPEAL LEGALLY? &gt;&gt; YES."
+    },
+    {
+      "start_sec": 8144.869,
+      "end_sec": 8162.554,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "GREAT. AND THEN THE LAST QUESTION THAT I HAVE FOR YOU, IS THERE A REMOVAL OR DECOMMISSIONING PLAN IN THE RECORD? OR DOES THE LICENSE AGREEMENT END IN FEBRUARY 2027? SAY YOUR NAME AND DEPARTMENT FOR THE RECORD."
+    },
+    {
+      "start_sec": 8162.587,
+      "end_sec": 8175.699,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "GOOD MORNING, VAL WITH REC PARKS DEPARTMENT, AFTER A YEAR AGREEMENT, THE LICENSEE MUST TRANSITION OUT FROM THE SPACE."
+    },
+    {
+      "start_sec": 8175.733,
+      "end_sec": 8181.072,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "SO THIS ENDS, FEBRUARY 2027?"
+    },
+    {
+      "start_sec": 8181.105,
+      "end_sec": 8182.04,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "CORRECT."
+    },
+    {
+      "start_sec": 8182.073,
+      "end_sec": 8192.817,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "AND IF WE WERE TO DO ANYTHING WITH THIS PLOT OF LAND OWNED BY REC AND PARKS, WHAT WOULD WE HAVE TO DO? WE WOULD HAVE TO DO THIS PROCESS ALL OVER AGAIN?"
+    },
+    {
+      "start_sec": 8192.85,
+      "end_sec": 8199.991,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "CORRECT, AN ACTION WOULD BE REQUIRED BY THE BOARD AND THE CEQA ANALYSIS AS WELL. WE WOULD DO THIS AGAIN."
+    },
+    {
+      "start_sec": 8200.024,
+      "end_sec": 8218.877,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "THANK YOU, SO MUCH. OKAY, COLLEAGUES AFTERCAREFUL REVIEW, I DO WITH THE ADVISE AND COUNCIL OF OUR DEPARTMENTS I'M URGING YOUR SUPPORT IN DENYING THE CEQA APPEAL FOR THIS PROJECT. SO I CALL MOTION 1-A A QUESTION."
+    },
+    {
+      "start_sec": 8218.91,
+      "end_sec": 8234.859,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT. LET'S OPEN THE ROLL OP THIS ITEM. CLOSE THE ROLL, TABULATE THE VOTE."
+    },
+    {
+      "start_sec": 8234.892,
+      "end_sec": 8236.227,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "11 AYES."
+    },
+    {
+      "start_sec": 8236.26,
+      "end_sec": 8239.564,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT. WHAT'S NEXT?"
+    },
+    {
+      "start_sec": 8239.597,
+      "end_sec": 8249.04,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "COUNCIL MAY MOVE ON TO ITEM 12 CALLED SPECIAL BY COUNCILMEMBER JURADO FOR COMMENTS."
+    },
+    {
+      "start_sec": 8249.073,
+      "end_sec": 8260.952,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "COUNCILMEMBER JURADO?"
+    },
+    {
+      "start_sec": 8260.985,
+      "end_sec": 8532.123,
+      "source_label": "Y. Jurado",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd14-official",
+      "resolved_name": "Ysabel Jurado",
+      "resolution_method": "exact-councilmember",
+      "text": "OKAY, THANK YOU, COUNCIL PRESIDENT. BEFORE I SPEAK ON THIS ITEM, I WANT TO ACKNOWLEDGE THE MOMENT WE'RE IN, BOYLE HEIGHTS IS STILL GRAPPLING WITH IMPACT OF THE WILDFIRE AND CONNECTING THEM RESOURCES AND MAKING SURE THEY GET THE INFORMATION AND ANSWERS THEY DESERVE. BUT TODAY'S ITEM IS SOMETHING BI BEHR THAN A MOMENT, IT'S ABOUT WHAT GETS TO SHAPE THE FUTURE OF BOYLE HEIGHTS. FOR TOO LONG, DECISIONS WERE MADE WITHOUT THEM, OVER THEM AND ABOUT THEM WITHOUT MEANINGFUL PARTICIPATION OF THE PEOPLE WHO CALL THIS COMMUNITY HOME. RESIDENTS LIVE WITH THE CONSEQUENCES OF THOSE DECISIONS, TO DISPLACEMENT PRESSURES AND DISPLACEMENT. DESPITE THAT HISTORY, BOYLE HEIGHTS RESIDENTS NEVER STOP SHOWING UP. THEY ORGANIZE, THEY ATTENDED MEETING, THEY KNOCKED ON DOORS, BLESS YOU, THEY WORKED HARD TO GAR BIN, BLESS YOU AGAIN, ONE MORE TIME, THEY ADVOCATED FOR THEIR FAMILIES AND FUTURE GENERATION SXZ --GENERATIONS AND THEY DEMAND SOMETHING SIMPLE. NOT A DOCUMENT NOT A ZONING MAP, A DECADE-PLUS, I WOULD SAY IT'S A 20-YEAR EFFORT BY RESIDENTS WHO SHAPE THE VISION FOR BOYLE HEIGHTS, HOUSING JUSTICE, PUBLIC HEALTH AND COMMUNITY SELF DETERMINATION. THESE ARE PEOPLE THAT HAVE NOT GONE TO PLANNING SCHOOL, I CALL THEM LAY PLANNERS BECAUSE IN MONO LINGUAL SPANISH, THEY PLAN AND BECOME PART OF THE PROCESS, SO YOU DON'T NEED TO BE YOU --URBAN PLANNERS. BUT THEY DO IT. THE PEOPLE CLOSEST TO THE CHALLENGES ARE ALSO PEOPLE CLOSEST TO THE SOLUTIONS. AND IN MY EXPERIENCE THEY'RE ALREADY RESOLVING IT IN THEIR OWN WAY IF WE CAN MAKE THE PROCESSES EASIER TO HELP THEM RESOLVE THEM, THEY CAN HAVE BIGGER IMPACTS. THIS REFLECTS YEARS MORE THOUGHTFUL LAND USE DECISIONS, GREATER COMPATIBILITY BETWEEN INDUSTRIAL AND RESIDENTIAL USES, DISPLACEMENT MEASURES AND INVESTMENTS THAT ALLOW FAMILIES TO REMAIN IN THE NEIGHBORHOODS THAT THEY BUILD. THEY CANNOT BE SEPARATED IN A COMMUNITY CANNOT THRIVE IF RESIDENTS ARE FORCED  OUT OF THE NEIGHBORHOOD THAT THEY THRIVE. COMMUNITIES OTHER ONES WOULD NEVER HAVE TO HAPPEN. AND RESIDENTS DESERVE BOTH, THEY DESERVE CLEAN AND HEALTHY NEIGHBORHOODS, THEY DESERVE STABLE AND AFFORDABLE HOMES AND THEY DESERVE A MEANINGFUL VOICE IN THE DECISIONS THAT AFFECT THEIR LIVES. NO COMMUNITY PLAN CAN UNDO GENERATIONS OF INEQUITABLE DECISIONS OVERNIGHT. I KNOW THAT, BUT I STILL BELIEVE IN MEANINGFUL PLAN LIKE WE'VE BEEN TRYING TO DO WITH THIS COMMUNITY PLAN FOR 20 YEARS. BUT IT CAN PROVIDE BETTER TOOLS AND STRONGER PROTECTION SXZ IT CAN CREATE A FRAMEWORK THAT PUTS AFFORDABILITY AND ENVIRONMENTAL JUSTICE CLOSER TO THE DECISION-MAKING AND THAT'S WHAT MAKES TODAY'S ACTION MEANINGFUL. THIS HAPPENED BEFORE I WAS IN OFFICE AND THEY WERE IN OFFICE AND BEFORE THAT GUY WAS IN OFFICE. THIS IS MORE THAN ABOUT ME, IT'S TO CELEBRATE THE COMMUNITY MEMBERS WHO HAVE PUT THEIR HEART AND SOUL INTO THIS. IT'S CLEAR THAT THEY WANT TO MAKE SURE THAT THIS COMMUNITY STAYS FOR BOYLE HEIGHTS SO THEIR FAMILIES CAN REMAIN AND THEIR CHILDREN CAN GROW UP IN HEALTHIER ENVIRONMENTS AND WHETHER IT HAPPENS TO THE COMMUNITY AND WHETHER THE PEOPLE WHO INVESTED SO MUCH IN THIS NEIGHBORHOOD CAN STILL CALL IT HOME. I ALSO WANT TO THANK THE PLANNING DEPARTMENT STAFF WHO WORKED ON THIS EFFORT FOR MANY MANY YEARS, INCLUDING CRAIG WEBBER, UNISSES GONZALEZ AND THOSE WHO WORKED TO BRING THIS PLAN. I KNOW SOME HAVE LEFT AND PROBABLY SOME OUT THERE, BUT I REALLY WANT TO THANK THANK YOU. AND TO THE ADVOCATES AND COMMUNITY ORGANIZATIONS, WHO HAVE STAYED ENGAGED THROUGH A PROCESS THAT TOOK LONGER THAN IT SHOULD HAVE. BECAUSE OF YOUR ADVOCACY AND PERSISTENT, YOUR VOICE IS STRONGER. THANK YOU FOR VOTING YES, I URGE A YES-VOTE."
+    },
+    {
+      "start_sec": 8532.156,
+      "end_sec": 8539.063,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, THANK YOU, COUNCILWOMAN. THANK YOU. OPEN THE ROLL, CLOSE THE ROLL, TABULATE THE VOTE."
+    },
+    {
+      "start_sec": 8539.096,
+      "end_sec": 8540.565,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "11 AYES."
+    },
+    {
+      "start_sec": 8540.598,
+      "end_sec": 8543.034,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, WHAT'S NEXT?"
+    },
+    {
+      "start_sec": 8543.067,
+      "end_sec": 8552.01,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "COUNCIL MAY NOW VOTE ON ITEM 12 CALLED SPECIAL--ITEM NUMBER 3 CALLED SPECIAL FOR COUNCILMEMBER LEE."
+    },
+    {
+      "start_sec": 8552.043,
+      "end_sec": 8553.378,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "MR. LEE."
+    },
+    {
+      "start_sec": 8553.411,
+      "end_sec": 8565.656,
+      "source_label": "J. Lee",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd12-official",
+      "resolved_name": "John Lee",
+      "resolution_method": "exact-councilmember",
+      "text": "OUT OF ABUNDANCE OF CAUTION, I WOULD LIKE TO RECUSE MYSELF BECAUSE THIS MATTER DEALS WITH A MATTER I'M INVOLVED WITH."
+    },
+    {
+      "start_sec": 8565.689,
+      "end_sec": 8576.434,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU. ALL RIGHT, MR. LEE HAS RECUSED HIMSELF ON THIS ITEM. LET'S OPEN THE ROLL, CLOSE THE ROLL, TABULATE THE VOTE."
+    },
+    {
+      "start_sec": 8576.467,
+      "end_sec": 8577.968,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "10 AYES."
+    },
+    {
+      "start_sec": 8578.001,
+      "end_sec": 8580.138,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, WHAT'S NEXT?"
+    },
+    {
+      "start_sec": 8580.171,
+      "end_sec": 8588.212,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "WOULD COUNCIL LIKE TO RECESS THE REGULAR MEETING AND CONVENE THE SPECIAL MEETING."
+    },
+    {
+      "start_sec": 8588.245,
+      "end_sec": 8594.886,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "AS SOON AS MR. LEE KUNZER. LET'S DO THAT."
+    },
+    {
+      "start_sec": 8594.919,
+      "end_sec": 8599.69,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BLUMENFIELD, HARRIS-DAWSON, HERNANDEZ, HUTT, JURADO, LEE, MCOSKER, NAZARIAN, PADILLA, PARK, PRICE, RAMAN, RODRIGUEZ, SOTO-MARTINEZ, YAROSLAVSKY. 11 MEMBERS AND A QUORUM, MR. PRESIDENT."
+    },
+    {
+      "start_sec": 8599.723,
+      "end_sec": 8604.829,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, MR. CITY ATTORNEY, IF YOU CAN PREPARE US FOR PUBLIC COMMENT FOR THE SPECIAL MEETING."
+    },
+    {
+      "start_sec": 8604.862,
+      "end_sec": 8631.189,
+      "source_label": "City Attorney",
+      "resolved_role": "counsel",
+      "resolved_official_id": "city-attorney",
+      "resolved_name": "City Attorney",
+      "resolution_method": "exact-role",
+      "text": "YES, SO IF YOU'RE HERE FOR SPECIAL MEET ING. THERE IS ONLY ONE ITEM FOR THE SPECIAL ITEMS. IT'S A 245 MOTION RELATED TO AN ACTION TAKEN BY THE PORT COMMISSIONERS. SO IF YOU'RE HERE FOR THAT ITEM, THERE IS NO NEED TO STATE WHICH ITEM YOU WOULD LIKE TO SPEAK TO BECAUSE THERE IS ONLY ONE. YOU'LL HAVE ONE MINUTE AND WITH THAT, WE CAN START READING NAMES OR MR. PRESIDENT, THERE IS NOT A LOT OF PEOPLE."
+    },
+    {
+      "start_sec": 8631.222,
+      "end_sec": 8638.195,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "THERE IS ONLY ONE PERSON LINED UP SO WE'LL LET THE PERSON SPEAK. AND MR. HERMAN, YOU ALREADY HAVE A WARNING."
+    },
+    {
+      "start_sec": 8638.228,
+      "end_sec": 8649.807,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "AND MR. PRESIDENT, ITEM 1 IS AN ITEM FOR WHICH PUBLIC HEARING HAS NOT BEEN HELD. TEN VOTES ARE REQUIRED FOR CONSIDERATION."
+    },
+    {
+      "start_sec": 8649.84,
+      "end_sec": 8672.196,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "FOR THE RECORD, I DO NOT BELIEVE MR. HERMAN HAS A DISABILITY THAT DISALLOWS HIM FROM SPEAKING AT THE PODIUM LIKE EVERYONE ELSE. SEEING NO EVIDENCE OF SUCH. YOU HAVE ONE MINUTE."
+    },
+    {
+      "start_sec": 8672.229,
+      "end_sec": 8709.266,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "SORRY ABOUT THAT, A HDS, BUT IN CD15, WHO IS KNOCKING ON JOHN S GIBSON'S DOOR? WHO IS KNOCKING ON TRUCK AND CHASY'S PARKING LOT PROJECT? SOMEBODY IN HEAVEN, PLEASE CALL ME, AND REPORT TO ME, THAT I VETO FORBID REJECT THIS DECISION TO STOP! THE PARKING LOT PROJECT, FUCK YOU. I CONTROL THE NARRATIVE, I GOT THE FLOOR, SH*UT THE FUCK UP."
+    },
+    {
+      "start_sec": 8709.299,
+      "end_sec": 8712.103,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "YOU'VE GOT TO STAY ON TOPIC."
+    },
+    {
+      "start_sec": 8712.136,
+      "end_sec": 8729.32,
+      "source_label": "Speaker",
+      "resolved_role": "public-speaker",
+      "resolved_official_id": null,
+      "resolved_name": "Speaker",
+      "resolution_method": "exact-role",
+      "text": "THE TOPIC IS ABOUT THE MOTION OF McOSKER, WHO VOTED, FUCK YOU. AND MR. BLUMENFIELD, RELATIVE TO SERVING THE JURISDICTION OVER GUNS AND ROSES, JUNE 11, 2025 BOARD OF HARBOR COMMISSION."
+    },
+    {
+      "start_sec": 8729.353,
+      "end_sec": 8737.595,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "THAT'S YOUR TIME, PLEASE RELINQUISH THE MICROPHONE. ALL RIGHT MR. McOSKER."
+    },
+    {
+      "start_sec": 8737.628,
+      "end_sec": 8850.207,
+      "source_label": "T. McOsker",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd15-official",
+      "resolved_name": "Tim McOsker",
+      "resolution_method": "exact-councilmember",
+      "text": "THANK YOU, VERY MUCH, MEMBERS FIRST OF ALL, THANK YOU COUNCIL PRESIDENT FOR AGENDIZING THIS SPECIAL. MEMBERS I APOLOGIZE BECAUSE IT'S A SPECIAL MEETING, YOU NEEDED THAT ONE MINUTE IN YOUR LIFE BUT I'M SURE IT WAS INFORMATIVE TO THE DECISION IN FRONT OF US. THIS IS A 245 AND I APPRECIATE BOB BLUMENFIELD FOR SIGNING ON TO THE 245, HIS MIDDLE NAME I'VE NEVER SEEN A 245, THAT I DON'T LIKE. JUST TO TAKE JURISDICTION, THAT'S ALL WE'RE DOING TODAY. WHAT THIS IS, IS A DECISION, A CAREFULLY CONSIDERED DECISION BY THE PORT DECISION TO TAKE A PIECE OF PROPERTY THAT WAS NOT INDUSTRIAL PROPERTY AND TURN INTO INDUSTRIAL PROPERTY IT'S 18 ACRES AND IF THIS PROCEEDS, IT CAN BECOME 18 ACRES OF TRUCKING AND CHASY OF AREA NEXT TO THE 110 FROI, NEXT TO WILMINGTON AND SAN PEDRO. THERE IS SUPPORT BY A NUMBER OF ORGANIZATIONS, IN THE THERE IS OPPOSITION IN THE WILMINGTON. I ASK MEMBERS THAT WE TAKE JURISDICTION, IT WILL BE FAST TRACKED INTO NEXT WEEK BUT THAT GIVES ME AN OPPORTUNITY TO HAVE FURTHER CONVERSATIONS, WE'VE HAD MANY BUT TO HAVE FURTHER CONVERSATIONS WITH THE PROPOSED DEVELOPER AND THE COMMUNITY PARTICULARLY THE WILMINGTON COMMUNITY, WHO WILL NOT, BE HOUSING THIS PROPERTY BUT WILL BE TAKING THE BURDEN PERIOD OF TIME TRAFFIC THAT IS ANTICIPATED. SO, I WILL ASK FOR YOUR AYE-VOTE, THERE ARE ONLY 11 MEMBERS HERE SO I'M GOING TO ASK FOR UNANIMOUS VOTE, AND I'M NOT ASKING YOU TO BE SUPPORTIVE OF THE PROJECT, I'M JUST HAVING FOR JURISDICTION."
+    },
+    {
+      "start_sec": 8850.24,
+      "end_sec": 8855.246,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "OKAY, THANK YOU, OPEN THE ROLL, CLOSE THE ROLL, TABULATE THE VOTE."
+    },
+    {
+      "start_sec": 8855.279,
+      "end_sec": 8856.414,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "11 AYES."
+    },
+    {
+      "start_sec": 8856.447,
+      "end_sec": 8857.815,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "WHAT IS NEXT."
+    },
+    {
+      "start_sec": 8857.848,
+      "end_sec": 8866.357,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "THE DESK IS CLOSED FOR THE SPECK MEET  ING, WOULD YOU LIKE TO ADJOURN THE SPECIAL MEETING AND CALL THE REGULAR MEETING."
+    },
+    {
+      "start_sec": 8866.39,
+      "end_sec": 8867.091,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "YES."
+    },
+    {
+      "start_sec": 8867.124,
+      "end_sec": 8871.696,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BLUMENFIELD, HARRIS-DAWSON, HERNANDEZ, HUTT, JURADO, LEE, MCOSKER, NAZARIAN, PADILLA, PARK, PRICE, RAMAN, RODRIGUEZ, SOTO-MARTINEZ, YAROSLAVSKY. 11 MEMBERS AND A QUORUM, MR. PRESIDENT."
+    },
+    {
+      "start_sec": 8871.729,
+      "end_sec": 8874.899,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ALL RIGHT, MR. CLERK WHAT IS BEFORE US?"
+    },
+    {
+      "start_sec": 8874.932,
+      "end_sec": 8878.569,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "COUNCIL HAS MOTIONS FOR POSTED AND REFERRAL."
+    },
+    {
+      "start_sec": 8878.602,
+      "end_sec": 8881.104,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "THEY ARE POSTED AND REFERRED."
+    },
+    {
+      "start_sec": 8881.138,
+      "end_sec": 8882.039,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": "clerk",
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "THE DESK IS CLEAR."
+    },
+    {
+      "start_sec": 8882.072,
+      "end_sec": 8886.877,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "ANNOUNCEMENTS, MEMBERS? COUNCILMEMBER PADILLA?"
+    },
+    {
+      "start_sec": 8886.91,
+      "end_sec": 8947.004,
+      "source_label": "I. Padilla",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd6-official",
+      "resolved_name": "Imelda Padilla",
+      "resolution_method": "exact-councilmember",
+      "text": "MEMBERS, I JUST KIND OF WANTED TO, GIVE A ROUND OF APPLAUSE TO THREE OF MY INTERNS HERE TODAY. WE'RE CALLING IT INTERNALLY, INTERN SHADOW DAY. [APPLAUSE] MANY OF YOU KNOW THAT I FIRST GOT MY START WHEN I WAS IN HIGH SCHOOL, BEING PART OF THE PART OF THE YOUTH COUNCIL AND CONTINUED TO GET INVOLVED AT CAMPAIGNS AT A VERY YOUNG AGE. SO IT'S IMPORTANT THAT MY OFFICE PLAYS THAT FORWARD, NICHOLAS, MATTHEW, DANIEL, THANK YOU FOR IF THE SERVICE THAT YOU'VE GIVEN SO FAR. I'M VERY EXCITED THAT YOU'LL CONTINUE TO LEARN THIS SUMMER. AND I APPLAUD YOU FOR TAKING YOUR YOUTH AND FREE TIME INTO DOING SOMETHING PRODUCTIVE. AND HOPEFULLY WHEN THIS IS OVER, YOU WILL BE HAPPY WITH THE EXPERIENCE AND ACCREDIT US TO YOUR PROFESSIONAL YOUTH AT A YOUNG AGE. AND COLLEAGUES, SAY HELLO."
+    },
+    {
+      "start_sec": 8947.037,
+      "end_sec": 9020.845,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "HELLO, THANK YOU SO MUCH. ALL RIGHT, ANY OTHER ANNOUNCEMENTS. I HAVE AN ANNOUNCEMENT, TOMORROW JUNE 25th, COUNCILMEMBER HUTT AND IS WILL BE HOSTING A JOB FAIR AT CRENSHAW HIGH SCHOOL. IT'S A GREAT OPPORTUNITY TO ANYONE LOOKING TO TRANSITION INTO A NEW FIELD OR CONNECT FROM EMPLOYERS FROM AROUND THE CITY, 20 RESOURCE PROVIDERS, COMMUNITY ORGANIZATIONS, REPRESENTING INDUSTRIES SUCH AS BANKING, SUPERMARKET TRANSPORTATION AND THE CITY OF LOS ANGELES, WE'LL ALSO HAVE LIVE SCAN SERVICES SO YOU CAN HAVE THAT DONE ON THE SPOT. EXPUNGEMENT AND ASSISTANCE FROM FOLKS TRYING TO CLEAR THEIR RECORD. LIVE ENTERTAINMENT AS WELL AS A KID ZONE SO YOU CAN BRING YOUR KIDS AND THEY CAN HANG OUT WHILE YOU'RE TALKING TO EMPLOYERS. SO ANYONE THAT IS LOOKING FOR A JOB, ASK THEM TO JOIN US AT CRENSHAW HIGH SCHOOL. ALL RIGHT, ANY OTHER ANNOUNCEMENTS, MEMBERS? ALL RIGHT, WITH THAT I'LL ASK EVERYONE TO RISE FOR ADJOURNING MOTIONS. LOOK TO MY LEFT? ALL RIGHT. LOOK TO MY RIGHT? COUNCILMEMBER RAMAN?"
+    },
+    {
+      "start_sec": 9020.878,
+      "end_sec": 9182.773,
+      "source_label": "N. Raman",
+      "resolved_role": "councilmember",
+      "resolved_official_id": "cd4-official",
+      "resolved_name": "Nithya Raman",
+      "resolution_method": "exact-councilmember",
+      "text": "COLLEAGUES, I RISE TODAY TO ADJOURN THIS MEETING IN MEMORY OF DAVID CADEL WHO PASSED AWAY AT THE ALL TOO YOUNG AGE OF 57. HE WAS A FRIEND TO MANY IN COUNCIL DISTRICT 4 AND WE'RE HONORED TO RECOGNIZE HIS LEGACY TODAY. BORN IN 1968, DAVID LIVED WHAT MANY CALLED THE AMERICAN DREAM, THE GRANDSON OF I AM GRANTSINGER THE FIRST IN HIS FAMILY TO EARN A COLLEGE DEGREE FROM HOR VAEDER AND ALSO EARNED A LAW AGREE FROM THERE. A FORMATIVE EXPERIENCE THAT SHAPED THE LAWYER HE WOULD BECOME. DAVID WENT ON TO BECOME ONE OF THE MOST CONSEQUENCETIAL LEGAL LEADERS ON BLAF OF THE LGBT RIGHTS. AND WON THE FIRST CASE IN WHERE THE COURT REQUIRED A DISTRICT TO GAY ALLIANCE AND LEAD A LANDMARK STRING OF CASES THAT UPHELD CALIFORNIA'S DOMESTIC RIGHTS. HE WAS A PARTNER BEFORE LAUNCHING HIS OWN LAW FIRM IN 2003 AND LATER SERVED AS VISITING LEGAL DIRECTOR AT THE WILLIAMS INSTITUTE AT UCLA SCHOOL OF LAW AND CONSTITUTIONAL DIRECTER FOR LESBIAN RIGHTS WHERE HE HELPED LAY THE GROUNDWORK FOR MARRIAGE EQUALITY AND IN 2013 THEN MAYOR ELECT, ERIC GARCETTI PRESENTED DAVID WITH AN AWARD IN CONTRIBUTION. BUT HE WAS MORE THAN, HE PLAYED THE VIOLIN SINCE THE 5th GRADE AND MUSIC REMAINED HIS LIFELONG LOVE, HIS LEGACY ENDURES IN SENSE OF PURPOSE HE INSTILLED THOSE CLOSEST TO HIM, ESPECIALLY HIS BELOVED HUSBAND, JOSE, DAVID AND HIS WORK TOUCHED THE LIVES OF SO MUCH, DEDICATED HIS LIFE TO FIGHTING INJUSTICE AND ADVANCING CHANGE AND BRILLIANT INTELLECT DEEP LOVE OF MUSIC AND PROFOUND CARE FOR THOSE AROUND HIM WILL LIVE ON IN THE MEMORY OF THOSE AROUND HIM. WE ASK THAT WE ADJOURN IN HIS MEMORY AND I KNOW THAT WE HAVE HIS FRIENDS AND COMMUNITY WATCHING, VIA THIS LINK AND HIS FRIEND ELLEN EVANS WHO IS A RESIDENT OF COUNCIL DISTRICT 4 AND OTHERS HERE TODAY. THANK YOU ALL."
+    },
+    {
+      "start_sec": 9182.806,
+      "end_sec": 9289.98,
+      "source_label": "Council President",
+      "resolved_role": "presiding",
+      "resolved_official_id": "council-president",
+      "resolved_name": "Council President",
+      "resolution_method": "exact-role",
+      "text": "THANK YOU ALL FOR BEING WITH US TODAY AND SHARING IN THIS IMPORTANT MEMORY FOR OUR CITY. WITH THAT, WE ARE ADJOURNED. THANK YOU SO MUCH, EVERYBODY. don't want to be sitting at home. You know, maybe watching TV or whatever. Them providing outside activities for us is great for us because, you know, we don't want to just be sitting around. These are our golden years and we would like to keep them golden. Exactly. And very active"
+    }
+  ]
+}
