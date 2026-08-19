@@ -103,7 +103,7 @@ create or replace function search_transcripts(
     p_date_to date default null,
     p_embedding_model text default 'pplx-embed-v1-0.6b',
     p_match_count int default 8,
-    p_min_similarity real default 0.35
+    p_min_similarity real default 0.25
 )
 returns table (
     id bigint,

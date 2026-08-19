@@ -57,19 +57,21 @@ const EMBED_DIM = 1024;
 // Cosine-similarity floor for returned chunks. Any hit below this is treated
 // as "no chunk in this corpus is actually about the query" and dropped.
 //
-// Rationale (revised 2026-08-19 after preview smoke tests):
-// The M0.2 v2 re-eval measured similarity distributions on the full 483-chunk
-// corpus and reported off-topic chunks at ~0.25-0.32 and on-topic ~0.37+, so
-// 0.35 was the initial floor. Preview smoke tests (spike-m0/preview_backfill_
-// cache/search_rpc_results.md, 2026-08-19) showed that per-official filtering
-// pushes the whole similarity distribution down: pools are 2-16 chunks and
-// CART captions of council procedure are less topically peaked than the eval
-// queries assumed. Measured relevant hits per official landed at 0.24-0.32,
-// so 0.35 filtered every result. Lowering to 0.25 lets top-K relevant chunks
-// surface while still rejecting the 0.05-0.15 noise tail. This is expected
-// to be revisited in M1 once the corpus grows past 9 meetings.
-// The SQL RPC applies the same default; this constant just lets the API
-// override it if we ever want to tune per-request.
+// Rationale (M1.4, 2026-08-19):
+// The M0.2 v2 re-eval on the pre-rewrite 483-chunk corpus put off-topic
+// chunks at ~0.25-0.32 and on-topic at ~0.37+, so 0.35 was the initial
+// floor. Preview smoke tests then showed per-official filtering plus the
+// speaker-turn rewrite pushed the distribution down and 0.35 clipped real
+// hits, so we dropped to 0.25 as an interim measure.
+// M1.4 formally validated 0.25 against a 20-query gold set on the full
+// 5,003-chunk / 9-meeting corpus (see data/transcripts/eval_results_m1.4.json):
+//   - parent@1 = 90%, parent@3 = 100%
+//   - minimum legitimate top-1 similarity across the set = 0.38
+//   - floors 0.15 / 0.20 / 0.25 / 0.30 / 0.35 all produced identical hit
+//     rates, so 0.25 sits comfortably in the middle: safely below every
+//     legitimate top-1, above the 0.05-0.20 noise tail.
+// The SQL RPC default matches (0.25); this constant just lets the API
+// override it per-request if we ever want to tune.
 const MIN_SIMILARITY = 0.25;
 
 const DEFAULT_PER_MIN = 10;
