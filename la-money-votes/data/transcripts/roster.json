@@ -1,0 +1,23 @@
+{
+  "$schema": "./schema/roster.schema.json",
+  "description": "Transcript-specific councilmember roster. Additive to data/officials.json (which is scoped to Mayor + CD11 + CD14 by the frozen CONTRACT.md). Used by scripts/transcripts/speaker_resolver.py to map CART labels of the form 'A. Nazarian' to canonical names. official_id is populated only when a matching entry exists in data/officials.json; null otherwise.",
+  "as_of": "2026-08-18",
+  "source": "Cross-verified against https://lacity.gov/government and https://clerk.lacity.gov/articles/current-elected-officials (both retrieved 2026-08-18). Middle initial forms come from CART captions on LACityClerk YouTube channel across 9 meetings from 2026-06-24 through 2026-08-14.",
+  "members": [
+    { "cart_label": "B. Blumenfield",    "first_name": "Bob",       "last_name": "Blumenfield",    "district": 3,  "official_id": null },
+    { "cart_label": "M. Harris-Dawson",  "first_name": "Marqueece", "last_name": "Harris-Dawson",  "district": 8,  "official_id": null, "notes": "Council President in this term. CART labels this person as role 'Council President', not by name — inclusion here is for completeness only." },
+    { "cart_label": "E. Hernandez",      "first_name": "Eunisses",  "last_name": "Hernandez",      "district": 1,  "official_id": null },
+    { "cart_label": "H. Hutt",           "first_name": "Heather",   "last_name": "Hutt",           "district": 10, "official_id": null },
+    { "cart_label": "Y. Jurado",         "first_name": "Ysabel",    "last_name": "Jurado",         "district": 14, "official_id": "cd14-official" },
+    { "cart_label": "J. Lee",            "first_name": "John",      "last_name": "Lee",            "district": 12, "official_id": null },
+    { "cart_label": "T. McOsker",        "first_name": "Tim",       "last_name": "McOsker",        "district": 15, "official_id": null },
+    { "cart_label": "A. Nazarian",       "first_name": "Adrin",     "last_name": "Nazarian",       "district": 2,  "official_id": null },
+    { "cart_label": "I. Padilla",        "first_name": "Imelda",    "last_name": "Padilla",        "district": 6,  "official_id": null },
+    { "cart_label": "T. Park",           "first_name": "Traci",     "last_name": "Park",           "district": 11, "official_id": "cd11-official" },
+    { "cart_label": "C. Price",          "first_name": "Curren",    "last_name": "Price",          "district": 9,  "official_id": null },
+    { "cart_label": "N. Raman",          "first_name": "Nithya",    "last_name": "Raman",          "district": 4,  "official_id": null },
+    { "cart_label": "M. Rodriguez",      "first_name": "Monica",    "last_name": "Rodriguez",      "district": 7,  "official_id": null },
+    { "cart_label": "H. Soto-Martinez",  "first_name": "Hugo",      "last_name": "Soto-Martinez",  "district": 13, "official_id": null },
+    { "cart_label": "K. Yaroslavsky",    "first_name": "Katy",      "last_name": "Yaroslavsky",    "district": 5,  "official_id": null }
+  ]
+}
