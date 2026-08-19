@@ -140,11 +140,16 @@
         />
         <div class="transcript-search-form-footer">
           <p id="transcript-search-hint" class="transcript-search-hint">Searches meeting transcripts from the last ~10 sessions. Up to 200 characters.</p>
+          <label class="transcript-search-option" for="transcript-search-include-public">
+            <input type="checkbox" id="transcript-search-include-public" name="include_public_comment" />
+            Include public comment
+          </label>
           <button type="submit" id="transcript-search-submit" class="transcript-search-submit">Search</button>
         </div>
       </form>
       <div id="transcript-search-status" class="transcript-search-status" role="status" aria-live="polite" hidden></div>
       <div id="transcript-search-results" class="transcript-search-results"></div>
+      <div id="transcript-search-public-results" class="transcript-search-results transcript-search-public-results" hidden></div>
       <p id="transcript-search-empty" class="transcript-search-empty" hidden></p>
     </section>
 

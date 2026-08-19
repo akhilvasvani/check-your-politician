@@ -6,21 +6,32 @@
  * results are shown as time-stamped snippets that deep-link back to the
  * source YouTube video.
  *
- * On submit this calls the same-origin serverless function at
- * /api/search-transcripts (source: api/search-transcripts.js), which holds
+ * M2 additions (2026-08-19):
+ *   * "part N of M" badge when the RPC returns a chunk from a long turn
+ *     that was split by the M1 chunker (sub_chunk_of > 1). Helps readers
+ *     know they're only seeing one slice of a longer statement.
+ *   * "Include public comment" checkbox that fires a second request to
+ *     /api/search-public-comment and renders those hits below the
+ *     per-official results in their own labeled section. Intentionally
+ *     separate — mixing dilutes both stories (see M2_PLAN.md D5).
+ *
+ * On submit this calls /api/search-transcripts (and optionally
+ * /api/search-public-comment) — the serverless functions hold the
  * PERPLEXITY_API_KEY + SUPABASE credentials server-side. This file never
  * talks to Perplexity or Supabase directly.
  *
- * The module is scoped to one official per page (mirrors the "Ask about
- * [Official]" pattern). If the current official doesn't have a matching
- * roster.json entry (resolved_official_id), we hide the panel rather than
- * showing empty results.
+ * If the current official doesn't have a matching roster.json entry
+ * (resolved_official_id), the whole panel stays hidden. The public-comment
+ * corpus is org-wide (not tied to one official), but we still gate it on
+ * the transcript panel showing up at all — so a page for someone not in
+ * the roster never surfaces public-comment results either.
  *
- * Depends on the DOM elements defined in official.html
- * (#transcript-search-section, #transcript-search-form, #transcript-search-input,
- * #transcript-search-submit, #transcript-search-status,
- * #transcript-search-results, #transcript-search-empty) and, optionally,
- * escapeHtml() from app.js (falls back to a local copy).
+ * DOM contract (see official.html):
+ *   #transcript-search-section, #transcript-search-form,
+ *   #transcript-search-input, #transcript-search-submit,
+ *   #transcript-search-status, #transcript-search-results,
+ *   #transcript-search-public-results (M2), #transcript-search-empty,
+ *   #transcript-search-include-public (M2 checkbox).
  *
  * js/app.js calls window.initTranscriptSearch(id, official) once it has
  * fetched the current official's funding.json (same wire-up as ask-ai).
@@ -52,8 +63,6 @@
   }
 
   function formatDate(iso) {
-    // Meeting date is ISO "YYYY-MM-DD"; render as "Aug 4, 2026" without
-    // yanking in an i18n library.
     if (typeof iso !== "string" || iso.length < 10) return String(iso || "");
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -69,16 +78,36 @@
     return "https://www.youtube.com/watch?v=" + encodeURIComponent(videoId) + "&t=" + t + "s";
   }
 
+  // M2: sub-chunk badge. sub_chunk_of=1 (default) means the chunk is a
+  // whole turn — no badge. Anything higher means a splitter kicked in.
+  // sub_chunk_idx is 0-based; display as 1-based part number.
+  function subChunkBadgeText(row) {
+    var total = Number(row && row.sub_chunk_of) || 1;
+    if (total <= 1) return null;
+    var idx = Number(row && row.sub_chunk_idx) || 0;
+    return "part " + (idx + 1) + " of " + total;
+  }
+
+  // Public-comment rows don't have a canonical resolved_official_id. Pick
+  // the best display label available. Priority: source_label (CART cue,
+  // e.g. "Palisades Larry"), then turn_speaker_raw, then a neutral fallback.
+  function publicSpeakerLabel(row) {
+    if (row && typeof row.source_label === "string" && row.source_label.trim()) {
+      return row.source_label.trim();
+    }
+    if (row && typeof row.turn_speaker_raw === "string" && row.turn_speaker_raw.trim()) {
+      return row.turn_speaker_raw.trim();
+    }
+    if (row && typeof row.resolved_name === "string" && row.resolved_name.trim()) {
+      return row.resolved_name.trim();
+    }
+    return "Public speaker";
+  }
+
   async function initTranscriptSearch(id, official) {
     var section = document.getElementById("transcript-search-section");
     if (!section || !official) return;
 
-    // Roster lives in data/transcripts/roster.json. Only councilmembers
-    // (and the mayor/city-attorney) that map to an official.id in
-    // roster.json can be searched -- the API endpoint filters strictly on
-    // resolved_official_id. If this official isn't in the roster, hide the
-    // whole module so users don't see a "This official isn't linked yet"
-    // error on every submit.
     var rosterEntry = null;
     try {
       var res = await fetch("data/transcripts/roster.json");
@@ -126,6 +155,8 @@
     var input = document.getElementById("transcript-search-input");
     var submitBtn = document.getElementById("transcript-search-submit");
     var resultsEl = document.getElementById("transcript-search-results");
+    var publicResultsEl = document.getElementById("transcript-search-public-results");
+    var includePublicEl = document.getElementById("transcript-search-include-public");
     var emptyEl = document.getElementById("transcript-search-empty");
     if (!input || !submitBtn || !resultsEl) return;
 
@@ -147,12 +178,21 @@
     lastRequestAt = now;
 
     resultsEl.innerHTML = "";
+    if (publicResultsEl) {
+      publicResultsEl.innerHTML = "";
+      publicResultsEl.hidden = true;
+    }
     if (emptyEl) emptyEl.hidden = true;
     setLoading(true);
     showStatus("Searching\u2026", false);
 
+    var includePublic = !!(includePublicEl && includePublicEl.checked);
+
     try {
-      var response = await fetch("/api/search-transcripts", {
+      // Fire the per-official search and (if requested) the public-comment
+      // search in parallel. They're independent RPCs and the two endpoints
+      // don't share state client-side.
+      var officialPromise = fetch("/api/search-transcripts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -166,19 +206,49 @@
         }),
       });
 
-      var data = null;
-      try { data = await response.json(); } catch (e) { data = null; }
+      var publicPromise = includePublic
+        ? fetch("/api/search-public-comment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query: query, limit: 8 }),
+          })
+        : null;
 
-      if (!response.ok) {
+      var officialResp = await officialPromise;
+      var officialData = null;
+      try { officialData = await officialResp.json(); } catch (e) { officialData = null; }
+
+      if (!officialResp.ok) {
         var message =
-          (data && data.error) ||
+          (officialData && officialData.error) ||
           "Search is temporarily unavailable. Please try again in a moment.";
         showStatus(message, true);
         return;
       }
 
-      var results = (data && Array.isArray(data.results)) ? data.results : [];
-      if (!results.length) {
+      var results = (officialData && Array.isArray(officialData.results)) ? officialData.results : [];
+
+      var publicResults = [];
+      var publicError = null;
+      if (publicPromise) {
+        try {
+          var publicResp = await publicPromise;
+          var publicData = null;
+          try { publicData = await publicResp.json(); } catch (e) { publicData = null; }
+          if (publicResp.ok && publicData && Array.isArray(publicData.results)) {
+            publicResults = publicData.results;
+          } else if (publicData && publicData.error) {
+            publicError = publicData.error;
+          } else {
+            publicError = "Public comment search was unavailable for this query.";
+          }
+        } catch (err) {
+          console.warn("[transcript-search] public-comment request failed:", err);
+          publicError = "Public comment search was unavailable for this query.";
+        }
+      }
+
+      if (!results.length && !publicResults.length) {
         if (emptyEl) {
           emptyEl.hidden = false;
           emptyEl.textContent =
@@ -188,7 +258,39 @@
         return;
       }
 
-      renderResults(resultsEl, results);
+      if (results.length) {
+        renderResults(resultsEl, results, {
+          headingSingular: "matching passage from " + currentContext.name,
+          headingPlural: "matching passages from " + currentContext.name,
+          showSpeaker: true,
+        });
+      } else {
+        // Official had no hits but public-comment did — surface a subhead.
+        var noOfficial = document.createElement("p");
+        noOfficial.className = "transcript-search-results-heading";
+        noOfficial.textContent = "No matches from " + currentContext.name + ".";
+        resultsEl.appendChild(noOfficial);
+      }
+
+      if (publicResultsEl && includePublic) {
+        publicResultsEl.hidden = false;
+        if (publicResults.length) {
+          renderResults(publicResultsEl, publicResults, {
+            headingSingular: "matching passage from public comment",
+            headingPlural: "matching passages from public comment",
+            showSpeaker: true,
+            isPublicComment: true,
+          });
+        } else {
+          var noPublic = document.createElement("p");
+          noPublic.className = "transcript-search-results-heading";
+          noPublic.textContent = publicError
+            ? publicError
+            : "No public comment matches for \u201C" + query + "\u201D.";
+          publicResultsEl.appendChild(noPublic);
+        }
+      }
+
       hideStatus();
     } catch (err) {
       console.warn("[transcript-search] request failed:", err);
@@ -202,11 +304,18 @@
     }
   }
 
-  function renderResults(container, results) {
+  function renderResults(container, results, opts) {
+    opts = opts || {};
     container.innerHTML = "";
+
     var heading = document.createElement("p");
     heading.className = "transcript-search-results-heading";
-    heading.textContent = results.length + " matching passage" + (results.length === 1 ? "" : "s");
+    heading.textContent =
+      results.length +
+      " " +
+      (results.length === 1
+        ? (opts.headingSingular || "matching passage")
+        : (opts.headingPlural || "matching passages"));
     container.appendChild(heading);
 
     var list = document.createElement("ol");
@@ -225,11 +334,34 @@
       link.textContent = formatDate(r.meeting_date) + " · " + formatTime(r.start_sec);
       meta.appendChild(link);
 
-      if (r.resolved_name) {
-        var speaker = document.createElement("span");
-        speaker.className = "transcript-search-result-speaker";
-        speaker.textContent = " · " + r.resolved_name;
-        meta.appendChild(speaker);
+      if (opts.showSpeaker) {
+        var speakerText = opts.isPublicComment
+          ? publicSpeakerLabel(r)
+          : (r.resolved_name || "");
+        if (speakerText) {
+          var speaker = document.createElement("span");
+          speaker.className = "transcript-search-result-speaker";
+          speaker.textContent = " · " + speakerText;
+          meta.appendChild(speaker);
+        }
+      }
+
+      // M2.2 sub-chunk badge. Only shown when the chunk is one slice of a
+      // longer turn (sub_chunk_of > 1). Positioned between speaker and
+      // score so it reads left-to-right as: date · time · speaker · part …
+      // · match %.
+      var badgeText = subChunkBadgeText(r);
+      if (badgeText) {
+        var badge = document.createElement("span");
+        badge.className = "transcript-search-result-badge";
+        badge.textContent = " · " + badgeText;
+        badge.setAttribute(
+          "title",
+          "This turn was long enough that the chunker split it into " +
+            r.sub_chunk_of +
+            " parts."
+        );
+        meta.appendChild(badge);
       }
 
       if (typeof r.similarity === "number") {

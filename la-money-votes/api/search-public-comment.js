@@ -1,23 +1,15 @@
-// api/search-transcripts.js
+// api/search-public-comment.js
 //
-// Vercel serverless function backing the "Transcript search" module on
-// each official profile page (see official.html + js/transcript-search.js).
-//
-// M2 refactor (2026-08-19): shared logic (snippet extraction, rate limiting,
-// embedding, RPC invocation) moved to api/_lib/transcript-search-lib.js so
-// api/search-public-comment.js can reuse it. Behavior for this endpoint is
-// unchanged from M1.
+// Vercel serverless function backing the "Public comment" search surface
+// (M2.1). Same look/feel as /api/search-transcripts, but the corpus is
+// filtered server-side (in the SQL RPC) to public commenters only —
+// resolved_role = 'public-speaker' — so councilmember/clerk/counsel/etc.
+// chunks are never returned here even if they're semantically closer.
 //
 // Contract with the frontend:
-//   POST /api/search-transcripts
+//   POST /api/search-public-comment
 //   body: {
-//     query: string,                // the user's search query (max 200 chars)
-//     official: {
-//       id: string,                  // e.g. "cd14-official"
-//       resolved_official_id: string // MUST match roster.json values.
-//                                     // Required.
-//       name: string,                // display only
-//     },
+//     query: string,                 // the user's search query (max 200 chars)
 //     limit: number,                 // optional, default 8, cap 20
 //     date_from: string,             // optional ISO date, e.g. "2026-01-01"
 //     date_to: string                // optional ISO date
@@ -26,14 +18,22 @@
 //     query, count,
 //     results: [{
 //       video_id, meeting_date, chunk_idx, start_sec, end_sec,
-//       resolved_role, resolved_name, resolved_official_id,
+//       resolved_role, resolved_official_id, resolved_name,
+//       source_label, turn_speaker_raw,
 //       text, token_count, similarity, sub_chunk_idx, sub_chunk_of, snippet?
 //     }]
 //   }
 //   4xx/5xx -> { error }
 //
-// Backing store: Supabase Postgres with pgvector, table transcript_chunks
-// (see la-money-votes/data/transcripts/schema.sql). RPC: search_transcripts.
+// Attribution note: public commenters don't have canonical IDs (resolved_
+// official_id is NULL for these rows), so the frontend should display the
+// CART cue verbatim — usually "PUBLIC SPEAKER" or "Speaker" — from
+// resolved_name / source_label rather than the councilmember-style
+// "Council President" label. M2 plan (scripts/transcripts/M2_PLAN.md, D5)
+// intentionally keeps attribution at the cue level for the MVP.
+//
+// Rate limiting is shared with /api/search-transcripts (same `tsx:*` keys)
+// so per-IP abuse ceilings apply across both endpoints.
 
 const {
   MAX_QUERY_LENGTH,
@@ -48,7 +48,7 @@ const {
   parseBody,
   checkRateLimit,
   embedQuery,
-  searchTranscriptsRpc,
+  searchPublicCommentRpc,
 } = require("./_lib/transcript-search-lib");
 
 module.exports = async function handler(req, res) {
@@ -75,18 +75,6 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  const official = body.official || {};
-  const officialId = sanitizeString(official.resolved_official_id, 64);
-  if (!officialId) {
-    // Panel is shown per-councilmember. When a councilmember isn't linked
-    // to a canonical official_id (roster.json), the frontend should hide
-    // the module entirely -- this 400 is the safety net.
-    res.status(400).json({
-      error: "This official isn't linked to the transcript index yet.",
-    });
-    return;
-  }
-
   const limit = Math.min(
     Math.max(Number.parseInt(body.limit, 10) || DEFAULT_LIMIT, 1),
     MAX_LIMIT
@@ -104,14 +92,13 @@ module.exports = async function handler(req, res) {
       return;
     }
   } catch (err) {
-    console.error("[search-transcripts] rate limit check errored:", err);
+    console.error("[search-public-comment] rate limit check errored:", err);
   }
 
   try {
     const embedding = await embedQuery(query);
-    const results = await searchTranscriptsRpc({
+    const results = await searchPublicCommentRpc({
       embedding,
-      officialId,
       dateFrom,
       dateTo,
       limit,
@@ -124,8 +111,8 @@ module.exports = async function handler(req, res) {
     });
     if (resultArray.length === 0) {
       console.log(
-        `[search-transcripts] no results above similarity=${MIN_SIMILARITY} ` +
-          `for official=${officialId} query=${query.slice(0, 80)}`
+        `[search-public-comment] no results above similarity=${MIN_SIMILARITY} ` +
+          `for query=${query.slice(0, 80)}`
       );
     }
 
@@ -135,10 +122,10 @@ module.exports = async function handler(req, res) {
       results: resultArray,
     });
   } catch (err) {
-    console.error("[search-transcripts] search failed:", err);
+    console.error("[search-public-comment] search failed:", err);
     res.status(502).json({
       error:
-        "Transcript search is temporarily unavailable. Please try again in a moment.",
+        "Public comment search is temporarily unavailable. Please try again in a moment.",
     });
   }
 };
