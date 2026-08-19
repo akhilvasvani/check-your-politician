@@ -114,6 +114,40 @@
       </div>
     </section>
 
+    <!--
+      Transcript search: shown only when this official has a roster.json
+      entry with a resolved official_id. js/transcript-search.js hides the
+      section (via [hidden]) at init time if the roster doesn't link them.
+    -->
+    <section id="transcript-search-section" aria-labelledby="transcript-search-heading" hidden>
+      <h2 id="transcript-search-heading">Search council meetings for <span id="transcript-search-official-name">this official</span></h2>
+      <p class="transcript-search-intro">
+        Search what this official has said in recent City Council meetings.
+        Each result links to the exact moment in the source YouTube video &mdash;
+        so you can watch what they said in context.
+      </p>
+      <form id="transcript-search-form" class="transcript-search-form" novalidate>
+        <label for="transcript-search-input" class="transcript-search-label">Search phrase</label>
+        <input
+          type="text"
+          id="transcript-search-input"
+          name="query"
+          class="transcript-search-input"
+          maxlength="200"
+          placeholder="e.g. homelessness, budget vote, LAPD"
+          aria-describedby="transcript-search-hint"
+          required
+        />
+        <div class="transcript-search-form-footer">
+          <p id="transcript-search-hint" class="transcript-search-hint">Searches meeting transcripts from the last ~10 sessions. Up to 200 characters.</p>
+          <button type="submit" id="transcript-search-submit" class="transcript-search-submit">Search</button>
+        </div>
+      </form>
+      <div id="transcript-search-status" class="transcript-search-status" role="status" aria-live="polite" hidden></div>
+      <div id="transcript-search-results" class="transcript-search-results"></div>
+      <p id="transcript-search-empty" class="transcript-search-empty" hidden></p>
+    </section>
+
     <section id="record-section">
       <h2>Voting &amp; Proposal Record</h2>
 
@@ -181,6 +215,7 @@
   <script src="js/vendor/marked.min.js"></script>
   <script src="js/vendor/purify.min.js"></script>
   <script src="js/ask-ai.js"></script>
+  <script src="js/transcript-search.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

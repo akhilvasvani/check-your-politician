@@ -5,13 +5,12 @@
 #     python -m venv .venv-transcripts
 #     .venv-transcripts/bin/pip install -r scripts/transcripts/requirements-transcripts.txt
 #
-# Runtime targets:
-#   - Mac mini M4 (dev/production): auto-selects MPS device for embedding
-#   - Linux CI runner: CPU embedding, still functional
+# Embedding is done via the Perplexity /v1/embeddings HTTP endpoint (no
+# local ML model, no torch, no sentence-transformers). This keeps the
+# runtime footprint small and the same PERPLEXITY_API_KEY that Vercel
+# already has is the only credential the ingestion side needs.
 #
 # yt-dlp is invoked as a subprocess; not listed here because the standalone
 # binary at ~/cyp-spike-m0/yt-dlp is already deployed. Override via YT_DLP_PATH.
 
-sentence-transformers>=3.0.0,<7.0.0
-torch>=2.2.0
 supabase>=2.5.0,<3.0.0

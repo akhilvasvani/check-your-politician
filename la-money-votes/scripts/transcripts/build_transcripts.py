@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Orchestrator: fetch → flatten → resolve → chunk → embed → upsert.
 
-Runs locally on the Mac mini (or CI runner with MPS/CUDA). Idempotent per
-meeting: `data/transcripts/{video_id}.json` on disk is the retry signal —
-if it's present, embed+upsert is safe to re-run; if absent, the whole
-meeting is re-processed on the next run.
+Runs locally on the Mac mini (or CI runner). Idempotent per meeting:
+`data/transcripts/{video_id}.json` on disk is the retry signal — if it's
+present, embed+upsert is safe to re-run; if absent, the whole meeting is
+re-processed on the next run.
+
+Embedding: Perplexity /v1/embeddings with `pplx-embed-v1-0.6b` (1024-dim,
+unnormalized int8 -- see api/search-transcripts.js for the matching
+query-side embedder). This decision replaces the earlier E5-small-v2 plan
+so both sides of the search pipeline share one credential.
 
 Usage:
     # Default: fetch the 10 most recent City Council regular meetings, ingest all.
@@ -22,31 +27,27 @@ Usage:
 Env:
     SUPABASE_URL              (required for upsert)
     SUPABASE_SERVICE_ROLE_KEY (required for upsert)
+    PERPLEXITY_API_KEY        (required for embed)
     YT_DLP_PATH               (optional, default: 'yt-dlp' on PATH)
     YT_DLP_COOKIES_BROWSER    (optional, default: 'chrome' — pass '' to disable)
     VTT_CACHE_DIR             (optional, default: '.cache/youtube' — gitignored)
-    EMBED_DEVICE              (optional, default: auto — 'mps' | 'cuda' | 'cpu')
 """
 
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import logging
 import os
 import re
-import shutil
 import subprocess
 import sys
 import time
 from collections import Counter
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 from datetime import datetime, date, timezone
 from pathlib import Path
-from typing import Iterable, Iterator
-
-# Third-party imports are done lazily so --no-embed can run without them installed.
-# See requirements-transcripts.txt.
 
 
 REPO = Path(__file__).parent.parent.parent  # la-money-votes/
@@ -60,19 +61,28 @@ COUNCIL_MEETING_TITLE = "City Council Meeting"
 
 CHUNK_TOKENS = 400
 CHUNK_OVERLAP = 50
-EMBED_MODEL = "intfloat/e5-small-v2"
-EMBED_DIM = 384
+
+# Perplexity Embeddings API. See docs.perplexity.ai/docs/embeddings.
+# Locked to match api/search-transcripts.js -- MUST match, or vectors are
+# incomparable. If you change this, update the schema's default and
+# re-embed the entire corpus (upsert on (video_id, chunk_idx,
+# embedding_model) makes this incremental-safe).
+EMBED_MODEL = "pplx-embed-v1-0.6b"
+EMBED_DIM = 1024
 EMBED_VERSION = 1
+EMBED_URL = "https://api.perplexity.ai/v1/embeddings"
+
+# API request batching. Perplexity supports up to 512 texts / 120K total
+# tokens per request; we pick a conservative batch size that fits well
+# under both limits given ~400 tokens per chunk (400 * 100 = 40K tokens).
+EMBED_BATCH_SIZE = 100
 
 log = logging.getLogger("build_transcripts")
 
 
-# ---------------------------------------------------------------------------
-# Local imports from this module.
-# ---------------------------------------------------------------------------
 sys.path.insert(0, str(REPO / "scripts"))
 from transcripts.vtt_flatten import parse_vtt, dedupe_rolling, stitch_utterances
-from transcripts.speaker_resolver import SpeakerResolver, Resolution
+from transcripts.speaker_resolver import SpeakerResolver
 
 
 # ---------------------------------------------------------------------------
@@ -96,7 +106,6 @@ def fetch_meeting_index(top: int = 10) -> list[Meeting]:
     yt = re.compile(r"v=([a-zA-Z0-9_-]{11})")
     meetings: list[Meeting] = []
     for m in data:
-        # Strict title match. Excludes "-SAP" (Spanish-language duplicate) and committee meetings.
         if m.get("title") != COUNCIL_MEETING_TITLE:
             continue
         video_url = m.get("videoUrl") or ""
@@ -117,11 +126,8 @@ def fetch_meeting_index(top: int = 10) -> list[Meeting]:
 # Step 2: Fetch VTT via yt-dlp (skip cleanly if captions not ready).
 # ---------------------------------------------------------------------------
 def fetch_vtt(video_id: str, cache_dir: Path) -> Path | None:
-    """Download the CART VTT for one video. Returns the local path, or None if unavailable.
-
-    Never raises for missing captions — that is a normal case (fresh livestream
-    not yet transcoded). Only raises on infrastructure errors (missing yt-dlp, etc).
-    """
+    """Download the CART VTT for one video. Returns the local path, or None
+    if unavailable. Never raises for missing captions."""
     out_dir = cache_dir / video_id
     out_dir.mkdir(parents=True, exist_ok=True)
     expected = out_dir / f"{video_id}.{CART_LANG_CODE}.vtt"
@@ -155,14 +161,14 @@ def fetch_vtt(video_id: str, cache_dir: Path) -> Path | None:
 
 
 # ---------------------------------------------------------------------------
-# Step 3: Chunker (400-token windows with 50-token overlap, utterance-aware).
+# Step 3: Chunker.
 # ---------------------------------------------------------------------------
 @dataclass(frozen=True)
 class Chunk:
     chunk_idx: int
     start_sec: float
     end_sec: float
-    source_labels: tuple[str | None, ...]  # de-duplicated raw CART labels in this window
+    source_labels: tuple[str | None, ...]
     text: str
     token_count: int
 
@@ -170,7 +176,6 @@ class Chunk:
 def chunk_utterances(utts, target: int = CHUNK_TOKENS, overlap: int = CHUNK_OVERLAP) -> list[Chunk]:
     if not utts:
         return []
-    # Flatten to (utt_index, token) so we can slice on token boundaries.
     tokens: list[tuple[int, str]] = []
     for i, u in enumerate(utts):
         for tok in (u.text or "").split():
@@ -186,7 +191,7 @@ def chunk_utterances(utts, target: int = CHUNK_TOKENS, overlap: int = CHUNK_OVER
             break
         start_utt_idx = window[0][0]
         end_utt_idx = window[-1][0]
-        labels_in_window = tuple(dict.fromkeys(  # preserve order, dedup
+        labels_in_window = tuple(dict.fromkeys(
             utts[j].speaker for j in range(start_utt_idx, end_utt_idx + 1)
         ))
         text = " ".join(tok for _, tok in window)
@@ -204,15 +209,9 @@ def chunk_utterances(utts, target: int = CHUNK_TOKENS, overlap: int = CHUNK_OVER
 
 
 # ---------------------------------------------------------------------------
-# Step 4: Build the on-disk transcript JSON (canonical, human-readable).
+# Step 4: Build the canonical on-disk transcript JSON.
 # ---------------------------------------------------------------------------
 def build_transcript_json(meeting: Meeting, utts, resolver: SpeakerResolver) -> dict:
-    """Produce data/transcripts/{video_id}.json.
-
-    This file is canonical: it survives even if Supabase is wiped. Ingestion
-    to Supabase (Step 6) reads from it. The raw VTT is gitignored; this JSON
-    is committed.
-    """
     resolved_utts = []
     coverage = Counter()
     for u in utts:
@@ -244,21 +243,55 @@ def build_transcript_json(meeting: Meeting, utts, resolver: SpeakerResolver) -> 
 
 
 # ---------------------------------------------------------------------------
-# Step 5: Embed chunks and upsert to Supabase.
+# Step 5: Embed via Perplexity API and upsert to Supabase.
 # ---------------------------------------------------------------------------
-def _load_embedder(device_env: str | None):
-    from sentence_transformers import SentenceTransformer
-    import torch
-    if device_env:
-        device = device_env
-    elif torch.backends.mps.is_available():
-        device = "mps"
-    elif torch.cuda.is_available():
-        device = "cuda"
-    else:
-        device = "cpu"
-    log.info("loading %s on device=%s", EMBED_MODEL, device)
-    return SentenceTransformer(EMBED_MODEL, device=device), device
+def embed_batch(texts: list[str], api_key: str) -> list[list[float]]:
+    """Call Perplexity /v1/embeddings and decode the base64_int8 response into
+    plain float lists (range [-128, 127]). We keep the magnitudes -- pgvector's
+    cosine distance operator is unaffected by scale."""
+    import urllib.request
+    import urllib.error
+
+    body = json.dumps({
+        "input": texts,
+        "model": EMBED_MODEL,
+        # base64_int8 is default; we make it explicit for clarity.
+        "encoding_format": "base64_int8",
+    }).encode()
+
+    req = urllib.request.Request(
+        EMBED_URL,
+        data=body,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+
+    # Retry a few times on 429 / transient 5xx.
+    for attempt in range(5):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                payload = json.load(r)
+            break
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 500, 502, 503, 504) and attempt < 4:
+                wait = 2 ** attempt
+                log.warning("Perplexity embed HTTP %d, retrying in %ds", e.code, wait)
+                time.sleep(wait)
+                continue
+            raise
+
+    vectors: list[list[float]] = []
+    for item in payload["data"]:
+        raw = base64.b64decode(item["embedding"])
+        # int8 signed
+        vec = [int.from_bytes(bytes([b]), "big", signed=True) for b in raw]
+        if len(vec) != EMBED_DIM:
+            raise RuntimeError(f"Unexpected embedding dim: {len(vec)} != {EMBED_DIM}")
+        vectors.append([float(x) for x in vec])
+    return vectors
 
 
 def _build_supabase_client():
@@ -268,19 +301,11 @@ def _build_supabase_client():
     return create_client(url, key)
 
 
-def embed_and_upsert(transcript: dict, chunks: list[Chunk], embedder, supabase) -> int:
+def embed_and_upsert(transcript: dict, chunks: list[Chunk], supabase, api_key: str) -> int:
     """Embed chunks and upsert into transcript_chunks. Returns row count."""
-    # Build per-chunk resolved-speaker metadata from the utterance stream.
-    # Rule: attribute the chunk to the DOMINANT speaker (most tokens) in its window.
-    #       If tied, use the FIRST speaker in the window.
-    # This is a display convenience only; the raw source_labels stay in the JSON
-    # for anyone who wants full fidelity.
     utts = transcript["utterances"]
     docs, meta = [], []
     for c in chunks:
-        # Find dominant speaker across the tokens in this window.
-        # We already have source_labels in order-preserving dedup; pick the one
-        # that spans the most tokens by walking utterances that overlap [start_sec, end_sec].
         overlapping = [u for u in utts if u["end_sec"] >= c.start_sec and u["start_sec"] <= c.end_sec]
         if overlapping:
             per_speaker: Counter = Counter()
@@ -300,7 +325,7 @@ def embed_and_upsert(transcript: dict, chunks: list[Chunk], embedder, supabase) 
             resolution_method = "unresolved"
             source_label = None
 
-        docs.append(f"passage: {c.text}")
+        docs.append(c.text)
         meta.append({
             "video_id": transcript["video_id"],
             "meeting_date": transcript["meeting_date"],
@@ -318,17 +343,19 @@ def embed_and_upsert(transcript: dict, chunks: list[Chunk], embedder, supabase) 
             "embedding_version": EMBED_VERSION,
         })
 
+    # Batch calls to the embeddings endpoint.
+    embs: list[list[float]] = []
     t0 = time.time()
-    embs = embedder.encode(docs, batch_size=32, show_progress_bar=False, normalize_embeddings=True)
-    log.info("embedded %d chunks in %.1fs", len(docs), time.time() - t0)
+    for i in range(0, len(docs), EMBED_BATCH_SIZE):
+        batch = docs[i:i + EMBED_BATCH_SIZE]
+        embs.extend(embed_batch(batch, api_key))
+    log.info("embedded %d chunks in %.1fs (%s)", len(docs), time.time() - t0, EMBED_MODEL)
 
     rows = []
     for m, e in zip(meta, embs):
-        # Supabase expects a Python list for pgvector; float() cast keeps JSON small.
-        m["embedding"] = [float(x) for x in e]
+        m["embedding"] = e
         rows.append(m)
 
-    # Upsert on the unique key so re-runs are idempotent.
     resp = (supabase.table("transcript_chunks")
             .upsert(rows, on_conflict="video_id,chunk_idx,embedding_model")
             .execute())
@@ -340,9 +367,8 @@ def embed_and_upsert(transcript: dict, chunks: list[Chunk], embedder, supabase) 
 # ---------------------------------------------------------------------------
 # Step 6: Full pipeline for one meeting.
 # ---------------------------------------------------------------------------
-def process_meeting(meeting: Meeting, resolver: SpeakerResolver, embedder, supabase,
+def process_meeting(meeting: Meeting, resolver: SpeakerResolver, supabase, api_key: str | None,
                     cache_dir: Path, do_embed: bool) -> dict:
-    """Full pipeline for one meeting. Returns a small stats dict for the report."""
     stats = {"video_id": meeting.video_id, "meeting_date": meeting.meeting_date.isoformat()}
 
     vtt = fetch_vtt(meeting.video_id, cache_dir)
@@ -362,7 +388,6 @@ def process_meeting(meeting: Meeting, resolver: SpeakerResolver, embedder, supab
 
     transcript = build_transcript_json(meeting, utts, resolver)
 
-    # Write canonical JSON to disk (atomic rename).
     dest = DATA_DIR / f"{meeting.video_id}.json"
     tmp = dest.with_suffix(".json.tmp")
     tmp.write_text(json.dumps(transcript, indent=2))
@@ -375,7 +400,7 @@ def process_meeting(meeting: Meeting, resolver: SpeakerResolver, embedder, supab
     stats["chunk_count"] = len(chunks)
 
     if do_embed:
-        n = embed_and_upsert(transcript, chunks, embedder, supabase)
+        n = embed_and_upsert(transcript, chunks, supabase, api_key)
         stats["chunks_upserted"] = n
         stats["status"] = "ingested"
     else:
@@ -384,9 +409,6 @@ def process_meeting(meeting: Meeting, resolver: SpeakerResolver, embedder, supab
     return stats
 
 
-# ---------------------------------------------------------------------------
-# Entrypoint.
-# ---------------------------------------------------------------------------
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--top", type=int, default=10, help="How many recent meetings to consider.")
@@ -406,7 +428,7 @@ def main() -> int:
 
     if args.video_id:
         meetings = [Meeting(video_id=args.video_id,
-                            meeting_date=date.today(),  # unknown when overriding
+                            meeting_date=date.today(),
                             primegov_id=-1,
                             title="(override)")]
     else:
@@ -415,25 +437,26 @@ def main() -> int:
 
     resolver = SpeakerResolver(ROSTER_PATH)
 
-    embedder = None
     supabase = None
+    api_key = None
     if not args.no_embed:
-        embedder, _ = _load_embedder(os.environ.get("EMBED_DEVICE"))
+        api_key = os.environ.get("PERPLEXITY_API_KEY")
+        if not api_key:
+            log.error("PERPLEXITY_API_KEY not set — pass --no-embed for a dry run.")
+            return 2
         supabase = _build_supabase_client()
 
     report = []
     for m in meetings:
         try:
-            stats = process_meeting(m, resolver, embedder, supabase, cache_dir, do_embed=not args.no_embed)
+            stats = process_meeting(m, resolver, supabase, api_key, cache_dir, do_embed=not args.no_embed)
         except Exception:
             log.exception("failed to process %s", m.video_id)
             stats = {"video_id": m.video_id, "status": "error"}
         report.append(stats)
         log.info("meeting %s → %s", m.video_id, stats.get("status"))
 
-    # Print final report as JSON for machine + human consumption.
     print(json.dumps({"report": report}, indent=2))
-    # Non-zero exit if any meeting errored (retry-friendly).
     return 0 if not any(r.get("status") == "error" for r in report) else 1
 
 
