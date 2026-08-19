@@ -59,8 +59,11 @@ PRIMEGOV_URL = "https://lacity.primegov.com/api/v2/PublicPortal/ListArchivedMeet
 CART_LANG_CODE = "en-uYU-mmqFLq8"   # channel-stable per M0.3b findings
 COUNCIL_MEETING_TITLE = "City Council Meeting"
 
-CHUNK_TOKENS = 400
-CHUNK_OVERLAP = 50
+# M1 chunking (2026-08-19): chunks are now speaker turns, not token windows.
+# See scripts/transcripts/chunker.py and memory/knowledge/projects/check-your-
+# politician's M1.0 audit doc for the reasoning and per-official chunk counts.
+# The old CHUNK_TOKENS / CHUNK_OVERLAP knobs are gone; the sub-chunk thresholds
+# live in chunker.py (SUB_CHUNK_MAX_WORDS, SUB_CHUNK_TARGET_WORDS).
 
 # Perplexity Embeddings API. See docs.perplexity.ai/docs/embeddings.
 # Locked to match api/search-transcripts.js -- MUST match, or vectors are
@@ -83,6 +86,7 @@ log = logging.getLogger("build_transcripts")
 sys.path.insert(0, str(REPO / "scripts"))
 from transcripts.vtt_flatten import parse_vtt, dedupe_rolling, stitch_utterances
 from transcripts.speaker_resolver import SpeakerResolver
+from transcripts.chunker import chunk_turns, TurnChunk
 
 
 # ---------------------------------------------------------------------------
@@ -162,50 +166,16 @@ def fetch_vtt(video_id: str, cache_dir: Path) -> Path | None:
 
 # ---------------------------------------------------------------------------
 # Step 3: Chunker.
+#
+# Deleted in M1: the old token-window chunker + word-count-weighted
+# attribution vote in embed_and_upsert. That design put every 400-token
+# window up for a majority vote; procedural roles (Council President with
+# 809 turns of gavel/procedure, or "Speaker" with 736 turns of public
+# comment) won almost every vote against a councilmember's short
+# interjection, and Jurado ended up with 0 chunks despite speaking in 8 of
+# 9 meetings. See chunker.chunk_turns for the replacement: one utterance =
+# one chunk, long turns sub-chunked on sentence boundaries.
 # ---------------------------------------------------------------------------
-@dataclass(frozen=True)
-class Chunk:
-    chunk_idx: int
-    start_sec: float
-    end_sec: float
-    source_labels: tuple[str | None, ...]
-    text: str
-    token_count: int
-
-
-def chunk_utterances(utts, target: int = CHUNK_TOKENS, overlap: int = CHUNK_OVERLAP) -> list[Chunk]:
-    if not utts:
-        return []
-    tokens: list[tuple[int, str]] = []
-    for i, u in enumerate(utts):
-        for tok in (u.text or "").split():
-            tokens.append((i, tok))
-
-    chunks: list[Chunk] = []
-    step = target - overlap
-    idx = 0
-    ci = 0
-    while idx < len(tokens):
-        window = tokens[idx: idx + target]
-        if not window:
-            break
-        start_utt_idx = window[0][0]
-        end_utt_idx = window[-1][0]
-        labels_in_window = tuple(dict.fromkeys(
-            utts[j].speaker for j in range(start_utt_idx, end_utt_idx + 1)
-        ))
-        text = " ".join(tok for _, tok in window)
-        chunks.append(Chunk(
-            chunk_idx=ci,
-            start_sec=utts[start_utt_idx].start,
-            end_sec=utts[end_utt_idx].end,
-            source_labels=labels_in_window,
-            text=text,
-            token_count=len(window),
-        ))
-        ci += 1
-        idx += step
-    return chunks
 
 
 # ---------------------------------------------------------------------------
@@ -301,30 +271,18 @@ def _build_supabase_client():
     return create_client(url, key)
 
 
-def embed_and_upsert(transcript: dict, chunks: list[Chunk], supabase, api_key: str) -> int:
-    """Embed chunks and upsert into transcript_chunks. Returns row count."""
-    utts = transcript["utterances"]
+def embed_and_upsert(transcript: dict, chunks: list[TurnChunk], supabase,
+                     api_key: str, resolver: SpeakerResolver) -> int:
+    """Embed chunks and upsert into transcript_chunks. Returns row count.
+
+    Attribution: each chunk carries its raw CART source_label from the
+    originating utterance. We resolve label -> (role, official_id, name)
+    here — no dominant-speaker vote, because each chunk is scoped to a
+    single speaker turn by construction (see chunker.chunk_turns).
+    """
     docs, meta = [], []
     for c in chunks:
-        overlapping = [u for u in utts if u["end_sec"] >= c.start_sec and u["start_sec"] <= c.end_sec]
-        if overlapping:
-            per_speaker: Counter = Counter()
-            for u in overlapping:
-                per_speaker[u["source_label"]] += len((u["text"] or "").split())
-            dominant_label, _ = per_speaker.most_common(1)[0]
-            dominant = next(u for u in overlapping if u["source_label"] == dominant_label)
-            resolved_role = dominant["resolved_role"]
-            resolved_official_id = dominant["resolved_official_id"]
-            resolved_name = dominant["resolved_name"]
-            resolution_method = dominant["resolution_method"]
-            source_label = dominant["source_label"]
-        else:
-            resolved_role = "unknown"
-            resolved_official_id = None
-            resolved_name = "Unknown"
-            resolution_method = "unresolved"
-            source_label = None
-
+        r = resolver.resolve(c.source_label)
         docs.append(c.text)
         meta.append({
             "video_id": transcript["video_id"],
@@ -332,11 +290,14 @@ def embed_and_upsert(transcript: dict, chunks: list[Chunk], supabase, api_key: s
             "chunk_idx": c.chunk_idx,
             "start_sec": c.start_sec,
             "end_sec": c.end_sec,
-            "source_label": source_label,
-            "resolved_role": resolved_role,
-            "resolved_official_id": resolved_official_id,
-            "resolved_name": resolved_name,
-            "resolution_method": resolution_method,
+            "source_label": c.source_label,
+            "resolved_role": r.resolved_role,
+            "resolved_official_id": r.resolved_official_id,
+            "resolved_name": r.resolved_name,
+            "resolution_method": r.resolution_method,
+            "turn_speaker_raw": c.source_label,
+            "sub_chunk_idx": c.sub_chunk_idx,
+            "sub_chunk_of": c.sub_chunk_of,
             "text": c.text,
             "token_count": c.token_count,
             "embedding_model": EMBED_MODEL,
@@ -396,11 +357,16 @@ def process_meeting(meeting: Meeting, resolver: SpeakerResolver, supabase, api_k
     stats["utterance_count"] = transcript["utterance_count"]
     stats["coverage"] = transcript["coverage"]
 
-    chunks = chunk_utterances(utts)
+    chunks = chunk_turns(utts)
     stats["chunk_count"] = len(chunks)
+    stats["attributed_chunks"] = sum(
+        1 for c in chunks
+        if (r := resolver.resolve(c.source_label)).resolved_official_id
+        and r.resolved_official_id.startswith("cd")
+    )
 
     if do_embed:
-        n = embed_and_upsert(transcript, chunks, supabase, api_key)
+        n = embed_and_upsert(transcript, chunks, supabase, api_key, resolver)
         stats["chunks_upserted"] = n
         stats["status"] = "ingested"
     else:
