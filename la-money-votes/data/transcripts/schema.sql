@@ -1,6 +1,8 @@
 -- Meeting-transcript RAG schema (Supabase / Postgres + pgvector).
--- Purpose: store one row per 400-token chunk, with speaker attribution, timestamp,
---   video ID, and an embedding for retrieval.
+-- Purpose: store one row per speaker turn (or sub-chunk of a long turn), with
+--   speaker attribution, timestamp, video ID, and an embedding for retrieval.
+--   See migration_m1_speaker_turns.sql for the M1 upgrade from 400-token
+--   windows to per-turn chunks.
 -- Design notes:
 --   - transcript_chunks is additive to the existing schema. Nothing here touches
 --     data/officials.json, funding.json, or record.json.
@@ -33,6 +35,15 @@ create table if not exists transcript_chunks (
     text                  text         not null,
     token_count           int          not null,
 
+    -- Speaker-turn provenance (M1). Chunks are scoped to a single utterance;
+    -- long turns (>120w) are split into sentence-bounded sub-chunks that share
+    -- the same turn_speaker_raw but differ in sub_chunk_idx / sub_chunk_of.
+    -- See scripts/transcripts/chunker.py for the splitter and
+    -- migration_m1_speaker_turns.sql for column semantics.
+    turn_speaker_raw      text,
+    sub_chunk_idx         int          not null default 0,
+    sub_chunk_of          int          not null default 1,
+
     -- embedding (1024-dim, pplx-embed-v1-0.6b, cosine similarity).
     -- Perplexity embeddings are unnormalized -- use cosine distance
     -- (`<=>`), NOT inner product or L2. See:
@@ -56,6 +67,20 @@ create index if not exists transcript_chunks_embedding_idx
 create index if not exists transcript_chunks_video_idx    on transcript_chunks (video_id, chunk_idx);
 create index if not exists transcript_chunks_date_idx     on transcript_chunks (meeting_date desc);
 create index if not exists transcript_chunks_official_idx on transcript_chunks (resolved_official_id) where resolved_official_id is not null;
+create index if not exists transcript_chunks_subchunk_idx
+    on transcript_chunks (video_id, resolved_official_id, sub_chunk_of, sub_chunk_idx)
+    where sub_chunk_of > 1;
+
+-- RLS: public read (D1 decision, 2026-08-19). transcript_chunks is a mirror of
+-- publicly-broadcast LA City Council CART captions; writes are restricted to
+-- service_role via the default "no policy" write behavior.
+alter table transcript_chunks enable row level security;
+drop policy if exists transcript_chunks_read_anon on transcript_chunks;
+create policy transcript_chunks_read_anon
+    on transcript_chunks
+    for select
+    to anon, authenticated
+    using (true);
 
 -- RPC used by api/search-transcripts.js.
 -- Filters:
@@ -94,7 +119,9 @@ returns table (
     token_count int,
     similarity real
 )
-language sql stable
+language sql
+stable
+security invoker
 as $$
     select
         c.id,
