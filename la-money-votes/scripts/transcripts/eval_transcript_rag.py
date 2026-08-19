@@ -1,29 +1,47 @@
 #!/usr/bin/env python3
-"""M1.4 eval runner: sweep p_min_similarity over the 20-query gold set.
+"""Eval runner: sweep p_min_similarity over a transcript-RAG gold set.
+
+Extended in M2.3 to dispatch across two RPCs:
+  - search_transcripts     (per-official search, M1 gold set)
+  - search_public_comment  (public-comment-only search, M2.3 gold set)
+
+The gold set may declare `"rpc": "..."` at the top level; the runner uses
+that unless overridden by --rpc on the CLI.
 
 For each query:
   1. Embed via Perplexity /v1/embeddings (base64_int8 -> float list).
-  2. Call the search_transcripts RPC with p_official_id set to the expected
-     councilmember, p_match_count=8, and vary p_min_similarity across the sweep.
+     Embeddings are cached to --embeddings on first run so floor sweeps and
+     re-runs skip the embedding API (cost optimization).
+  2. Call the selected RPC with p_match_count=8 and vary p_min_similarity
+     across the sweep. search_transcripts additionally requires
+     p_official_id (taken from `expected_official_id` on each query).
   3. Score:
-       - exact_hit@k: top-k contains the exact (video_id, chunk_idx) target.
-       - parent_hit@k: top-k contains any row with the same (video_id, chunk_idx)
-                      as the target (sub-chunk-agnostic parent-turn match).
+       - exact_hit@k: top-k contains the exact (video_id, chunk_idx,
+                      sub_chunk_idx) target when a sub-chunk is specified,
+                      or (video_id, chunk_idx) otherwise.
+       - parent_hit@k: top-k contains any row with the same (video_id,
+                      chunk_idx) as the target.
        - null-rate: proportion of queries that returned 0 rows at this floor.
        - top1_sim: distribution of top-1 similarity scores.
 
-Outputs a JSON report next to this script's --out path with per-query traces
-plus an aggregate summary per floor.
+Outputs a JSON report at --out with per-query traces plus an aggregate
+summary per floor.
 
 Env:
   PPLX_API_KEY  - Perplexity API key for embeddings
   SUPABASE_URL  - Supabase project URL
-  SUPABASE_ANON_KEY - Anon JWT (RPC is SECURITY INVOKER + RLS-safe)
+  SUPABASE_ANON_KEY - Anon JWT (RPCs are SECURITY INVOKER + RLS-safe)
 
 Usage:
+  # search_transcripts (M1 gold set)
   python eval_transcript_rag.py \
       --queries data/transcripts/eval_queries.json \
       --out data/transcripts/eval_results_m1.4.json
+
+  # search_public_comment (M2.3 gold set; --rpc auto reads gold-set field)
+  python eval_transcript_rag.py \
+      --queries data/transcripts/eval_queries_public_comment.json \
+      --out /tmp/eval_public_comment.json
 """
 from __future__ import annotations
 
@@ -79,19 +97,26 @@ def embed_query(text: str, api_key: str) -> list[float]:
 def rpc_search(
     supabase_url: str,
     anon_key: str,
+    rpc_name: str,
     query_embedding: list[float],
-    official_id: str,
+    official_id: str | None,
     min_similarity: float,
     match_count: int = MATCH_COUNT,
 ) -> list[dict]:
-    url = f"{supabase_url}/rest/v1/rpc/search_transcripts"
+    """Dispatch to the named RPC. search_transcripts requires p_official_id;
+    search_public_comment does not accept it (filters on resolved_role instead).
+    """
+    url = f"{supabase_url}/rest/v1/rpc/{rpc_name}"
     headers = [f"apikey: {anon_key}", f"Authorization: Bearer {anon_key}"]
-    body = {
+    body: dict[str, Any] = {
         "p_query_embedding": query_embedding,
-        "p_official_id": official_id,
         "p_match_count": match_count,
         "p_min_similarity": min_similarity,
     }
+    if rpc_name == "search_transcripts":
+        if not official_id:
+            raise RuntimeError("search_transcripts requires expected_official_id on the query")
+        body["p_official_id"] = official_id
     res = curl_json(url, headers, body)
     if isinstance(res, dict) and res.get("code"):
         raise RuntimeError(f"RPC error: {res}")
@@ -124,13 +149,16 @@ def score_hits(
     }
 
 
-def run(queries_path: Path, out_path: Path, embeddings_path: Path | None) -> None:
+def run(queries_path: Path, out_path: Path, embeddings_path: Path | None, rpc_name: str) -> None:
     supabase_url = os.environ["SUPABASE_URL"]
     anon_key = os.environ["SUPABASE_ANON_KEY"]
 
     qset = json.loads(queries_path.read_text())
     queries = qset["queries"]
-    print(f"[eval] loaded {len(queries)} queries from {queries_path.name}", flush=True)
+    # If the gold set declares its own rpc, prefer that unless overridden on CLI.
+    if rpc_name == "auto":
+        rpc_name = qset.get("rpc", "search_transcripts")
+    print(f"[eval] loaded {len(queries)} queries from {queries_path.name} (rpc={rpc_name})", flush=True)
 
     embeddings: dict[str, list[float]]
     if embeddings_path and embeddings_path.exists():
@@ -166,8 +194,9 @@ def run(queries_path: Path, out_path: Path, embeddings_path: Path | None) -> Non
             rows = rpc_search(
                 supabase_url,
                 anon_key,
+                rpc_name,
                 emb,
-                q["expected_official_id"],
+                q.get("expected_official_id"),
                 floor,
             )
             target_sub = q.get("expected_sub_chunk_idx")
@@ -232,6 +261,8 @@ def run(queries_path: Path, out_path: Path, embeddings_path: Path | None) -> Non
 
     report = {
         "version": qset.get("version"),
+        "rpc": rpc_name,
+        "queries_file": queries_path.name,
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "floor_sweep": FLOOR_SWEEP,
         "match_count": MATCH_COUNT,
@@ -255,8 +286,11 @@ def main(argv: list[str]) -> int:
     p.add_argument("--out", type=Path, required=True)
     p.add_argument("--embeddings", type=Path, default=None,
                    help="Optional path to pre-computed query embeddings JSON (skips embed step)")
+    p.add_argument("--rpc", choices=["auto", "search_transcripts", "search_public_comment"],
+                   default="auto",
+                   help="Which Supabase RPC to sweep. 'auto' uses the gold set's declared 'rpc' field, defaulting to search_transcripts.")
     args = p.parse_args(argv)
-    run(args.queries, args.out, args.embeddings)
+    run(args.queries, args.out, args.embeddings, args.rpc)
     return 0
 
 

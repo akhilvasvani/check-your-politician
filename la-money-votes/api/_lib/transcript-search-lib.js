@@ -54,6 +54,37 @@ const RATE_LIMIT_PER_HOUR =
 const RATE_LIMIT_EXCEEDED_MESSAGE =
   "You've searched a lot recently. Please wait a minute before searching again.";
 
+// --- Structured metrics logging (M2.3) -------------------------------------
+// Emits a single line per request so we can watch endpoint health in Vercel
+// logs without shipping OpenTelemetry. Format is deliberately grep-friendly:
+//   [metrics endpoint=<name> outcome=<ok|empty|error|rate_limited>
+//     q_len=<int> count=<int|-> top1_sim=<float|-> min_sim=<float>
+//     duration_ms=<int> official=<id|-> date_from=<iso|-> date_to=<iso|->]
+// Never log raw query text: legal + civic-data caution. Query length only.
+function logSearchMetrics(fields) {
+  const parts = ["[metrics]"];
+  for (const key of [
+    "endpoint",
+    "outcome",
+    "q_len",
+    "count",
+    "top1_sim",
+    "min_sim",
+    "duration_ms",
+    "official",
+    "date_from",
+    "date_to",
+  ]) {
+    let v = fields[key];
+    if (v === undefined || v === null || v === "") v = "-";
+    if (typeof v === "number" && Number.isFinite(v) && !Number.isInteger(v)) {
+      v = v.toFixed(3);
+    }
+    parts.push(`${key}=${v}`);
+  }
+  console.log(parts.join(" "));
+}
+
 // --- Snippet extraction ----------------------------------------------------
 // See history in search-transcripts.js — kept verbatim so both endpoints
 // present the same snippet UX.
@@ -334,4 +365,5 @@ module.exports = {
   embedQuery,
   searchTranscriptsRpc,
   searchPublicCommentRpc,
+  logSearchMetrics,
 };

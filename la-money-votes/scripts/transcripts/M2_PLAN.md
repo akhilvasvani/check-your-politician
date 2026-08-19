@@ -1,7 +1,7 @@
 # Transcript RAG — M2 Plan
 
 **Branch:** `computer/transcript-rag-m2` (forked from M1 head `bf0c58c`)
-**Status:** planning
+**Status:** M2.0 + M2.1 + M2.2 + M2.3 shipped on branch `computer/transcript-rag-m2` (Ask-AI transcript augmentation deferred). See per-milestone acceptance notes below.
 **Non-goal for M2:** RAG-augmenting the Sonar-backed "Ask about ..." Q&A
 widget to also consult transcripts. Deferred to a later milestone (M3+).
 
@@ -129,6 +129,17 @@ shows "part 24 of 26" in the UI.
 **Acceptance:** eval report shows parent@1 ≥ 60% on public-comment set
 (lower bar because attribution is coarser); instrumentation visible in
 Vercel logs.
+
+**M2.3 result (2026-08-19):** parent@1 = 70%, parent@3 = 80% on the
+10-query public-comment gold set across all 5 floors
+(0.15 → 0.35). `search_transcripts` re-run against the M1 20-query set
+is unchanged at parent@1 = 90%, parent@3 = 100% — the runner refactor
+is regression-free. Combined report in
+`data/transcripts/eval_results_m2.json`. Per-request structured metrics
+(`[metrics] endpoint=... outcome=... q_len=... count=... top1_sim=...
+min_sim=... duration_ms=... official=... date_from=... date_to=...`)
+emit on every request in both handlers via `logSearchMetrics` in
+`api/_lib/transcript-search-lib.js`. Query text is never logged.
 
 ## Prioritized backlog
 

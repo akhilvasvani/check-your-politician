@@ -49,7 +49,10 @@ const {
   checkRateLimit,
   embedQuery,
   searchPublicCommentRpc,
+  logSearchMetrics,
 } = require("./_lib/transcript-search-lib");
+
+const ENDPOINT = "search-public-comment";
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
@@ -84,10 +87,20 @@ module.exports = async function handler(req, res) {
   const dateTo = isIsoDate(body.date_to) ? body.date_to : null;
 
   const ip = getClientIp(req);
+  const startedAt = Date.now();
 
   try {
     const rl = await checkRateLimit(ip);
     if (rl.limited) {
+      logSearchMetrics({
+        endpoint: ENDPOINT,
+        outcome: "rate_limited",
+        q_len: query.length,
+        min_sim: MIN_SIMILARITY,
+        duration_ms: Date.now() - startedAt,
+        date_from: dateFrom,
+        date_to: dateTo,
+      });
       res.status(429).json({ error: RATE_LIMIT_EXCEEDED_MESSAGE });
       return;
     }
@@ -109,12 +122,20 @@ module.exports = async function handler(req, res) {
       const snippet = extractSnippet(row.text, query);
       return snippet ? { ...row, snippet } : row;
     });
-    if (resultArray.length === 0) {
-      console.log(
-        `[search-public-comment] no results above similarity=${MIN_SIMILARITY} ` +
-          `for query=${query.slice(0, 80)}`
-      );
-    }
+    const top1Sim = resultArray[0] && typeof resultArray[0].similarity === "number"
+      ? resultArray[0].similarity
+      : null;
+    logSearchMetrics({
+      endpoint: ENDPOINT,
+      outcome: resultArray.length === 0 ? "empty" : "ok",
+      q_len: query.length,
+      count: resultArray.length,
+      top1_sim: top1Sim,
+      min_sim: MIN_SIMILARITY,
+      duration_ms: Date.now() - startedAt,
+      date_from: dateFrom,
+      date_to: dateTo,
+    });
 
     res.status(200).json({
       query,
@@ -123,6 +144,15 @@ module.exports = async function handler(req, res) {
     });
   } catch (err) {
     console.error("[search-public-comment] search failed:", err);
+    logSearchMetrics({
+      endpoint: ENDPOINT,
+      outcome: "error",
+      q_len: query.length,
+      min_sim: MIN_SIMILARITY,
+      duration_ms: Date.now() - startedAt,
+      date_from: dateFrom,
+      date_to: dateTo,
+    });
     res.status(502).json({
       error:
         "Public comment search is temporarily unavailable. Please try again in a moment.",
