@@ -11,6 +11,12 @@ la-money-votes/data/build_report.json
 # is committed (matching the data/officials/ convention above).
 la-money-votes/.cache/
 la-money-votes/.venv-transcripts/
+# Caption-diagnostic scratch: diagnose_captions.py downloads real caption
+# payloads here to measure their byte count. Same rule as the ingest cache --
+# raw VTTs never get committed.
+la-money-votes/caption_probe/
+**/caption_probe/
+*.vtt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
