@@ -103,6 +103,90 @@
           "rationale": "Locked M1/M2 target: OUT AN ABUNDANCE OF CAUTION I'M RECUSING MYSELF FROM ITEM 9 BECAUSE I PROVIDE HOUSING",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 13,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same councilmember's recusal, but for his wife's previous employer rather than providing housing; partially responsive.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "eLYlonECp7o",
+            "chunk_idx": 256,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Same speaker's procedural item calls from the same meeting, textually overlapping the target's tail but carrying no recusal.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 54,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: congratulating a community honoree. No recusal or housing content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 29,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same councilmember recusing himself because he is a landlord; answers 'recused because they provide housing' in equivalent words.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 38,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: remarks on swimming and water-safety honorees. No recusal content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "eLYlonECp7o",
+            "chunk_idx": 175,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: congratulating a police commission appointee. No recusal content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 46,
+            "sub_chunk_idx": 3
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: honoring Muslim Americans against prejudice. No recusal content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -146,6 +230,90 @@
           "rationale": "Locked M1/M2 target: RECUSING MYSELF ON THIS ITEM AS I HAVE INVESTED ON HYDROGEN SECTOR",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 824,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: objecting to a motion to send an item to committee. No recusal or hydrogen content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 982,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: charter reform remarks. No recusal or hydrogen content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 826,
+            "sub_chunk_idx": 2
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: meet-and-confer question and delay complaint. No recusal or hydrogen content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 827,
+            "sub_chunk_idx": 3
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: putting a measure on the November ballot. No recusal or hydrogen content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 365,
+            "sub_chunk_idx": 2
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: comfort with a vetted payment item. No recusal or hydrogen content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 634,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: thanking a colleague for a prior vote. No recusal or hydrogen content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 427,
+            "sub_chunk_idx": 1
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: departmental turnover remarks. No recusal or hydrogen content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -189,6 +357,90 @@
           "rationale": "Locked M1/M2 target: WELCOME STUDENTS FROM SOUTH CORE YA ... VISITING US. WELCOME TO CITY HALL",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 6,
+            "sub_chunk_idx": 3
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Korea-related presentation of K-beauty gifts; national adjacency, no student visit.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 27,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Korean cuisine praise and welcome to the city; national adjacency, no student visit.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 9,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Thanks to a Korean-American community organization for donated gifts; national adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 5,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Remarks celebrating Korean cultural achievement; national adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 521,
+            "sub_chunk_idx": 3
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same councilmember welcoming college students to learn how the city is run; students but local interns, not the South Korean visitors.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 14,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Korean Independence Day and a community award; national adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 707,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: homelessness system spending. No students or Korea content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -232,6 +484,90 @@
           "rationale": "Locked M1/M2 target: I JUST WANT TO ACKNOWLEDGE JOHN LEE'S MOTHER, MS. LEE WHO IS HERE US TODAY FOR KOREAN LIBERATION",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 13,
+            "sub_chunk_idx": 2
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same councilmember's Korean Liberation remarks in the same presentation; does not name Lee's mother.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 11,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same Korean Liberation presentation on Koreatown in the 10th District.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 12,
+            "sub_chunk_idx": 1
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same presentation praising a Korean heritage organization.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "eLYlonECp7o",
+            "chunk_idx": 35,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Welcoming a visiting Mr. Lee to Koreatown at a different meeting; Korea adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "eLYlonECp7o",
+            "chunk_idx": 179,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: thanking Councilmember Lee for a police commission candidate. No Korean Liberation or mother content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 457,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Acknowledging a woman as wife, mother and grandmother and her family in memoriam; near-miss on 'acknowledge' plus 'mother'.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 51,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: water safety awareness proclamation. Unrelated.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -275,6 +611,90 @@
           "rationale": "Locked M1/M2 target: OFFICIALLY DECLARE ONCE AGAIN, THE DIA DEL BOLERO IN LOS ANGELES ON AUGUST 1",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 44,
+            "sub_chunk_idx": 3
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same Dia del Bolero presentation thanking Roberto and introducing the creative director.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 55,
+            "sub_chunk_idx": 3
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same presentation closing with the city's recognition of the bolero organizers.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 54,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Music and singing caption markup inside the same proclamation; contextually adjacent but carries no answer.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 53,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Music and singing caption markup inside the same proclamation; carries no answer.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 43,
+            "sub_chunk_idx": 2
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same presentation on bolero as heritage and Boleros de Noche's 14 years in Los Angeles.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 41,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same presentation recounting Roberto's ten-year vision for the concert series.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 64,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same councilmember recognizing bolero and the August 1 performance tied to the proclamation date.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -331,6 +751,78 @@
           "rationale": "Same speaker explicitly discusses motions expanding auditing power, but the excerpt lacks the target's agreement and zero-cost detail.",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 600,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Complaint about being briefed only two weeks before the decision; Olympics-deliberation adjacency, not audit rights.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 585,
+            "sub_chunk_idx": 3
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Discussion of the protections offered and the city bearing the downside; substantially relevant to the safeguards debate.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 593,
+            "sub_chunk_idx": 1
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Exchange on budget authority not triggering until after the Games and the surplus audit; audit-scope discussion, phrased as the answer rather than her push.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 587,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Her questioning of the city's financial exposure if Olympic revenue falls short; same protections line of inquiry.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 592,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Hernandez explicitly asks what an audit ahead of the Games would look like to protect funds; directly the audit-rights push.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 568,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Hernandez argues the city is unprotected without the ability to audit the LA28 fundraising entity.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -374,6 +866,90 @@
           "rationale": "Locked M1/M2 target: I HAVE DODGER STADIUM AND I WAS BRIEFED TWO WEEKS AGO",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 579,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same member in the same hearing noting Dodger Stadium is in her district while pressing questions; same thread, without the two-weeks-briefing complaint.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 832,
+            "sub_chunk_idx": 3
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: LAPD liabilities and a voter say on police policy. Unrelated to briefing or Dodger Stadium.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 255,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Complaint that a report back is long overdue and a pledge to cut turnaround time; process-timeliness adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 331,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Calls a meet-and-confer request political theater; procedural-grievance adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 253,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Frustration that basic street repairs take a decade; process-timeliness adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 573,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Service-level standards inside the same Olympics agreement hearing; same item, not the briefing complaint.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 53,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: introducing the city engineer nominee. Unrelated.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -417,6 +993,90 @@
           "rationale": "Locked M1/M2 target: CONTINUE THE SMOKE SHOP ICO FOR ONE WEEK ... 6558 OF THE GOVERNMENT CODE",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 592,
+            "sub_chunk_idx": 3
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Smoke shop ICO debate on preventing further proliferation.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 593,
+            "sub_chunk_idx": 4
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Smoke shop ICO debate on siting regulations away from schools and parks.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 590,
+            "sub_chunk_idx": 1
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same member on the petition and the push for a smoke shop moratorium; the ICO's substance, not the continuance motion.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 595,
+            "sub_chunk_idx": 6
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same ICO item noting the twelve affirmative votes needed; procedural but the adoption vote, not the continuance.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 594,
+            "sub_chunk_idx": 5
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same ICO remarks on protecting communities citywide.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 589,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Opening of the same ICO remarks thanking Wilmington community members about proliferation.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 591,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Detail on aerosol products sold in smoke shops; topical to smoke shops, far from the motion.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -460,6 +1120,90 @@
           "rationale": "Locked M1/M2 target: REPORT BACK ON THE FEASIBILITY OF PUBLIC LAND EXEMPTION ... METRO ... 100 PERCENT AFFORDABLE HOUSING PROJECTS ... ULA",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 633,
+            "sub_chunk_idx": 4
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Protecting ULA funding and crediting the ad hoc committee; same policy area.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 632,
+            "sub_chunk_idx": 3
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "ULA reform and housing builders' concerns; same policy area.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 631,
+            "sub_chunk_idx": 2
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "ULA reform pressure and the Sacramento measure; same policy area.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 637,
+            "sub_chunk_idx": 8
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Transfer tax receipts and ULA's effect on transactions; same policy area.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 629,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Her ULA process remarks on how close the city came to losing ULA; same policy, not the Metro exemption amendment.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 21,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same member calling item 84 for a friendly amendment to get a report back; the same action the query asks about.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 630,
+            "sub_chunk_idx": 1
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "ULA negotiations ceded to Sacramento; same policy area.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -503,6 +1247,78 @@
           "rationale": "Locked M1/M2 target: BLUMENFIELD FIREWORKS EXTRAVAGANZA ... WARNER CENTER PARK JULY 4th ... SOCCER GOING",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 714,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Opening of the same July Fourth announcement by the same member; names the date but not the park, fireworks or soccer.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 82,
+            "sub_chunk_idx": 5
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: public-private partnership press conference. No event invitation.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 875,
+            "sub_chunk_idx": 7
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: fire department budget share and the Palisades fire. Term collision with 'fireworks'.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 878,
+            "sub_chunk_idx": 10
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: budget-vote rhetoric using parks and fire as foils. No event content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 868,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Argues Rec and Parks is underfunded; parks adjacency only, no event invitation.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 696,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: frustration with county service levels. Unrelated.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -546,6 +1362,66 @@
           "rationale": "Locked M1/M2 target: FUTBOL FEST, START INING NOHO MAGNOLIA STREET",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 51,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Same member welcoming North Hollywood at another meeting; geographic adjacency, no Futbol Fest.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 99,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Passing mention of his son's soccer game; term adjacency on soccer only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 537,
+            "sub_chunk_idx": 6
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: reading a list of intern names. Unrelated.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 538,
+            "sub_chunk_idx": 7
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: closing remarks to departing interns. Unrelated.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 88,
+            "sub_chunk_idx": 5
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: tribute to a retiring official after four decades. Unrelated.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -589,6 +1465,90 @@
           "rationale": "Locked M1/M2 target: IS THE CITY ATTORNEY'S IS JUST LYING ABOUT THAT ... FEDERAL STANDARDS",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 350,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same exchange pressing why the city attorney would not agree the information was provided; the city-attorney challenge without the federal-standards framing.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 303,
+            "sub_chunk_idx": 3
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Disputes that the contract funding source should set the transparency level and weighs the city attorney's perspective.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 301,
+            "sub_chunk_idx": 1
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Cites the city being called to answer to the federal government over transparency on federal funds; federal-standards facet.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 300,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Opening of the same remarks explaining his prior vote against the contracts over transparency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 347,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same hearing asking whether payment is legally required, with the answer deferring to the city attorney.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 360,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "General fiduciary duty to verify spending; oversight adjacency without the city attorney or federal standards.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 612,
+            "sub_chunk_idx": 5
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "City attorney advice on charter-reform legality; city-attorney role adjacency on a different matter.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -633,6 +1593,90 @@
           "rationale": "Locked M1/M2 target: LARRY WILL FOREVER BE A PART OF THAT JOURNEY. LARRY WAS A PILLAR OF LEADERSHIP IN THE PALISADES",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 277,
+            "sub_chunk_idx": 10
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Adjacent memorial in the same presentation but for Catherine, a different person; entity confusion on the decedent.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 290,
+            "sub_chunk_idx": 23
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Adjacent slice of the same Larry eulogy addressing his family and the rebuilt Palisades.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 278,
+            "sub_chunk_idx": 11
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Names Larry Vein as a remarkable member of the Palisades community who stepped up in crisis.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 279,
+            "sub_chunk_idx": 12
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same eulogy on the immediate aftermath of the Palisades fire.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 282,
+            "sub_chunk_idx": 15
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same eulogy crediting Larry's advocacy for FEMA including condos in debris removal.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 280,
+            "sub_chunk_idx": 13
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same eulogy on Larry fleeing the Palisades with his newborn and launching the information effort.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 292,
+            "sub_chunk_idx": 25
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Closing of the same eulogy on Larry sustaining the community through disaster and recovery.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -676,6 +1720,90 @@
           "rationale": "Locked M1/M2 target: TECHNICAL AMENDMENT ... LABOR UNION SXZ BUSINESS ORGANIZATIONS",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 824,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: objecting to a motion to send an item to committee. No amendment language.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 432,
+            "sub_chunk_idx": 6
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Remarks on harm to workers and communities; labor adjacency, not the amendment.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 50,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same member offering to read an amendment into the record, but for item 44 and without the labor-union language.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 433,
+            "sub_chunk_idx": 7
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Thanks worker centers and labor federations by name; labor-organization adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 636,
+            "sub_chunk_idx": 2
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: charter-reform concerns worked out with community groups and legal experts. Term collision only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 982,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: charter reform remarks. Unrelated.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 294,
+            "sub_chunk_idx": 5
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Describes community resource fairs and neighborhood council outreach; term adjacency to community outreach.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -719,6 +1847,90 @@
           "rationale": "Locked M1/M2 target: LAFD ... CERTIFICATE OF RECOGNITION ... THREE KIDS AND A HUSBAND",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 85,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same member presenting a signed retirement certificate on behalf of the city, but to a different honoree and not an LAFD firefighter.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 76,
+            "sub_chunk_idx": 6
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Same Carlos retirement tribute referencing family; different honoree and department.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 77,
+            "sub_chunk_idx": 7
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Same Carlos tribute citing more than 30 years of public service; different honoree.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 396,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: warehouse-fire aftermath and residents living with smoke and ash. Term collision on 'fire'.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 83,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Same Carlos tribute on what public service demands; different honoree.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 711,
+            "sub_chunk_idx": 7
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: commitment to accountability during a difficult process. No certificate or retirement.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 72,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Same Carlos tribute on three decades of behind-the-scenes work; different honoree.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -762,6 +1974,90 @@
           "rationale": "Locked M1/M2 target: CITY ATTORNEY AND RECREATION AND PARKS TO THE TABLE ... CEQA EXEMPTIONS",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 374,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same questioning exchange confirming the exemption withstands the CEQA appeal legally.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 379,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same exchange asking what would be required for the Rec and Parks plot; names the department but not the call to the table.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 381,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Close of the same item urging denial of the CEQA appeal after departmental advice.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 398,
+            "sub_chunk_idx": 11
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Thanks planning department staff on a separate plan; departmental adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 267,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Residents' exposure near a facility; environmental-impact adjacency without CEQA process content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 397,
+            "sub_chunk_idx": 1
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: fire response and resident needs. No CEQA or Rec and Parks content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 371,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same member pressing whether the five requirements for the CEQA exemption are satisfied; the substance the query asks about.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -805,6 +2101,54 @@
           "rationale": "Locked M1/M2 target: INTERNING WITH US ... BERKELEY LAW SCHOOL",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 714,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: July Fourth event announcement. No intern content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 340,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: spending accountability question. No intern content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 868,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: Rec and Parks underfunding. No intern content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 345,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: asking whether the city attorney can speak to legality. No intern content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -848,6 +2192,90 @@
           "rationale": "Locked M1/M2 target: PEACEFUL CELEBRATION OF HIS LIFE ... FUNERAL ... REPASS",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 410,
+            "sub_chunk_idx": 10
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same memorial describing Eric's funeral as tragic but beautiful; the funeral itself, without the repass or late evening.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 563,
+            "sub_chunk_idx": 6
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Tribute to a different decedent's family; memorial adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 702,
+            "sub_chunk_idx": 3
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Bloody Thursday commemoration at the memorial hall; commemorative-event adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 701,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Annual graveside visit for two killed workers; commemorative-event adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 407,
+            "sub_chunk_idx": 7
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same memorial recounting Eric's death, the occasion for the funeral described in the target.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 409,
+            "sub_chunk_idx": 9
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Same memorial presentation but about another victim of the shooting; not the funeral or repass.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 561,
+            "sub_chunk_idx": 4
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Same different-decedent tribute listing surviving family; memorial adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -917,6 +2345,66 @@
           "rationale": "Same speaker and committee context, but does not support the claim that she deferred because she had already commented.",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 684,
+            "sub_chunk_idx": 3
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: bureaucracy and hurdles in the same speech. No deferral or committee-comment content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 687,
+            "sub_chunk_idx": 6
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: objection to continued funding of a failing program. No deferral content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 906,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: floor debate over a colleague's amendment. No deferral or committee-comment content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 693,
+            "sub_chunk_idx": 12
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: closing encouragement in the same speech. No deferral content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 689,
+            "sub_chunk_idx": 8
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "References an amendment accelerating timelines and pending CLA/CAO reports; faint committee-process adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -960,6 +2448,90 @@
           "rationale": "Locked M1/M2 target: ANNEBERGH FOUNDATION ... PHILANTHROPIC HEART",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 543,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Recognizes a LAWA representative who brought interns; outside-organization representative adjacency, no foundation or philanthropy.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 497,
+            "sub_chunk_idx": 2
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: thanks to summer interns. No foundation or philanthropic content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 498,
+            "sub_chunk_idx": 3
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: reading intern names. No foundation or philanthropic content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 499,
+            "sub_chunk_idx": 4
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: closing appreciation to interns. No foundation or philanthropic content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 437,
+            "sub_chunk_idx": 1
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: thanks to office interns for summer service. No foundation or philanthropic content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 46,
+            "sub_chunk_idx": 5
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Appreciation to a community organization presenter with an offer to connect them to CBOs; weak thanks-to-an-outside-partner adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 500,
+            "sub_chunk_idx": 5
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: applause for the intern cohort. No foundation or philanthropic content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -1002,6 +2574,102 @@
           "rationale": "Locked M1/M2 target: Calvin Thomas / Dolphin U, drown-proof LA by summer 2028, teach 2028 safer swimmers",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 32,
+            "sub_chunk_idx": 4
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same Drown Proof LA public comment: teaching kids water-safety rules and the drown-proofing mission.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 33,
+            "sub_chunk_idx": 5
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same parent turn as the locked target; later slice of the same Drown Proof LA mission statement.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 34,
+            "sub_chunk_idx": 6
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same comment urging year-round swim lessons and water-safety education for every child.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 29,
+            "sub_chunk_idx": 1
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Commenter on learning to swim and nine LA drownings since June 1; directly on drowning prevention.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 31,
+            "sub_chunk_idx": 3
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Founder describing Dolphin U bringing swim lessons to kids; directly responsive.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 229,
+            "sub_chunk_idx": 1
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: park staffing formula for South Central playgrounds. No water-safety, swim or drowning content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 198,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: procedural call of a general public comment speaker; no substantive content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 230,
+            "sub_chunk_idx": 2
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: continuation of the park staffing formula comment; no water-safety content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -1043,6 +2711,90 @@
           "rationale": "Locked M1/M2 target: Cassie Hoerton, Downtown Residents Association board member, supports the SEIU CEQA appeal on the parcel across from City Hall",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 203,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "El Corazon Art Park supporter (CD1 resident). Same project and agenda item, but not the DRA and not the CEQA appeal.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 137,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "AltaMed community member supporting El Corazon. Same project, opposing posture to the appeal.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 160,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Individual resident supporting El Corazon Arts. Same project; not the DRA or the appeal.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 207,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Resident supporting El Corazon Art Park. Same project; not the DRA or the appeal.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 291,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Educational center speaker supporting El Corazon Park. Same project; not the DRA or the appeal.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 283,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Nonprofit speaker supporting El Corazon Park. Same project; not the DRA or the appeal.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 89,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Collaboration director supporting El Corazon Park. Same project; not the DRA or the appeal.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -1084,6 +2836,90 @@
           "rationale": "Locked M1/M2 target: Lineage warehouse fire poisoning the East Side for six days, ammonia in the smoke, sore throat and coughing",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 258,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same Boyle Heights six-day fire and fire-department response, but no ammonia or air-quality detail; largely invective.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 142,
+            "sub_chunk_idx": 1
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Continuation of the target comment: six days, ammonia, coughing and sore throat. Covers every facet of the query.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 256,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Names the million-square-foot warehouse fire that burned six days plus the follow-on East LA fire.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 251,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Procedural clarification asking whether the item is the warehouse fire; contextual adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 289,
+            "sub_chunk_idx": 5
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Fire-budget and inspection complaint mentioning Boyle Heights at a later meeting; weak topical adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 104,
+            "sub_chunk_idx": 1
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Air-quality impact of the same smoke event: burning eyes and a smell that is not a brush fire.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 256,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same six-day fire and extinguishing delay at the following meeting; no ammonia or air-quality detail.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -1125,6 +2961,90 @@
           "rationale": "Locked M1/M2 target: Johnny (People Vision Zero) arrested in December for painting crosswalks, demanding the city declare an emergency for traffic violence",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 120,
+            "sub_chunk_idx": 1
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Continuation of the same People Vision Zero comment: protesting by painting crosswalks and traffic deaths of children.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 132,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Different resident seeking traffic calming and speed enforcement on Burton Way; street-safety adjacency only, no arrest or emergency declaration.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 264,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Protest policing and false police reporting; adjacent to the arrest-of-an-activist facet but unrelated to crosswalks.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 195,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: animal services and a demand for an emergency meeting. Term collision on 'emergency' only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 456,
+            "sub_chunk_idx": 2
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: racial injustice of police encounters. No traffic-safety or crosswalk content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 950,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Zoo funding complaint that mentions sidewalks not working; faint pedestrian-infrastructure adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "eLYlonECp7o",
+            "chunk_idx": 167,
+            "sub_chunk_idx": 11
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "LAPD pretextual traffic stops and unbiased-policing policy; weak traffic-plus-policing adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -1166,6 +3086,90 @@
           "rationale": "Locked M1/M2 target: Elisa Kim, Westchester Place / Country Club Drive, dog killed by a fleeing driver Aug 8, asks for speed bumps on Venice Blvd",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 131,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Parallel resident asking the city to fix a dangerous street after six documented crashes; same kind of ask, different street and no hit-and-run.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 132,
+            "sub_chunk_idx": 1
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same Burton Way comment explicitly requesting traffic calming measures, the analogue of the speed-bump ask.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 159,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Opening slice of the same speaker's comment leading directly into the hit-and-run and speed-bump request.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 81,
+            "sub_chunk_idx": 1
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: general grievance about the council not helping over the past year. No traffic or hit-and-run content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 170,
+            "sub_chunk_idx": 9
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: animal services abandonment complaint. Entity confusion on the animal facet of the query.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 456,
+            "sub_chunk_idx": 2
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: racial injustice of police encounters. No traffic-safety content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 348,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: shelter and housing ballot amendments. Unrelated to street safety.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -1207,6 +3211,90 @@
           "rationale": "Locked M1/M2 target: Retiring DWP staffer references the June 2009 water conservation ordinance and the 100-year road map document",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 91,
+            "sub_chunk_idx": 2
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same speaker quantifying the conservation ordinance's savings; directly substantiates the ordinance history.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 194,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Food and Water Watch on an LADWP ratepayer proposal; LA water-policy adjacency, not the conservation ordinance.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 265,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Arroyo Seco water reuse project objection; water-policy adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 500,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Utility-agency nominee statement; water-utility role adjacency, no ordinance history.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 32,
+            "sub_chunk_idx": 4
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: Drown Proof LA water safety. Term collision on 'water' with no conservation content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 118,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: Brown Act procedure and a different ordinance number. Term collision on 'ordinance' only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 173,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Food and Water Watch continuance request citing LA100 and LADWP accountability; water-policy adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -1248,6 +3336,90 @@
           "rationale": "Locked M1/M2 target: Mark Williams asks who repays fraudulent bond debt \u2014 defrauded property taxpayers or the city's and LAUSD's insurers \u2014 as an election issue",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 224,
+            "sub_chunk_idx": 3
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Allegations of insider dealing and stolen tax dollars; municipal financial-fraud adjacency, no bond or insurer content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 285,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "CAO/CLA master-agreement finances; city financial-obligation adjacency, not bond debt.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 223,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Same speaker's insider-dealing allegation; financial-fraud adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 705,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: LAPD encounters and city litigation. No bond, debt or insurer content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 142,
+            "sub_chunk_idx": 0
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: personal appeal to deny a property lien. Unrelated to fraudulent bond debt.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 165,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "City funds allocated to lawsuits; weak adjacency on who bears city liabilities.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 126,
+            "sub_chunk_idx": 1
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Argues LA taxpayers will be left paying for unplanned LA28 obligations; same who-is-on-the-hook framing, different debt.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -1289,6 +3461,90 @@
           "rationale": "Locked M1/M2 target: Speaker representing former Scientology child labor victims, asking public works to revert L. Ron Hubbard Way to a regular street designation and to stop granting permits",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 201,
+            "sub_chunk_idx": 1
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same speaker explaining why the street was named L Ron Hubbard Way and the ownership motive.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 178,
+            "sub_chunk_idx": 1
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same campaign at another meeting: Scientology taking over the name of a street and the permit revocation ask.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "eLYlonECp7o",
+            "chunk_idx": 67,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Objects to naming a street after a religious ministry as a First Amendment violation; the same religious street-naming question.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 366,
+            "sub_chunk_idx": 6
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Urges refusing Scientology street-vacation applications; same entity and street control, different mechanism.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "eLYlonECp7o",
+            "chunk_idx": 142,
+            "sub_chunk_idx": 3
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: LAPD events and filming. No street naming or Scientology content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 202,
+            "sub_chunk_idx": 2
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Same campaign: three years of public works meetings asking to revoke the revocable permit.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 369,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Scientology closing the street for three days without a permit; same entity and street dispute.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -1330,6 +3586,90 @@
           "rationale": "Locked M1/M2 target: Monica, District 1 army vet, false police reporting at LAPD Rampart, rubber bullets and tear gas at protests, demands accountability and transparency",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 264,
+            "sub_chunk_idx": 1
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Continuation of the target comment: false accusations, false police reporting, and rubber bullets at protests.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 705,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Same pattern of negative LAPD detective encounters raised under city litigation; substantially relevant, Rampart not named.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 707,
+            "sub_chunk_idx": 2
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Demand that LAPD be reformed and held accountable, escalating to outside investigators.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 196,
+            "sub_chunk_idx": 3
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Criticism of an LAPD letter and restoring faith in the department; general accountability adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 81,
+            "sub_chunk_idx": 1
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: general grievance that the council did not help. No LAPD or Rampart content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 173,
+            "sub_chunk_idx": 1
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Officer's report leading to felony charges against the speaker; partially responsive on the false-accusation facet.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "welTRe5_RH4",
+            "chunk_idx": 454,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Charter-amendment police accountability in the abstract; policy adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {
@@ -1371,6 +3711,90 @@
           "rationale": "Locked M1/M2 target: Public commenter urges support for the plan while pushing further on protecting renters and pursuing social housing",
           "reviewer": "M3.3 authoring review",
           "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 106,
+            "sub_chunk_idx": 2
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Housing production is too slow; housing-policy adjacency without renter protection or social housing.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 351,
+            "sub_chunk_idx": 3
+          },
+          "grade": 2,
+          "label": "substantial",
+          "rationale": "Argues gutting Measure ULA for an interim agenda worsens homelessness; substantially relevant to the stopgap critique.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "eLYlonECp7o",
+            "chunk_idx": 82,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Specific rent-reduction termination request; renter-adjacent but not social housing policy.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 350,
+            "sub_chunk_idx": 2
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Directly contrasts funding shelter with permanent housing and tenant protection; covers both renter protection and the stopgap critique.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 105,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Turns to restructuring homelessness services; weak housing-policy adjacency.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "QePVCuF0iAY",
+            "chunk_idx": 88,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "adjacent",
+          "rationale": "Council files on regulating who may live together; housing-regulation adjacency only.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 133,
+            "sub_chunk_idx": 2
+          },
+          "grade": 0,
+          "label": "irrelevant",
+          "rationale": "Reviewed: resisting federal intervention and the power of the purse. No renter or housing content.",
+          "reviewer": "Claude Code assisted review",
+          "reviewed_at": "2026-08-27T04:26:14Z"
         }
       ],
       "evidence": {

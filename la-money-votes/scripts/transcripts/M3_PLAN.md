@@ -201,17 +201,55 @@ fixture. Editing a query's text, official, date bounds, embedding model, or
 match count invalidates its trace, and replay excludes the query with a reason
 rather than reporting a stale number.
 
-Current state against the checked-in M2 traces:
+### Offline judgment completion — 2026-08-27
 
-- 30 of 36 queries have replayable traces; 0 are stale.
+All 202 outstanding candidates in the review worksheet were reviewed against
+the query, the transcript text and the canonical artifact, and carry an
+explicit 0-3 grade with a reviewer rationale. Grade 0 is recorded as a
+reviewed judgment of irrelevance, never as a default for an uninspected row.
+
+- 30 of 36 queries replay; 0 traces are stale. Pool judgment coverage is
+  **234 of 234** and `judged_coverage_at8` is **1.000** at every floor, up from
+  0.261 with 157 unjudged rows.
+- Grade distribution of the 202 new judgments: 58 grade-0, 59 grade-1,
+  59 grade-2, 26 grade-3.
+- Legacy metrics are unchanged by grading, as they must be: parent@1 83.3%,
+  parent@3 93.3%, parent@8 100%, null 0% at every floor.
+- Graded metrics at the shipped 0.25 floor: nDCG@1 0.9143, nDCG@3 0.8660,
+  nDCG@8 0.9048, mean grade@8 1.830, top-1 similarity median 0.535
+  (min 0.38, max 0.713).
+- Segments at 0.25 — official queries parent@1 90.0% / nDCG@1 0.9286;
+  public comment parent@1 70.0% / nDCG@1 0.8857. Weakest classes are
+  `low_signal` (nDCG@1 0.1429) and `near_miss` (nDCG@1 0.2857), both by
+  design. Every query in the pool is date-unbounded, because the two
+  date-bounded cases are among the six without traces.
+- Row keys are `(video_id, chunk_idx, sub_chunk_idx)`. `chunk_idx` is unique
+  only within a recording — pc-03 legitimately has chunk 256 in two different
+  videos — so any keying that drops `video_id` silently collides.
+
+q06 and q19 keep their documented shapes. q06 remains a legacy @1 miss with
+the target at parent rank 1: its top-8 grades are [2, 3, 1, 2, 2, 2, 3, 3],
+with the better-ranked audit-expansion passage at 2 and the locked target at
+3. q19 remains a legacy @1 miss and @3 hit with the target at parent rank 2:
+its top-8 grades are [1, 1, 3, 0, 0, 0, 0, 1], with the first two
+speaker/committee-context rows at 1 and the locked target at 3.
+
+The graded numbers are reported from
+`data/transcripts/eval_results_m3_3_offline_replay.json`, which is explicitly
+**not** the final M3.3 result.
+
+**M3.3 is not complete.** Still outstanding:
+
 - The six M3-authored queries (`m3-date-01/02`, `m3-entity-01/02`,
-  `m3-low-signal-01`, `m3-long-turn-01`) have no trace and are excluded by
-  name; they need the live sweep.
-- 32 of 234 pooled candidates are judged. `judged_coverage_at8` is 0.261 and
-  157 returned rows remain unjudged, so the graded numbers are provisional.
-- `data/transcripts/eval_review_worksheet_m3_3.json` holds the resulting
-  backlog: 202 candidates awaiting an explicit grade, three of which are
-  rank-0 rows that directly move nDCG@1.
+  `m3-low-signal-01`, `m3-long-turn-01`) have no saved trace and need the live
+  content-addressed embedding and RPC sweep.
+- Committee evaluation remains source-blocked: M3.1 has published no verified
+  committee rows, so no grounded committee, chair, staff,
+  procedural-interjection or committee entity-confusion cases exist.
+- An official case for `QePVCuF0iAY` and a provenance-aware case for the
+  shared recording `welTRe5_RH4` are still unauthored.
+- The final deliverable remains `data/transcripts/eval_results_m3_3.json` from
+  the full mixed-RPC five-floor live evaluation.
 
 The live expanded-corpus run is not complete. Before acceptance, grade the
 extracted top-8 pools, add grounded committee cases after M3.1, add official
