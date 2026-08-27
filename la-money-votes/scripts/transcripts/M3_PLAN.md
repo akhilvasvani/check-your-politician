@@ -171,11 +171,52 @@ and floor. q06 grades the better-ranked audit-expansion passage as 2 and its
 locked target as 3. q19 grades the first two committee-context passages as 1
 and its locked target as 3.
 
-The live expanded-corpus run is not complete. Before acceptance, author
-reviewed top-8 candidate pools for every query, add grounded committee cases
-after M3.1, add official cases for `QePVCuF0iAY` and the provenance-sensitive
-shared recording `welTRe5_RH4`, and run the content-addressed embedding/RPC
-sweep.
+### Offline candidate-pool extraction and replay
+
+`scripts/transcripts/eval_replay.py` closes the top-8 grading gap without
+spending an embedding or RPC call per review pass. It works from the retrieval
+traces the runner already saves under `per_query[...]["at_floor"][...]
+["returned"]`, and reads both saved layouts (flat, and the M2 report's
+per-RPC nesting).
+
+- `extract` unions the rows a query returned across every recorded floor into
+  one candidate pool, keeping each candidate's best rank, highest similarity,
+  and surviving floors, then writes the ungraded remainder to a review
+  worksheet.
+- `merge` folds a reviewed worksheet back into the fixture. Grade 0 is a
+  recorded judgment meaning "reviewed and irrelevant"; a candidate left at
+  `grade: null` is skipped, never silently zeroed.
+- `replay` re-scores the saved traces against current judgments and reports
+  pool judgment coverage. `--require-full-coverage` exits non-zero while any
+  replayed query still has ungraded candidates.
+
+Live and replay scoring share one implementation: the runner's per-floor loop
+was extracted into `evaluate_floor(..., row_provider)`, so legacy exact/parent
+metrics and the graded contract cannot drift between the two paths. Replaying
+the saved M1.4 trace reproduces all eleven stored legacy metrics at all five
+floors exactly, which is the regression proof for that extraction.
+
+A trace is only replayable if the query that produced it still matches the
+fixture. Editing a query's text, official, date bounds, embedding model, or
+match count invalidates its trace, and replay excludes the query with a reason
+rather than reporting a stale number.
+
+Current state against the checked-in M2 traces:
+
+- 30 of 36 queries have replayable traces; 0 are stale.
+- The six M3-authored queries (`m3-date-01/02`, `m3-entity-01/02`,
+  `m3-low-signal-01`, `m3-long-turn-01`) have no trace and are excluded by
+  name; they need the live sweep.
+- 32 of 234 pooled candidates are judged. `judged_coverage_at8` is 0.261 and
+  157 returned rows remain unjudged, so the graded numbers are provisional.
+- `data/transcripts/eval_review_worksheet_m3_3.json` holds the resulting
+  backlog: 202 candidates awaiting an explicit grade, three of which are
+  rank-0 rows that directly move nDCG@1.
+
+The live expanded-corpus run is not complete. Before acceptance, grade the
+extracted top-8 pools, add grounded committee cases after M3.1, add official
+cases for `QePVCuF0iAY` and the provenance-sensitive shared recording
+`welTRe5_RH4`, and run the content-addressed embedding/RPC sweep.
 
 - Add lexical, paraphrase, topic-inference, date-bounded, entity-confusion,
   long-turn, low-signal, committee, and per-official cases.
