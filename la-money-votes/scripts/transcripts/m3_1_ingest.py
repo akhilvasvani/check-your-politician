@@ -441,7 +441,79 @@ def plan_stale_key_reconciliation(
         "stale_chunk_indexes": sorted(set(existing) - set(intended)),
         "requires_transactional_rpc": "replace_transcript_chunks",
         "client_delete_permitted": False,
+        # The RPC now exists and is integration-tested against a disposable
+        # Postgres+pgvector cluster (scripts/transcripts/run_pg_tests.sh). It
+        # still must be applied to the target project before an online run.
+        "rpc_implemented": True,
+        "rpc_migration": "data/transcripts/migration_m3_1_replace_chunks.sql",
     }
+
+
+class ReplacementRpc(Protocol):
+    """Calls the service-role `replace_transcript_chunks` database function."""
+
+    def __call__(
+        self, *, video_id: str, embedding_model: str, rows: list[dict[str, Any]]
+    ) -> dict[str, Any]: ...
+
+
+class TransactionalReplacementIndexer:
+    """Indexer that replaces whole `(video_id, embedding_model)` cohorts.
+
+    Satisfies the `Indexer` protocol. Each cohort is handed to the
+    `replace_transcript_chunks` RPC (data/transcripts/migration_m3_1_replace_chunks.sql),
+    which validates, upserts, verifies, and removes stale chunk indexes inside a
+    single transaction. This is the only sanctioned stale-key path: the client
+    never issues a delete, so an interrupted run cannot leave a meeting holding
+    rows from two different parses.
+
+    The RPC callable is injected so the grouping and verification logic is
+    testable with no network and no database.
+    """
+
+    def __init__(self, rpc: ReplacementRpc) -> None:
+        self._rpc = rpc
+
+    def __call__(self, rows: list[dict[str, Any]]) -> int:
+        cohorts: dict[tuple[str, str], list[dict[str, Any]]] = {}
+        for position, row in enumerate(rows):
+            video_id = row.get("video_id")
+            model = row.get("embedding_model")
+            if not video_id or not model:
+                raise ValueError(
+                    f"row {position} is missing video_id/embedding_model; refusing to index"
+                )
+            embedding = row.get("embedding")
+            if embedding is None:
+                raise ValueError(f"row {position} has no embedding; refusing to index")
+            if len(embedding) != EMBED_DIM:
+                raise ValueError(
+                    f"row {position} has embedding dimension {len(embedding)}; "
+                    f"expected {EMBED_DIM}"
+                )
+            cohorts.setdefault((str(video_id), str(model)), []).append(row)
+
+        total = 0
+        for (video_id, model), cohort_rows in cohorts.items():
+            indexes = [row["chunk_idx"] for row in cohort_rows]
+            if len(set(indexes)) != len(indexes):
+                raise ValueError(
+                    f"{video_id}/{model}: duplicate chunk_idx in replacement payload"
+                )
+            result = self._rpc(
+                video_id=video_id, embedding_model=model, rows=cohort_rows
+            )
+            # The RPC is authoritative on what actually landed; never assume the
+            # payload size is what the database now holds.
+            intended = int(result["intended_count"])
+            upserted = int(result["upserted_count"])
+            if intended != len(cohort_rows) or upserted != len(cohort_rows):
+                raise ValueError(
+                    f"{video_id}/{model}: replacement reported intended={intended} "
+                    f"upserted={upserted}; expected {len(cohort_rows)}"
+                )
+            total += upserted
+        return total
 
 
 def embed_and_index(

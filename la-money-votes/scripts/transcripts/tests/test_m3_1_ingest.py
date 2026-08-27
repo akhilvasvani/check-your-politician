@@ -10,6 +10,7 @@ from transcripts.m3_1_ingest import (
     build_video_work_items,
     canonical_meeting_for_work_item,
     plan_stale_key_reconciliation,
+    TransactionalReplacementIndexer,
     require_reviewed_coverage,
     speaker_coverage_report,
     embed_and_index,
@@ -347,6 +348,99 @@ class M31CoverageAndEmbeddingTests(unittest.TestCase):
                 intended_chunk_indexes=[0, 0],
             )
 
+
+
+class TransactionalReplacementIndexerTest(unittest.TestCase):
+    """Offline coverage for the cohort grouping in front of the replacement RPC.
+
+    The RPC's own transactional behavior is covered against a real database in
+    tests/test_replace_transcript_chunks.py; these cases pin the client-side
+    contract with no network.
+    """
+
+    def _row(self, idx, video_id="vidAAA", model="pplx-embed-v1-0.6b", dims=1024):
+        return {
+            "video_id": video_id,
+            "chunk_idx": idx,
+            "embedding": [0.0] * dims,
+            "embedding_model": model,
+            "text": f"turn {idx}",
+        }
+
+    def _rpc(self, calls, *, intended=None, upserted=None):
+        def rpc(*, video_id, embedding_model, rows):
+            calls.append((video_id, embedding_model, [r["chunk_idx"] for r in rows]))
+            return {
+                "intended_count": len(rows) if intended is None else intended,
+                "upserted_count": len(rows) if upserted is None else upserted,
+                "deleted_count": 0,
+            }
+        return rpc
+
+    def test_groups_one_rpc_call_per_video_and_model(self):
+        calls = []
+        indexer = TransactionalReplacementIndexer(self._rpc(calls))
+        total = indexer(
+            [self._row(0), self._row(1)]
+            + [self._row(0, video_id="vidBBB")]
+            + [self._row(0, model="other-model")]
+        )
+        self.assertEqual(total, 4)
+        self.assertEqual(len(calls), 3)
+        self.assertIn(("vidAAA", "pplx-embed-v1-0.6b", [0, 1]), calls)
+        self.assertIn(("vidBBB", "pplx-embed-v1-0.6b", [0]), calls)
+        self.assertIn(("vidAAA", "other-model", [0]), calls)
+
+    def test_rejects_duplicate_chunk_idx_before_calling_rpc(self):
+        calls = []
+        indexer = TransactionalReplacementIndexer(self._rpc(calls))
+        with self.assertRaisesRegex(ValueError, "duplicate chunk_idx"):
+            indexer([self._row(0), self._row(0)])
+        self.assertEqual(calls, [])
+
+    def test_rejects_missing_embedding_before_calling_rpc(self):
+        calls = []
+        indexer = TransactionalReplacementIndexer(self._rpc(calls))
+        row = self._row(0)
+        row["embedding"] = None
+        with self.assertRaisesRegex(ValueError, "no embedding"):
+            indexer([row])
+        self.assertEqual(calls, [])
+
+    def test_rejects_wrong_dimension_before_calling_rpc(self):
+        calls = []
+        indexer = TransactionalReplacementIndexer(self._rpc(calls))
+        with self.assertRaisesRegex(ValueError, "dimension 384"):
+            indexer([self._row(0, dims=384)])
+        self.assertEqual(calls, [])
+
+    def test_rejects_row_missing_cohort_keys(self):
+        calls = []
+        indexer = TransactionalReplacementIndexer(self._rpc(calls))
+        row = self._row(0)
+        del row["video_id"]
+        with self.assertRaisesRegex(ValueError, "missing video_id"):
+            indexer([row])
+        self.assertEqual(calls, [])
+
+    def test_trusts_the_rpc_over_the_payload_size(self):
+        calls = []
+        indexer = TransactionalReplacementIndexer(
+            self._rpc(calls, upserted=1)
+        )
+        with self.assertRaisesRegex(ValueError, "expected 2"):
+            indexer([self._row(0), self._row(1)])
+
+    def test_reconciliation_plan_records_the_rpc_migration(self):
+        plan = plan_stale_key_reconciliation(
+            video_id="vidAAA",
+            embedding_model="pplx-embed-v1-0.6b",
+            existing_chunk_indexes=[0, 1, 2],
+            intended_chunk_indexes=[0, 1],
+        )
+        self.assertFalse(plan["client_delete_permitted"])
+        self.assertTrue(plan["rpc_implemented"])
+        self.assertEqual(plan["stale_chunk_indexes"], [2])
 
 if __name__ == "__main__":
     unittest.main()

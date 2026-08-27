@@ -24,7 +24,10 @@ making corpus completeness and thin per-official coverage visible and testable.
   row, commit, merge, or deployment action occurred. The approved read-only
   M3.2 coverage function migration was applied separately.
 - M3.1 remains incomplete and blocked until at least one new manual CART payload
-  can be retrieved and the authenticated preflight can be completed.
+  can be retrieved and the authenticated preflight can be completed. The
+  transactional replacement RPC that previously blocked stale-key
+  reconciliation is no longer a gap; the remaining M3.1 blocker is the caption
+  source alone.
 - M3.2 is complete against the current nine-meeting corpus: the
   parent-turn-aware coverage RPC, cached read-only endpoint, and accessible
   pre-search disclosure are implemented, migrated, and reconciled.
@@ -85,8 +88,13 @@ Approved, but currently blocked on the upstream manual CART payload.
 - Reviewed outcomes checkpoint atomically and preserve track/payload evidence.
 - `source_meetings` preserves every PrimeGov identity for a shared recording.
 - Embedding/indexing seams reject partial or wrong-dimension embeddings.
-- Client-side stale-key deletion remains prohibited pending the transactional
-  replacement RPC described in `M3_1_RECONCILIATION_PLAN.md`.
+- Client-side stale-key deletion remains prohibited. The transactional
+  `replace_transcript_chunks` RPC described in `M3_1_RECONCILIATION_PLAN.md` is
+  now implemented (`data/transcripts/migration_m3_1_replace_chunks.sql`) and
+  integration-tested against a disposable Postgres + pgvector cluster via
+  `scripts/transcripts/run_pg_tests.sh` (17 tests, every guard mutation-tested).
+  `TransactionalReplacementIndexer` is the client seam. The migration has not
+  been applied to any Supabase project and no live replacement has run.
 
 ### Acceptance
 
