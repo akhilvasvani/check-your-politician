@@ -31,7 +31,8 @@
  *   #transcript-search-input, #transcript-search-submit,
  *   #transcript-search-status, #transcript-search-results,
  *   #transcript-search-public-results (M2), #transcript-search-empty,
- *   #transcript-search-include-public (M2 checkbox).
+ *   #transcript-search-include-public (M2 checkbox),
+ *   #transcript-search-coverage (M3.2 disclosure).
  *
  * js/app.js calls window.initTranscriptSearch(id, official) once it has
  * fetched the current official's funding.json (same wire-up as ask-ai).
@@ -137,7 +138,45 @@
     var nameSpan = document.getElementById("transcript-search-official-name");
     if (nameSpan) nameSpan.textContent = currentContext.name;
 
+    loadCoverage(currentContext.resolved_official_id);
     wireForm();
+  }
+
+  async function loadCoverage(officialId) {
+    var coverageEl = document.getElementById("transcript-search-coverage");
+    if (!coverageEl) return;
+    coverageEl.hidden = true;
+    coverageEl.classList.remove("transcript-search-coverage-thin");
+
+    try {
+      var response = await fetch(
+        "/api/transcript-coverage?official_id=" + encodeURIComponent(officialId)
+      );
+      var data = null;
+      try { data = await response.json(); } catch (e) { data = null; }
+      if (!response.ok || !data) return;
+
+      var turns = Math.max(0, Number(data.speaking_turns) || 0);
+      var meetings = Math.max(0, Number(data.meeting_count) || 0);
+      var turnLabel = turns === 1 ? "speaking turn" : "speaking turns";
+      var meetingLabel = meetings === 1 ? "meeting" : "meetings";
+      var text =
+        turns + " " + turnLabel + " indexed across " +
+        meetings + " " + meetingLabel + ".";
+
+      if (data.thin) {
+        coverageEl.classList.add("transcript-search-coverage-thin");
+        text +=
+          " Coverage is limited, so searches may miss relevant statements.";
+      }
+      text += " This index is not a complete public record.";
+      coverageEl.textContent = text;
+      coverageEl.hidden = false;
+    } catch (err) {
+      // Coverage is a disclosure enhancement; a transient aggregate failure
+      // must not prevent the underlying search from working.
+      console.warn("[transcript-search] Could not load coverage:", err);
+    }
   }
 
   function wireForm() {

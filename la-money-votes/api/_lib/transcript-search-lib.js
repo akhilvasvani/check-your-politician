@@ -4,6 +4,7 @@
 // endpoints:
 //   - api/search-transcripts.js      (per-official search)
 //   - api/search-public-comment.js   (public-comment-only search, M2.1)
+//   - api/transcript-coverage.js      (per-official coverage aggregate, M3.2)
 //
 // Both endpoints share:
 //   * query length / IP extraction / JSON parsing conventions
@@ -327,6 +328,13 @@ async function searchPublicCommentRpc({ embedding, dateFrom, dateTo, limit, minS
   });
 }
 
+async function transcriptCoverageRpc({ officialId }) {
+  return callRpc("get_transcript_coverage", {
+    p_official_id: officialId,
+    p_embedding_model: EMBED_MODEL_NAME,
+  });
+}
+
 // --- Body parsing ----------------------------------------------------------
 function parseBody(req) {
   let body = req.body;
@@ -365,5 +373,6 @@ module.exports = {
   embedQuery,
   searchTranscriptsRpc,
   searchPublicCommentRpc,
+  transcriptCoverageRpc,
   logSearchMetrics,
 };

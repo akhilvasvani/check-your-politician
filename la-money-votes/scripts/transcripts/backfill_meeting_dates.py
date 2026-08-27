@@ -138,11 +138,16 @@ def fetch_primegov_raw(url_template: str = DEFAULT_PRIMEGOV_URL,
 
 def build_meeting_index(raw: Iterable[dict]) -> dict[str, PrimegovMeeting]:
     """Index PrimeGov's response by YouTube video ID. Later entries with
-    the same video ID overwrite earlier ones (PrimeGov's list is unique
-    on `id`, and duplicate videoUrls across ids would be a data bug —
-    we prefer the later one but log if we see a collision)."""
+    the same video ID are deliberately withheld from the result.
+
+    A shared recording cannot safely be reduced to a single meeting label in
+    this legacy backfill path. M3.1's manifest runner retains both source
+    records; the backfill must instead leave a collision unmatched than revive
+    the former "later row wins" behavior.
+    """
     idx: dict[str, PrimegovMeeting] = {}
     collisions: list[tuple[str, int, int]] = []
+    blocked_video_ids: set[str] = set()
     for m in raw:
         url = m.get("videoUrl") or ""
         mm = YT_RE.search(url)
@@ -160,11 +165,16 @@ def build_meeting_index(raw: Iterable[dict]) -> dict[str, PrimegovMeeting]:
             primegov_id=int(m["id"]),
             title=m.get("title") or "",
         )
+        if vid in blocked_video_ids:
+            continue
         if vid in idx and idx[vid].primegov_id != pm.primegov_id:
             collisions.append((vid, idx[vid].primegov_id, pm.primegov_id))
+            del idx[vid]
+            blocked_video_ids.add(vid)
+            continue
         idx[vid] = pm
     for c in collisions:
-        log.warning("primegov collision video_id=%s pgids=%d,%d (kept latest)", *c)
+        log.warning("primegov collision video_id=%s pgids=%d,%d (withheld; requires M3.1 provenance)", *c)
     return idx
 
 

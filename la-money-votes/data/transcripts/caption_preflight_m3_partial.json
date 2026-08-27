@@ -1,0 +1,30 @@
+{
+  "videos": {
+    "1GWlqG-UJHE": {
+      "status": "retryable_error",
+      "caption_language": "en-uYU-mmqFLq8",
+      "track_name": "English - CC1",
+      "track_kind": null,
+      "track_vss_id": ".en.uYU-mmqFLq8",
+      "payload_status": "empty",
+      "payload_bytes": 0,
+      "inspection_method": "authenticated_browser_player_response_and_timedtext_fetch",
+      "last_error": "manual CART track declared but authenticated fmt=vtt fetch returned HTTP 200 with a zero-byte payload",
+      "asr_approved": false
+    },
+    "2Wm-11hPNns": {
+      "status": "blocked",
+      "caption_language": "en-uYU-mmqFLq8",
+      "caption_status": "cart_metadata_present_payload_empty",
+      "missing_reason": "manual_cart_payload_empty",
+      "track_name": "English - CC1",
+      "track_kind": null,
+      "track_vss_id": ".en.uYU-mmqFLq8",
+      "payload_status": "empty",
+      "payload_bytes": 0,
+      "inspection_method": "authenticated_browser_player_response_and_timedtext_fetch",
+      "last_error": "user chose to skip this meeting after the manual CART payload returned zero bytes",
+      "asr_approved": false
+    }
+  }
+}

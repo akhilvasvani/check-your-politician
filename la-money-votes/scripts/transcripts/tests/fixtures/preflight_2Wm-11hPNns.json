@@ -1,0 +1,13 @@
+{
+  "videos": {
+    "2Wm-11hPNns": {
+      "status": "blocked",
+      "missing_reason": "manual_cart_payload_empty",
+      "caption_status": "cart_metadata_present_payload_empty",
+      "payload_status": "empty",
+      "payload_bytes": 0,
+      "inspection_method": "manual_authenticated_preflight_review",
+      "asr_approved": false
+    }
+  }
+}

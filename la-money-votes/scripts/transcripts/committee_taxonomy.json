@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "source": "PrimeGov committeeId values observed in the 2026-05-21 through 2026-08-18 discovery window",
+  "scope_policy": "City Council plus standing committees. SAP, cancelled, advisory, commission, and ad hoc rows are excluded. Special meetings of an in-scope body remain in scope.",
+  "bodies": {
+    "1": {
+      "canonical_name": "Los Angeles City Council",
+      "body_type": "city_council"
+    },
+    "4": {
+      "canonical_name": "Public Safety Committee",
+      "body_type": "standing_committee"
+    },
+    "12": {
+      "canonical_name": "Planning and Land Use Management Committee",
+      "body_type": "standing_committee"
+    },
+    "15": {
+      "canonical_name": "Rules, Elections and Intergovernmental Relations Committee",
+      "body_type": "standing_committee"
+    },
+    "17": {
+      "canonical_name": "Transportation Committee",
+      "body_type": "standing_committee"
+    },
+    "18": {
+      "canonical_name": "Trade, Travel, and Tourism Committee",
+      "body_type": "standing_committee"
+    },
+    "19": {
+      "canonical_name": "Budget and Finance Committee",
+      "body_type": "standing_committee"
+    },
+    "32": {
+      "canonical_name": "Economic Development and Jobs Committee",
+      "body_type": "standing_committee"
+    },
+    "36": {
+      "canonical_name": "Public Works Committee",
+      "body_type": "standing_committee"
+    },
+    "49": {
+      "canonical_name": "Energy and Environment Committee",
+      "body_type": "standing_committee"
+    },
+    "101": {
+      "canonical_name": "Civil Rights, Equity, Immigration, Aging, and Disability Committee",
+      "body_type": "standing_committee"
+    },
+    "103": {
+      "canonical_name": "Government Operations Committee",
+      "body_type": "standing_committee"
+    },
+    "104": {
+      "canonical_name": "Housing and Homelessness Committee",
+      "body_type": "standing_committee"
+    },
+    "108": {
+      "canonical_name": "Arts, Parks, Libraries, and Community Enrichment Committee",
+      "body_type": "standing_committee"
+    },
+    "109": {
+      "canonical_name": "Government Efficiency, Innovation, and Audits Committee",
+      "body_type": "standing_committee"
+    },
+    "110": {
+      "canonical_name": "Personnel and Hiring Committee",
+      "body_type": "standing_committee"
+    }
+  }
+}

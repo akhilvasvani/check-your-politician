@@ -126,6 +126,14 @@
         Each result links to the exact moment in the source YouTube video &mdash;
         so you can watch what they said in context.
       </p>
+      <div
+        id="transcript-search-coverage"
+        class="transcript-search-coverage"
+        role="status"
+        aria-live="polite"
+        data-testid="status-transcript-coverage"
+        hidden
+      ></div>
       <form id="transcript-search-form" class="transcript-search-form" novalidate>
         <label for="transcript-search-input" class="transcript-search-label">Search phrase</label>
         <input
@@ -135,7 +143,7 @@
           class="transcript-search-input"
           maxlength="200"
           placeholder="e.g. homelessness, budget vote, LAPD"
-          aria-describedby="transcript-search-hint"
+          aria-describedby="transcript-search-coverage transcript-search-hint"
           required
         />
         <div class="transcript-search-form-footer">

@@ -24,8 +24,10 @@ For each query:
        - null-rate: proportion of queries that returned 0 rows at this floor.
        - top1_sim: distribution of top-1 similarity scores.
 
-Outputs a JSON report at --out with per-query traces plus an aggregate
-summary per floor.
+M3.3 adds an additive graded-relevance schema. A query may declare its RPC,
+date bounds, model pin, exact 0-3 judgments, and query classes. The runner
+continues to emit the legacy exact/parent metrics while adding nDCG,
+judgment-coverage, and segmented breakdowns. Mixed-RPC fixtures are supported.
 
 Env:
   PPLX_API_KEY  - Perplexity API key for embeddings
@@ -56,9 +58,12 @@ import time
 from pathlib import Path
 from typing import Any
 
+from transcripts.eval_metrics import cache_key, score_graded, validate_query_set
+
 EMBED_URL = "https://api.perplexity.ai/v1/embeddings"
 EMBED_MODEL = "pplx-embed-v1-0.6b"
 EMBED_DIM = 1024
+MODEL_VERSION = 1
 
 FLOOR_SWEEP = [0.15, 0.20, 0.25, 0.30, 0.35]
 MATCH_COUNT = 8
@@ -102,6 +107,9 @@ def rpc_search(
     official_id: str | None,
     min_similarity: float,
     match_count: int = MATCH_COUNT,
+    date_from: str | None = None,
+    date_to: str | None = None,
+    embedding_model: str = EMBED_MODEL,
 ) -> list[dict]:
     """Dispatch to the named RPC. search_transcripts requires p_official_id;
     search_public_comment does not accept it (filters on resolved_role instead).
@@ -112,6 +120,9 @@ def rpc_search(
         "p_query_embedding": query_embedding,
         "p_match_count": match_count,
         "p_min_similarity": min_similarity,
+        "p_date_from": date_from,
+        "p_date_to": date_to,
+        "p_embedding_model": embedding_model,
     }
     if rpc_name == "search_transcripts":
         if not official_id:
@@ -121,6 +132,100 @@ def rpc_search(
     if isinstance(res, dict) and res.get("code"):
         raise RuntimeError(f"RPC error: {res}")
     return res or []
+
+
+def query_rpc(query: dict, qset: dict, override: str) -> str:
+    if override != "auto":
+        return override
+    return (query.get("search") or {}).get("rpc") or qset.get("rpc", "search_transcripts")
+
+
+def legacy_target(query: dict) -> tuple[str, int, int | None]:
+    if "legacy_target" in query:
+        target = query["legacy_target"]
+        return target["video_id"], target["chunk_idx"], target.get("sub_chunk_idx")
+    return (
+        query["expected_video_id"],
+        query["expected_chunk_idx"],
+        query.get("expected_sub_chunk_idx"),
+    )
+
+
+def _load_embedding_cache(path: Path | None, queries: list[dict], is_m3: bool) -> dict[str, list[float]]:
+    if not path or not path.exists():
+        return {}
+    payload = json.loads(path.read_text())
+    if payload.get("schema_version") == "query-embedding-cache-v2":
+        return payload.get("entries") or {}
+    if is_m3:
+        raise RuntimeError(
+            "M3.3 requires query-embedding-cache-v2; legacy id-only cache is unsafe"
+        )
+    # Backward compatibility for the old id -> vector cache on unchanged M1/M2 fixtures.
+    return {q["id"]: payload[q["id"]] for q in queries if q["id"] in payload}
+
+
+def _embedding_lookup_key(query: dict, is_m3: bool) -> str:
+    if not is_m3:
+        return query["id"]
+    search = query["search"]
+    return cache_key(
+        query["id"],
+        query["text"],
+        search["embedding_model"],
+        search["embedding_version"],
+    )
+
+
+def _write_embedding_cache(path: Path, entries: dict[str, list[float]]) -> None:
+    payload = {
+        "schema_version": "query-embedding-cache-v2",
+        "entries": entries,
+    }
+    path.write_text(json.dumps(payload))
+
+
+def _mean(values: list[float | None]) -> float | None:
+    present = [value for value in values if value is not None]
+    return round(statistics.mean(present), 6) if present else None
+
+
+def summarize_group(records: list[dict]) -> dict:
+    n = len(records)
+    return {
+        "n_queries": n,
+        "parent_at1_pct": round(100 * sum(r["parent_rank"] == 0 for r in records) / n, 1),
+        "parent_at3_pct": round(
+            100 * sum(r["parent_rank"] is not None and r["parent_rank"] < 3 for r in records) / n,
+            1,
+        ),
+        "ndcg_at1": _mean([r.get("ndcg_at1") for r in records]),
+        "ndcg_at3": _mean([r.get("ndcg_at3") for r in records]),
+        "ndcg_at8": _mean([r.get("ndcg_at8") for r in records]),
+        "judged_coverage_at8": _mean([r.get("judged_coverage_at8") for r in records]),
+    }
+
+
+def build_breakdowns(records: list[dict]) -> dict[str, dict[str, dict]]:
+    dimensions: dict[str, dict[str, list[dict]]] = {
+        "query_class": {},
+        "official": {},
+        "body": {},
+        "rpc": {},
+        "date_filter": {},
+    }
+    for record in records:
+        for query_class in record["classes"]:
+            dimensions["query_class"].setdefault(query_class, []).append(record)
+        for dimension in ("official", "body", "rpc", "date_filter"):
+            dimensions[dimension].setdefault(record[dimension], []).append(record)
+    return {
+        dimension: {
+            value: summarize_group(group)
+            for value, group in sorted(groups.items())
+        }
+        for dimension, groups in dimensions.items()
+    }
 
 
 def score_hits(
@@ -155,23 +260,34 @@ def run(queries_path: Path, out_path: Path, embeddings_path: Path | None, rpc_na
 
     qset = json.loads(queries_path.read_text())
     queries = qset["queries"]
-    # If the gold set declares its own rpc, prefer that unless overridden on CLI.
-    if rpc_name == "auto":
-        rpc_name = qset.get("rpc", "search_transcripts")
-    print(f"[eval] loaded {len(queries)} queries from {queries_path.name} (rpc={rpc_name})", flush=True)
+    is_m3 = qset.get("schema_version") == "m3.3-v1"
+    if is_m3:
+        validate_query_set(qset)
+    resolved_rpcs = {query_rpc(query, qset, rpc_name) for query in queries}
+    report_rpc = next(iter(resolved_rpcs)) if len(resolved_rpcs) == 1 else "mixed"
+    print(
+        f"[eval] loaded {len(queries)} queries from {queries_path.name} "
+        f"(rpc={report_rpc})",
+        flush=True,
+    )
 
-    embeddings: dict[str, list[float]]
-    if embeddings_path and embeddings_path.exists():
-        embeddings = json.loads(embeddings_path.read_text())
-        print(f"[eval] loaded {len(embeddings)} cached embeddings from {embeddings_path.name}", flush=True)
-    else:
+    embeddings = _load_embedding_cache(embeddings_path, queries, is_m3)
+    if embeddings:
+        print(
+            f"[eval] loaded {len(embeddings)} cached embeddings from "
+            f"{embeddings_path.name}",
+            flush=True,
+        )
+    missing = [q for q in queries if _embedding_lookup_key(q, is_m3) not in embeddings]
+    if missing:
         api_key = os.environ["PPLX_API_KEY"]
-        print("[eval] embedding all queries...", flush=True)
-        embeddings = {}
-        for q in queries:
-            embeddings[q["id"]] = embed_query(q["text"], api_key)
+        print(f"[eval] embedding {len(missing)} uncached queries...", flush=True)
+        for q in missing:
+            embeddings[_embedding_lookup_key(q, is_m3)] = embed_query(q["text"], api_key)
+            if embeddings_path:
+                _write_embedding_cache(embeddings_path, embeddings)
             time.sleep(0.2)
-        print(f"[eval] embedded {len(embeddings)} queries", flush=True)
+        print(f"[eval] embedding cache now has {len(embeddings)} entries", flush=True)
 
     # Step 2: sweep floors, score each query at each floor.
     per_query_traces: dict[str, dict] = {q["id"]: {"query": q, "at_floor": {}} for q in queries}
@@ -188,21 +304,31 @@ def run(queries_path: Path, out_path: Path, embeddings_path: Path | None, rpc_na
         parent_at8 = 0
         nulls = 0
         top1_sims: list[float] = []
+        graded_records: list[dict] = []
 
         for q in queries:
-            emb = embeddings[q["id"]]
+            emb = embeddings[_embedding_lookup_key(q, is_m3)]
+            current_rpc = query_rpc(q, qset, rpc_name)
+            search = q.get("search") or {}
             rows = rpc_search(
                 supabase_url,
                 anon_key,
-                rpc_name,
+                current_rpc,
                 emb,
-                q.get("expected_official_id"),
+                search.get("official_id", q.get("expected_official_id")),
                 floor,
+                match_count=search.get("match_count", MATCH_COUNT),
+                date_from=search.get("date_from"),
+                date_to=search.get("date_to"),
+                embedding_model=search.get("embedding_model", EMBED_MODEL),
             )
-            target_sub = q.get("expected_sub_chunk_idx")
-            score = score_hits(rows, q["expected_video_id"], q["expected_chunk_idx"], target_sub)
+            target_video, target_chunk, target_sub = legacy_target(q)
+            score = score_hits(rows, target_video, target_chunk, target_sub)
+            graded = score_graded(rows, q["judgments"]) if is_m3 else {}
+            score.update(graded)
 
             per_query_traces[q["id"]]["at_floor"][key] = {
+                "rpc": current_rpc,
                 "score": score,
                 "returned": [
                     {
@@ -217,6 +343,19 @@ def run(queries_path: Path, out_path: Path, embeddings_path: Path | None, rpc_na
                     for r in rows
                 ],
             }
+            if is_m3:
+                graded_records.append({
+                    **score,
+                    "classes": q["classes"],
+                    "official": search.get("official_id") or "public_comment",
+                    "body": q["body"],
+                    "rpc": current_rpc,
+                    "date_filter": (
+                        "bounded"
+                        if search.get("date_from") or search.get("date_to")
+                        else "unbounded"
+                    ),
+                })
 
             if score["n_returned"] == 0:
                 nulls += 1
@@ -256,19 +395,60 @@ def run(queries_path: Path, out_path: Path, embeddings_path: Path | None, rpc_na
             "top1_sim_min": round(min(top1_sims), 3) if top1_sims else None,
             "top1_sim_max": round(max(top1_sims), 3) if top1_sims else None,
         }
+        agg["legacy_metrics"] = {
+            field: agg[field]
+            for field in (
+                "n_queries",
+                "exact_at1_pct",
+                "exact_at3_pct",
+                "exact_at8_pct",
+                "parent_at1_pct",
+                "parent_at3_pct",
+                "parent_at8_pct",
+                "null_pct",
+                "top1_sim_median",
+                "top1_sim_min",
+                "top1_sim_max",
+            )
+        }
+        if is_m3:
+            agg["graded_metrics"] = {
+                "ndcg_at1": _mean([r.get("ndcg_at1") for r in graded_records]),
+                "ndcg_at3": _mean([r.get("ndcg_at3") for r in graded_records]),
+                "ndcg_at8": _mean([r.get("ndcg_at8") for r in graded_records]),
+                "mean_grade_at1": _mean([r.get("mean_grade_at1") for r in graded_records]),
+                "mean_grade_at3": _mean([r.get("mean_grade_at3") for r in graded_records]),
+                "mean_grade_at8": _mean([r.get("mean_grade_at8") for r in graded_records]),
+                "judged_coverage_at1": _mean(
+                    [r.get("judged_coverage_at1") for r in graded_records]
+                ),
+                "judged_coverage_at3": _mean(
+                    [r.get("judged_coverage_at3") for r in graded_records]
+                ),
+                "judged_coverage_at8": _mean(
+                    [r.get("judged_coverage_at8") for r in graded_records]
+                ),
+                "unjudged_rows": sum(r.get("unjudged_count", 0) for r in graded_records),
+            }
+            agg["breakdowns"] = build_breakdowns(graded_records)
         aggregate_by_floor[key] = agg
         print(f"  [agg] exact@1={agg['exact_at1_pct']}% exact@3={agg['exact_at3_pct']}% parent@1={agg['parent_at1_pct']}% parent@3={agg['parent_at3_pct']}% null={agg['null_pct']}% top1_med={agg['top1_sim_median']}", flush=True)
 
     report = {
-        "version": qset.get("version"),
-        "rpc": rpc_name,
+        "version": qset.get("version") or qset.get("schema_version"),
+        "rpc": report_rpc,
         "queries_file": queries_path.name,
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "floor_sweep": FLOOR_SWEEP,
         "match_count": MATCH_COUNT,
+        "embedding_model": EMBED_MODEL,
+        "embedding_version": MODEL_VERSION if is_m3 else None,
         "aggregate_by_floor": aggregate_by_floor,
         "per_query": per_query_traces,
     }
+    if is_m3:
+        report["coverage"] = qset["coverage"]
+        report["evaluation"] = qset["evaluation"]
     out_path.write_text(json.dumps(report, indent=2))
     print(f"\n[eval] wrote {out_path}", flush=True)
 

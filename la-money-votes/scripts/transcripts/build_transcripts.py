@@ -98,6 +98,9 @@ class Meeting:
     meeting_date: date
     primegov_id: int
     title: str
+    # M3.1 supplies every PrimeGov record that points to this recording.
+    # Existing callers retain the single-record default.
+    source_meetings: tuple[dict, ...] = ()
 
 
 def fetch_meeting_index(top: int = 10) -> list[Meeting]:
@@ -204,6 +207,12 @@ def build_transcript_json(meeting: Meeting, utts, resolver: SpeakerResolver) -> 
         "meeting_date": meeting.meeting_date.isoformat(),
         "primegov_id": meeting.primegov_id,
         "title": meeting.title,
+        "source_meetings": list(meeting.source_meetings) or [{
+            "primegov_id": meeting.primegov_id,
+            "title": meeting.title,
+            "meeting_date": meeting.meeting_date.isoformat(),
+            "video_id": meeting.video_id,
+        }],
         "language_code": CART_LANG_CODE,
         "ingested_at": datetime.now(timezone.utc).isoformat(),
         "coverage": dict(coverage),
@@ -253,15 +262,25 @@ def embed_batch(texts: list[str], api_key: str) -> list[list[float]]:
                 continue
             raise
 
-    vectors: list[list[float]] = []
-    for item in payload["data"]:
+    items = payload.get("data")
+    if not isinstance(items, list) or len(items) != len(texts):
+        got = len(items) if isinstance(items, list) else "invalid"
+        raise RuntimeError(f"Partial embedding response: {got} vectors for {len(texts)} texts")
+    if any(not isinstance(item.get("index"), int) for item in items):
+        raise RuntimeError("Embedding response missing integer indexes")
+    indexes = [item["index"] for item in items]
+    if sorted(indexes) != list(range(len(texts))):
+        raise RuntimeError(f"Embedding response has unexpected indexes: {indexes!r}")
+
+    vectors_by_index: dict[int, list[float]] = {}
+    for item in items:
         raw = base64.b64decode(item["embedding"])
         # int8 signed
         vec = [int.from_bytes(bytes([b]), "big", signed=True) for b in raw]
         if len(vec) != EMBED_DIM:
             raise RuntimeError(f"Unexpected embedding dim: {len(vec)} != {EMBED_DIM}")
-        vectors.append([float(x) for x in vec])
-    return vectors
+        vectors_by_index[item["index"]] = [float(x) for x in vec]
+    return [vectors_by_index[index] for index in range(len(texts))]
 
 
 def _build_supabase_client():
@@ -272,7 +291,7 @@ def _build_supabase_client():
 
 
 def embed_and_upsert(transcript: dict, chunks: list[TurnChunk], supabase,
-                     api_key: str, resolver: SpeakerResolver) -> int:
+                     api_key: str, resolver: SpeakerResolver, *, embedder=None) -> int:
     """Embed chunks and upsert into transcript_chunks. Returns row count.
 
     Attribution: each chunk carries its raw CART source_label from the
@@ -307,16 +326,29 @@ def embed_and_upsert(transcript: dict, chunks: list[TurnChunk], supabase,
     # Batch calls to the embeddings endpoint.
     embs: list[list[float]] = []
     t0 = time.time()
+    embedder = embedder or embed_batch
     for i in range(0, len(docs), EMBED_BATCH_SIZE):
         batch = docs[i:i + EMBED_BATCH_SIZE]
-        embs.extend(embed_batch(batch, api_key))
+        batch_embs = embedder(batch, api_key)
+        if len(batch_embs) != len(batch):
+            raise RuntimeError(
+                f"Partial embeddings: {len(batch_embs)} vectors for {len(batch)} texts"
+            )
+        embs.extend(batch_embs)
     log.info("embedded %d chunks in %.1fs (%s)", len(docs), time.time() - t0, EMBED_MODEL)
+    if len(embs) != len(meta):
+        raise RuntimeError(f"Partial embeddings: {len(embs)} vectors for {len(meta)} chunks")
+    for vector in embs:
+        if len(vector) != EMBED_DIM:
+            raise RuntimeError(f"Unexpected embedding dim: {len(vector)} != {EMBED_DIM}")
 
     rows = []
     for m, e in zip(meta, embs):
         m["embedding"] = e
         rows.append(m)
 
+    if not rows:
+        return 0
     resp = (supabase.table("transcript_chunks")
             .upsert(rows, on_conflict="video_id,chunk_idx,embedding_model")
             .execute())

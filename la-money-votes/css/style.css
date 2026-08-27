@@ -1099,6 +1099,23 @@ button:focus-visible,
   font-size: 0.9rem;
 }
 
+.transcript-search-coverage {
+  margin: 0 0 0.75rem;
+  padding: 0.55rem 0.7rem;
+  border-left: 3px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+
+.transcript-search-coverage-thin {
+  border-left-color: var(--color-failed-text);
+  color: var(--color-text);
+}
+
 .transcript-search-form {
   display: flex;
   flex-direction: column;

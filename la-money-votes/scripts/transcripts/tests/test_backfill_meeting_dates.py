@@ -39,6 +39,12 @@ PRIMEGOV_FIXTURE = [
         "videoUrl": "https://www.youtube.com/watch?v=welTRe5_RH4",
     },
     {
+        "id": 17801,
+        "title": "City Council Meeting",
+        "dateTime": "2026-06-30T10:00:00",
+        "videoUrl": "https://www.youtube.com/watch?v=welTRe5_RH4",
+    },
+    {
         "id": 17724,
         "title": "City Council Meeting",
         "dateTime": "2026-08-04T10:00:00",
@@ -62,18 +68,21 @@ PRIMEGOV_FIXTURE = [
 
 
 class BuildMeetingIndexTests(unittest.TestCase):
-    def test_indexes_only_rows_with_valid_youtube_ids(self) -> None:
+    def test_indexes_only_non_colliding_rows_with_valid_youtube_ids(self) -> None:
         idx = build_meeting_index(PRIMEGOV_FIXTURE)
-        self.assertEqual(set(idx.keys()), {"MBjio010l60", "welTRe5_RH4", "UkdZRHDB9qs"})
+        self.assertEqual(set(idx.keys()), {"MBjio010l60", "UkdZRHDB9qs"})
 
-    def test_parses_dates(self) -> None:
+    def test_shared_video_is_withheld_not_later_wins(self) -> None:
+        idx = build_meeting_index(PRIMEGOV_FIXTURE)
+        self.assertNotIn("welTRe5_RH4", idx)
+
+    def test_parses_dates_for_non_colliding_video(self) -> None:
         idx = build_meeting_index(PRIMEGOV_FIXTURE)
         self.assertEqual(idx["MBjio010l60"].meeting_date, date(2026, 8, 14))
-        self.assertEqual(idx["welTRe5_RH4"].meeting_date, date(2026, 6, 30))
 
-    def test_preserves_title_including_specials(self) -> None:
+    def test_preserves_title_for_non_colliding_rows(self) -> None:
         idx = build_meeting_index(PRIMEGOV_FIXTURE)
-        self.assertEqual(idx["welTRe5_RH4"].title, "Special City Council Meeting #2")
+        self.assertEqual(idx["MBjio010l60"].title, "City Council Meeting")
 
 
 class MatchVideoTests(unittest.TestCase):
@@ -106,10 +115,9 @@ class MatchVideoTests(unittest.TestCase):
         self.assertEqual(method, "date_proximity")
         self.assertEqual(m.video_id, "UkdZRHDB9qs")
 
-    def test_date_fallback_skips_special_meetings(self) -> None:
-        # welTRe5_RH4 (2026-06-30, special) is closest to 2026-07-01 but
-        # not a regular; MBjio010l60 (2026-08-14) is > 3 days away, so
-        # nothing should match.
+    def test_date_fallback_skips_withheld_collision(self) -> None:
+        # welTRe5_RH4 is deliberately absent from the index because it has
+        # multiple PrimeGov records. MBjio010l60 is > 3 days away.
         m, method = match_video(
             "zzzzzzzzzzz",
             "2026-07-01T00:00:00",
@@ -150,15 +158,15 @@ class PlanBackfillTests(unittest.TestCase):
         self.assertEqual(plan.new_pgid, 18466)
         self.assertTrue(plan.needs_change)
 
-    def test_special_meeting_flagged_but_planned(self) -> None:
+    def test_shared_video_produces_unmatched_plan(self) -> None:
         idx = build_meeting_index(PRIMEGOV_FIXTURE)
         with TemporaryDirectory() as td:
             p = self._make_json(Path(td), "welTRe5_RH4")
             plans = plan_backfill([p], idx)
         plan = plans[0]
-        self.assertEqual(plan.match_method, "video_id")
+        self.assertEqual(plan.match_method, "unmatched")
         self.assertFalse(plan.is_regular)
-        self.assertIn("non-regular", plan.note)
+        self.assertIn("no PrimeGov entry", plan.note)
 
     def test_unmatched_video_produces_unmatched_plan(self) -> None:
         idx = build_meeting_index(PRIMEGOV_FIXTURE)
