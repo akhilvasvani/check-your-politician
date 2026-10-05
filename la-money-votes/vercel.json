@@ -3,6 +3,9 @@
   "functions": {
     "api/ask-official.js": {
       "maxDuration": 15
+    },
+    "api/search-transcripts.js": {
+      "maxDuration": 10
     }
   }
 }

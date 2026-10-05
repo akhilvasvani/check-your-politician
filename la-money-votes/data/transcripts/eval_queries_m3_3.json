@@ -1,0 +1,1685 @@
+{
+  "schema_version": "m3.3-v1",
+  "description": "Additive graded-relevance evaluation for CYP transcript RAG.",
+  "evaluation": {
+    "k_values": [
+      1,
+      3,
+      8
+    ],
+    "floor_sweep": [
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.35
+    ],
+    "relevance_scale": {
+      "0": "not relevant",
+      "1": "topical, entity, role, or procedural adjacency; does not answer",
+      "2": "partially responsive or semantically adjacent evidence",
+      "3": "directly answers with supporting evidence"
+    },
+    "gain": "2^grade - 1",
+    "unjudged_policy": "report separately; hold final run for judgment completion",
+    "legacy_contract": "q01-q20 targets, zero-based ranks, parent@1/@3, five floors, match_count=8"
+  },
+  "coverage": {
+    "indexed_officials_with_queries": [
+      "cd1-official",
+      "cd10-official",
+      "cd11-official",
+      "cd12-official",
+      "cd13-official",
+      "cd14-official",
+      "cd15-official",
+      "cd2-official",
+      "cd3-official",
+      "cd4-official",
+      "cd5-official",
+      "cd6-official",
+      "cd7-official",
+      "cd9-official"
+    ],
+    "not_eligible": [
+      {
+        "official_id": "cd8-official",
+        "name": "Marqueece Harris-Dawson",
+        "reason": "Current CART rows resolve to council-president rather than direct official speech; adjudicate in M3.4.",
+        "reviewed_at": "2026-08-20"
+      }
+    ],
+    "pending": [
+      {
+        "body": "committee",
+        "reason": "M3.1 has not published a verified committee transcript corpus; do not fabricate committee judgments."
+      }
+    ],
+    "uncovered_published_videos": [
+      {
+        "video_id": "QePVCuF0iAY",
+        "meeting_date": "2026-08-11",
+        "reason": "Official-query judgment authoring remains pending."
+      },
+      {
+        "video_id": "welTRe5_RH4",
+        "meeting_date": "2026-06-30",
+        "reason": "Shared-recording provenance requires reviewed query selection."
+      }
+    ]
+  },
+  "queries": [
+    {
+      "id": "q01",
+      "text": "Which councilmember recused themselves because they provide housing?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd9-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "eLYlonECp7o",
+        "chunk_idx": 12,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "eLYlonECp7o",
+            "chunk_idx": 12,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: OUT AN ABUNDANCE OF CAUTION I'M RECUSING MYSELF FROM ITEM 9 BECAUSE I PROVIDE HOUSING",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-05",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Curren Price"
+    },
+    {
+      "id": "q02",
+      "text": "Which councilmember recused themselves due to investments in hydrogen?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd13-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "UkdZRHDB9qs",
+        "chunk_idx": 36,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 36,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: RECUSING MYSELF ON THIS ITEM AS I HAVE INVESTED ON HYDROGEN SECTOR",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-04",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Hugo Soto-Martinez"
+    },
+    {
+      "id": "q03",
+      "text": "Who welcomed college students visiting from South Korea to City Hall?",
+      "classes": [
+        "paraphrase",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd12-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "eLYlonECp7o",
+        "chunk_idx": 33,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "eLYlonECp7o",
+            "chunk_idx": 33,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: WELCOME STUDENTS FROM SOUTH CORE YA ... VISITING US. WELCOME TO CITY HALL",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-05",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "John Lee"
+    },
+    {
+      "id": "q04",
+      "text": "Who acknowledged John Lee's mother during a Korean Liberation event?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd10-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 140,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 140,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: I JUST WANT TO ACKNOWLEDGE JOHN LEE'S MOTHER, MS. LEE WHO IS HERE US TODAY FOR KOREAN LIBERATION",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Heather Hutt"
+    },
+    {
+      "id": "q05",
+      "text": "Who introduced the Dia del Bolero proclamation this year?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd4-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "H-OkhDWvgYE",
+        "chunk_idx": 38,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 38,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: OFFICIALLY DECLARE ONCE AGAIN, THE DIA DEL BOLERO IN LOS ANGELES ON AUGUST 1",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-26",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Nithya Raman"
+    },
+    {
+      "id": "q06",
+      "text": "Which councilmember pushed for stronger audit rights on the Olympics agreement?",
+      "classes": [
+        "paraphrase",
+        "per_official",
+        "near_miss"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd1-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "oHYuOqkXv-0",
+        "chunk_idx": 567,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 567,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: WE CAN PUT MORE AUDIT IN THERE ... ZERO COSTS OLYMPICS TO US",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 596,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "partially_responsive",
+          "rationale": "Same speaker explicitly discusses motions expanding auditing power, but the excerpt lacks the target's agreement and zero-cost detail.",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-12",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Eunisses Hernandez"
+    },
+    {
+      "id": "q07",
+      "text": "Which councilmember raised concerns about being briefed on Dodger Stadium impacts only two weeks before a decision?",
+      "classes": [
+        "paraphrase",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd1-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "oHYuOqkXv-0",
+        "chunk_idx": 600,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 600,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: I HAVE DODGER STADIUM AND I WAS BRIEFED TWO WEEKS AGO",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-12",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Eunisses Hernandez"
+    },
+    {
+      "id": "q08",
+      "text": "Who moved to continue the smoke shop ICO for one more week citing Government Code 6558?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd15-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 10,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 10,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: CONTINUE THE SMOKE SHOP ICO FOR ONE WEEK ... 6558 OF THE GOVERNMENT CODE",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-24",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Tim McOsker"
+    },
+    {
+      "id": "q09",
+      "text": "Who added a friendly amendment asking for a public land ULA exemption report on Metro affordable housing projects?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd5-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "oPUdYYi9HyE",
+        "chunk_idx": 209,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 209,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: REPORT BACK ON THE FEASIBILITY OF PUBLIC LAND EXEMPTION ... METRO ... 100 PERCENT AFFORDABLE HOUSING PROJECTS ... ULA",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-07-01",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Katy Yaroslavsky"
+    },
+    {
+      "id": "q10",
+      "text": "Who invited Warner Center Park visitors to the annual Fourth of July fireworks and soccer event?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd3-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "oPUdYYi9HyE",
+        "chunk_idx": 716,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 716,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: BLUMENFIELD FIREWORKS EXTRAVAGANZA ... WARNER CENTER PARK JULY 4th ... SOCCER GOING",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-07-01",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Bob Blumenfield"
+    },
+    {
+      "id": "q11",
+      "text": "Who promoted a Futbol Fest along Magnolia Street in North Hollywood?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd2-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "H-OkhDWvgYE",
+        "chunk_idx": 279,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 279,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: FUTBOL FEST, START INING NOHO MAGNOLIA STREET",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-26",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Adrin Nazarian"
+    },
+    {
+      "id": "q12",
+      "text": "Which councilmember questioned whether the city attorney was misrepresenting federal contract standards?",
+      "classes": [
+        "paraphrase",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd12-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "H-OkhDWvgYE",
+        "chunk_idx": 354,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "H-OkhDWvgYE",
+            "chunk_idx": 354,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: IS THE CITY ATTORNEY'S IS JUST LYING ABOUT THAT ... FEDERAL STANDARDS",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-26",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "John Lee"
+    },
+    {
+      "id": "q13",
+      "text": "Who eulogized Larry as a Pacific Palisades community pillar after January 7th?",
+      "classes": [
+        "semantic",
+        "per_official",
+        "long_turn"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd11-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 291,
+        "sub_chunk_idx": 24
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 291,
+            "sub_chunk_idx": 24
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: LARRY WILL FOREVER BE A PART OF THAT JOURNEY. LARRY WAS A PILLAR OF LEADERSHIP IN THE PALISADES",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Traci Park"
+    },
+    {
+      "id": "q14",
+      "text": "Who read a technical amendment adding 'labor unions' to community outreach language in item 6?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd13-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "oHYuOqkXv-0",
+        "chunk_idx": 15,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 15,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: TECHNICAL AMENDMENT ... LABOR UNION SXZ BUSINESS ORGANIZATIONS",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-12",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Hugo Soto-Martinez"
+    },
+    {
+      "id": "q15",
+      "text": "Who presented a certificate of recognition to a retiring LAFD firefighter and father of three?",
+      "classes": [
+        "paraphrase",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd14-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 74,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 74,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: LAFD ... CERTIFICATE OF RECOGNITION ... THREE KIDS AND A HUSBAND",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Ysabel Jurado"
+    },
+    {
+      "id": "q16",
+      "text": "Who called the city attorney and Rec and Parks to the table on CEQA exemption requirements?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd14-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 358,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 358,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: CITY ATTORNEY AND RECREATION AND PARKS TO THE TABLE ... CEQA EXEMPTIONS",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-24",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Ysabel Jurado"
+    },
+    {
+      "id": "q17",
+      "text": "Who thanked their summer intern who was heading to Berkeley Law School?",
+      "classes": [
+        "paraphrase",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd3-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "oPUdYYi9HyE",
+        "chunk_idx": 542,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 542,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: INTERNING WITH US ... BERKELEY LAW SCHOOL",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-07-01",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Bob Blumenfield"
+    },
+    {
+      "id": "q18",
+      "text": "Who described a peaceful funeral repass that lasted late into the evening?",
+      "classes": [
+        "semantic",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd15-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "UkdZRHDB9qs",
+        "chunk_idx": 417,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "UkdZRHDB9qs",
+            "chunk_idx": 417,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: PEACEFUL CELEBRATION OF HIS LIFE ... FUNERAL ... REPASS",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-04",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Tim McOsker"
+    },
+    {
+      "id": "q19",
+      "text": "Who deferred giving comments because they already spoke during committee?",
+      "classes": [
+        "semantic",
+        "per_official",
+        "low_signal",
+        "near_miss"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd7-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "oHYuOqkXv-0",
+        "chunk_idx": 536,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 536,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: ALLOW COLLEAGUES TO GO BEFORE ME, BECAUSE I HAVE THE BENEFIT OF BEING IN COMMITTEE",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 682,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "topical_adjacency",
+          "rationale": "Same speaker and committee context, but does not support the claim that she deferred because she had already commented.",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 681,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "topical_adjacency",
+          "rationale": "Same speaker and committee context, but does not support the claim that she deferred because she had already commented.",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-12",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Monica Rodriguez"
+    },
+    {
+      "id": "q20",
+      "text": "Who thanked the Annenberg Foundation representative for their philanthropic work?",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd6-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "oPUdYYi9HyE",
+        "chunk_idx": 146,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "oPUdYYi9HyE",
+            "chunk_idx": 146,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: ANNEBERGH FOUNDATION ... PHILANTHROPIC HEART",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-07-01",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Imelda Padilla"
+    },
+    {
+      "id": "pc-01-drown-proof-la",
+      "text": "public commenter about drowning prevention swim lessons for kids in LA",
+      "classes": [
+        "semantic"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 33,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 33,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Calvin Thomas / Dolphin U, drown-proof LA by summer 2028, teach 2028 safer swimmers",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-24",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      }
+    },
+    {
+      "id": "pc-02-el-corazon-ceqa-appeal",
+      "text": "downtown residents association supporting the CEQA appeal on the El Corazon art park across from City Hall",
+      "classes": [
+        "paraphrase"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 128,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 128,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Cassie Hoerton, Downtown Residents Association board member, supports the SEIU CEQA appeal on the parcel across from City Hall",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-24",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      }
+    },
+    {
+      "id": "pc-03-boyle-heights-warehouse-fire",
+      "text": "Boyle Heights warehouse fire burning for six days releasing ammonia and hurting air quality",
+      "classes": [
+        "lexical"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 141,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 141,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Lineage warehouse fire poisoning the East Side for six days, ammonia in the smoke, sore throat and coughing",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-24",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      }
+    },
+    {
+      "id": "pc-04-vision-zero-crosswalks-arrest",
+      "text": "arrested for painting crosswalks and asking the city to declare a traffic violence emergency",
+      "classes": [
+        "paraphrase"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 119,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 119,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Johnny (People Vision Zero) arrested in December for painting crosswalks, demanding the city declare an emergency for traffic violence",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-24",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      }
+    },
+    {
+      "id": "pc-05-speed-bumps-hit-and-run",
+      "text": "resident asking for speed bumps after losing her dog to a hit and run near Venice Boulevard",
+      "classes": [
+        "semantic"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 160,
+        "sub_chunk_idx": 1
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 160,
+            "sub_chunk_idx": 1
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Elisa Kim, Westchester Place / Country Club Drive, dog killed by a fleeing driver Aug 8, asks for speed bumps on Venice Blvd",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      }
+    },
+    {
+      "id": "pc-06-water-conservation-ordinance-2009",
+      "text": "history of the LA water conservation ordinance passed in 2009 and lessons for the road map today",
+      "classes": [
+        "lexical"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 90,
+        "sub_chunk_idx": 1
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 90,
+            "sub_chunk_idx": 1
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Retiring DWP staffer references the June 2009 water conservation ordinance and the 100-year road map document",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      }
+    },
+    {
+      "id": "pc-07-fraudulent-bond-debt",
+      "text": "who is on the hook for fraudulent bond debt at the city and LAUSD, taxpayers or insurers",
+      "classes": [
+        "paraphrase"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 146,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 146,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Mark Williams asks who repays fraudulent bond debt \u2014 defrauded property taxpayers or the city's and LAUSD's insurers \u2014 as an election issue",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      }
+    },
+    {
+      "id": "pc-08-scientology-l-ron-hubbard-way",
+      "text": "former Scientology members asking public works to rename L Ron Hubbard Way back to a normal street name",
+      "classes": [
+        "semantic"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 200,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 200,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Speaker representing former Scientology child labor victims, asking public works to revert L. Ron Hubbard Way to a regular street designation and to stop granting permits",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      }
+    },
+    {
+      "id": "pc-09-lapd-rampart-accountability",
+      "text": "army veteran demanding LAPD Rampart accountability after false accusations and rubber bullets at protests",
+      "classes": [
+        "paraphrase"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 263,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 263,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Monica, District 1 army vet, false police reporting at LAPD Rampart, rubber bullets and tear gas at protests, demands accountability and transparency",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-24",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      }
+    },
+    {
+      "id": "pc-10-social-housing-renter-protection",
+      "text": "asking the council to protect renters and pursue social housing so the city doesn't rely on stopgaps",
+      "classes": [
+        "semantic"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 207,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 207,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Public commenter urges support for the plan while pushing further on protecting renters and pursuing social housing",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      }
+    },
+    {
+      "id": "m3-date-01",
+      "text": "On August 12, 2026, who argued for broader audit authority in the Olympics agreement?",
+      "classes": [
+        "date_bounded",
+        "paraphrase",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd1-official",
+        "date_from": "2026-08-12",
+        "date_to": "2026-08-12",
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "oHYuOqkXv-0",
+        "chunk_idx": 567,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 567,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: WE CAN PUT MORE AUDIT IN THERE ... ZERO COSTS OLYMPICS TO US",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 596,
+            "sub_chunk_idx": 0
+          },
+          "grade": 2,
+          "label": "partially_responsive",
+          "rationale": "Same speaker explicitly discusses motions expanding auditing power, but the excerpt lacks the target's agreement and zero-cost detail.",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-12",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Eunisses Hernandez",
+      "legacy_source_id": "q06"
+    },
+    {
+      "id": "m3-date-02",
+      "text": "At the June 24, 2026 meeting, what did a commenter say about the Boyle Heights warehouse fire and ammonia?",
+      "classes": [
+        "date_bounded",
+        "lexical"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": "2026-06-24",
+        "date_to": "2026-06-24",
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 141,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "hyhgFSAqBRM",
+            "chunk_idx": 141,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Lineage warehouse fire poisoning the East Side for six days, ammonia in the smoke, sore throat and coughing",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-06-24",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "legacy_source_id": "pc-03-boyle-heights-warehouse-fire"
+    },
+    {
+      "id": "m3-entity-01",
+      "text": "At the Korean Liberation event, which councilmember recognized Councilmember John Lee's mother?",
+      "classes": [
+        "entity_confusion",
+        "lexical",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd10-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 140,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 140,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: I JUST WANT TO ACKNOWLEDGE JOHN LEE'S MOTHER, MS. LEE WHO IS HERE US TODAY FOR KOREAN LIBERATION",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Heather Hutt",
+      "legacy_source_id": "q04"
+    },
+    {
+      "id": "m3-entity-02",
+      "text": "What did former Scientology members ask Public Works to do about the street named for L. Ron Hubbard?",
+      "classes": [
+        "entity_confusion",
+        "paraphrase"
+      ],
+      "body": "public_comment",
+      "search": {
+        "rpc": "search_public_comment",
+        "official_id": null,
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 200,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 200,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: Speaker representing former Scientology child labor victims, asking public works to revert L. Ron Hubbard Way to a regular street designation and to stop granting permits",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "legacy_source_id": "pc-08-scientology-l-ron-hubbard-way"
+    },
+    {
+      "id": "m3-low-signal-01",
+      "text": "Who yielded to colleagues after saying the committee had already heard her concerns?",
+      "classes": [
+        "low_signal",
+        "semantic",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd7-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "oHYuOqkXv-0",
+        "chunk_idx": 536,
+        "sub_chunk_idx": null
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 536,
+            "sub_chunk_idx": 0
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: ALLOW COLLEAGUES TO GO BEFORE ME, BECAUSE I HAVE THE BENEFIT OF BEING IN COMMITTEE",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 682,
+            "sub_chunk_idx": 1
+          },
+          "grade": 1,
+          "label": "topical_adjacency",
+          "rationale": "Same speaker and committee context, but does not support the claim that she deferred because she had already commented.",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        },
+        {
+          "key": {
+            "video_id": "oHYuOqkXv-0",
+            "chunk_idx": 681,
+            "sub_chunk_idx": 0
+          },
+          "grade": 1,
+          "label": "topical_adjacency",
+          "rationale": "Same speaker and committee context, but does not support the claim that she deferred because she had already commented.",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-12",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Monica Rodriguez",
+      "legacy_source_id": "q19"
+    },
+    {
+      "id": "m3-long-turn-01",
+      "text": "Who remembered Larry as part of the Pacific Palisades community's recovery journey?",
+      "classes": [
+        "long_turn",
+        "paraphrase",
+        "per_official"
+      ],
+      "body": "city_council",
+      "search": {
+        "rpc": "search_transcripts",
+        "official_id": "cd11-official",
+        "date_from": null,
+        "date_to": null,
+        "match_count": 8,
+        "embedding_model": "pplx-embed-v1-0.6b",
+        "embedding_version": 1
+      },
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 291,
+        "sub_chunk_idx": 24
+      },
+      "judgments": [
+        {
+          "key": {
+            "video_id": "MBjio010l60",
+            "chunk_idx": 291,
+            "sub_chunk_idx": 24
+          },
+          "grade": 3,
+          "label": "direct",
+          "rationale": "Locked M1/M2 target: LARRY WILL FOREVER BE A PART OF THAT JOURNEY. LARRY WAS A PILLAR OF LEADERSHIP IN THE PALISADES",
+          "reviewer": "M3.3 authoring review",
+          "reviewed_at": "2026-08-20"
+        }
+      ],
+      "evidence": {
+        "meeting_date": "2026-08-14",
+        "source": "canonical transcript",
+        "review_status": "single_reviewed"
+      },
+      "expected_name": "Traci Park",
+      "legacy_source_id": "q13"
+    }
+  ]
+}

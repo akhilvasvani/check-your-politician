@@ -317,6 +317,152 @@ listed"` by the frontend — `js/app.js`'s `renderPartyField()` and
 field blank. This keeps `party` fully additive: a consumer that only reads
 `id`/`name`/`office` keeps working exactly as before.
 
+## New: `data/transcripts/` (transcript-search feature, additive)
+
+The transcript-search feature adds a new `data/transcripts/` tree that is
+**entirely additive**. It does not change the shape of `officials.json`,
+`funding.json`, `record.json`, or any existing schema, and it is not read
+by any code path that produces those files. A consumer that only reads the
+three original files keeps working exactly as before, and the existing
+refresh workflow does not touch anything under this tree.
+
+The feature is scoped to City Council meeting transcripts (YouTube CART
+captions from the LA City Clerk's channel, one file per meeting), split
+into per-chunk embeddings stored in Supabase, and surfaced on
+`official.html` as a per-councilmember search panel. Only councilmembers
+with a `resolved_official_id` in the roster (see below) currently show the
+panel — every other page hides it at init.
+
+### `data/transcripts/roster.json` (committed, human-curated)
+
+The authoritative speaker table for the transcript pipeline. Distinct from
+`data/officials.json`: `officials.json` is frozen to the three officials
+this site publishes profiles for (`mayor-bass`, `cd14-official`,
+`cd11-official`); `roster.json` is the full 15-member City Council,
+because the CART transcripts contain utterances from every district and
+each councilmember needs a canonical display name for the resolver to
+label their rows correctly. The Mayor is not in `roster.json` today (she
+does not speak in Council meetings) and neither is the City Attorney;
+both are procedural roles the resolver currently labels by title, not
+name, via the role table in `speaker_resolver.py`. `official_id` is the join key back to
+`officials.json` and is `null` for anyone this site does not publish a
+profile for — that null-ness is what makes the transcript-search panel
+hide itself on those officials' (nonexistent) pages, and what causes the
+search endpoint to reject queries scoped to an unlinked councilmember.
+
+```json
+{
+  "$schema": "...",
+  "description": "…",
+  "as_of": "2026-08-18",
+  "source": {
+    "name": "City of Los Angeles — Elected Officials",
+    "url": "https://lacity.gov/government"
+  },
+  "members": [
+    { "cart_label": "B. Blumenfield", "first_name": "Bob", "last_name": "Blumenfield",
+      "district": 3, "official_id": null },
+    { "cart_label": "Y. Jurado",     "first_name": "Ysabel", "last_name": "Jurado",
+      "district": 14, "official_id": "cd14-official" },
+    { "cart_label": "T. Park",       "first_name": "Traci", "last_name": "Park",
+      "district": 11, "official_id": "cd11-official" }
+  ]
+}
+```
+
+`cart_label` is the exact string the CART stenographer writes for that
+speaker in the VTT stream (typically `"<initial>. <lastname>"`); it is the
+resolver's primary lookup key and MUST match the caption verbatim,
+case-preserved. If the CART operator changes convention mid-term, this
+field is what changes — never `first_name` / `last_name` / `district`
+/ `official_id`. See `scripts/transcripts/speaker_resolver.py` for the
+matching order (exact `cart_label` first, then role-only labels like
+`"Council President"`, then a stdlib-Levenshtein-1 fuzzy pass for the
+known CART typos, then unresolved).
+
+### `data/transcripts/{video_id}.json` (committed, generated)
+
+One file per ingested City Council meeting, produced by
+`scripts/transcripts/build_transcripts.py`. This is the canonical
+on-disk form of one meeting's transcript: if Supabase is wiped, these
+files are what the pipeline re-embeds from. The raw VTT downloaded from
+YouTube is NOT committed — see `.gitignore` — because it is a
+byte-for-byte copy of a public source we can always re-fetch, whereas
+this JSON adds the resolver's speaker attribution and trims the
+pre-meeting broadcast, so it is a genuine build artifact worth keeping
+under version control.
+
+```json
+{
+  "video_id": "UkdZRHDB9qs",
+  "meeting_date": "2026-08-04",
+  "primegov_id": 12345,
+  "title": "City Council Meeting",
+  "language_code": "en-uYU-mmqFLq8",
+  "ingested_at": "2026-08-18T22:00:00+00:00",
+  "coverage": {
+    "exact-role": 281,
+    "exact-councilmember": 31,
+    "fuzzy": 0,
+    "unresolved": 0
+  },
+  "utterance_count": 312,
+  "utterances": [
+    {
+      "start_sec": 2759.4,
+      "end_sec": 2764.4,
+      "source_label": "Clerk",
+      "resolved_role": "clerk",
+      "resolved_official_id": null,
+      "resolved_name": "Clerk",
+      "resolution_method": "exact-role",
+      "text": "BLUMENFIELD, HARRIS-DAWSON, HERNANDEZ, HUTT, JURADO…"
+    }
+  ]
+}
+```
+
+`resolved_role` is one of `"councilmember"`, `"presiding"`, `"counsel"`,
+`"clerk"`, `"interpreter"`, `"reporter"`, `"public-speaker"`, or
+`"unknown"`. `resolved_official_id` is populated only when the resolver
+matched a `roster.json` entry with a non-null `official_id` — every
+other row (public speakers, procedural roles, and councilmembers without
+a site profile) has `null` there. `resolution_method` is verbatim from
+`speaker_resolver.py`; `"fuzzy-from:<raw>"` records the original CART
+string that a Levenshtein-1 pass mapped away from, so an audit can
+distinguish exact matches from best-guess matches without re-running
+the resolver.
+
+`coverage` is a small summary of how well the resolver did on this
+meeting, keyed by resolution method (with `"fuzzy-from:…"` collapsed to
+`"fuzzy"`). It is used by the ingestion job's own report, not by the
+frontend.
+
+Absence of this file for a given video ID is the retry signal for the
+next scheduled ingestion run — captions from a fresh livestream are not
+transcoded immediately, and the pipeline treats "no VTT yet" as a normal
+outcome, not an error.
+
+### `transcript_chunks` (Supabase / Postgres, not versioned in git)
+
+One row per 400-token chunk with 50-token overlap, produced from the
+committed JSON above. Schema lives at
+`data/transcripts/schema.sql`; embeddings are 1024-dim vectors from
+Perplexity `pplx-embed-v1-0.6b` (unnormalized — see the schema's
+comment; cosine similarity is the correct comparator). The
+`(video_id, chunk_idx, embedding_model)` unique constraint makes the
+ingestion job idempotent, and the `embedding_model` column is what lets
+the corpus be re-embedded with a different model incrementally — a row
+from a previous model coexists with its replacement until the new one
+lands, and the `search_transcripts` RPC filters by `p_embedding_model`
+so the two never mix in a query.
+
+The Supabase table is not versioned in git because the JSON files above
+are its source of truth; a wipe-and-rerun of
+`scripts/transcripts/build_transcripts.py` recreates the same rows.
+Schema *changes* to `transcript_chunks` do go through git, via
+`data/transcripts/schema.sql`.
+
 ## Ownership
 
 | Path | Owner |
@@ -336,6 +482,7 @@ field blank. This keeps `party` fully additive: a consumer that only reads
 | `data/districts.json`, `data/geo/council_districts.geojson`, `js/map.js`, `css/style.css` (map/legend rules) | Owner of the citywide map feature |
 | `js/treemap.js`, `css/style.css` (treemap rules) | Owner of the donor-treemap feature |
 | `js/ask-ai.js`, `api/ask-official.js`, `vercel.json`, `DEPLOYMENT.md`, `css/style.css` (`.ask-ai-*` rules) | Owner of the Ask-AI Q&A feature. `api/ask-official.js` is the only code that reads `PERPLEXITY_API_KEY`; it is never read by, or exposed to, any frontend file. This feature is additive and Vercel-only — it does not change how `index.html`/`official.html` behave on the existing GitHub Pages deployment, since a missing `/api/ask-official` route there just means the module's fetch calls fail gracefully into the existing error-handling fallback message. |
+| `data/transcripts/**`, `scripts/transcripts/**`, `api/search-transcripts.js`, `js/transcript-search.js`, `css/style.css` (`.transcript-search-*` rules), `.github/workflows/guard-non-goals.yml` | Owner of the transcript-search feature. `api/search-transcripts.js` and `scripts/transcripts/build_transcripts.py` are the only code that reads `PERPLEXITY_API_KEY` for embeddings and the only code that reads Supabase credentials; they are never read by, or exposed to, any frontend file. Like Ask-AI, this feature is additive and Vercel-only — a missing `/api/search-transcripts` route on the plain GitHub Pages deployment means the search panel's fetch calls fail into the existing status-line error message, and the funding/record data on the rest of the page still renders normally. `scripts/transcripts/` opts into third-party dependencies via its own `requirements-transcripts.txt` file, so it does not compromise `scripts/pipeline/`'s stdlib-only invariant. |
 
 Everyone commits only to their own files. Zero merge conflicts possible. The
 shared `scripts/pipeline/` module is the one deliberate exception to that
