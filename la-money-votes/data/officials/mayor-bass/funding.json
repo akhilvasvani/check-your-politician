@@ -17,24 +17,24 @@
       "Re-Elect Karen Bass for Mayor 2026",
       "Re-Elect Karen Bass for Mayor 2026-General"
     ],
-    "retrieved_at": "2026-08-17",
+    "retrieved_at": "2026-10-05",
     "methodology_version": "1.0"
   },
   "donors": [
     {
-      "name": "Deborah Santana",
+      "name": "Jill Black Zalben",
       "type": "individual",
       "total": 5400,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-07-22",
+          "date": "2024-12-21",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -45,16 +45,16 @@
           }
         },
         {
-          "date": "2026-02-17",
+          "date": "2025-06-30",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145919",
+          "source_url": "https://ethics.lacity.org/view/?document_id=133962",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145919",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=133962",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-04-18"
+              "from": "2025-01-01",
+              "to": "2025-06-30"
             },
             "meeting_date": null,
             "record_id": "1471359",
@@ -63,15 +63,91 @@
         },
         {
           "date": "2026-06-27",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "amount": 500,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-07-12",
+          "amount": 1300,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-07-01",
+              "to": "2026-09-19"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Erin Gore",
+      "type": "individual",
+      "total": 5400,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2025-10-30",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146226",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146226",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2025-07-01",
+              "to": "2025-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-08-09",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-07-01",
+              "to": "2026-09-19"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-09-19",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-07-01",
+              "to": "2026-09-19"
             },
             "meeting_date": null,
             "record_id": "1492037",
@@ -93,7 +169,7 @@
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -110,7 +186,7 @@
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=145919",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-04-18"
@@ -123,11 +199,11 @@
         {
           "date": "2026-06-12",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
@@ -140,103 +216,19 @@
       ]
     },
     {
-      "name": "Manuel Abascal",
+      "name": "Sarah Stone",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-07-31",
+          "date": "2024-07-01",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-25",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Jeffrey Abrams",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-07-10",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-12",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Christine Adams",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-10-08",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -249,11 +241,11 @@
         {
           "date": "2026-06-30",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
@@ -266,19 +258,19 @@
       ]
     },
     {
-      "name": "Jim Asperger",
+      "name": "Charles Ortner",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-11-16",
+          "date": "2024-07-01",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -289,16 +281,50 @@
           }
         },
         {
-          "date": "2026-06-30",
+          "date": "2026-06-04",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-08-29",
+          "amount": 500,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-07-01",
+              "to": "2026-09-19"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-08-29",
+          "amount": -500,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-07-01",
+              "to": "2026-09-19"
             },
             "meeting_date": null,
             "record_id": "1492037",
@@ -308,19 +334,19 @@
       ]
     },
     {
-      "name": "Janice Bashford",
+      "name": "Martha Swiller",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-09-11",
+          "date": "2024-07-01",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -331,47 +357,13 @@
           }
         },
         {
-          "date": "2025-09-30",
-          "amount": -1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2025-07-01",
-              "to": "2025-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2025-09-30",
+          "date": "2026-06-24",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=142118",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2025-07-01",
-              "to": "2025-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-30",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
@@ -384,19 +376,19 @@
       ]
     },
     {
-      "name": "Paulette Bass",
+      "name": "Nanxi Liu",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-07-14",
+          "date": "2024-07-01",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -407,50 +399,16 @@
           }
         },
         {
-          "date": "2025-11-18",
+          "date": "2026-09-12",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=142118",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146850",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
-              "from": "2025-07-01",
-              "to": "2025-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2025-12-09",
-          "amount": -1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2025-07-01",
-              "to": "2025-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-30",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
+              "from": "2026-07-01",
+              "to": "2026-09-19"
             },
             "meeting_date": null,
             "record_id": "1492037",
@@ -460,78 +418,19 @@
       ]
     },
     {
-      "name": "Steven Belhumeur",
+      "name": "William Resnick",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-12-31",
-          "amount": 1000,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2025-06-30",
-          "amount": 800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=133962",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=133962",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2025-01-01",
-              "to": "2025-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-30",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "David Bohnett",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-07-05",
+          "date": "2024-07-01",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -544,11 +443,11 @@
         {
           "date": "2026-06-08",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
@@ -561,19 +460,19 @@
       ]
     },
     {
-      "name": "Paul Brathwaite",
+      "name": "Abby Sher",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-09-16",
+          "date": "2024-07-02",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -584,716 +483,16 @@
           }
         },
         {
-          "date": "2026-06-29",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Stephanie Bronson",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-07-05",
-          "amount": 100,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2024-08-04",
-          "amount": 100,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2024-08-30",
-          "amount": 100,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2024-12-12",
-          "amount": 1000,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-05-28",
-          "amount": 1000,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145923",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145923",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-05-28",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-05-29",
-          "amount": -500,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145923",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145923",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-05-28",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-29",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Darrell Brown",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-09-04",
-          "amount": 500,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2025-12-31",
-          "amount": 1300,
-          "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2025-07-01",
-              "to": "2025-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-30",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "DeWalt Brown",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-12-15",
-          "amount": 500,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2025-11-10",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2025-07-01",
-              "to": "2025-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2025-11-17",
-          "amount": -500,
-          "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2025-07-01",
-              "to": "2025-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-28",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Raymond Choe",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-07-18",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-30",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Brian Colker",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-08-23",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-16",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Conway Collis",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-11-11",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-21",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Nicholas Crews",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-11-23",
-          "amount": 500,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-05-19",
-          "amount": -500,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145921",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145921",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-05-17",
-              "to": "2026-05-27"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-05-19",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145921",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145921",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-05-17",
-              "to": "2026-05-27"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-06",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Clarence Daniels Jr",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-09-21",
-          "amount": 500,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2025-06-30",
-          "amount": 1300,
-          "source_url": "https://ethics.lacity.org/view/?document_id=133962",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=133962",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2025-01-01",
-              "to": "2025-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-04-06",
-          "amount": 1000,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145919",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145919",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-04-18"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-04-07",
-          "amount": -1000,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145919",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145919",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-04-18"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-13",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Shomari Davis",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-07-18",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-30",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Jennifer Delwood",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-12-24",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-30",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Stephen English",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-11-14",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2025-09-30",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2025-07-01",
-              "to": "2025-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2025-09-30",
+          "date": "2026-02-16",
           "amount": -1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=142118",
+          "source_url": "https://ethics.lacity.org/view/?document_id=145919",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=145919",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
-              "from": "2025-07-01",
-              "to": "2025-12-31"
+              "from": "2026-01-01",
+              "to": "2026-04-18"
             },
             "meeting_date": null,
             "record_id": "1471359",
@@ -1301,16 +500,33 @@
           }
         },
         {
-          "date": "2026-06-23",
+          "date": "2026-02-16",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=145919",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=145919",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
-              "to": "2026-06-30"
+              "to": "2026-04-18"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-07-19",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-07-01",
+              "to": "2026-09-19"
             },
             "meeting_date": null,
             "record_id": "1492037",
@@ -1320,19 +536,19 @@
       ]
     },
     {
-      "name": "Lisa Gilford",
+      "name": "Jewels Washington",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-12-18",
+          "date": "2024-07-02",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -1343,16 +559,16 @@
           }
         },
         {
-          "date": "2025-06-18",
-          "amount": 1000,
-          "source_url": "https://ethics.lacity.org/view/?document_id=133962",
+          "date": "2026-04-30",
+          "amount": -200,
+          "source_url": "https://ethics.lacity.org/view/?document_id=145920",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=133962",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=145920",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
-              "from": "2025-01-01",
-              "to": "2025-06-30"
+              "from": "2026-04-19",
+              "to": "2026-05-16"
             },
             "meeting_date": null,
             "record_id": "1471359",
@@ -1360,16 +576,16 @@
           }
         },
         {
-          "date": "2025-06-18",
-          "amount": -1000,
-          "source_url": "https://ethics.lacity.org/view/?document_id=133962",
+          "date": "2026-04-30",
+          "amount": 200,
+          "source_url": "https://ethics.lacity.org/view/?document_id=145920",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=133962",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=145920",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
-              "from": "2025-01-01",
-              "to": "2025-06-30"
+              "from": "2026-04-19",
+              "to": "2026-05-16"
             },
             "meeting_date": null,
             "record_id": "1471359",
@@ -1377,55 +593,13 @@
           }
         },
         {
-          "date": "2026-06-03",
+          "date": "2026-06-29",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-01-01",
-              "to": "2026-06-30"
-            },
-            "meeting_date": null,
-            "record_id": "1492037",
-            "methodology_version": "1.0"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Wendy Greuel",
-      "type": "individual",
-      "total": 3600,
-      "employer": null,
-      "contributions": [
-        {
-          "date": "2024-07-09",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2024-01-01",
-              "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-06-03",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
@@ -1450,7 +624,7 @@
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -1467,7 +641,7 @@
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -1484,7 +658,7 @@
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -1501,7 +675,7 @@
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=145920",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-04-19",
               "to": "2026-05-16"
@@ -1518,7 +692,7 @@
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=145920",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-04-19",
               "to": "2026-05-16"
@@ -1531,11 +705,11 @@
         {
           "date": "2026-06-22",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
@@ -1548,56 +722,22 @@
       ]
     },
     {
-      "name": "Crystal Hayling",
+      "name": "Ada Horwich",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-08-03",
+          "date": "2024-07-02",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-05-19",
-          "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145921",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145921",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-05-17",
-              "to": "2026-05-27"
-            },
-            "meeting_date": null,
-            "record_id": "1471359",
-            "methodology_version": "1.0"
-          }
-        },
-        {
-          "date": "2026-05-20",
-          "amount": -1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145921",
-          "provenance": {
-            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145921",
-            "retrieved_at": "2026-08-17",
-            "reporting_period": {
-              "from": "2026-05-17",
-              "to": "2026-05-27"
             },
             "meeting_date": null,
             "record_id": "1471359",
@@ -1607,11 +747,11 @@
         {
           "date": "2026-06-15",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
@@ -1624,19 +764,19 @@
       ]
     },
     {
-      "name": "Margaret Henry",
+      "name": "Michael Stubbs",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-11-11",
+          "date": "2024-07-02",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -1647,13 +787,13 @@
           }
         },
         {
-          "date": "2026-06-21",
+          "date": "2026-06-08",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
@@ -1666,19 +806,19 @@
       ]
     },
     {
-      "name": "Teresa Hernandez",
+      "name": "Thomas Unterman",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-10-04",
+          "date": "2024-07-02",
           "amount": 1800,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -1689,13 +829,13 @@
           }
         },
         {
-          "date": "2026-06-30",
+          "date": "2026-06-05",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
@@ -1708,19 +848,313 @@
       ]
     },
     {
-      "name": "Helenann Hirsch",
+      "name": "David Bohnett",
       "type": "individual",
       "total": 3600,
       "employer": null,
       "contributions": [
         {
-          "date": "2024-08-05",
+          "date": "2024-07-05",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-08",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Janet Unterman",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-06",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-07-06",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146850",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-07-01",
+              "to": "2026-09-19"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Catherine Unger",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-08",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-03",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Leonard Unger",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-08",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-03",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "William Wardlaw",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-08",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-24",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Wendy Greuel",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-09",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-03",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Susan Sheu",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-09",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Carolyn Webb de Macias",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-01",
           "amount": 1000,
           "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -1731,16 +1165,16 @@
           }
         },
         {
-          "date": "2025-10-23",
+          "date": "2024-08-14",
           "amount": 800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=142118",
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=142118",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
-              "from": "2025-07-01",
-              "to": "2025-12-31"
+              "from": "2024-01-01",
+              "to": "2024-12-31"
             },
             "meeting_date": null,
             "record_id": "1471359",
@@ -1750,11 +1184,416 @@
         {
           "date": "2026-06-29",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Karl Thurmond",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-03",
+          "amount": 1700,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-02-17",
+          "amount": 100,
+          "source_url": "https://ethics.lacity.org/view/?document_id=145919",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=145919",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-04-18"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-03",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Jonathan Melvin",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-04",
+          "amount": 500,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2024-07-28",
+          "amount": -500,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2024-07-28",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-13",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stephanie Bronson",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-05",
+          "amount": 100,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2024-08-04",
+          "amount": 100,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2024-08-30",
+          "amount": 100,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2024-12-12",
+          "amount": 1000,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-05-28",
+          "amount": 1000,
+          "source_url": "https://ethics.lacity.org/view/?document_id=145923",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=145923",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-05-28",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-05-29",
+          "amount": -500,
+          "source_url": "https://ethics.lacity.org/view/?document_id=145923",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=145923",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-05-28",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-29",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Susana Reyes",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-05",
+          "amount": 500,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2024-07-17",
+          "amount": 1300,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-12",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kathleen McGrath",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-10",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-12",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Jeffrey Abrams",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-10",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-12",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
@@ -1779,7 +1618,7 @@
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
             "source_url": "https://ethics.lacity.org/view/?document_id=127373",
-            "retrieved_at": "2026-08-17",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2024-01-01",
               "to": "2024-12-31"
@@ -1792,11 +1631,53 @@
         {
           "date": "2026-06-30",
           "amount": 1800,
-          "source_url": "https://ethics.lacity.org/view/?document_id=145927",
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
           "provenance": {
             "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
-            "source_url": "https://ethics.lacity.org/view/?document_id=145927",
-            "retrieved_at": "2026-08-17",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2026-01-01",
+              "to": "2026-06-30"
+            },
+            "meeting_date": null,
+            "record_id": "1492037",
+            "methodology_version": "1.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Nancy Sunkin",
+      "type": "individual",
+      "total": 3600,
+      "employer": null,
+      "contributions": [
+        {
+          "date": "2024-07-11",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=127373",
+            "retrieved_at": "2026-10-05",
+            "reporting_period": {
+              "from": "2024-01-01",
+              "to": "2024-12-31"
+            },
+            "meeting_date": null,
+            "record_id": "1471359",
+            "methodology_version": "1.0"
+          }
+        },
+        {
+          "date": "2026-06-12",
+          "amount": 1800,
+          "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+          "provenance": {
+            "source_name": "Los Angeles City Ethics Commission \u2014 City Campaign Contributions (and Misc. Increases to Cash)",
+            "source_url": "https://ethics.lacity.org/view/?document_id=146875",
+            "retrieved_at": "2026-10-05",
             "reporting_period": {
               "from": "2026-01-01",
               "to": "2026-06-30"
