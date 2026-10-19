@@ -45,6 +45,94 @@ jobs:
       - name: Run unit tests
         run: python3 -m unittest discover -v
 
+      # Transcript tests live in scripts/transcripts/tests/, which has no
+      # __init__.py, so `unittest discover` cannot import it ("Start
+      # directory is not importable"). The modules are named explicitly,
+      # using the same invocation as scripts/transcripts/run_pg_tests.sh.
+      # A missing or broken module fails as an import error.
+      - name: Run transcript Python tests (offline; no skips allowed)
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONPATH: scripts
+        run: |
+          set -euo pipefail
+          unset TRANSCRIPT_TEST_PG_DSN
+          python3 -m unittest -v \
+            scripts.transcripts.tests.test_backfill_meeting_dates \
+            scripts.transcripts.tests.test_diagnose_captions \
+            scripts.transcripts.tests.test_discover_corpus \
+            scripts.transcripts.tests.test_eval_metrics \
+            scripts.transcripts.tests.test_eval_replay \
+            scripts.transcripts.tests.test_m3_1_ingest \
+            2>&1 | tee /tmp/transcript-offline.log
+          # Every test in these modules is expected to run. Any skip here is
+          # unexpected and fails the job.
+          if grep -Eq '^OK \(.*skipped=' /tmp/transcript-offline.log; then
+            echo "::error::Unexpected skip in offline transcript tests"
+            exit 1
+          fi
+          grep -Eq '^Ran [1-9][0-9]* tests? ' /tmp/transcript-offline.log
+
+      # The 17 tests in test_replace_transcript_chunks need a disposable
+      # PostgreSQL 16 + pgvector cluster (see run_pg_tests.sh). CI does not
+      # provision one, so they are expected to skip. This step still imports
+      # the module and fails if any of them runs-and-fails or if the number
+      # skipped differs from the number collected. See
+      # scripts/transcripts/README.md, "What CI does and does not cover".
+      - name: Transcript PostgreSQL/pgvector tests (expected skip; no database in CI)
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONPATH: scripts
+        run: |
+          set -euo pipefail
+          unset TRANSCRIPT_TEST_PG_DSN
+          python3 -m unittest -v \
+            scripts.transcripts.tests.test_replace_transcript_chunks \
+            2>&1 | tee /tmp/transcript-pg.log
+          ran=$(sed -nE 's/^Ran ([0-9]+) tests? .*/\1/p' /tmp/transcript-pg.log)
+          skipped=$(sed -nE 's/^OK \(skipped=([0-9]+)\)$/\1/p' /tmp/transcript-pg.log)
+          echo "PostgreSQL/pgvector tests collected: ${ran:-0}, skipped: ${skipped:-0}"
+          if [ -z "$ran" ] || [ "$ran" -eq 0 ] || [ "${skipped:-0}" != "$ran" ]; then
+            echo "::error::Expected every PostgreSQL/pgvector test to be collected and skipped"
+            exit 1
+          fi
+          echo "::notice::${skipped} PostgreSQL/pgvector integration tests skipped (not verified by CI)"
+
+      # Node comes from the runner image; no setup action or npm packages.
+      - name: Run Node tests
+        run: |
+          set -euo pipefail
+          node --version
+          node --test --test-reporter=tap tests/test-transcript-coverage.js \
+            2>&1 | tee /tmp/node-tests.log
+          # Fail if zero tests ran. A file that registers no tests is
+          # reported by Node as one passing "test" named after the file
+          # path, so reject that case explicitly.
+          if grep -Eq '^ok [0-9]+ - .*test-transcript-coverage\.js$' /tmp/node-tests.log; then
+            echo "::error::tests/test-transcript-coverage.js registered no tests"
+            exit 1
+          fi
+          grep -Eq '^# pass [1-9][0-9]*$' /tmp/node-tests.log
+          grep -Eq '^# fail 0$' /tmp/node-tests.log
+
+      - name: Node syntax check (transcript JavaScript)
+        run: |
+          set -euo pipefail
+          for f in \
+            api/_lib/transcript-search-lib.js \
+            api/search-public-comment.js \
+            api/search-transcripts.js \
+            api/transcript-coverage.js \
+            js/transcript-search.js \
+            tests/test-transcript-coverage.js; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Expected file missing: $f"
+              exit 1
+            fi
+            node --check "$f"
+            echo "ok  $f"
+          done
+
       - name: Validate committed data (schema + cross-reference)
         run: python3 scripts/validate_data.py
 

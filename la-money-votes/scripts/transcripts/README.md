@@ -204,3 +204,20 @@ edit, not a code change. See CONTRACT.md's "cart_label" note.
 The `refresh-data.yml` workflow (which pulls funding data from the LA
 Ethics Commission's Socrata API) has none of these constraints; the two
 data sources are deliberately kept on different operational planes.
+
+## What CI does and does not cover
+
+`.github/workflows/ci.yml` runs the offline transcript tests on every PR:
+the Python modules in `tests/` (named explicitly, because this directory
+has no `__init__.py` and `unittest discover` cannot import it), the Node
+test in `../../tests/test-transcript-coverage.js`, and `node --check` on
+the transcript JavaScript files. None of these call a live API.
+
+The 17 tests in `tests/test_replace_transcript_chunks.py` need a
+disposable PostgreSQL 16 + pgvector cluster (`run_pg_tests.sh`). CI does
+not provision one, so they skip, and the CI step fails if any of them
+runs without being skipped. As a result, CI does **not** verify chunk
+replacement against a real database: the replacement RPC, row mutation,
+RLS policies, grants, and PostgreSQL 16 / pgvector behavior. Run
+`run_pg_tests.sh` locally before changing `schema.sql`, the migration, or
+the replacement RPC.

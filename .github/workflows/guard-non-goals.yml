@@ -12,7 +12,8 @@ name: Guard non-goals (transcript-rag branches)
 # schemas, or refresh workflow. This guard enforces that "additive-only"
 # promise at PR time.
 #
-# It ONLY runs on branches named `computer/add-transcript-*` so it doesn't
+# It ONLY runs on branches named `computer/add-transcript-*` or
+# `computer/transcript-rag-*` so it doesn't
 # get in the way of legitimate ETL / builder PRs coming from any other
 # branch. If we want a permanent guard on those files independent of this
 # feature branch, that's a separate conversation (and probably a CODEOWNERS
@@ -32,7 +33,9 @@ jobs:
   guard:
     # Only run on the transcript-rag feature branch(es). Legitimate PRs to
     # the funding/record pipeline from any other branch skip this entirely.
-    if: startsWith(github.head_ref, 'computer/add-transcript-')
+    if: >-
+      startsWith(github.head_ref, 'computer/add-transcript-') ||
+      startsWith(github.head_ref, 'computer/transcript-rag-')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR head
