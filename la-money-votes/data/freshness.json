@@ -1,196 +1,469 @@
 {
+  "schema_version": "2.0",
   "generated_at": "2026-10-05T21:59:15+00:00",
   "officials": {
     "mayor-bass": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 12
+        "reviewed_through": null,
+        "item_count": 12,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd1-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 5
+        "reviewed_through": null,
+        "item_count": 5,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd2-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 5
+        "reviewed_through": null,
+        "item_count": 5,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd3-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 5
+        "reviewed_through": null,
+        "item_count": 5,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd4-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 5
+        "reviewed_through": null,
+        "item_count": 5,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd5-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 4
+        "reviewed_through": null,
+        "item_count": 4,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd6-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 5
+        "reviewed_through": null,
+        "item_count": 5,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd7-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 4
+        "reviewed_through": null,
+        "item_count": 4,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd8-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 6
+        "reviewed_through": null,
+        "item_count": 6,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd9-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 5
+        "reviewed_through": null,
+        "item_count": 5,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd10-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 5
+        "reviewed_through": null,
+        "item_count": 5,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd11-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 7
+        "reviewed_through": null,
+        "item_count": 7,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd12-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 5
+        "reviewed_through": null,
+        "item_count": 5,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd13-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 5
+        "reviewed_through": null,
+        "item_count": 5,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd14-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 10
+        "reviewed_through": null,
+        "item_count": 10,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     },
     "cd15-official": {
       "funding": {
+        "source_type": "unknown",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "donor_count": 30
+        "source_retrieved_at": null,
+        "latest_reporting_period_end": null,
+        "displayed_donor_count": 30,
+        "matched_row_count": null,
+        "donor_count": 30,
+        "warning_codes": [
+          "LATEST_REPORTING_PERIOD_UNKNOWN",
+          "SOURCE_RETRIEVED_AT_UNKNOWN",
+          "SOURCE_TYPE_UNKNOWN"
+        ]
       },
       "record": {
+        "source_type": "manual_curated",
         "status": "ok",
+        "attempted_at": "2026-10-05T21:59:15+00:00",
         "last_success_at": "2026-10-05",
-        "item_count": 5
+        "reviewed_through": null,
+        "item_count": 5,
+        "warning_codes": [
+          "REVIEW_DATE_MISSING"
+        ]
       }
     }
   }
