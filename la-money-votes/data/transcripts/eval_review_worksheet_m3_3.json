@@ -1,0 +1,613 @@
+{
+  "schema_version": "m3.3-review-worksheet-v1",
+  "generated_at": "2026-08-27T04:27:02Z",
+  "queries_file": "eval_queries_m3_3.json",
+  "trace_files": [
+    "eval_results_m2.json"
+  ],
+  "instructions": "Set grade to 0-3 for every candidate you review. 0 means reviewed and irrelevant -- it is a judgment, not a default. Leave grade null to leave a candidate unreviewed; merge skips those and replay keeps reporting them as unjudged. Every graded candidate needs a rationale.",
+  "queries_without_trace": [
+    "m3-date-01",
+    "m3-date-02",
+    "m3-entity-01",
+    "m3-entity-02",
+    "m3-low-signal-01",
+    "m3-long-turn-01"
+  ],
+  "queries": [
+    {
+      "id": "q01",
+      "text": "Which councilmember recused themselves because they provide housing?",
+      "rpc": "search_transcripts",
+      "official_id": "cd9-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "eLYlonECp7o",
+        "chunk_idx": 12,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q02",
+      "text": "Which councilmember recused themselves due to investments in hydrogen?",
+      "rpc": "search_transcripts",
+      "official_id": "cd13-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "UkdZRHDB9qs",
+        "chunk_idx": 36,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q03",
+      "text": "Who welcomed college students visiting from South Korea to City Hall?",
+      "rpc": "search_transcripts",
+      "official_id": "cd12-official",
+      "body": "city_council",
+      "classes": [
+        "paraphrase",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "eLYlonECp7o",
+        "chunk_idx": 33,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q04",
+      "text": "Who acknowledged John Lee's mother during a Korean Liberation event?",
+      "rpc": "search_transcripts",
+      "official_id": "cd10-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 140,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q05",
+      "text": "Who introduced the Dia del Bolero proclamation this year?",
+      "rpc": "search_transcripts",
+      "official_id": "cd4-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "H-OkhDWvgYE",
+        "chunk_idx": 38,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q06",
+      "text": "Which councilmember pushed for stronger audit rights on the Olympics agreement?",
+      "rpc": "search_transcripts",
+      "official_id": "cd1-official",
+      "body": "city_council",
+      "classes": [
+        "paraphrase",
+        "per_official",
+        "near_miss"
+      ],
+      "legacy_target": {
+        "video_id": "oHYuOqkXv-0",
+        "chunk_idx": 567,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q07",
+      "text": "Which councilmember raised concerns about being briefed on Dodger Stadium impacts only two weeks before a decision?",
+      "rpc": "search_transcripts",
+      "official_id": "cd1-official",
+      "body": "city_council",
+      "classes": [
+        "paraphrase",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "oHYuOqkXv-0",
+        "chunk_idx": 600,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q08",
+      "text": "Who moved to continue the smoke shop ICO for one more week citing Government Code 6558?",
+      "rpc": "search_transcripts",
+      "official_id": "cd15-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 10,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q09",
+      "text": "Who added a friendly amendment asking for a public land ULA exemption report on Metro affordable housing projects?",
+      "rpc": "search_transcripts",
+      "official_id": "cd5-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "oPUdYYi9HyE",
+        "chunk_idx": 209,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q10",
+      "text": "Who invited Warner Center Park visitors to the annual Fourth of July fireworks and soccer event?",
+      "rpc": "search_transcripts",
+      "official_id": "cd3-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "oPUdYYi9HyE",
+        "chunk_idx": 716,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 7,
+      "already_judged": 7,
+      "candidates": []
+    },
+    {
+      "id": "q11",
+      "text": "Who promoted a Futbol Fest along Magnolia Street in North Hollywood?",
+      "rpc": "search_transcripts",
+      "official_id": "cd2-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "H-OkhDWvgYE",
+        "chunk_idx": 279,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 6,
+      "already_judged": 6,
+      "candidates": []
+    },
+    {
+      "id": "q12",
+      "text": "Which councilmember questioned whether the city attorney was misrepresenting federal contract standards?",
+      "rpc": "search_transcripts",
+      "official_id": "cd12-official",
+      "body": "city_council",
+      "classes": [
+        "paraphrase",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "H-OkhDWvgYE",
+        "chunk_idx": 354,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q13",
+      "text": "Who eulogized Larry as a Pacific Palisades community pillar after January 7th?",
+      "rpc": "search_transcripts",
+      "official_id": "cd11-official",
+      "body": "city_council",
+      "classes": [
+        "semantic",
+        "per_official",
+        "long_turn"
+      ],
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 291,
+        "sub_chunk_idx": 24
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q14",
+      "text": "Who read a technical amendment adding 'labor unions' to community outreach language in item 6?",
+      "rpc": "search_transcripts",
+      "official_id": "cd13-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "oHYuOqkXv-0",
+        "chunk_idx": 15,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q15",
+      "text": "Who presented a certificate of recognition to a retiring LAFD firefighter and father of three?",
+      "rpc": "search_transcripts",
+      "official_id": "cd14-official",
+      "body": "city_council",
+      "classes": [
+        "paraphrase",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 74,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q16",
+      "text": "Who called the city attorney and Rec and Parks to the table on CEQA exemption requirements?",
+      "rpc": "search_transcripts",
+      "official_id": "cd14-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 358,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q17",
+      "text": "Who thanked their summer intern who was heading to Berkeley Law School?",
+      "rpc": "search_transcripts",
+      "official_id": "cd3-official",
+      "body": "city_council",
+      "classes": [
+        "paraphrase",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "oPUdYYi9HyE",
+        "chunk_idx": 542,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 5,
+      "already_judged": 5,
+      "candidates": []
+    },
+    {
+      "id": "q18",
+      "text": "Who described a peaceful funeral repass that lasted late into the evening?",
+      "rpc": "search_transcripts",
+      "official_id": "cd15-official",
+      "body": "city_council",
+      "classes": [
+        "semantic",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "UkdZRHDB9qs",
+        "chunk_idx": 417,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q19",
+      "text": "Who deferred giving comments because they already spoke during committee?",
+      "rpc": "search_transcripts",
+      "official_id": "cd7-official",
+      "body": "city_council",
+      "classes": [
+        "semantic",
+        "per_official",
+        "low_signal",
+        "near_miss"
+      ],
+      "legacy_target": {
+        "video_id": "oHYuOqkXv-0",
+        "chunk_idx": 536,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "q20",
+      "text": "Who thanked the Annenberg Foundation representative for their philanthropic work?",
+      "rpc": "search_transcripts",
+      "official_id": "cd6-official",
+      "body": "city_council",
+      "classes": [
+        "lexical",
+        "per_official"
+      ],
+      "legacy_target": {
+        "video_id": "oPUdYYi9HyE",
+        "chunk_idx": 146,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "pc-01-drown-proof-la",
+      "text": "public commenter about drowning prevention swim lessons for kids in LA",
+      "rpc": "search_public_comment",
+      "official_id": null,
+      "body": "public_comment",
+      "classes": [
+        "semantic"
+      ],
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 33,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "pc-02-el-corazon-ceqa-appeal",
+      "text": "downtown residents association supporting the CEQA appeal on the El Corazon art park across from City Hall",
+      "rpc": "search_public_comment",
+      "official_id": null,
+      "body": "public_comment",
+      "classes": [
+        "paraphrase"
+      ],
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 128,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "pc-03-boyle-heights-warehouse-fire",
+      "text": "Boyle Heights warehouse fire burning for six days releasing ammonia and hurting air quality",
+      "rpc": "search_public_comment",
+      "official_id": null,
+      "body": "public_comment",
+      "classes": [
+        "lexical"
+      ],
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 141,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "pc-04-vision-zero-crosswalks-arrest",
+      "text": "arrested for painting crosswalks and asking the city to declare a traffic violence emergency",
+      "rpc": "search_public_comment",
+      "official_id": null,
+      "body": "public_comment",
+      "classes": [
+        "paraphrase"
+      ],
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 119,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "pc-05-speed-bumps-hit-and-run",
+      "text": "resident asking for speed bumps after losing her dog to a hit and run near Venice Boulevard",
+      "rpc": "search_public_comment",
+      "official_id": null,
+      "body": "public_comment",
+      "classes": [
+        "semantic"
+      ],
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 160,
+        "sub_chunk_idx": 1
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "pc-06-water-conservation-ordinance-2009",
+      "text": "history of the LA water conservation ordinance passed in 2009 and lessons for the road map today",
+      "rpc": "search_public_comment",
+      "official_id": null,
+      "body": "public_comment",
+      "classes": [
+        "lexical"
+      ],
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 90,
+        "sub_chunk_idx": 1
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "pc-07-fraudulent-bond-debt",
+      "text": "who is on the hook for fraudulent bond debt at the city and LAUSD, taxpayers or insurers",
+      "rpc": "search_public_comment",
+      "official_id": null,
+      "body": "public_comment",
+      "classes": [
+        "paraphrase"
+      ],
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 146,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "pc-08-scientology-l-ron-hubbard-way",
+      "text": "former Scientology members asking public works to rename L Ron Hubbard Way back to a normal street name",
+      "rpc": "search_public_comment",
+      "official_id": null,
+      "body": "public_comment",
+      "classes": [
+        "semantic"
+      ],
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 200,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "pc-09-lapd-rampart-accountability",
+      "text": "army veteran demanding LAPD Rampart accountability after false accusations and rubber bullets at protests",
+      "rpc": "search_public_comment",
+      "official_id": null,
+      "body": "public_comment",
+      "classes": [
+        "paraphrase"
+      ],
+      "legacy_target": {
+        "video_id": "hyhgFSAqBRM",
+        "chunk_idx": 263,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    },
+    {
+      "id": "pc-10-social-housing-renter-protection",
+      "text": "asking the council to protect renters and pursue social housing so the city doesn't rely on stopgaps",
+      "rpc": "search_public_comment",
+      "official_id": null,
+      "body": "public_comment",
+      "classes": [
+        "semantic"
+      ],
+      "legacy_target": {
+        "video_id": "MBjio010l60",
+        "chunk_idx": 207,
+        "sub_chunk_idx": null
+      },
+      "stale_reasons": [],
+      "pool_size": 8,
+      "already_judged": 8,
+      "candidates": []
+    }
+  ]
+}

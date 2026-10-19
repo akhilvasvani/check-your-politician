@@ -1,0 +1,208 @@
+{
+  "version": "m1.4-draft-v1",
+  "notes": "Synthetic gold eval for CYP transcript RAG. Each query is grounded in a real utterance in the ingested corpus (5,003 chunks, 9 meetings). expected_official_id + expected_topic_evidence identify the target chunk. Difficulty tags: 'lexical' = query shares many words with the target; 'paraphrase' = same info, different words; 'semantic' = requires topical inference; 'multi' = target chunk covers multiple items and query hits only one.",
+  "queries": [
+    {
+      "id": "q01",
+      "text": "Which councilmember recused themselves because they provide housing?",
+      "expected_official_id": "cd9-official",
+      "expected_name": "Curren Price",
+      "expected_video_id": "eLYlonECp7o",
+      "expected_chunk_idx": 12,
+      "topic_evidence": "OUT AN ABUNDANCE OF CAUTION I'M RECUSING MYSELF FROM ITEM 9 BECAUSE I PROVIDE HOUSING",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "q02",
+      "text": "Which councilmember recused themselves due to investments in hydrogen?",
+      "expected_official_id": "cd13-official",
+      "expected_name": "Hugo Soto-Martinez",
+      "expected_video_id": "UkdZRHDB9qs",
+      "expected_chunk_idx": 36,
+      "topic_evidence": "RECUSING MYSELF ON THIS ITEM AS I HAVE INVESTED ON HYDROGEN SECTOR",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "q03",
+      "text": "Who welcomed college students visiting from South Korea to City Hall?",
+      "expected_official_id": "cd12-official",
+      "expected_name": "John Lee",
+      "expected_video_id": "eLYlonECp7o",
+      "expected_chunk_idx": 33,
+      "topic_evidence": "WELCOME STUDENTS FROM SOUTH CORE YA ... VISITING US. WELCOME TO CITY HALL",
+      "difficulty": "paraphrase"
+    },
+    {
+      "id": "q04",
+      "text": "Who acknowledged John Lee's mother during a Korean Liberation event?",
+      "expected_official_id": "cd10-official",
+      "expected_name": "Heather Hutt",
+      "expected_video_id": "MBjio010l60",
+      "expected_chunk_idx": 140,
+      "topic_evidence": "I JUST WANT TO ACKNOWLEDGE JOHN LEE'S MOTHER, MS. LEE WHO IS HERE US TODAY FOR KOREAN LIBERATION",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "q05",
+      "text": "Who introduced the Dia del Bolero proclamation this year?",
+      "expected_official_id": "cd4-official",
+      "expected_name": "Nithya Raman",
+      "expected_video_id": "H-OkhDWvgYE",
+      "expected_chunk_idx": 38,
+      "topic_evidence": "OFFICIALLY DECLARE ONCE AGAIN, THE DIA DEL BOLERO IN LOS ANGELES ON AUGUST 1",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "q06",
+      "text": "Which councilmember pushed for stronger audit rights on the Olympics agreement?",
+      "expected_official_id": "cd1-official",
+      "expected_name": "Eunisses Hernandez",
+      "expected_video_id": "oHYuOqkXv-0",
+      "expected_chunk_idx": 567,
+      "topic_evidence": "WE CAN PUT MORE AUDIT IN THERE ... ZERO COSTS OLYMPICS TO US",
+      "difficulty": "paraphrase"
+    },
+    {
+      "id": "q07",
+      "text": "Which councilmember raised concerns about being briefed on Dodger Stadium impacts only two weeks before a decision?",
+      "expected_official_id": "cd1-official",
+      "expected_name": "Eunisses Hernandez",
+      "expected_video_id": "oHYuOqkXv-0",
+      "expected_chunk_idx": 600,
+      "topic_evidence": "I HAVE DODGER STADIUM AND I WAS BRIEFED TWO WEEKS AGO",
+      "difficulty": "paraphrase"
+    },
+    {
+      "id": "q08",
+      "text": "Who moved to continue the smoke shop ICO for one more week citing Government Code 6558?",
+      "expected_official_id": "cd15-official",
+      "expected_name": "Tim McOsker",
+      "expected_video_id": "hyhgFSAqBRM",
+      "expected_chunk_idx": 10,
+      "topic_evidence": "CONTINUE THE SMOKE SHOP ICO FOR ONE WEEK ... 6558 OF THE GOVERNMENT CODE",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "q09",
+      "text": "Who added a friendly amendment asking for a public land ULA exemption report on Metro affordable housing projects?",
+      "expected_official_id": "cd5-official",
+      "expected_name": "Katy Yaroslavsky",
+      "expected_video_id": "oPUdYYi9HyE",
+      "expected_chunk_idx": 209,
+      "topic_evidence": "REPORT BACK ON THE FEASIBILITY OF PUBLIC LAND EXEMPTION ... METRO ... 100 PERCENT AFFORDABLE HOUSING PROJECTS ... ULA",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "q10",
+      "text": "Who invited Warner Center Park visitors to the annual Fourth of July fireworks and soccer event?",
+      "expected_official_id": "cd3-official",
+      "expected_name": "Bob Blumenfield",
+      "expected_video_id": "oPUdYYi9HyE",
+      "expected_chunk_idx": 716,
+      "topic_evidence": "BLUMENFIELD FIREWORKS EXTRAVAGANZA ... WARNER CENTER PARK JULY 4th ... SOCCER GOING",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "q11",
+      "text": "Who promoted a Futbol Fest along Magnolia Street in North Hollywood?",
+      "expected_official_id": "cd2-official",
+      "expected_name": "Adrin Nazarian",
+      "expected_video_id": "H-OkhDWvgYE",
+      "expected_chunk_idx": 279,
+      "topic_evidence": "FUTBOL FEST, START INING NOHO MAGNOLIA STREET",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "q12",
+      "text": "Which councilmember questioned whether the city attorney was misrepresenting federal contract standards?",
+      "expected_official_id": "cd12-official",
+      "expected_name": "John Lee",
+      "expected_video_id": "H-OkhDWvgYE",
+      "expected_chunk_idx": 354,
+      "topic_evidence": "IS THE CITY ATTORNEY'S IS JUST LYING ABOUT THAT ... FEDERAL STANDARDS",
+      "difficulty": "paraphrase"
+    },
+    {
+      "id": "q13",
+      "text": "Who eulogized Larry as a Pacific Palisades community pillar after January 7th?",
+      "expected_official_id": "cd11-official",
+      "expected_name": "Traci Park",
+      "expected_video_id": "MBjio010l60",
+      "expected_chunk_idx": 291,
+      "expected_sub_chunk_idx": 24,
+      "topic_evidence": "LARRY WILL FOREVER BE A PART OF THAT JOURNEY. LARRY WAS A PILLAR OF LEADERSHIP IN THE PALISADES",
+      "difficulty": "semantic",
+      "tests": "sub-chunk retrieval (buried at sub_chunk_idx 24 of 26)"
+    },
+    {
+      "id": "q14",
+      "text": "Who read a technical amendment adding 'labor unions' to community outreach language in item 6?",
+      "expected_official_id": "cd13-official",
+      "expected_name": "Hugo Soto-Martinez",
+      "expected_video_id": "oHYuOqkXv-0",
+      "expected_chunk_idx": 15,
+      "topic_evidence": "TECHNICAL AMENDMENT ... LABOR UNION SXZ BUSINESS ORGANIZATIONS",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "q15",
+      "text": "Who presented a certificate of recognition to a retiring LAFD firefighter and father of three?",
+      "expected_official_id": "cd14-official",
+      "expected_name": "Ysabel Jurado",
+      "expected_video_id": "MBjio010l60",
+      "expected_chunk_idx": 74,
+      "topic_evidence": "LAFD ... CERTIFICATE OF RECOGNITION ... THREE KIDS AND A HUSBAND",
+      "difficulty": "paraphrase"
+    },
+    {
+      "id": "q16",
+      "text": "Who called the city attorney and Rec and Parks to the table on CEQA exemption requirements?",
+      "expected_official_id": "cd14-official",
+      "expected_name": "Ysabel Jurado",
+      "expected_video_id": "hyhgFSAqBRM",
+      "expected_chunk_idx": 358,
+      "topic_evidence": "CITY ATTORNEY AND RECREATION AND PARKS TO THE TABLE ... CEQA EXEMPTIONS",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "q17",
+      "text": "Who thanked their summer intern who was heading to Berkeley Law School?",
+      "expected_official_id": "cd3-official",
+      "expected_name": "Bob Blumenfield",
+      "expected_video_id": "oPUdYYi9HyE",
+      "expected_chunk_idx": 542,
+      "topic_evidence": "INTERNING WITH US ... BERKELEY LAW SCHOOL",
+      "difficulty": "paraphrase"
+    },
+    {
+      "id": "q18",
+      "text": "Who described a peaceful funeral repass that lasted late into the evening?",
+      "expected_official_id": "cd15-official",
+      "expected_name": "Tim McOsker",
+      "expected_video_id": "UkdZRHDB9qs",
+      "expected_chunk_idx": 417,
+      "topic_evidence": "PEACEFUL CELEBRATION OF HIS LIFE ... FUNERAL ... REPASS",
+      "difficulty": "semantic"
+    },
+    {
+      "id": "q19",
+      "text": "Who deferred giving comments because they already spoke during committee?",
+      "expected_official_id": "cd7-official",
+      "expected_name": "Monica Rodriguez",
+      "expected_video_id": "oHYuOqkXv-0",
+      "expected_chunk_idx": 536,
+      "topic_evidence": "ALLOW COLLEAGUES TO GO BEFORE ME, BECAUSE I HAVE THE BENEFIT OF BEING IN COMMITTEE",
+      "difficulty": "semantic"
+    },
+    {
+      "id": "q20",
+      "text": "Who thanked the Annenberg Foundation representative for their philanthropic work?",
+      "expected_official_id": "cd6-official",
+      "expected_name": "Imelda Padilla",
+      "expected_video_id": "oPUdYYi9HyE",
+      "expected_chunk_idx": 146,
+      "topic_evidence": "ANNEBERGH FOUNDATION ... PHILANTHROPIC HEART",
+      "difficulty": "lexical"
+    }
+  ]
+}
