@@ -172,7 +172,15 @@ python3 -m unittest discover
 
 `build_all.py` writes `data/build_report.json` (gitignored — a machine-
 readable summary of what happened) on every run, and `data/freshness.json`
-(committed) reflecting the real per-official status, including any failure.
+(committed, schema v2) reflecting the real per-official status, including
+any failure. Freshness dates are carried forward on failure, a cache-backed
+build is never recorded as a live retrieval unless the cache's provenance
+sidecar proves its retrieval time, and `reviewed_through` is only ever
+human-supplied (set `null` to revoke). A legacy v1 file is migrated
+automatically. A preflight check (previous file, `--official` ids, review
+dates, config) runs before any file is written; full transactional staging
+of all generated files is still future work (Step 4C) — see CONTRACT.md
+"freshness.json v2".
 It never lets a failed or partially-invalid build overwrite a previously
 committed, valid `funding.json` or `record.json` — see CONTRACT.md's
 "Additions" section and `scripts/pipeline/atomic_io.py`.
@@ -253,9 +261,9 @@ redeploys automatically.
   limitation, documented above) — the richer, manually-downloaded-CSV
   version of that field is not overwritten unless a maintainer merges a
   refresh PR that removes it.
-- `data/freshness.json` is generated on every build but is not yet
-  surfaced in the UI — see "suggested next phase" in the PR that introduced
-  the current data pipeline.
+- `data/freshness.json` (v2) is generated on every build but is not yet
+  surfaced in the UI. The per-file `source.retrieved_at` is a build date, not
+  a freshness signal; correcting it is a separate future task.
 - Party affiliation is sourced from secondary public records (Ballotpedia,
   Wikipedia, or an equivalent official bio) because LA municipal races are
   officially nonpartisan and party does not appear on the ballot itself —

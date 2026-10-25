@@ -386,7 +386,7 @@ def build_funding_payload(official, rows, entry, statement_links, today, retriev
     return payload
 
 
-def build_funding_for_official(official, rows_by_official, sources_registry, statement_links, today, retrieved_at):
+def build_funding_for_official(official, rows_by_official, sources_registry, statement_links, today, retrieved_at, out_root=None):
     """Build, validate, and write funding.json for one official.
 
     Returns (status, record_count, problems, source_notes) — never raises;
@@ -420,7 +420,10 @@ def build_funding_for_official(official, rows_by_official, sources_registry, sta
     for name in dupe_names:
         problems.append(f"{official_id}: duplicate donor name '{name}' in output")
 
-    out_path = ROOT / "data" / "officials" / official_id / "funding.json"
+    # out_root: where per-official outputs go (default: the published
+    # data/officials). build_all.py passes a staging directory instead.
+    base = Path(out_root) if out_root is not None else ROOT / "data" / "officials"
+    out_path = base / official_id / "funding.json"
     written = atomic_io.write_if_valid(out_path, payload, problems)
     if not written:
         return "failed", 0, problems, source_notes

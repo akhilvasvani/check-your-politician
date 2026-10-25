@@ -1,30 +1,156 @@
 {
   "$id": "freshness.schema.json",
-  "title": "freshness.json (data/freshness.json)",
-  "description": "Committed, persistent freshness/status metadata: when each official's funding and record data last built successfully, and how many records it had. Unlike build_report.json (gitignored, per-run diagnostics), this file is small, always present, and safe for the frontend to read to show a 'data last updated' note.",
+  "title": "freshness.json (data/freshness.json), schema_version 2.0",
+  "description": "Committed per-official, per-dataset freshness metadata written by scripts/build_all.py. Core rule: `status`, `attempted_at` and `warning_codes` describe the most recent build attempt captured in this snapshot; every other field describes the output that is currently published (data/officials/<id>/funding.json or record.json), and is carried forward unchanged when an attempt fails or is skipped. `attempted_at` is NOT proof of the latest workflow run: a workflow that fails before writing this file leaves the previous snapshot in place. No field here is a completeness claim, and there is deliberately no stale flag; staleness is a display-time decision. This hand-rolled validator subset cannot check date formats, value ranges, cross-field rules or official-ID coverage; scripts/validate_data.py:validate_freshness() enforces those in Python and is the authoritative check.",
   "type": "object",
-  "required": ["generated_at", "officials"],
+  "required": ["schema_version", "generated_at", "officials"],
+  "additionalProperties": false,
   "properties": {
-    "generated_at": { "type": "string" },
+    "schema_version": {
+      "type": "string",
+      "enum": ["2.0"],
+      "description": "Contract version. Readers must reject any other value."
+    },
+    "generated_at": {
+      "type": "string",
+      "description": "UTC timestamp (YYYY-MM-DDTHH:MM:SS+00:00) when this snapshot was assembled. Every other date and timestamp in the file must be on or before it; no clock-skew tolerance is applied."
+    },
     "officials": {
       "type": "object",
+      "description": "Exactly one entry per id in data/officials.json; no unknown ids, no duplicate keys (checked in Python).",
       "additionalProperties": {
         "type": "object",
+        "required": ["funding", "record"],
+        "additionalProperties": false,
         "properties": {
           "funding": {
             "type": "object",
+            "description": "Automated campaign-finance data (LA City Ethics Commission). reviewed_through is prohibited here (rejected by additionalProperties).",
+            "required": [
+              "source_type",
+              "status",
+              "attempted_at",
+              "last_success_at",
+              "source_retrieved_at",
+              "latest_reporting_period_end",
+              "displayed_donor_count",
+              "matched_row_count",
+              "donor_count",
+              "warning_codes"
+            ],
+            "additionalProperties": false,
             "properties": {
-              "status": { "type": "string", "enum": ["ok", "failed", "skipped"] },
-              "last_success_at": { "type": ["string", "null"] },
-              "donor_count": { "type": "integer" }
+              "source_type": {
+                "type": "string",
+                "enum": ["automated_api", "automated_csv", "unknown"],
+                "description": "Where the published funding.json came from: the public Socrata API (--fetch-socrata) or a manually downloaded CSV export (--csv-path). 'unknown' only for entries migrated from schema v1, which never recorded it (always with SOURCE_TYPE_UNKNOWN); failed or skipped builds carry it, and the first successful v2 funding build replaces it with automated_api or automated_csv."
+              },
+              "status": {
+                "type": "string",
+                "enum": ["ok", "failed", "skipped"],
+                "description": "Outcome of the most recent attempt."
+              },
+              "attempted_at": {
+                "type": "string",
+                "description": "UTC timestamp of the most recent dataset-build attempt captured in this snapshot."
+              },
+              "last_success_at": {
+                "type": ["string", "null"],
+                "description": "UTC calendar date (YYYY-MM-DD) of the most recent successful write of the published file. Carried forward on failure or skip. Null only if no success has ever been recorded. A build success, not a source date."
+              },
+              "source_retrieved_at": {
+                "type": ["string", "null"],
+                "description": "UTC timestamp of the live retrieval of the contribution rows used to build the published file. On a live build, the time of that retrieval. On a cache-backed build, the time recorded in the cache's provenance sidecar, only if the sidecar's SHA-256 matches the cache contents; otherwise null with SOURCE_RETRIEVED_AT_UNKNOWN. Never taken from a previous snapshot when new rows were used. Carried forward only on failure or skip. Always null for automated_csv and unknown."
+              },
+              "latest_reporting_period_end": {
+                "type": ["string", "null"],
+                "description": "Latest valid 'Period End Date' (YYYY-MM-DD) across ALL committee-matched source rows, measured before donor aggregation and before the top-30 display cap. It does not prove complete source coverage. Always computed from the rows used by a successful build (live, cache or CSV); carried forward only on failure or skip; null with LATEST_REPORTING_PERIOD_UNKNOWN when no row has a valid date."
+              },
+              "displayed_donor_count": {
+                "type": "integer",
+                "description": "Number of donors in the published funding.json (after aggregation and the top-30 display cap)."
+              },
+              "matched_row_count": {
+                "type": ["integer", "null"],
+                "description": "Number of committee-matched source rows (all contribution types) behind the published file, before donor aggregation and the display cap. Null when never measured (for example, data migrated from schema v1)."
+              },
+              "donor_count": {
+                "type": "integer",
+                "description": "DEPRECATED alias of displayed_donor_count, kept for v1 readers. Must equal displayed_donor_count."
+              },
+              "warning_codes": {
+                "type": "array",
+                "description": "Sorted, unique codes. Allowed for funding: SOURCE_CACHE_FALLBACK (contribution rows came from a cache), SUPPORTING_SOURCE_CACHE_FALLBACK (the statements-filed dataset, used only for filing links, came from a cache), SOURCE_RETRIEVED_AT_UNKNOWN (exactly when source_retrieved_at is null), SOURCE_TYPE_UNKNOWN (exactly when source_type is unknown), SOURCE_UNAVAILABLE, BUILD_FAILED_PREVIOUS_DATA_SERVED, NO_COMMITTEE_CONFIGURED, NO_ROWS_MATCHED, ZERO_ITEMS, LATEST_REPORTING_PERIOD_UNKNOWN, EMPLOYER_OCCUPATION_UNAVAILABLE.",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "SOURCE_CACHE_FALLBACK",
+                    "SUPPORTING_SOURCE_CACHE_FALLBACK",
+                    "SOURCE_RETRIEVED_AT_UNKNOWN",
+                    "SOURCE_TYPE_UNKNOWN",
+                    "SOURCE_UNAVAILABLE",
+                    "BUILD_FAILED_PREVIOUS_DATA_SERVED",
+                    "NO_COMMITTEE_CONFIGURED",
+                    "NO_ROWS_MATCHED",
+                    "ZERO_ITEMS",
+                    "LATEST_REPORTING_PERIOD_UNKNOWN",
+                    "EMPLOYER_OCCUPATION_UNAVAILABLE"
+                  ]
+                }
+              }
             }
           },
           "record": {
             "type": "object",
+            "description": "Manually curated public-action sample. source_retrieved_at and latest_reporting_period_end are prohibited here (rejected by additionalProperties). Note: record.json's own source.retrieved_at is the build date, not a retrieval or review date, and is not a freshness signal.",
+            "required": [
+              "source_type",
+              "status",
+              "attempted_at",
+              "last_success_at",
+              "reviewed_through",
+              "item_count",
+              "warning_codes"
+            ],
+            "additionalProperties": false,
             "properties": {
-              "status": { "type": "string", "enum": ["ok", "failed", "skipped"] },
-              "last_success_at": { "type": ["string", "null"] },
-              "item_count": { "type": "integer" }
+              "source_type": {
+                "type": "string",
+                "enum": ["manual_curated"]
+              },
+              "status": {
+                "type": "string",
+                "enum": ["ok", "failed", "skipped"]
+              },
+              "attempted_at": {
+                "type": "string",
+                "description": "UTC timestamp of the most recent dataset-build attempt captured in this snapshot."
+              },
+              "last_success_at": {
+                "type": ["string", "null"],
+                "description": "UTC calendar date of the most recent successful write of record.json. A build success, not a review date."
+              },
+              "reviewed_through": {
+                "type": ["string", "null"],
+                "description": "Human-supplied date (YYYY-MM-DD) through which a maintainer checked the project's defined official discovery sources for relevant actions. Read only from an optional top-level 'reviewed_through' in the official's data/sources/records/<id>.json fixture; never derived from item dates, generated files, Git history, retrieved_at or build dates. Not a claim of a complete voting record. Fixture field absent: carried forward. Valid date: replaces it on a successful build. Explicit null: revokes it (always). Malformed, impossible or future: the build fails before writing anything."
+              },
+              "item_count": {
+                "type": "integer",
+                "description": "Number of curated items in the published record.json."
+              },
+              "warning_codes": {
+                "type": "array",
+                "description": "Sorted, unique codes. Allowed for records: SOURCE_UNAVAILABLE, BUILD_FAILED_PREVIOUS_DATA_SERVED, ZERO_ITEMS, REVIEW_DATE_MISSING.",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "SOURCE_UNAVAILABLE",
+                    "BUILD_FAILED_PREVIOUS_DATA_SERVED",
+                    "ZERO_ITEMS",
+                    "REVIEW_DATE_MISSING"
+                  ]
+                }
+              }
             }
           }
         }

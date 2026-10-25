@@ -41,6 +41,16 @@ class BuildReport:
         self.results: list[OfficialResult] = []
         self.unavailable_sources: list[str] = []
         self.fatal_errors: list[str] = []
+        # Step 4C publication fields, set by build_all.build_snapshot().
+        self.run_id: str | None = None
+        self.mode: str | None = None  # "build" | "dry_run"
+        self.target_ids: list | None = None
+        self.publication: str | None = None  # verified | dry_run | not_attempted | rolled_back | recovery_required
+        self.journal_state: str | None = None
+        self.replaced_files: dict = {}  # files replaced by this run: target -> prior/new sha256
+        self.snapshot_manifest: dict = {}  # every file of the effective snapshot: target -> sha256
+        self.publication_problems: list[str] = []
+        self.publication_warnings: list[str] = []
 
     def add(self, result: OfficialResult) -> None:
         self.results.append(result)
@@ -67,6 +77,15 @@ class BuildReport:
             "unavailable_sources": self.unavailable_sources,
             "fatal_errors": self.fatal_errors,
             "summary": self.summary_line(),
+            "run_id": self.run_id,
+            "mode": self.mode,
+            "target_ids": self.target_ids,
+            "publication": self.publication,
+            "journal_state": self.journal_state,
+            "replaced_files": self.replaced_files,
+            "snapshot_manifest": self.snapshot_manifest,
+            "publication_problems": self.publication_problems,
+            "publication_warnings": self.publication_warnings,
         }
 
     def summary_line(self) -> str:
@@ -86,6 +105,16 @@ class BuildReport:
     def to_markdown(self) -> str:
         """Rendered for the scheduled-refresh PR body."""
         lines = [f"**{self.summary_line()}**", ""]
+        if self.run_id is not None:
+            lines.append(
+                f"Run `{self.run_id}` ({self.mode}): publication **{self.publication}**, "
+                f"{len(self.replaced_files)} file(s) replaced, {len(self.snapshot_manifest)} file(s) in the snapshot manifest"
+            )
+            for w in self.publication_warnings:
+                lines.append(f"- warning: {w}")
+            for p in self.publication_problems:
+                lines.append(f"- publication: {p}")
+            lines.append("")
         lines.append("| Official | Builder | Status | Records | Problems |")
         lines.append("| --- | --- | --- | --- | --- |")
         for r in self.results:
