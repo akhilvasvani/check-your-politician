@@ -10,6 +10,8 @@ name: la-money-votes CI
 #   3. dry-runs build_all.py against the real registry + curated record
 #      fixtures (funding is skipped here, for lack of a committed CSV --
 #      that's expected and does not fail the job)
+#   4. syntax-checks the frontend JavaScript and runs the freshness Node
+#      tests (Node built-ins only: no npm install, package.json or cache)
 on:
   pull_request:
     paths:
@@ -53,6 +55,34 @@ jobs:
           python3 scripts/build_all.py \
             --report-path /tmp/ci-build-report.json \
             --skip-freshness
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: JavaScript syntax check (node --check each file)
+        run: |
+          node --version
+          status=0
+          for f in js/freshness.js js/app.js tests/js/freshness.test.js; do
+            if node --check "$f"; then
+              echo "ok: $f"
+            else
+              echo "::error file=la-money-votes/$f::node --check failed for $f"
+              status=1
+            fi
+          done
+          exit "$status"
+
+      - name: Freshness JavaScript tests (node --test)
+        run: |
+          if [ ! -f tests/js/freshness.test.js ]; then
+            echo "::error file=la-money-votes/tests/js/freshness.test.js::expected test file is missing"
+            exit 1
+          fi
+          # Expand to explicit test-file paths for consistent discovery across runtimes.
+          node --test tests/js/*.test.js
 
       - name: Upload build report
         if: always()
