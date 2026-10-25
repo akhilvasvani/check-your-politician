@@ -265,8 +265,11 @@ it except CI and the scheduled-refresh PR body.
 honestly how fresh each official's published data is — including a builder
 that failed on the most recent run. It is not gated on the overall build
 succeeding; only a fatal cross-reference or preflight error (below) skips
-writing it. `js/app.js`
-does not currently read this file.
+writing it. The profile page reads it read-only through
+`js/freshness.js` (started by `js/app.js`, never awaited): funding and
+public-action entries are shown separately, an unsupported `schema_version`
+or any fetch/parse failure shows "Update information unavailable." for
+both, and an unusable single entry shows it for that dataset only.
 
 #### freshness.json v2
 

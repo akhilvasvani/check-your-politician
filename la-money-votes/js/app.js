@@ -563,6 +563,17 @@ async function loadOfficialPage() {
   renderRecord(record.items || [], "all");
   renderSourceNote(document.getElementById("record-source"), record.source);
 
+  // Freshness notes are optional/additive (js/freshness.js) and not awaited:
+  // a missing script or a failed data/freshness.json fetch must not break or
+  // delay the rest of the profile page. loadFreshness() never rejects.
+  if (window.CypFreshness && typeof window.CypFreshness.loadFreshness === "function") {
+    try {
+      window.CypFreshness.loadFreshness(id);
+    } catch (err) {
+      console.warn("[app.js] Freshness notes failed to start:", err);
+    }
+  }
+
   if (typeof renderDonorTreemap === "function") {
     renderDonorTreemap("donor-treemap", funding);
   }
