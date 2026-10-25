@@ -32,12 +32,24 @@ permissions:
   contents: write
   pull-requests: write
 
+# One refresh at a time: every run writes the shared automated/data-refresh
+# branch, so a second run waits for the first instead of racing it. The
+# running refresh is never cancelled; GitHub keeps at most one pending run
+# per group, so a newer queued run replaces an older pending one.
+concurrency:
+  group: refresh-data-automated-data-refresh
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: la-money-votes
+    env:
+      # Unique per invocation (and per re-run attempt). The build records it in
+      # its report; verification below accepts only a report for this run.
+      REFRESH_RUN_ID: gh-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -67,10 +79,17 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Remove stale build reports
+        if: steps.schedule.outputs.run_refresh == 'true'
+        shell: bash
+        run: rm -f -- build_report.json build_report.md
+
       - name: Run build_all.py against the live Socrata API
         id: build
         if: steps.schedule.outputs.run_refresh == 'true'
-        continue-on-error: true # let the PR still open below even if some officials failed
+        # Keep going so diagnostics and verification run. This step's outcome
+        # alone never authorizes the PR; only the verification step does.
+        continue-on-error: true
         env:
           # Optional. The m6g2-gc6c / br3a-db9a datasets are public and work
           # without a token; set this repo secret only to raise Socrata's
@@ -79,22 +98,44 @@ jobs:
         run: |
           python3 scripts/build_all.py \
             --fetch-socrata \
+            --run-id "$REFRESH_RUN_ID" \
             --report-path build_report.json \
             --markdown-path build_report.md
+
+      - name: Verify this run's publication
+        id: verify
+        # Runs even after a build failure: a validated partial publication
+        # is still verified and may be proposed. Fails (and fails the job) for
+        # a missing, malformed, stale/foreign, dry-run, rolled-back or
+        # recovery-required report, or for invalid committed data.
+        if: ${{ !cancelled() && steps.schedule.outputs.run_refresh == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_all.py \
+            --report-path build_report.json \
+            --verify-run "$REFRESH_RUN_ID"
+          python3 scripts/validate_data.py
 
       - name: Read build summary
         id: summary
         if: always() && steps.schedule.outputs.run_refresh == 'true'
+        shell: bash
         run: |
           {
             echo 'body<<BUILD_REPORT_EOF'
-            cat build_report.md 2>/dev/null || echo "(no build_report.md produced)"
+            if [ -f build_report.md ]; then
+              cat build_report.md
+            else
+              echo "(no build_report.md produced)"
+            fi
             echo 'BUILD_REPORT_EOF'
           } >> "$GITHUB_OUTPUT"
 
       - name: Open or update data-refresh pull request
         id: pr
-        if: always() && steps.schedule.outputs.run_refresh == 'true'
+        # Only this run's verified publication may be proposed.
+        if: ${{ !cancelled() && steps.schedule.outputs.run_refresh == 'true' && steps.verify.outcome == 'success' }}
         continue-on-error: true # surface the diagnostic below instead of a bare action failure
         uses: peter-evans/create-pull-request@v6
         with:
@@ -123,7 +164,7 @@ jobs:
           exit 1
 
       - name: Fail the job if the build itself failed
-        if: steps.schedule.outputs.run_refresh == 'true' && steps.build.outcome == 'failure'
+        if: ${{ !cancelled() && steps.schedule.outputs.run_refresh == 'true' && steps.build.outcome == 'failure' }}
         run: |
           echo "build_all.py reported failures -- see the opened/updated PR's build report for details."
           exit 1
