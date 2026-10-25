@@ -376,6 +376,10 @@ main {
   color: var(--color-text-muted);
 }
 
+.freshness-note p {
+  margin: 0.15rem 0;
+}
+
 .source-note a,
 .record-table a {
   color: var(--color-accent);
@@ -1074,6 +1078,12 @@ button:focus-visible,
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  /* Keep the last freshness line clear of the floating Ask AI button
+     when the page is scrolled to the end. */
+  #record-freshness {
+    padding-bottom: 3.5rem;
   }
 
   .ask-ai-form-footer {
