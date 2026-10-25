@@ -191,7 +191,15 @@ def load_previous_freshness(path: Path, official_ids):
     path = Path(path)
     if not path.exists():
         return None, [], "missing"
-    data, problems = validate_data.parse_freshness_text(path.read_text())
+    try:
+        raw = path.read_bytes()
+    except OSError as exc:  # permissions, removed after exists(), I/O errors
+        return None, [f"freshness.json: could not be read: {exc}"], "invalid"
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        return None, [f"freshness.json: not valid UTF-8: {exc}"], "invalid"
+    data, problems = validate_data.parse_freshness_text(text)
     if problems:
         return None, problems, "invalid"
     if not isinstance(data, dict):

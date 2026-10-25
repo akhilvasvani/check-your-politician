@@ -267,16 +267,16 @@ class TestValidator(FreshnessTestCase):
         self.write_json(self.fpath, freshness)
         self.assertEqual(validate_data.validate_freshness_file(self.fpath, self.ids), [])
 
-    def test_01b_committed_file_passes_and_is_a_v1_migration(self):
+    def test_01b_committed_file_satisfies_the_contract(self):
+        # Validated by contract only, so it keeps passing after real v2
+        # builds replace the migrated values. Exact migration behavior is
+        # pinned against the fixed V1_SNAPSHOT fixture in TestMigration.
         committed = REPO_ROOT / "data" / "freshness.json"
         officials = reg.load_officials(REPO_ROOT / "data" / "officials.json")
         self.assertEqual(validate_data.validate_freshness_file(committed, reg.official_ids(officials)), [])
-        for datasets in json.loads(committed.read_text())["officials"].values():
-            funding, record = datasets["funding"], datasets["record"]
-            self.assertEqual(funding["source_type"], "unknown")
-            for key in ("source_retrieved_at", "latest_reporting_period_end", "matched_row_count"):
-                self.assertIsNone(funding[key], key)
-            self.assertIsNone(record["reviewed_through"])
+        data = json.loads(committed.read_text())
+        self.assertEqual(data["schema_version"], validate_data.FRESHNESS_SCHEMA_VERSION)
+        self.assertEqual(set(data["officials"]), set(reg.official_ids(officials)))
 
     def test_02_malformed_existing_file_fails(self):
         dup = '{"schema_version": "2.0", "generated_at": "2026-10-18T12:00:00+00:00", "officials": {"official-a": {}, "official-a": {}}}'
@@ -1320,6 +1320,244 @@ class TestCorruptedCacheBuild(FreshnessTestCase):
         with self.assertRaises(ValueError):
             self.build(api=fake_socrata("down", "live"), now=NOW_LATER)
         self.assertEqual(self.generated_bytes(), before)
+
+
+# --- corrective pass: robustness regressions ----------------------------------
+
+
+class TestPreviousFileReadFailures(FreshnessTestCase):
+    """Expected read/decode failures of the previous freshness.json become
+    structured preflight problems; they never escape as exceptions."""
+
+    def assert_structured_problem(self, fragment):
+        data, problems, kind = build_all.load_previous_freshness(self.fpath, self.ids)
+        self.assertIsNone(data)
+        self.assertEqual(kind, "invalid")
+        self.assertEqual(len(problems), 1, problems)
+        self.assertIn(fragment, problems[0])
+
+    def test_invalid_utf8_is_a_problem(self):
+        self.fpath.write_bytes(b'{"schema_version": "2.0", "generated_at": "\xff\xfe"}')
+        self.assert_structured_problem("not valid UTF-8")
+
+    def test_permission_error_is_a_problem(self):
+        self.write_json(self.fpath, self.build(save=False)[1])
+        error = PermissionError(13, "Permission denied", str(self.fpath))
+        with mock.patch.object(type(self.fpath), "read_bytes", side_effect=error), mock.patch.object(
+            type(self.fpath), "read_text", side_effect=error
+        ):
+            self.assert_structured_problem("could not be read")
+
+    def test_disappearing_during_read_is_a_problem(self):
+        # exists() saw the file; it vanished before the read completed.
+        self.write_json(self.fpath, self.build(save=False)[1])
+        error = FileNotFoundError(2, "No such file or directory", str(self.fpath))
+        with mock.patch.object(type(self.fpath), "read_bytes", side_effect=error), mock.patch.object(
+            type(self.fpath), "read_text", side_effect=error
+        ):
+            self.assert_structured_problem("could not be read")
+
+    def test_unreadable_previous_file_stops_the_build_before_any_write(self):
+        self.build(save=True)
+        self.fpath.write_bytes(b"\xff\xfe\x00{")
+        before = self.generated_bytes()
+        result, freshness = self.build(save=False)
+        self.assertEqual(freshness, {})
+        self.assertTrue(any("not valid UTF-8" in n for n in result.fatal_errors), result.fatal_errors)
+        self.assertEqual(self.generated_bytes(), before)
+
+
+class TestWarningListShapes(FreshnessTestCase):
+    """Non-string warning-list members are reported, not raised as TypeError."""
+
+    BAD_LISTS = {
+        "dict": [{"code": "ZERO_ITEMS"}],
+        "nested list": [["ZERO_ITEMS"]],
+        "null": [None],
+        "integer": [7],
+        "mixed": ["ZERO_ITEMS", {"a": 1}, ["x"], None, 3],
+        "mixed hashable": ["ZERO_ITEMS", None, 3],  # sorting str with int/None raises TypeError
+    }
+
+    def test_non_string_members_are_problems_for_both_datasets(self):
+        base = self.build(save=False)[1]
+        for dataset in ("funding", "record"):
+            for label, codes in self.BAD_LISTS.items():
+                with self.subTest(dataset=dataset, shape=label):
+                    f = copy.deepcopy(base)
+                    f["officials"]["official-a"][dataset]["warning_codes"] = copy.deepcopy(codes)
+                    try:
+                        problems = validate_data.validate_freshness(f, self.ids)
+                    except TypeError as exc:  # the regression: must not raise
+                        self.fail(f"validate_freshness raised TypeError: {exc}")
+                    self.assertTrue(any("warning_codes" in p for p in problems), problems)
+
+
+class TestAttemptBounds(FreshnessTestCase):
+    """source_retrieved_at and latest_reporting_period_end describe what the
+    attempt used, so neither may be later than that entry's attempted_at, even
+    when still before the snapshot's generated_at."""
+
+    def api_snapshot(self):
+        _, freshness = self.build(api=fake_socrata(), save=False)
+        return freshness
+
+    def test_retrieval_after_attempt_is_rejected(self):
+        f = self.api_snapshot()  # retrieved 11:59, attempted 12:00, generated 12:00
+        control = copy.deepcopy(f)
+        self.funding(control)["attempted_at"] = "2026-10-18T11:59:00+00:00"  # equal is fine
+        self.assertValid(control)
+        self.funding(f)["attempted_at"] = "2026-10-18T11:30:00+00:00"
+        self.assertInvalid(f, "source_retrieved_at 2026-10-18T11:59:00+00:00 is after attempted_at")
+
+    def test_period_after_attempt_date_is_rejected(self):
+        f = self.api_snapshot()  # generated 2026-10-18
+        entry = self.funding(f)
+        entry.update(
+            attempted_at="2026-10-17T12:00:00+00:00",
+            last_success_at="2026-10-17",
+            source_retrieved_at="2026-10-17T11:59:00+00:00",
+        )
+        control = copy.deepcopy(f)
+        self.funding(control)["latest_reporting_period_end"] = "2026-10-17"  # attempt date itself is fine
+        self.assertValid(control)
+        entry["latest_reporting_period_end"] = "2026-10-18"  # before generated_at's date, after the attempt's
+        self.assertInvalid(f, "latest_reporting_period_end 2026-10-18 is after attempted_at's UTC date 2026-10-17")
+
+
+class TestStandaloneValidatorReadFailures(FreshnessTestCase):
+    """validate_freshness_file() reports expected read/decode failures as
+    problems, consistent with load_previous_freshness(). An initially missing
+    file is still allowed; one that vanishes mid-read is a read failure."""
+
+    def assert_single_problem(self, fragment):
+        problems = validate_data.validate_freshness_file(self.fpath, self.ids)
+        self.assertEqual(len(problems), 1, problems)
+        self.assertIn(fragment, problems[0])
+
+    def test_invalid_utf8(self):
+        self.fpath.write_bytes(b'{"schema_version": "2.0", "generated_at": "\xff\xfe"}')
+        self.assert_single_problem("not valid UTF-8")
+
+    def test_permission_failure(self):
+        self.write_json(self.fpath, self.build(save=False)[1])
+        error = PermissionError(13, "Permission denied", str(self.fpath))
+        with mock.patch.object(type(self.fpath), "read_bytes", side_effect=error), mock.patch.object(
+            type(self.fpath), "read_text", side_effect=error
+        ):
+            self.assert_single_problem("could not be read")
+
+    def test_disappearance_during_read(self):
+        self.write_json(self.fpath, self.build(save=False)[1])
+        error = FileNotFoundError(2, "No such file or directory", str(self.fpath))
+        with mock.patch.object(type(self.fpath), "read_bytes", side_effect=error), mock.patch.object(
+            type(self.fpath), "read_text", side_effect=error
+        ):
+            self.assert_single_problem("could not be read")
+
+    def test_initially_missing_file_is_still_allowed(self):
+        self.assertFalse(self.fpath.exists())
+        self.assertEqual(validate_data.validate_freshness_file(self.fpath, self.ids), [])
+
+    def test_cli_reports_invalid_utf8_without_traceback(self):
+        # Real CLI on a throwaway copy of the real scripts/ and data/ (the
+        # committed files are only read); only freshness.json is corrupted.
+        import os
+        import shutil
+        import subprocess
+        import tempfile
+
+        tmp = Path(tempfile.mkdtemp(prefix="cyp-cli-"))
+        self.addCleanup(shutil.rmtree, tmp, True)
+        app = tmp / "la-money-votes"
+        shutil.copytree(REPO_ROOT / "scripts", app / "scripts", ignore=shutil.ignore_patterns("__pycache__"))
+        shutil.copytree(REPO_ROOT / "data", app / "data", ignore=shutil.ignore_patterns("raw", "__pycache__"))
+        (app / "data" / "freshness.json").write_bytes(b"\xff\xfe{}")
+        env = {**os.environ, "PYTHONDONTWRITEBYTECODE": "1"}
+        result = subprocess.run(
+            [sys.executable, "scripts/validate_data.py"], cwd=app, capture_output=True, text=True, env=env, timeout=120
+        )
+        output = result.stdout + result.stderr
+        self.assertNotEqual(result.returncode, 0, output)
+        self.assertNotIn("Traceback", output)
+        self.assertIn("1 problem(s) found:", result.stdout)
+        self.assertIn("freshness.json: not valid UTF-8", result.stdout)
+
+
+class TestChronologyBounds(FreshnessTestCase):
+    """source_retrieved_at <= attempted_at and latest_reporting_period_end <=
+    attempted_at's UTC date, for ok, failed and skipped entries."""
+
+    RETRIEVED = FETCH_1_TS  # "2026-10-18T11:59:00+00:00", from the live build at NOW_1
+
+    def entries_by_status(self):
+        """Real ok/failed/skipped funding entries (official-a), each carrying a
+        verified source_retrieved_at and a computed period from the ok build."""
+        _, ok = self.build(api=fake_socrata())
+        bad = copy.deepcopy(API_STATEMENTS)
+        bad[0]["stmt_link"] = {"url": "https://evil.example.com/x"}
+        _, failed = self.build(api=fake_socrata(statement_rows=bad), now=NOW_LATER, fetch_time=FETCH_LATER, save=False)
+        for path in (self.cache, self.stmt_cache):
+            path.unlink()
+        _, skipped = self.build(api=fake_socrata("down", "down"), now=NOW_LATER, save=False)
+        out = {"ok": ok, "failed": failed, "skipped": skipped}
+        for status, snapshot in out.items():
+            entry = self.funding(snapshot)
+            self.assertEqual(entry["status"], status)
+            self.assertEqual(entry["source_retrieved_at"], self.RETRIEVED)
+            self.assertIsNotNone(entry["latest_reporting_period_end"])
+        return out
+
+    def test_retrieval_time_against_the_attempt(self):
+        cases = {
+            "equal": ("2026-10-18T11:59:00+00:00", True),
+            "retrieved before attempt": ("2026-10-18T12:00:00+00:00", True),
+            "retrieved after attempt": ("2026-10-18T11:30:00+00:00", False),
+        }
+        for status, snapshot in self.entries_by_status().items():
+            for label, (attempted_at, accepted) in cases.items():
+                with self.subTest(status=status, case=label):
+                    f = copy.deepcopy(snapshot)
+                    entry = self.funding(f)
+                    entry["attempted_at"] = attempted_at
+                    entry["last_success_at"] = "2026-10-18"
+                    generated = validate_data.parse_utc_timestamp(f["generated_at"])
+                    self.assertLessEqual(validate_data.parse_utc_timestamp(attempted_at), generated)
+                    self.assertLess(validate_data.parse_utc_timestamp(self.RETRIEVED), generated)  # retrieval precedes generated_at
+                    if accepted:
+                        self.assertValid(f)
+                    else:
+                        self.assertInvalid(f, f"source_retrieved_at {self.RETRIEVED} is after attempted_at {attempted_at}")
+
+    def test_reporting_period_against_the_attempt_date(self):
+        cases = {
+            "equal": ("2026-09-30", True),
+            "period before attempt date": ("2026-10-01", True),
+            "period after attempt date": ("2026-09-29", False),
+        }
+        for status, snapshot in self.entries_by_status().items():
+            for label, (attempt_day, accepted) in cases.items():
+                with self.subTest(status=status, case=label):
+                    f = copy.deepcopy(snapshot)
+                    entry = self.funding(f)
+                    entry["latest_reporting_period_end"] = "2026-09-30"
+                    entry["attempted_at"] = f"{attempt_day}T12:00:00+00:00"
+                    entry["last_success_at"] = attempt_day
+                    entry["source_retrieved_at"] = f"{attempt_day}T11:00:00+00:00"
+                    if accepted:
+                        self.assertValid(f)
+                    else:
+                        self.assertInvalid(f, f"latest_reporting_period_end 2026-09-30 is after attempted_at's UTC date {attempt_day}")
+
+    def test_subset_build_preserves_an_older_untargeted_entry(self):
+        _, first = self.build(api=fake_socrata())  # both officials attempted at NOW_1
+        older = copy.deepcopy(first["officials"]["official-b"])
+        _, second = self.build(api=fake_socrata(), now=NOW_LATER, fetch_time=FETCH_LATER, target_ids=["official-a"])
+        self.assertValid(second)  # build() also validated it before saving
+        self.assertEqual(second["officials"]["official-b"], older)  # unchanged, incl. attempted_at
+        self.assertLess(older["funding"]["attempted_at"], second["generated_at"])
+        self.assertEqual(self.funding(second)["attempted_at"], second["generated_at"])
+        self.assertEqual(self.funding(second)["source_retrieved_at"], FETCH_LATER_TS)
 
 
 if __name__ == "__main__":

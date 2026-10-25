@@ -141,6 +141,12 @@ def _check_ts(problems, where, field, value, gen_ts, nullable=False):
 def _check_warnings(problems, where, codes, allowed):
     if not isinstance(codes, list):
         return set()
+    non_strings = [c for c in codes if not isinstance(c, str)]
+    if non_strings:
+        # Report and check only the string members; unhashable or mixed-type
+        # members would otherwise raise TypeError below.
+        problems.append(f"{where}.warning_codes: every code must be a string, got {non_strings!r}")
+        codes = [c for c in codes if isinstance(c, str)]
     unknown = [c for c in codes if c not in WARNING_CODES]
     if unknown:
         problems.append(f"{where}.warning_codes: unknown code(s) {unknown}")
@@ -179,8 +185,17 @@ def _check_common(problems, where, entry, gen_ts, gen_date):
 
 def _validate_funding_entry(problems, where, entry, gen_ts, gen_date):
     status, last_success = _check_common(problems, where, entry, gen_ts, gen_date)
-    _check_ts(problems, where, "source_retrieved_at", entry.get("source_retrieved_at"), gen_ts, nullable=True)
-    _check_date(problems, where, "latest_reporting_period_end", entry.get("latest_reporting_period_end"), gen_date)
+    retrieved = _check_ts(problems, where, "source_retrieved_at", entry.get("source_retrieved_at"), gen_ts, nullable=True)
+    period_end = _check_date(problems, where, "latest_reporting_period_end", entry.get("latest_reporting_period_end"), gen_date)
+    # Both describe what this entry's attempt used, so neither can postdate it
+    # (generated_at alone is not enough: subset runs keep older attempted_at).
+    attempted = parse_utc_timestamp(entry.get("attempted_at"))
+    if attempted is not None and retrieved is not None and retrieved > attempted:
+        problems.append(f"{where}: source_retrieved_at {entry['source_retrieved_at']} is after attempted_at {entry['attempted_at']}")
+    if attempted is not None and period_end is not None and period_end > attempted.date().isoformat():
+        problems.append(
+            f"{where}: latest_reporting_period_end {period_end} is after attempted_at's UTC date {attempted.date().isoformat()}"
+        )
     source_type = entry.get("source_type")
     if source_type in ("automated_csv", "unknown") and entry.get("source_retrieved_at") is not None:
         problems.append(f"{where}: source_retrieved_at must be null for {source_type} (not a verified live retrieval)")
@@ -352,7 +367,15 @@ def validate_freshness_file(path: Path, official_ids, require_all: bool = True) 
     path = Path(path)
     if not path.exists():
         return []
-    data, problems = parse_freshness_text(path.read_text())
+    try:
+        raw = path.read_bytes()
+    except OSError as exc:  # permissions, removed after exists(), I/O errors
+        return [f"freshness.json: could not be read: {exc}"]
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        return [f"freshness.json: not valid UTF-8: {exc}"]
+    data, problems = parse_freshness_text(text)
     if problems:
         return problems
     if isinstance(data, dict) and "schema_version" not in data:
