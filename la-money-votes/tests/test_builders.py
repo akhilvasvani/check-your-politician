@@ -262,6 +262,16 @@ class TestBuildAll(BuilderTestCase):
         self.assertEqual(b_record.status, "ok")  # not affected by official-a's failure
 
     def test_missing_csv_marks_funding_skipped_not_failed(self):
+        # Step 4C: a skipped dataset is served from the previously published
+        # file, so seed a real published snapshot first (a first-ever skip
+        # has nothing to serve and is fatal; see tests/test_publication.py).
+        seed_report, _ = build_all.build_snapshot(
+            officials=self.officials,
+            sources_registry=self.sources_registry,
+            csv_path=self.repo.path("data", "raw", "contributions.csv"),
+            statements_csv=self.repo.path("data", "raw", "statements_filed.csv"),
+        )
+        self.assertEqual(seed_report.publication, "verified", seed_report.fatal_errors)
         self.repo.path("data", "raw", "contributions.csv").unlink()
         build_report, freshness = build_all.run(
             officials=self.officials,

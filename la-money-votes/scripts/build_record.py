@@ -104,7 +104,7 @@ def build_record_payload(official_id, entry, retrieved_at):
     }
 
 
-def build_record_for_official(official_id, sources_registry, retrieved_at):
+def build_record_for_official(official_id, sources_registry, retrieved_at, out_root=None):
     """Build, validate, and write record.json for one official.
 
     Returns (status, record_count, problems, source_notes) — never raises;
@@ -138,7 +138,10 @@ def build_record_for_official(official_id, sources_registry, retrieved_at):
     for cf in dupe_files:
         problems.append(f"{official_id}: duplicate council_file '{cf}' in output")
 
-    out_path = ROOT / "data" / "officials" / official_id / "record.json"
+    # out_root: where per-official outputs go (default: the published
+    # data/officials). build_all.py passes a staging directory instead.
+    base = Path(out_root) if out_root is not None else ROOT / "data" / "officials"
+    out_path = base / official_id / "record.json"
     written = atomic_io.write_if_valid(out_path, payload, problems)
     if not written:
         return "failed", 0, problems, source_notes

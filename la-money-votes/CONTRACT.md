@@ -407,19 +407,141 @@ main's v1 file.
 
 An `--official` run rebuilds only the targeted officials and copies every
 other official's entry verbatim, including its `attempted_at`. The new
-snapshot is validated (also under `--skip-freshness`, which never writes it)
-and the build exits 1 if it is invalid. `validate_data.py` accepts a missing
+snapshot is validated (also under `--skip-freshness`, the dry run, which
+publishes nothing) and the build exits 1 if it is invalid. `validate_data.py` accepts a missing
 file, reports a committed v1 file as legacy ("run build_all.py once"), and
 fails on a malformed one.
 
-**Known limitation (Step 4C).** Preflight is not full transactional staging.
-After preflight, each official's `funding.json`/`record.json` is still
-written independently by its builder (each guarded by its own
-`write_if_valid`). A later per-official builder failure, or a final
-freshness-snapshot validation failure, can therefore leave a mixed snapshot:
-some officials' files updated and `freshness.json` not written, or written
-with a `failed` status. Staging all generated files and committing them
-together is Step 4C.
+**Step 4C: staging and effective-snapshot checks.**
+`build_all.stage_snapshot(stage_root, ...)` builds every output into a
+staging directory (`officials/<id>/{funding,record}.json` plus
+`freshness.json`) and changes nothing under `data/officials` or
+`data/freshness.json`. It then validates the *effective snapshot*: the
+files that would be served, meaning this run's staged outputs plus every
+retained published file.
+
+- Builder failures: a `failed`/`skipped` status returned by a builder is a
+  per-official outcome (validated partial success). An unexpected exception
+  raised by either builder is fatal: the run stops and nothing may be
+  published from it.
+- Every staged and retained file gets the same schema and semantic checks
+  as `validate_data.py`, and the staged `freshness.json` (re-read from disk)
+  gets the full v2 check.
+- Claim checks (`validate_data.validate_snapshot_claims`; build-time only,
+  not part of the `validate_data.py` CLI):
+  - freshness covers exactly the ids in `officials.json`;
+  - every official has both files;
+  - a dataset with neither a staged nor a previously published file is
+    `NO_PUBLISHABLE_FILE`, and the run is fatal. A first-ever failure or
+    skip therefore publishes nothing, and no entry claims previous data
+    that does not exist;
+  - for targeted officials, `ok` requires an output staged by this run;
+    `failed`/`skipped` retains the published file and needs a prior
+    `last_success_at`;
+  - untargeted officials (`--official` runs) have nothing staged, and their
+    entry equals the previous entry verbatim (an older `ok` is
+    legitimate);
+  - `displayed_donor_count` and `item_count` match the effective file;
+  - `BUILD_FAILED_PREVIOUS_DATA_SERVED` appears only with a retained file.
+- The standalone `build_funding.py` and `build_record.py` CLIs write the
+  published paths directly and are outside snapshot coordination.
+
+**Step 4C: publication, rollback and recovery.** `build_all.build_snapshot()`
+is the single orchestration path; `main()` and the test suite both use it.
+`build_all.run()` only builds (into a discarded temporary directory when no
+`out_root` is given) and never publishes. `build_snapshot()`:
+
+1. Takes the build lock (below). A run that is denied the lock changes
+   nothing and writes no report; the CLI exits 75.
+2. Preflight: the run id must match `^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$` and
+   be unused, and `data/raw/.publish/` must hold no journal (any state) and
+   no unexpected entry. Otherwise the run is fatal with publication
+   `not_attempted`, before any builder runs. A journal-less run directory
+   is an abandoned staging area and does not block.
+3. Stages into `data/raw/.publish/<run_id>/staging/` and validates the
+   effective snapshot (above). An exception raised while loading sources or
+   staging is recorded as fatal ("build raised before publication: ..."),
+   the staging area is removed, the report is written, and the exception is
+   re-raised (CLI exit 1).
+4. A dry run (`--skip-freshness`), an invalid snapshot or any fatal error
+   ends here: the staging area is removed and nothing under `data/officials`
+   or `data/freshness.json` changes (`dry_run` or `not_attempted`).
+5. Publishes:
+   - computes a sha256 manifest of the whole effective snapshot (every
+     official's `funding.json` and `record.json`, staged or retained, plus
+     the staged `freshness.json`);
+   - copies every published file that will be replaced to `backup/` and
+     verifies each copy before anything is replaced;
+   - writes `journal.json` (`PREPARED`, then `PUBLISHING`), replaces each
+     staged file with `os.replace` (freshness.json last, directory fsync
+     after each), and records `PUBLISHED`;
+   - re-verifies the live tree: every manifest hash, the full snapshot
+     checks and the claim checks on the live files;
+   - records `VERIFIED`, the commit point, then removes backups, staging,
+     the journal and the run directory.
+   Any failure before `VERIFIED` rolls back (freshness.json first) and
+   reports `rolled_back`. If rollback cannot finish, the journal (state
+   `RECOVERY_REQUIRED`) and backups are kept and the report says
+   `recovery_required`. A cleanup failure after `VERIFIED` keeps the
+   publication, adds the `CLEANUP_INCOMPLETE` warning (exit 1) and leaves the
+   `VERIFIED` journal, which blocks the next build until `--recover`.
+6. Writes the report while still holding the lock, then releases it.
+
+Each file replacement is atomic, but a multi-file publication is not: a
+process killed between replacements leaves a mixed tree and a `PUBLISHING`
+journal until `--recover`. Rollback classifies every target by hash, never
+overwrites a file whose content matches neither the recorded prior nor the
+recorded new version, restores by copying (so a backup survives an
+interrupted rollback), and is repeatable.
+
+Journal (`data/raw/.publish/<run_id>/journal.json`, version 1): exact keys
+`journal_version`, `run_id`, `state`, `updated_at`, `entries`, `manifest`,
+`prior_manifest`. `prior_manifest` records the pre-publication hash of
+every target in the complete snapshot, retained files included (the same
+keys as `manifest`; a replaced target's value equals its entry's
+`prior_sha256`, a retained target's equals its `manifest` hash). After
+restoring replaced files, rollback rehashes every retained target; if any
+no longer matches its prior hash, it is left untouched and rollback is not
+declared complete: the run ends `RECOVERY_REQUIRED` and keeps its journal
+and backups. Each entry has exactly `target`, `had_prior`, `prior_sha256`,
+`new_sha256`, `staged` (`staging/<target>`) and `backup` (`backup/<target>`
+or null).
+Targets are `officials/<known id>/(funding|record).json` or
+`freshness.json` (exactly once, last). States: `PREPARED`, `PUBLISHING`,
+`PUBLISHED`, `VERIFIED`, `ROLLING_BACK`, `ROLLED_BACK`,
+`RECOVERY_REQUIRED`. Recovery validates the journal first and refuses (changes
+nothing) if it is malformed, names an unknown official or unsafe path,
+crosses a symlink, or disagrees with its directory or manifest.
+
+`--recover` takes the lock and resolves every run directory: journal-less
+or `VERIFIED`/`ROLLED_BACK` runs are cleaned up; any other state is rolled
+back, then cleaned up. It exits 0 only if every run was cleaned or rolled
+back, and it never starts a build.
+
+Lock: `fcntl.flock` (exclusive, non-blocking) on `data/raw/.build.lock`.
+Holder metadata (run id, pid, mode) is written only after the lock is
+acquired; the kernel releases the lock when the owner exits or is killed,
+and the file is never deleted. POSIX only; local filesystems.
+
+Report fields added to `build_report.json`: `run_id`, `mode` (`build` or
+`dry_run`), `target_ids`, `publication` (`verified`, `dry_run`,
+`not_attempted`, `rolled_back`, `recovery_required`), `journal_state`,
+`replaced_files` (target -> `had_prior`, `prior_sha256`, `new_sha256`),
+`snapshot_manifest` (target -> sha256, only when `verified`),
+`publication_problems` and `publication_warnings`. Exit codes: 0 only when
+the build is ok with no warnings and publication is `verified` (or `dry_run`
+for a dry run); 75 when the lock is held; 1 otherwise. A validated partial
+success is `verified` and exits 1.
+
+`--verify-run RUN_ID` (with `--report-path`) is read-only and never rewrites
+the report. It takes the lock, then requires: the report's `run_id` equals
+RUN_ID, `mode` is `build`, `publication` is `verified`, every replaced file
+matches the manifest, freshness.json was replaced, and the manifest covers
+exactly every official's two files plus freshness.json. Every live file must
+match its manifest hash and pass the snapshot and claim checks, and no
+journal other than this run's `VERIFIED` one may remain. Untargeted entries
+are checked against the live freshness.json, whose bytes the manifest hash
+proves unchanged since publication.
 
 ## New: `data/districts.json`, `data/geo/council_districts.geojson`
 

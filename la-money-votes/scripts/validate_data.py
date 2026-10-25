@@ -386,6 +386,40 @@ def validate_freshness_file(path: Path, official_ids, require_all: bool = True) 
     return validate_freshness(data, official_ids, require_all=require_all)
 
 
+def funding_payload_problems(official_id, funding) -> list:
+    """Schema and semantic checks for one parsed funding.json (shared by
+    validate_all() and the build-time snapshot check)."""
+    problems = [f"{official_id}/funding.json: {p}" for p in validation.validate_schema(funding, schemas.get("funding"))]
+    payload_id = (funding.get("official") or {}).get("id") if isinstance(funding, dict) else None
+    if isinstance(funding, dict) and isinstance(funding.get("official"), dict) and payload_id != official_id:
+        problems.append(f"{official_id}/funding.json: official.id {payload_id!r} does not match the official {official_id!r}")
+    dupes = validation.find_duplicates(funding.get("donors", []), key_fn=lambda d: d["name"])
+    problems.extend(f"{official_id}/funding.json: duplicate donor '{d}'" for d in dupes)
+    for donor in funding.get("donors", []):
+        for c in donor.get("contributions", []):
+            if c.get("source_url") and not validation.is_valid_url(c["source_url"], validation.ALLOWED_SOURCE_DOMAINS):
+                problems.append(f"{official_id}/funding.json: donor '{donor['name']}' has an untrusted source_url")
+    return problems
+
+
+def record_payload_problems(official_id, record) -> list:
+    """Schema and semantic checks for one parsed record.json (shared by
+    validate_all() and the build-time snapshot check)."""
+    problems = [f"{official_id}/record.json: {p}" for p in validation.validate_schema(record, schemas.get("record"))]
+    if isinstance(record, dict) and "official_id" in record and record["official_id"] != official_id:
+        problems.append(
+            f"{official_id}/record.json: official_id {record['official_id']!r} does not match the official {official_id!r}"
+        )
+    dupes = validation.find_duplicates(record.get("items", []), key_fn=lambda i: i.get("council_file"))
+    problems.extend(f"{official_id}/record.json: duplicate council_file '{d}'" for d in dupes)
+    for item in record.get("items", []):
+        if not validation.is_valid_record_id(item.get("council_file", "")):
+            problems.append(f"{official_id}/record.json: invalid council_file '{item.get('council_file')}'")
+        if item.get("source_url") and not validation.is_valid_url(item["source_url"], validation.ALLOWED_SOURCE_DOMAINS):
+            problems.append(f"{official_id}/record.json: item {item.get('council_file')} has an untrusted source_url")
+    return problems
+
+
 def validate_all() -> list:
     problems = []
 
@@ -415,33 +449,161 @@ def validate_all() -> list:
             problems.append(f"{official_id}: missing funding.json")
         else:
             funding = json.loads(funding_path.read_text())
-            problems.extend(
-                f"{official_id}/funding.json: {p}" for p in validation.validate_schema(funding, schemas.get("funding"))
-            )
-            dupes = validation.find_duplicates(funding.get("donors", []), key_fn=lambda d: d["name"])
-            problems.extend(f"{official_id}/funding.json: duplicate donor '{d}'" for d in dupes)
-            for donor in funding.get("donors", []):
-                for c in donor.get("contributions", []):
-                    if c.get("source_url") and not validation.is_valid_url(c["source_url"], validation.ALLOWED_SOURCE_DOMAINS):
-                        problems.append(f"{official_id}/funding.json: donor '{donor['name']}' has an untrusted source_url")
+            problems.extend(funding_payload_problems(official_id, funding))
 
         if not record_path.exists():
             problems.append(f"{official_id}: missing record.json")
         else:
             record = json.loads(record_path.read_text())
-            problems.extend(
-                f"{official_id}/record.json: {p}" for p in validation.validate_schema(record, schemas.get("record"))
-            )
-            dupes = validation.find_duplicates(record.get("items", []), key_fn=lambda i: i.get("council_file"))
-            problems.extend(f"{official_id}/record.json: duplicate council_file '{d}'" for d in dupes)
-            for item in record.get("items", []):
-                if not validation.is_valid_record_id(item.get("council_file", "")):
-                    problems.append(f"{official_id}/record.json: invalid council_file '{item.get('council_file')}'")
-                if item.get("source_url") and not validation.is_valid_url(item["source_url"], validation.ALLOWED_SOURCE_DOMAINS):
-                    problems.append(f"{official_id}/record.json: item {item.get('council_file')} has an untrusted source_url")
+            problems.extend(record_payload_problems(official_id, record))
 
     problems.extend(validate_freshness_file(FRESHNESS_PATH, reg.official_ids(officials)))
 
+    return problems
+
+
+# --- effective-snapshot checks (build-time; Step 4C) --------------------------
+#
+# Used by build_all.py before anything is published. They are deliberately
+# NOT part of validate_all() / this script's CLI, whose behavior is unchanged.
+# effective_paths maps (official_id, dataset) -> the file that would be
+# served after publication: the copy staged by this run, or the currently
+# published copy that is retained.
+
+SNAPSHOT_DATASETS = ("funding", "record")
+
+
+def read_json_file(path: Path):
+    """(data, problem): parse a JSON file without raising for OSError,
+    UnicodeDecodeError or malformed JSON."""
+    try:
+        raw = Path(path).read_bytes()
+    except OSError as exc:
+        return None, f"could not be read: {exc}"
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        return None, f"not valid UTF-8: {exc}"
+    try:
+        return json.loads(text), None
+    except json.JSONDecodeError as exc:
+        return None, f"not valid JSON: {exc}"
+
+
+def load_snapshot_outputs(officials, effective_paths):
+    """(payloads, problems): parse every required per-official output.
+    payloads maps (official_id, dataset) -> parsed JSON for files that parsed."""
+    payloads, problems = {}, []
+    for official in officials:
+        official_id = official.get("id")
+        for dataset in SNAPSHOT_DATASETS:
+            path = effective_paths.get((official_id, dataset))
+            if path is None or not Path(path).is_file():
+                problems.append(f"{official_id}: missing {dataset}.json")
+                continue
+            data, problem = read_json_file(path)
+            if problem:
+                problems.append(f"{official_id}/{dataset}.json: {problem}")
+            elif not isinstance(data, dict):
+                problems.append(f"{official_id}/{dataset}.json: top level must be an object")
+            else:
+                payloads[(official_id, dataset)] = data
+    return payloads, problems
+
+
+def validate_snapshot(officials, effective_paths, freshness) -> list:
+    """The same schema and semantic checks validate_all() applies to the
+    committed tree, applied to the effective snapshot instead: every
+    required output (staged or retained) plus the new freshness payload."""
+    payloads, problems = load_snapshot_outputs(officials, effective_paths)
+    for (official_id, dataset), data in sorted(payloads.items()):
+        if dataset == "funding":
+            problems.extend(funding_payload_problems(official_id, data))
+        else:
+            problems.extend(record_payload_problems(official_id, data))
+    problems.extend(validate_freshness(freshness, reg.official_ids(officials), require_all=True))
+    return problems
+
+
+def validate_snapshot_claims(officials, freshness, previous, staged, effective_paths, target_ids=None) -> list:
+    """Check that freshness describes exactly the effective snapshot.
+
+    staged: set of (official_id, dataset) outputs written by this run.
+    previous: the previous v2 snapshot (after any v1 migration) or None.
+    target_ids: the subset being rebuilt, or None/empty for every official.
+
+    - freshness covers exactly the ids in officials.json;
+    - every official has both outputs; a dataset with neither a staged nor a
+      previously published file is NO_PUBLISHABLE_FILE (first-ever failure
+      is fatal: nothing claims nonexistent previous data is served);
+    - targeted: status ok <=> an output was staged by this run; failed or
+      skipped retains the published file and needs a prior last_success_at;
+    - untargeted (subset runs): nothing staged and the entry is the
+      previous entry verbatim (an older ok status is legitimate);
+    - counts match the effective file (displayed_donor_count / item_count);
+    - BUILD_FAILED_PREVIOUS_DATA_SERVED only with a retained file.
+    """
+    problems = []
+    ids = reg.official_ids(officials)
+    entries = (freshness or {}).get("officials")
+    if not isinstance(entries, dict):
+        return ["freshness: officials must be an object"]
+    if set(entries) != set(ids):
+        problems.append(
+            f"freshness ids do not match officials.json: missing {sorted(set(ids) - set(entries))}, "
+            f"unknown {sorted(set(entries) - set(ids))}"
+        )
+    stray = sorted(f"{o}/{d}" for o, d in staged if o not in set(ids) or d not in SNAPSHOT_DATASETS)
+    if stray:
+        problems.append(f"staged outputs for unknown officials/datasets: {stray}")
+    prev_entries = (previous or {}).get("officials") or {}
+    payloads, _ = load_snapshot_outputs(officials, effective_paths)  # unreadable files are reported by validate_snapshot()
+    for official_id in ids:
+        targeted = not target_ids or official_id in target_ids
+        for dataset in SNAPSHOT_DATASETS:
+            where = f"{official_id}.{dataset}"
+            entry = (entries.get(official_id) or {}).get(dataset)
+            if not isinstance(entry, dict):
+                problems.append(f"{where}: no freshness entry")
+                continue
+            status = entry.get("status")
+            is_staged = (official_id, dataset) in staged
+            path = effective_paths.get((official_id, dataset))
+            exists = path is not None and Path(path).is_file()
+            codes = entry.get("warning_codes") or []
+            if not exists:
+                problems.append(
+                    f"{where}: NO_PUBLISHABLE_FILE: status {status!r} with no output staged by this run "
+                    "and no previously published file"
+                )
+            if targeted:
+                if status == "ok" and not is_staged:
+                    problems.append(f"{where}: status 'ok' requires an output staged by this run")
+                if status in ("failed", "skipped"):
+                    if is_staged:
+                        problems.append(f"{where}: status {status!r} but this run staged an output")
+                    if exists and entry.get("last_success_at") is None:
+                        problems.append(f"{where}: retains a published file but last_success_at is null")
+            else:
+                if is_staged:
+                    problems.append(f"{where}: untargeted official has a staged output")
+                prev = (prev_entries.get(official_id) or {}).get(dataset)
+                if entry != prev:
+                    problems.append(f"{where}: untargeted entry differs from the previous snapshot")
+            if "BUILD_FAILED_PREVIOUS_DATA_SERVED" in codes and (is_staged or not exists):
+                problems.append(f"{where}: BUILD_FAILED_PREVIOUS_DATA_SERVED without a retained published file")
+            data = payloads.get((official_id, dataset))
+            if data is not None:
+                if dataset == "funding":
+                    actual = len(data.get("donors") or [])
+                    if entry.get("displayed_donor_count") != actual:
+                        problems.append(
+                            f"{where}: displayed_donor_count {entry.get('displayed_donor_count')!r} != {actual} donor(s) in the file"
+                        )
+                else:
+                    actual = len(data.get("items") or [])
+                    if entry.get("item_count") != actual:
+                        problems.append(f"{where}: item_count {entry.get('item_count')!r} != {actual} item(s) in the file")
     return problems
 
 

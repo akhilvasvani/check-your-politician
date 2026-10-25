@@ -5,10 +5,11 @@ Deterministic orchestrator: reads the officials registry and runs both
 builders (funding, record) for every configured official.
 
 Guarantees:
-- One official's failure never blocks another's — each (official, builder)
-  pair is wrapped in its own try/except and recorded independently (see
-  scripts/pipeline/report.py). This is why build_funding.py / build_record.py
-  never raise for a per-official problem; they return a status instead.
+- One official's expected failure never blocks another's — builders return
+  a "failed"/"skipped" status for a per-official problem, recorded
+  independently (see scripts/pipeline/report.py). An unexpected exception
+  from either builder is fatal for the whole run (Step 4C): nothing may be
+  published from it.
 - Produces data/build_report.json (gitignored — see .gitignore), a
   machine-readable summary consumed by the CI workflow (to fail the job) and
   by the scheduled refresh workflow (to compose the data-refresh PR body).
@@ -16,25 +17,30 @@ Guarantees:
   validation failed. A dataset that's simply unavailable this run (e.g. the
   live API is down and there's no cache yet) is recorded as a failure too --
   see "known limitations" in README for what "required" means here.
-- Never overwrites previously-committed, valid JSON with partial or
-  malformed output — build_funding.py / build_record.py's own
-  write_if_valid() already enforces that per file; this script does not
-  bypass it.
+- Publishes through one path, build_snapshot() (Step 4C; CONTRACT.md):
+  every output is staged under data/raw/.publish/<run_id>/staging/, the
+  whole effective snapshot is validated, then published with verified
+  backups and a journal (freshness.json last), re-verified on the live tree
+  and rolled back on any failure. run() only builds and never publishes.
 - Writes data/freshness.json (committed, schema_version 2.0) describing, per
   official and dataset, the most recent build attempt and the currently
   published output. See CONTRACT.md "freshness.json v2" for field semantics.
 - Runs preflight() before any builder: the previous freshness.json (a valid
   v1 file is migrated in memory), --official arguments, subset-run base
   snapshot and every human-supplied reviewed_through are checked first, and
-  any problem stops the build before funding.json, record.json or
-  freshness.json is modified. The new snapshot is validated again before it
-  is written; an invalid result is never written.
+  any problem stops the build before anything is staged or published.
+- Holds an exclusive lock (data/raw/.build.lock) from preflight through
+  publication verification and the report write; a second run exits 75.
 
 Usage:
     python3 scripts/build_all.py
     python3 scripts/build_all.py --fetch-socrata
     python3 scripts/build_all.py --official mayor-bass --official cd1-official
     python3 scripts/build_all.py --report-path /tmp/build_report.json
+    python3 scripts/build_all.py --skip-freshness          # dry run: publish nothing
+    python3 scripts/build_all.py --run-id r1 && \\
+        python3 scripts/build_all.py --verify-run r1          # read-only check
+    python3 scripts/build_all.py --recover                 # after an interrupted run
 """
 
 from __future__ import annotations
@@ -43,12 +49,15 @@ import argparse
 import copy
 import importlib
 import json
+import os
 import sys
+import tempfile
+import traceback
 from datetime import date, datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from pipeline import atomic_io, registry as reg, report as report_mod
+from pipeline import atomic_io, publish, registry as reg, report as report_mod
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_REPORT_PATH = ROOT / "data" / "build_report.json"
@@ -385,6 +394,8 @@ def run(
     sources_registry=None,
     freshness_path=None,
     now=None,
+    out_root=None,
+    context=None,
 ):
     """officials / sources_registry may be passed in directly (already-loaded
     lists/dicts) instead of read from disk -- this is what the test suite
@@ -398,7 +409,35 @@ def run(
 
     Order: cross-reference validation and preflight() run first; any problem
     there is fatal and returns before any builder runs, so no generated file
-    is modified."""
+    is modified.
+
+    run() never publishes. out_root: where per-official outputs are written;
+    stage_snapshot() passes its staging directory. Without out_root, outputs
+    go to a temporary directory that is discarded (callers that only need the
+    report and freshness payload). Publication happens only through
+    build_snapshot(). context: an
+    optional dict that receives the loaded officials, the previous snapshot
+    (after any v1 migration) and target_ids, for the snapshot claim checks.
+
+    Builder failures: an expected "failed"/"skipped" status returned by a
+    builder is recorded per official and the run continues (partial success).
+    An unexpected exception raised by either builder is fatal: the run stops
+    and returns no freshness, so nothing may be published."""
+    if out_root is None:
+        with tempfile.TemporaryDirectory(prefix="build-all-discard-") as tmp:
+            return run(
+                target_ids=target_ids,
+                fetch_socrata=fetch_socrata,
+                csv_path=csv_path,
+                statements_csv=statements_csv,
+                use_cache_only=use_cache_only,
+                officials=officials,
+                sources_registry=sources_registry,
+                freshness_path=freshness_path,
+                now=now,
+                out_root=Path(tmp) / "officials",
+                context=context,
+            )
     if officials is None:
         officials = reg.load_officials()
     if sources_registry is None:
@@ -408,6 +447,8 @@ def run(
 
     build_report = report_mod.BuildReport()
     socrata.reset_fetch_outcomes()
+    if context is not None:
+        context.update(officials=officials, previous=None, target_ids=target_ids)
 
     cross_ref_problems = reg.validate_cross_reference(officials, sources_registry)
     if cross_ref_problems:
@@ -424,6 +465,8 @@ def run(
         for p in preflight_problems:
             build_report.add_fatal(f"preflight: {p}")
         return build_report, {}
+    if context is not None:
+        context["previous"] = previous
 
     today = date.today().isoformat()
     committees_by_official = {
@@ -499,9 +542,13 @@ def run(
 
         # funding
         if rows_by_official:
-            status, count, problems, notes = build_funding.build_funding_for_official(
-                official, rows_by_official, sources_registry, statement_links, today, today
-            )
+            try:
+                status, count, problems, notes = build_funding.build_funding_for_official(
+                    official, rows_by_official, sources_registry, statement_links, today, today, out_root=out_root
+                )
+            except Exception as exc:  # noqa: BLE001 - unexpected builder error: abort publication
+                build_report.add_fatal(f"{official_id}: funding builder raised unexpectedly: {type(exc).__name__}: {exc}")
+                return build_report, {}
         else:
             status, count, problems, notes = "skipped", 0, [], []
         build_report.add(report_mod.OfficialResult(official_id, "funding", status, count, problems, notes))
@@ -519,14 +566,15 @@ def run(
             statements=statements_outcome,
         )
 
-        # record — independent try/except so a fixture bug for one official
-        # never stops the rest of the build.
+        # record — an expected failure (bad fixture, validation problem) is a
+        # returned "failed" status; an unexpected exception aborts the run.
         try:
             r_status, r_count, r_problems, r_notes = build_record.build_record_for_official(
-                official_id, sources_registry, today
+                official_id, sources_registry, today, out_root=out_root
             )
-        except Exception as exc:  # noqa: BLE001 - isolate unexpected per-official failures
-            r_status, r_count, r_problems, r_notes = "failed", 0, [f"unexpected error: {exc}"], []
+        except Exception as exc:  # noqa: BLE001 - unexpected builder error: abort publication
+            build_report.add_fatal(f"{official_id}: record builder raised unexpectedly: {type(exc).__name__}: {exc}")
+            return build_report, {}
         fixture_rel = (entry.get("record") or {}).get("fixture")
         build_report.add(report_mod.OfficialResult(official_id, "record", r_status, r_count, r_problems, r_notes))
         freshness["officials"][official_id]["record"] = _record_entry(
@@ -542,6 +590,357 @@ def run(
     return build_report, freshness
 
 
+# --- staging and effective-snapshot validation (Step 4C) ---------------------
+
+STAGED_FRESHNESS_NAME = "freshness.json"
+
+
+class StagedSnapshot:
+    """The outcome of stage_snapshot(): what a publication would serve.
+
+    stage_root: staging directory (officials/<id>/{funding,record}.json and
+    freshness.json); staged: (official_id, dataset) outputs written by this
+    run; effective_paths: (official_id, dataset) -> the file that would be
+    served (staged copy, else the retained published copy); freshness: the
+    staged freshness payload as re-read from disk; problems: every
+    effective-snapshot problem (also recorded as fatal on the report)."""
+
+    def __init__(self, stage_root, staged, effective_paths, freshness, problems, officials=None, previous=None, target_ids=None):
+        self.stage_root = stage_root
+        self.staged = staged
+        self.effective_paths = effective_paths
+        self.freshness = freshness
+        self.problems = problems
+        self.officials = officials
+        self.previous = previous
+        self.target_ids = target_ids
+
+    @property
+    def ok(self) -> bool:
+        return not self.problems
+
+
+def published_output_path(official_id, dataset) -> Path:
+    return ROOT / "data" / "officials" / official_id / f"{dataset}.json"
+
+
+def _staged_outputs(officials_root: Path):
+    """(staged, problems): every file under the staging officials/ tree. Only
+    <id>/funding.json and <id>/record.json are expected; anything else is a
+    problem (claims checks then reject unknown ids/datasets)."""
+    staged, problems = set(), []
+    if not officials_root.exists():
+        return staged, problems
+    for path in sorted(officials_root.rglob("*")):
+        if path.is_dir():
+            continue
+        rel = path.relative_to(officials_root)
+        if len(rel.parts) == 2 and rel.parts[1] in ("funding.json", "record.json") and not path.is_symlink():
+            staged.add((rel.parts[0], rel.parts[1][: -len(".json")]))
+        else:
+            problems.append(f"unexpected file in staging: officials/{rel.as_posix()}")
+    return staged, problems
+
+
+def stage_snapshot(stage_root, **run_kwargs):
+    """Build every output into stage_root and validate the effective snapshot.
+
+    Nothing under data/officials or data/freshness.json is modified here.
+    Returns (build_report, StagedSnapshot or None). None means a fatal error
+    stopped the run before a snapshot could be composed. Effective-snapshot
+    problems are added to build_report as fatal errors, so build_report.ok is
+    False whenever the snapshot must not be published."""
+    stage_root = Path(stage_root)
+    officials_root = stage_root / "officials"
+    officials_root.mkdir(parents=True, exist_ok=True)
+    context = {}
+    build_report, freshness = run(out_root=officials_root, context=context, **run_kwargs)
+    if build_report.fatal_errors or not freshness:
+        return build_report, None
+
+    officials = context["officials"]
+    staged, problems = _staged_outputs(officials_root)
+
+    # Re-read the staged freshness from disk so the check covers the bytes
+    # that would be published, not only the in-memory payload.
+    staged_freshness_path = stage_root / STAGED_FRESHNESS_NAME
+    atomic_io.atomic_write_json(staged_freshness_path, freshness)
+    staged_freshness, read_problem = validate_data.read_json_file(staged_freshness_path)
+    if read_problem:
+        problems.append(f"staged freshness.json: {read_problem}")
+        staged_freshness = {}
+
+    effective_paths = {}
+    for official in officials:
+        official_id = official.get("id")
+        for dataset in validate_data.SNAPSHOT_DATASETS:
+            if (official_id, dataset) in staged:
+                effective_paths[(official_id, dataset)] = officials_root / official_id / f"{dataset}.json"
+            else:
+                effective_paths[(official_id, dataset)] = published_output_path(official_id, dataset)
+
+    problems.extend(validate_data.validate_snapshot(officials, effective_paths, staged_freshness))
+    problems.extend(
+        validate_data.validate_snapshot_claims(
+            officials,
+            staged_freshness,
+            context.get("previous"),
+            staged,
+            effective_paths,
+            context.get("target_ids"),
+        )
+    )
+    for p in problems:
+        build_report.add_fatal(f"snapshot: {p}")
+    return build_report, StagedSnapshot(
+        stage_root,
+        staged,
+        effective_paths,
+        staged_freshness,
+        problems,
+        officials=officials,
+        previous=context.get("previous"),
+        target_ids=context.get("target_ids"),
+    )
+
+
+
+# --- orchestration: the single build/publication path (Step 4C) --------------
+
+
+def data_root() -> Path:
+    return ROOT / "data"
+
+
+def live_output_paths(officials) -> dict:
+    return {
+        (o.get("id"), ds): published_output_path(o.get("id"), ds)
+        for o in officials
+        for ds in validate_data.SNAPSHOT_DATASETS
+    }
+
+
+def verify_live_snapshot(officials, manifest, replaced, previous, target_ids, check_untargeted=True) -> list:
+    """Verify the live published tree: every file of the full snapshot
+    manifest has its recorded hash, every live file passes the effective-
+    snapshot and claim checks, and `replaced` ((official_id, dataset) set) is
+    what this run published."""
+    problems = []
+    droot = data_root()
+    expected = {publish.target_for(o.get("id"), ds) for o in officials for ds in validate_data.SNAPSHOT_DATASETS}
+    expected.add(publish.FRESHNESS_TARGET)
+    if set(manifest) != expected:
+        problems.append(
+            f"snapshot manifest does not cover exactly the required files: missing {sorted(expected - set(manifest))}, "
+            f"unexpected {sorted(set(manifest) - expected)}"
+        )
+    for target, sha in sorted(manifest.items()):
+        path = droot / target
+        try:
+            live = publish.sha256_file(path) if path.is_file() and not path.is_symlink() else None
+        except OSError as exc:
+            live = None
+            problems.append(f"{target}: could not be read: {exc}")
+        if live != sha:
+            problems.append(f"{target}: live sha256 {live} != manifest {sha}")
+    freshness, problem = validate_data.read_json_file(droot / publish.FRESHNESS_TARGET)
+    if problem:
+        return problems + [f"freshness.json: {problem}"]
+    paths = live_output_paths(officials)
+    problems.extend(validate_data.validate_snapshot(officials, paths, freshness))
+    problems.extend(
+        validate_data.validate_snapshot_claims(
+            officials, freshness, previous if check_untargeted else freshness, replaced, paths, target_ids
+        )
+    )
+    return problems
+
+
+def _apply_publication(report, run_id, mode, target_ids, result=None, publication=None):
+    report.run_id = run_id
+    report.mode = mode
+    report.target_ids = sorted(target_ids) if target_ids else None
+    if result is not None:
+        report.publication = result.publication
+        report.journal_state = result.state
+        report.replaced_files = result.replaced
+        report.snapshot_manifest = result.manifest if result.publication == publish.PUB_VERIFIED else {}
+        report.publication_problems = list(result.problems)
+        report.publication_warnings = list(result.warnings)
+    else:
+        report.publication = publication
+
+
+def build_snapshot(*, run_id=None, dry_run=False, on_report=None, **run_kwargs):
+    """The one orchestration path used by the CLI and the test suite.
+
+    Takes the build lock, refuses to run over an unresolved publication,
+    stages and validates the effective snapshot, then (unless dry_run)
+    publishes it through the journal. on_report(report) is called while the
+    lock is still held, so only the lock owner ever writes a report.
+
+    Returns (report, freshness). Raises publish.LockBusy if another run holds
+    the lock (nothing is changed). An unexpected exception while loading
+    sources or staging is recorded as fatal, reported via on_report, and
+    re-raised after the staging area is removed."""
+    run_id = run_id or publish.new_run_id()
+    mode = "dry_run" if dry_run else "build"
+    target_ids = run_kwargs.get("target_ids")
+    droot = data_root()
+    lock = publish.RunLock(droot, run_id, mode).acquire()
+    try:
+        pre = list(publish.validate_run_id(run_id))
+        rdir = None
+        if not pre:
+            rdir = publish.run_dir(droot, run_id)
+            pre.extend(publish.unresolved_runs(droot))
+            if os.path.lexists(rdir):
+                pre.append(f"a run directory for {run_id!r} already exists; run ids must be unique")
+        if pre:
+            report = report_mod.BuildReport()
+            for p in pre:
+                report.add_fatal(f"publication preflight: {p}")
+            _apply_publication(report, run_id, mode, target_ids, publication=publish.PUB_NOT_ATTEMPTED)
+            if on_report:
+                on_report(report)
+            return report, {}
+
+        try:
+            report, snap = stage_snapshot(rdir / "staging", **run_kwargs)
+        except Exception as exc:  # noqa: BLE001 - owned diagnostics, then preserve the failure
+            report = report_mod.BuildReport()
+            report.add_fatal(f"build raised before publication: {type(exc).__name__}: {exc}")
+            _apply_publication(report, run_id, mode, target_ids, publication=publish.PUB_NOT_ATTEMPTED)
+            for p in publish.cleanup_run(rdir):
+                report.publication_problems.append(f"cleanup: {p}")
+            if on_report:
+                on_report(report)
+            raise
+        freshness = snap.freshness if snap is not None else {}
+
+        if dry_run or snap is None or not snap.ok or report.fatal_errors:
+            publication = publish.PUB_DRY_RUN if dry_run else publish.PUB_NOT_ATTEMPTED
+            _apply_publication(report, run_id, mode, target_ids, publication=publication)
+            for p in publish.cleanup_run(rdir):
+                report.publication_problems.append(f"cleanup: {p}")
+        else:
+            result = publish.publish_snapshot(
+                snap,
+                droot,
+                rdir,
+                run_id,
+                verify=lambda manifest: verify_live_snapshot(
+                    snap.officials, manifest, snap.staged, snap.previous, snap.target_ids
+                ),
+            )
+            _apply_publication(report, run_id, mode, target_ids, result=result)
+            if result.publication != publish.PUB_VERIFIED:
+                report.add_fatal(f"publication {result.publication}: nothing from this run is published")
+        if on_report:
+            on_report(report)
+        return report, freshness
+    finally:
+        lock.release()
+
+
+def _print_report(report) -> None:
+    print(report.summary_line())
+    for result in report.results:
+        marker = {"ok": "ok", "failed": "FAILED", "skipped": "skipped"}[result.status]
+        print(f"  {result.official_id:20s} {result.builder:8s} {marker:8s} {result.record_count} record(s)")
+        for p in result.problems:
+            print(f"      - {p}")
+    for note in report.unavailable_sources:
+        print(f"  unavailable source: {note}")
+    for err in report.fatal_errors:
+        print(f"  fatal: {err}")
+    for p in report.publication_problems:
+        print(f"  publication: {p}")
+    for w in report.publication_warnings:
+        print(f"  warning: {w}")
+    print(
+        f"run {report.run_id} ({report.mode}): publication {report.publication}; "
+        f"{len(report.replaced_files)} file(s) replaced, {len(report.snapshot_manifest)} in the snapshot manifest"
+    )
+
+
+def build_exit_code(report) -> int:
+    if not report.ok or report.publication_warnings:
+        return 1
+    return 0 if report.publication in (publish.PUB_VERIFIED, publish.PUB_DRY_RUN) else 1
+
+
+def verify_run(run_id: str, report_path: Path) -> list:
+    """Read-only verification of a finished run (used by --verify-run). The
+    report is never rewritten. Holds the lock so no publication can be in
+    flight while the tree is checked."""
+    problems = []
+    droot = data_root()
+    with publish.RunLock(droot, "verify", "verify"):
+        problems.extend(publish.validate_run_id(run_id))
+        data, problem = validate_data.read_json_file(Path(report_path))
+        if problem:
+            return problems + [f"report {report_path}: {problem}"]
+        if not isinstance(data, dict):
+            return problems + [f"report {report_path}: top level must be an object"]
+        if data.get("run_id") != run_id:
+            problems.append(f"report run_id {data.get('run_id')!r} does not match {run_id!r} (stale or foreign report)")
+        if data.get("mode") != "build":
+            problems.append(f"report mode {data.get('mode')!r} is not a publishing build")
+        if data.get("publication") != publish.PUB_VERIFIED:
+            problems.append(f"report publication is {data.get('publication')!r}, not 'verified'")
+        manifest = data.get("snapshot_manifest")
+        replaced = data.get("replaced_files")
+        if not isinstance(manifest, dict) or not manifest:
+            return problems + ["report has no snapshot_manifest"]
+        if not isinstance(replaced, dict):
+            return problems + ["report has no replaced_files"]
+        for target, info in replaced.items():
+            if not isinstance(info, dict) or manifest.get(target) != info.get("new_sha256"):
+                problems.append(f"replaced file {target!r} does not match the snapshot manifest")
+        if publish.FRESHNESS_TARGET not in replaced:
+            problems.append("freshness.json was not replaced by this run")
+        for p in publish.unresolved_runs(droot):
+            if f"run {run_id!r} (state 'VERIFIED')" not in p:  # a VERIFIED, cleanup-incomplete run is still verified
+                problems.append(p)
+        officials = reg.load_officials()
+        staged = set()
+        for target in replaced:
+            parts = target.split("/")
+            if len(parts) == 3 and parts[0] == "officials" and parts[2] in ("funding.json", "record.json"):
+                staged.add((parts[1], parts[2][: -len(".json")]))
+        target_ids = set(data["target_ids"]) if data.get("target_ids") else None
+        # Untargeted entries were proven equal to the previous snapshot when
+        # the run published; freshness.json's manifest hash proves they are
+        # unchanged since, so they are checked against the live file here.
+        problems.extend(verify_live_snapshot(officials, manifest, staged, None, target_ids, check_untargeted=False))
+    return problems
+
+
+def recover() -> int:
+    """--recover: resolve every interrupted or unverified publication, then
+    exit. Never starts a build."""
+    droot = data_root()
+    with publish.RunLock(droot, "recover", "recover"):
+        try:
+            official_ids = reg.official_ids(reg.load_officials())
+        except Exception as exc:  # noqa: BLE001 - cannot validate journals without it
+            print(f"recover: cannot load officials.json, nothing changed: {exc}", file=sys.stderr)
+            return 1
+        results = publish.recover_all(droot, official_ids)
+    if not results:
+        print("recover: nothing to recover")
+        return 0
+    code = 0
+    for name, outcome, problems in results:
+        print(f"recover: {name}: {outcome}")
+        for p in problems:
+            print(f"    - {p}")
+        if outcome not in ("cleaned", "rolled_back"):
+            code = 1
+    return code
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--official", action="append", help="only build this official id; may be repeated")
@@ -555,55 +954,82 @@ def main() -> None:
         default=None,
         help="also write the human-readable Markdown build report here (used by the scheduled refresh workflow to compose the PR body)",
     )
-    parser.add_argument("--skip-freshness", action="store_true", help="don't write data/freshness.json (used by tests)")
+    parser.add_argument(
+        "--skip-freshness",
+        action="store_true",
+        help="dry run: stage and validate everything, publish nothing (no data/officials or freshness.json change)",
+    )
+    parser.add_argument("--run-id", default=None, help="unique id for this run's staging/journal and report (default: generated)")
+    parser.add_argument(
+        "--verify-run",
+        metavar="RUN_ID",
+        default=None,
+        help="read-only: verify that the report at --report-path is RUN_ID's verified publication and matches the live tree",
+    )
+    parser.add_argument(
+        "--recover", action="store_true", help="resolve an interrupted publication (rollback or cleanup), then exit"
+    )
     args = parser.parse_args()
+
+    if args.recover:
+        try:
+            raise SystemExit(recover())
+        except publish.LockBusy as exc:
+            print(f"build_all: {exc}; recovery not started, nothing changed", file=sys.stderr)
+            raise SystemExit(publish.LOCK_BUSY_EXIT)
+        except publish.UnsafeLayout as exc:
+            print(f"build_all: unsafe layout, recovery not started, nothing changed: {exc}", file=sys.stderr)
+            raise SystemExit(1)
+
+    if args.verify_run is not None:
+        try:
+            problems = verify_run(args.verify_run, Path(args.report_path))
+        except publish.LockBusy as exc:
+            print(f"build_all: {exc}; verification not started", file=sys.stderr)
+            raise SystemExit(publish.LOCK_BUSY_EXIT)
+        except publish.UnsafeLayout as exc:
+            print(f"build_all: unsafe layout, verification not started: {exc}", file=sys.stderr)
+            raise SystemExit(1)
+        if problems:
+            print(f"verify-run {args.verify_run}: FAILED")
+            for p in problems:
+                print(f"  - {p}")
+            raise SystemExit(1)
+        print(f"verify-run {args.verify_run}: verified publication matches the live snapshot")
+        return
+
+    def write_reports(report):
+        report.write(Path(args.report_path))
+        if args.markdown_path:
+            Path(args.markdown_path).write_text(report.to_markdown() + "\n")
+        _print_report(report)
 
     target_ids = set(args.official) if args.official else None
     officials = reg.load_officials()
-    build_report, freshness = run(
-        target_ids=target_ids,
-        fetch_socrata=args.fetch_socrata,
-        csv_path=args.csv_path,
-        statements_csv=args.statements_csv,
-        use_cache_only=args.use_cache_only,
-        officials=officials,
-    )
-
-    build_report.write(Path(args.report_path))
-    if args.markdown_path:
-        Path(args.markdown_path).write_text(build_report.to_markdown() + "\n")
-    print(build_report.summary_line())
-    for result in build_report.results:
-        marker = {"ok": "ok", "failed": "FAILED", "skipped": "skipped"}[result.status]
-        print(f"  {result.official_id:20s} {result.builder:8s} {marker:8s} {result.record_count} record(s)")
-        for p in result.problems:
-            print(f"      - {p}")
-    for note in build_report.unavailable_sources:
-        print(f"  unavailable source: {note}")
-    for err in build_report.fatal_errors:
-        print(f"  fatal: {err}")
-
-    # freshness.json always reflects reality, including per-official
-    # failures. A fatal error (cross-reference or preflight) means no builder
-    # ran and nothing was written. Otherwise the new snapshot must pass the
-    # full contract check before it is written; that check also runs under
-    # --skip-freshness, which only skips the write. Limitation (Step 4C): a
-    # snapshot that fails this final check is not written, but builders have
-    # already written funding.json / record.json by then.
-    freshness_problems = []
-    if freshness and not build_report.fatal_errors:
-        freshness_problems = validate_data.validate_freshness(freshness, reg.official_ids(officials), require_all=True)
-        for p in freshness_problems:
-            print(f"  freshness: {p}")
-        if not freshness_problems and not args.skip_freshness:
-            atomic_io.atomic_write_json(FRESHNESS_PATH, freshness)
-            print(f"wrote {FRESHNESS_PATH.relative_to(ROOT)}")
-        elif freshness_problems:
-            print(f"did not write {FRESHNESS_PATH.relative_to(ROOT)} (contract problems above)")
-
-    if not build_report.ok or freshness_problems:
+    try:
+        report, _ = build_snapshot(
+            run_id=args.run_id,
+            dry_run=args.skip_freshness,
+            on_report=write_reports,
+            target_ids=target_ids,
+            fetch_socrata=args.fetch_socrata,
+            csv_path=args.csv_path,
+            statements_csv=args.statements_csv,
+            use_cache_only=args.use_cache_only,
+            officials=officials,
+        )
+    except publish.LockBusy as exc:
+        print(f"build_all: {exc}; this run did not start and changed nothing", file=sys.stderr)
+        raise SystemExit(publish.LOCK_BUSY_EXIT)
+    except publish.UnsafeLayout as exc:
+        print(f"build_all: unsafe layout, this run did not start and changed nothing: {exc}", file=sys.stderr)
         raise SystemExit(1)
-
+    except Exception:  # noqa: BLE001 - already reported by build_snapshot(); keep the nonzero exit
+        traceback.print_exc()
+        raise SystemExit(1)
+    code = build_exit_code(report)
+    if code:
+        raise SystemExit(code)
 
 if __name__ == "__main__":
     main()

@@ -179,23 +179,27 @@ class FreshnessTestCase(BuilderTestCase):
     # -- building --
 
     def build(self, *, api=None, use_cache_only=False, fetch_time=FETCH_1, now=NOW_1, target_ids=None, save=True):
-        """Run the real orchestrator. api=None -> CSV build from the fixture
+        """Run the real orchestrator through the same path as main():
+        build_all.build_snapshot(). api=None -> CSV build from the fixture
         CSVs; otherwise an API build with socrata._request replaced by api.
-        save=True mirrors main(): a valid snapshot is written to the temp
-        freshness.json so the next build reads it as its previous snapshot."""
+        save=True publishes a valid snapshot (outputs and freshness.json, so
+        the next build reads it as its previous snapshot); save=False is a
+        dry run that stages and validates but publishes nothing."""
         kwargs = dict(target_ids=target_ids, officials=self.officials, sources_registry=self.sources_registry, now=now)
         if api is None:
             kwargs.update(
                 csv_path=self.repo.path("data", "raw", "contributions.csv"),
                 statements_csv=self.repo.path("data", "raw", "statements_filed.csv"),
             )
-            report, freshness = build_all.run(**kwargs)
+            report, freshness = build_all.build_snapshot(dry_run=not save, **kwargs)
         else:
             with mock.patch.object(socrata, "_request", api), mock.patch.object(socrata, "_utcnow", lambda: fetch_time):
-                report, freshness = build_all.run(fetch_socrata=True, use_cache_only=use_cache_only, **kwargs)
+                report, freshness = build_all.build_snapshot(
+                    dry_run=not save, fetch_socrata=True, use_cache_only=use_cache_only, **kwargs
+                )
         if save and freshness and not report.fatal_errors:
             self.assertValid(freshness)
-            atomic_io.atomic_write_json(self.fpath, freshness)
+            self.assertEqual(report.publication, "verified", report.publication_problems)
         return report, freshness
 
     def funding(self, freshness, official_id="official-a"):
@@ -778,7 +782,22 @@ class TestMigration(FreshnessTestCase):
         self.assertIn("ZERO_ITEMS", b["record"]["warning_codes"])
 
     def test_C_valid_v1_on_disk_is_migrated_by_the_build_and_written_as_v2(self):
-        self.write_json(self.fpath, V1_SNAPSHOT)
+        # Step 4C: a retained file must exist for every carried-forward entry
+        # and its count must match, so first publish real outputs, then put
+        # a local v1 snapshot on disk that describes exactly those files.
+        # (The shared V1_SNAPSHOT fixture is left unchanged.)
+        code, _ = run_main(self)
+        self.assertEqual(code, 0)
+        counts = {
+            oid: len(json.loads(self.repo.path("data", "officials", oid, "funding.json").read_text())["donors"])
+            for oid in ("official-a", "official-b")
+        }
+        v1 = copy.deepcopy(V1_SNAPSHOT)
+        v1["officials"]["official-a"]["funding"]["donor_count"] = counts["official-a"]
+        v1["officials"]["official-b"]["funding"] = {
+            "status": "ok", "last_success_at": "2026-10-05", "donor_count": counts["official-b"]
+        }
+        self.write_json(self.fpath, v1)
         self.repo.path("data", "raw", "contributions.csv").unlink()  # funding skipped -> carried from v1
         code, _ = run_main(self)
         self.assertEqual(code, 0)
