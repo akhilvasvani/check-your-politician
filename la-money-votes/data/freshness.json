@@ -1,29 +1,27 @@
 {
   "schema_version": "2.0",
-  "generated_at": "2026-10-05T21:59:15+00:00",
+  "generated_at": "2026-11-02T23:07:36+00:00",
   "officials": {
     "mayor-bass": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2026-10-28",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 8272,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 12,
         "warning_codes": [
@@ -33,26 +31,24 @@
     },
     "cd1-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2026-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 1301,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 5,
         "warning_codes": [
@@ -62,26 +58,24 @@
     },
     "cd2-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2026-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 2311,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 5,
         "warning_codes": [
@@ -91,26 +85,24 @@
     },
     "cd3-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2023-02-15",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 632,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 5,
         "warning_codes": [
@@ -120,26 +112,24 @@
     },
     "cd4-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2025-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 1225,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 5,
         "warning_codes": [
@@ -149,26 +139,24 @@
     },
     "cd5-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2026-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 1002,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 4,
         "warning_codes": [
@@ -178,26 +166,24 @@
     },
     "cd6-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2025-11-19",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 422,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 5,
         "warning_codes": [
@@ -207,26 +193,24 @@
     },
     "cd7-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2026-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 695,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 4,
         "warning_codes": [
@@ -236,26 +220,24 @@
     },
     "cd8-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2024-12-31",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 412,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 6,
         "warning_codes": [
@@ -265,26 +247,24 @@
     },
     "cd9-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2025-01-31",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 1183,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 5,
         "warning_codes": [
@@ -294,26 +274,24 @@
     },
     "cd10-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2026-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 1077,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 5,
         "warning_codes": [
@@ -323,26 +301,24 @@
     },
     "cd11-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2026-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 2779,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 7,
         "warning_codes": [
@@ -352,26 +328,24 @@
     },
     "cd12-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2026-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 886,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 5,
         "warning_codes": [
@@ -381,26 +355,24 @@
     },
     "cd13-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2026-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 652,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 5,
         "warning_codes": [
@@ -410,26 +382,24 @@
     },
     "cd14-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2025-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 2973,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 10,
         "warning_codes": [
@@ -439,26 +409,24 @@
     },
     "cd15-official": {
       "funding": {
-        "source_type": "unknown",
+        "source_type": "automated_api",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
-        "source_retrieved_at": null,
-        "latest_reporting_period_end": null,
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
+        "source_retrieved_at": "2026-11-02T23:07:31+00:00",
+        "latest_reporting_period_end": "2026-06-30",
         "displayed_donor_count": 30,
-        "matched_row_count": null,
+        "matched_row_count": 472,
         "donor_count": 30,
         "warning_codes": [
-          "LATEST_REPORTING_PERIOD_UNKNOWN",
-          "SOURCE_RETRIEVED_AT_UNKNOWN",
-          "SOURCE_TYPE_UNKNOWN"
+          "EMPLOYER_OCCUPATION_UNAVAILABLE"
         ]
       },
       "record": {
         "source_type": "manual_curated",
         "status": "ok",
-        "attempted_at": "2026-10-05T21:59:15+00:00",
-        "last_success_at": "2026-10-05",
+        "attempted_at": "2026-11-02T23:07:36+00:00",
+        "last_success_at": "2026-11-02",
         "reviewed_through": null,
         "item_count": 5,
         "warning_codes": [
