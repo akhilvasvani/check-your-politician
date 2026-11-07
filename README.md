@@ -11,7 +11,7 @@ The project makes public records easier to inspect. It does not assert that a co
 
 ## Status
 
-**V1 is complete.** The application covers the sitting Mayor of Los Angeles and all 15 City Council districts: **16 profiles total**.
+The published finance/action application covers the Mayor of Los Angeles and all 15 City Council districts, with **16 profiles total**. The integrated transcript work is undergoing release verification. M3 relevance, independent speaker attribution, source coverage, database and deployment gates remain required before a public release claim. See the [release operations runbook](la-money-votes/release/OPERATIONS.md).
 
 V1 includes:
 
@@ -21,7 +21,9 @@ V1 includes:
 - Expandable contribution detail with filing links where a verified source match is available
 - Filterable legislative-record tables, split into current and previous terms
 - Council-file source links where an item-level primary record is available
-- A Vercel deployment (static site + one serverless function for Ask-AI)
+- Vercel hosting for static profiles and serverless APIs
+- Separate funding/public-action freshness disclosures
+- Transcript evidence retrieval and coverage reporting on the integration branch
 
 A later addition (still V1, same data contract) adds two more views on top of the same underlying data:
 
@@ -34,7 +36,7 @@ Each profile also shows a **Party** field (Democrat, Republican, Independent, or
 
 V1 covers the **Mayor and City Council Districts 1–15**. City Attorney and Controller profiles are deliberately out of scope because their work should be represented with an office-appropriate public-actions model, rather than being forced into a City Council voting schema.
 
-The official roster is checked against the City of Los Angeles and City Clerk current-elected-officials directories.
+Roster changes require checking the City of Los Angeles and City Clerk current-elected-officials directories. Election results and sitting officeholders require separate verification.
 
 ## How it works
 
@@ -62,13 +64,17 @@ index.html ──> official.html?id=<official-id> ──> js/app.js
 4. `js/treemap.js` renders the funding data as a squarified treemap.
 5. The profile page renders the Party field with its source link, donor controls, contribution details, the official's record of proposals, seconding, and votes, and a district mini-map.
 
-There is no framework or build step: the site is vanilla HTML, CSS, JavaScript, static JSON, and Python standard-library data scripts. The map uses the Leaflet CDN build (no API key, no bundler) with OpenStreetMap tiles.
+The site uses vanilla HTML, CSS, JavaScript, and static JSON, with no frontend build step. Finance/action scripts use the Python standard library. Transcript ingestion has its own isolated dependencies and stores vectors in Supabase PostgreSQL/pgvector. The map uses Leaflet and OpenStreetMap tiles.
+
+Transcript search embeds a query and retrieves timestamped passages from the indexed caption corpus. Its optional public-comment results are presented separately from attributed official speech. The existing Ask-AI feature calls Perplexity Sonar for web-grounded answers. Transcript-grounded answer synthesis is not implemented. The original M1–M5 PRD was not recovered in the bounded November 6 checkout/local-project search. The checked-in M2/M3 plans and the weekend mandate govern the remaining release work.
 
 ## Data sources and methodology
 
 ### Campaign finance
 
-Funding data is built from Los Angeles Ethics Commission campaign-contribution disclosures. `scripts/build_funding.py` resolves candidate-controlled campaign committees, groups itemized donor contributions, and writes `funding.json`. Public matching funds, unitemized aggregates, and candidate self-loans are not presented as ordinary donors.
+Funding data is built from Los Angeles Ethics Commission campaign-contribution disclosures. `scripts/build_funding.py` matches committee names configured per official in `data/sources/registry.json`, groups eligible itemized contributions by the reported donor name, sorts by total, and publishes at most 30 donors per official. The source note lists the selected committees, whose campaign cycles can differ between officials. Displayed totals cover those donors and committees only. Public matching funds, unitemized aggregates, and candidate self-loans are excluded from ordinary donors. Name grouping does not establish a unique legal donor identity.
+
+Contribution `reporting_period` describes the filing statement period. `latest_reporting_period_end` is the latest valid period end among committee-matched source rows before the display cap. Neither value proves complete coverage through that date. The current contribution provenance `record_id` contains a committee ID, which cannot identify an individual transaction. Employer enrichment remains blocked until reliable source-native transaction keys, amendment semantics, and matching source inputs are verified.
 
 Where a contribution can be matched to a verified Ethics Commission filing, its contribution record includes a `source_url` linking to the underlying filing. A missing link means that no verified filing match is available in the data snapshot; it is not a claim that no public filing exists.
 
@@ -76,7 +82,9 @@ Where a contribution can be matched to a verified Ethics Commission filing, its 
 
 `record.json` is built from Los Angeles City Clerk Council File Management System (CFMS) records and, for the Mayor where applicable, mayoral executive directives. Councilmember actions are verified against role-specific records rather than inferred from text matches. Records that cannot be independently confirmed are excluded.
 
-Each item describes the official's role (`proposed`, `seconded`, `voted_yes`, or `voted_no`), outcome, date, and term. The app links to a primary council-file record when a verified item-level URL is available.
+Each curated item records a separately verified role (`proposed`, `seconded`, `voted_yes`, or `voted_no`), the matter's outcome, its recorded action date, and a maintainer-assigned current/previous-term classification. An outcome does not establish the official's vote. Inclusion requires a source supporting the specific role and action, with a council-file, executive-directive, or executive-order identifier. An empty term or filter result means the curated sample has no matching item. The app links to a primary council-file record when an item-level URL is available.
+
+The checked-in November 2 snapshot has no `reviewed_through` attestation for any of the 16 action profiles. Rebuilding fixtures only establishes a successful build. A maintainer must actually review the defined discovery sources before supplying a review date.
 
 ### Interpretation and limitations
 
@@ -104,9 +112,14 @@ la-money-votes/
 │   ├── app.js                         # Data loading and UI rendering
 │   ├── map.js                         # Leaflet citywide map + per-official mini map (district markers + Mayor marker)
 │   ├── treemap.js                     # Squarified donor treemap (from-scratch squarify() implementation, no charting dependency)
-│   └── ask-ai.js                      # "Ask about this official" Q&A module + mobile floating button (official.html)
+│   ├── ask-ai.js                      # Web-grounded Q&A and mobile floating button
+│   ├── freshness.js                   # Published source/build/review status
+│   └── transcript-search.js           # Timestamped evidence and separate public comments
 ├── api/
-│   └── ask-official.js                # Vercel serverless function: calls the Perplexity Sonar API server-side, returns answer + citations
+│   ├── ask-official.js                # Web-grounded Sonar answer and citations
+│   ├── search-transcripts.js          # Official-attributed transcript retrieval
+│   ├── search-public-comment.js       # Opt-in public-comment retrieval
+│   └── transcript-coverage.js         # Read-only indexed parent-turn/recording counts
 ├── vercel.json                        # Vercel config (function timeout) — see DEPLOYMENT.md for the full deploy guide
 ├── DEPLOYMENT.md                      # Step-by-step: importing into Vercel, subdomain + CNAME setup, PERPLEXITY_API_KEY
 ├── data/
@@ -121,7 +134,7 @@ la-money-votes/
 │   │   └── records/<official-id>.json # Curated record items, one file per official (build_record.py's input)
 │   ├── schemas/*.schema.json          # JSON Schema documentation for every file above, including districts.schema.json and officials.schema.json
 │   ├── build_report.json              # Machine-readable report from the last build_all.py run (gitignored)
-│   └── freshness.json                 # Per-official build status/timestamps (published, not yet read by the frontend)
+│   └── freshness.json                 # Per-official build/retrieval/review status displayed by freshness.js
 ├── scripts/
 │   ├── pipeline/                      # Shared library: validation, provenance, atomic writes, registry loading, Socrata client, schema loading
 │   ├── build_funding.py               # Ethics Commission API/CSV → funding.json, one or all officials
@@ -144,7 +157,7 @@ Open `http://localhost:8000`. A static server is required because profile pages 
 
 ## Rebuilding the data
 
-All commands run from `la-money-votes/` and use only the Python standard library — nothing to `pip install`.
+Finance/action commands run from `la-money-votes/` and use only the Python standard library. Use `build_all.py` for coordinated publication. Standalone `build_funding.py` and `build_record.py` commands below write published files directly and bypass snapshot coordination, so use them only in an isolated diagnostic checkout.
 
 ```bash
 # rebuild funding.json for every official, live from the LA Ethics Commission's public Socrata API
@@ -170,20 +183,25 @@ python3 scripts/validate_data.py
 python3 -m unittest discover
 ```
 
-`build_all.py` writes `data/build_report.json` (gitignored — a machine-
-readable summary of what happened) on every run, and `data/freshness.json`
-(committed, schema v2) reflecting the real per-official status, including
-any failure. Freshness dates are carried forward on failure, a cache-backed
-build is never recorded as a live retrieval unless the cache's provenance
-sidecar proves its retrieval time, and `reviewed_through` is only ever
-human-supplied (set `null` to revoke). A legacy v1 file is migrated
-automatically. A preflight check (previous file, `--official` ids, review
-dates, config) runs before any file is written; full transactional staging
-of all generated files is still future work (Step 4C) — see CONTRACT.md
-"freshness.json v2".
-It never lets a failed or partially-invalid build overwrite a previously
-committed, valid `funding.json` or `record.json` — see CONTRACT.md's
-"Additions" section and `scripts/pipeline/atomic_io.py`.
+`build_all.py` writes a machine-readable report to the requested path (default
+`data/build_report.json`, gitignored) while holding the publication lock.
+A lock-denied run changes nothing and writes no report. A verified publication
+includes `data/freshness.json` (schema v2), whose per-official status can
+record a failed builder while retaining that official's prior valid data.
+Fatal preflight, invalid snapshots and dry runs leave published files unchanged.
+Source dates are carried forward on failed builds. Cache-backed builds use
+verified cache provenance or preserve an unknown retrieval time.
+`reviewed_through` is human-supplied only, with explicit `null` revoking a
+prior attestation. Preflight validates prior state, target IDs, review dates
+and configuration.
+`build_all.py` stages generated files, validates the effective snapshot, then
+publishes under an exclusive lock with a journal, backups and manifest hashes.
+It verifies the published tree and rolls back handled failures. Each file
+replacement is atomic. A process interruption can leave a partial multi-file
+publication, which must be recovered before the next build.
+`--skip-freshness` is a full staging/validation dry run that publishes no
+funding, action or freshness files. See CONTRACT.md for the publication,
+verification and recovery contract.
 
 ## Source policy
 
@@ -210,12 +228,12 @@ The Socrata contributions dataset (`m6g2-gc6c`) does **not** include donor
 occupation or employer — those two fields exist only in the Ethics
 Commission's manual CSV export UI, not its API. `build_funding.py
 --fetch-socrata` therefore writes `employer: null` for every donor, and adds
-a `source_notes` warning to the build report when it does. This is a real
-gap in the public API, not a bug, and it means the currently-committed
-`funding.json` files (built from a manually-downloaded CSV) are richer than
-what an automated refresh alone can produce. See "How refresh PRs are
-reviewed" below — this is exactly the kind of thing a reviewer should look
-for before merging.
+a `source_notes` warning to the build report when it does. The committed
+November 2, 2026 snapshot uses `automated_api` for all 16 officials and
+marks `EMPLOYER_OCCUPATION_UNAVAILABLE` for every profile. All 480
+displayed donor entries have a null employer. Manually downloaded exports
+can contain richer fields, but enrichment requires verified transaction
+identity and source inputs before any join is implemented.
 
 ## Refresh schedule
 
@@ -242,8 +260,9 @@ maintainer should:
    linked `source_url` before trusting the diff.
 4. Confirm CI (schema validation + tests) passed on the PR.
 
-Only then merge — Vercel Production picks up the push to `main` and
-redeploys automatically.
+After review and explicit merge approval, check the configured Vercel
+production branch and deployment behavior before merging. Record the
+resulting deployment identity and verify the served snapshot.
 
 ## Methodology and known limitations
 
@@ -257,13 +276,13 @@ redeploys automatically.
 - Legislative/voting data is hand-curated (no official bulk export exists —
   see "Source policy" above) and is therefore a curated, verifiable sample
   of an official's public actions, not a complete voting record.
-- Automated funding refreshes lack donor employer/occupation (a public-API
-  limitation, documented above) — the richer, manually-downloaded-CSV
-  version of that field is not overwritten unless a maintainer merges a
-  refresh PR that removes it.
-- `data/freshness.json` (v2) is generated on every build but is not yet
-  surfaced in the UI. The per-file `source.retrieved_at` is a build date, not
-  a freshness signal; correcting it is a separate future task.
+- Automated funding refreshes lack donor employer/occupation. The currently
+  committed snapshot already carries this limitation.
+- The profile displays `data/freshness.json` (v2) through `js/freshness.js`.
+  It distinguishes source retrieval, build attempts and human review.
+  Missing update metadata produces an unavailable state. The older per-file
+  `source.retrieved_at` field still records a build date and must not be
+  interpreted as a source-retrieval or human-review timestamp.
 - Party affiliation is sourced from secondary public records (Ballotpedia,
   Wikipedia, or an equivalent official bio) because LA municipal races are
   officially nonpartisan and party does not appear on the ballot itself —
@@ -289,22 +308,15 @@ Key rules:
 
 ## Deployment
 
-The site is deployed on **Vercel**, which serves the static site (`index.html`,
-`official.html`, `css/`, `js/`, `data/`) and the one serverless function
-that powers the "Ask about this official" feature (`api/ask-official.js`).
-A static-only host (like GitHub Pages, previously used here) can't run that
-function, which is why the project moved to Vercel.
+The application targets Vercel with `la-money-votes/` as its project root.
+The public domain specified by the owner is `lapolitician.akhilvasvani.com`.
+The repository alone does not establish which deployment or branch currently
+owns that alias. The old feature-branch mapping in this README was historical
+and must be checked in the Vercel project before a release.
 
-- **Production** — pushes to `main` auto-deploy to Vercel Production
-  (`check-your-politician.vercel.app`).
-- **Preview** — every other branch/PR gets its own Vercel Preview
-  deployment; the `feature/ask-ai-vercel-district-label` branch is
-  additionally bound to the `lapolitician.akhilvasvani.com` custom
-  subdomain for pre-merge testing.
-
-See [`la-money-votes/DEPLOYMENT.md`](la-money-votes/DEPLOYMENT.md) for the
-full step-by-step (importing into Vercel, custom-domain/CNAME setup,
-`PERPLEXITY_API_KEY`, and the rate-limiting env vars for Ask-AI).
+See [DEPLOYMENT.md](la-money-votes/DEPLOYMENT.md) for configuration and exact-SHA
+release checks, and [OPERATIONS.md](la-money-votes/release/OPERATIONS.md) for
+approval boundaries, outages, publication recovery and transcript maintenance.
 
 ## License
 

@@ -59,8 +59,8 @@ jobs:
           # workflow file and understand the whole contract without also
           # opening a helper script.
           #
-          # Bash extended glob (globstar) so `**` matches nested dirs.
-          shopt -s globstar nullglob extglob
+          # Conditional pattern matching below matches across slashes.
+          # It needs no filesystem glob expansion or Bash 4 globstar option.
 
           FORBIDDEN_PATTERNS=(
             # === Frozen data files ===
@@ -112,8 +112,8 @@ jobs:
           echo ""
 
           # Match each changed file against every forbidden pattern. Bash
-          # native pattern matching (`[[ x == pattern ]]`) with globstar
-          # + extglob is enough — no need for `find` or Python here.
+          # native conditional pattern matching (`[[ x == pattern ]]`) is
+          # enough — no filesystem expansion is performed here.
           violations=()
           while IFS= read -r file; do
             [ -z "$file" ] && continue

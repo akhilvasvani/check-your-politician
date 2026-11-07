@@ -618,20 +618,22 @@ panel — every other page hides it at init.
 
 ### `data/transcripts/roster.json` (committed, human-curated)
 
-The authoritative speaker table for the transcript pipeline. Distinct from
-`data/officials.json`: `officials.json` is frozen to the three officials
-this site publishes profiles for (`mayor-bass`, `cd14-official`,
-`cd11-official`); `roster.json` is the full 15-member City Council,
-because the CART transcripts contain utterances from every district and
-each councilmember needs a canonical display name for the resolver to
-label their rows correctly. The Mayor is not in `roster.json` today (she
-does not speak in Council meetings) and neither is the City Attorney;
-both are procedural roles the resolver currently labels by title, not
-name, via the role table in `speaker_resolver.py`. `official_id` is the join key back to
-`officials.json` and is `null` for anyone this site does not publish a
-profile for — that null-ness is what makes the transcript-search panel
-hide itself on those officials' (nonexistent) pages, and what causes the
-search endpoint to reject queries scoped to an unlinked councilmember.
+The speaker table used by the transcript pipeline is distinct from the
+published official index. `officials.json` currently has 16 profiles covering
+the Mayor and Council Districts 1–15. `roster.json` currently links all 15
+Council members to their profile IDs through `official_id`. The Mayor has no
+entry in the transcript roster, so that profile does not expose the
+councilmember transcript-search panel. This is a coverage decision and makes
+no claim about whether the Mayor has spoken at a meeting.
+
+The resolver also has procedural title labels, including `Council President`.
+Those role labels require meeting-specific evidence before they can be
+attributed to an individual. A name mentioned in a passage does not establish
+its speaker. A future roster entry with a null `official_id` remains unlinked
+and cannot be used as a per-official search identity.
+
+The example below preserves the original contract illustration. Its three
+rows and null linkage are historical examples, not the current roster.
 
 ```json
 {

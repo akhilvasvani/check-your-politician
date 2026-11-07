@@ -72,7 +72,8 @@ and schema-validated in `source-evaluation-cases.json` for
 identities 17801 and 18451 while preserving uncertainty about which segment
 belongs to which meeting. Full candidate keys are retained. These two cases
 have no live traces or reviewed retrieved pools, and their provenance assertion
-needs an online adapter. The final live expanded-corpus report is absent.
+needs a live evaluation check against canonical source identities. The final
+live expanded-corpus report is absent.
 
 ## Source and access blockers
 
