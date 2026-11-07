@@ -1,0 +1,90 @@
+{
+  "description": "M2.3 gold set for public-comment RAG (search_public_comment RPC). 10 queries grounded in real transcript chunks where resolved_role = 'public-speaker'. Targets are matched by (expected_video_id, expected_chunk_idx). expected_sub_chunk_idx is included when the topic evidence sits in a specific sub-chunk. No expected_official_id: the public-comment RPC does not accept an official filter.",
+  "rpc": "search_public_comment",
+  "match_count": 8,
+  "notes": "Speakers often lack named attribution (source_label = 'Speaker', resolved_name = 'Speaker'), so gold queries reference the topic/claim rather than a named speaker.",
+  "queries": [
+    {
+      "id": "pc-01-drown-proof-la",
+      "text": "public commenter about drowning prevention swim lessons for kids in LA",
+      "expected_video_id": "hyhgFSAqBRM",
+      "expected_chunk_idx": 33,
+      "topic_evidence": "Calvin Thomas / Dolphin U, drown-proof LA by summer 2028, teach 2028 safer swimmers",
+      "difficulty": "semantic"
+    },
+    {
+      "id": "pc-02-el-corazon-ceqa-appeal",
+      "text": "downtown residents association supporting the CEQA appeal on the El Corazon art park across from City Hall",
+      "expected_video_id": "hyhgFSAqBRM",
+      "expected_chunk_idx": 128,
+      "topic_evidence": "Cassie Hoerton, Downtown Residents Association board member, supports the SEIU CEQA appeal on the parcel across from City Hall",
+      "difficulty": "paraphrase"
+    },
+    {
+      "id": "pc-03-boyle-heights-warehouse-fire",
+      "text": "Boyle Heights warehouse fire burning for six days releasing ammonia and hurting air quality",
+      "expected_video_id": "hyhgFSAqBRM",
+      "expected_chunk_idx": 141,
+      "topic_evidence": "Lineage warehouse fire poisoning the East Side for six days, ammonia in the smoke, sore throat and coughing",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "pc-04-vision-zero-crosswalks-arrest",
+      "text": "arrested for painting crosswalks and asking the city to declare a traffic violence emergency",
+      "expected_video_id": "hyhgFSAqBRM",
+      "expected_chunk_idx": 119,
+      "topic_evidence": "Johnny (People Vision Zero) arrested in December for painting crosswalks, demanding the city declare an emergency for traffic violence",
+      "difficulty": "paraphrase"
+    },
+    {
+      "id": "pc-05-speed-bumps-hit-and-run",
+      "text": "resident asking for speed bumps after losing her dog to a hit and run near Venice Boulevard",
+      "expected_video_id": "MBjio010l60",
+      "expected_chunk_idx": 160,
+      "expected_sub_chunk_idx": 1,
+      "topic_evidence": "Elisa Kim, Westchester Place / Country Club Drive, dog killed by a fleeing driver Aug 8, asks for speed bumps on Venice Blvd",
+      "difficulty": "semantic"
+    },
+    {
+      "id": "pc-06-water-conservation-ordinance-2009",
+      "text": "history of the LA water conservation ordinance passed in 2009 and lessons for the road map today",
+      "expected_video_id": "MBjio010l60",
+      "expected_chunk_idx": 90,
+      "expected_sub_chunk_idx": 1,
+      "topic_evidence": "Retiring DWP staffer references the June 2009 water conservation ordinance and the 100-year road map document",
+      "difficulty": "lexical"
+    },
+    {
+      "id": "pc-07-fraudulent-bond-debt",
+      "text": "who is on the hook for fraudulent bond debt at the city and LAUSD, taxpayers or insurers",
+      "expected_video_id": "MBjio010l60",
+      "expected_chunk_idx": 146,
+      "topic_evidence": "Mark Williams asks who repays fraudulent bond debt — defrauded property taxpayers or the city's and LAUSD's insurers — as an election issue",
+      "difficulty": "paraphrase"
+    },
+    {
+      "id": "pc-08-scientology-l-ron-hubbard-way",
+      "text": "former Scientology members asking public works to rename L Ron Hubbard Way back to a normal street name",
+      "expected_video_id": "MBjio010l60",
+      "expected_chunk_idx": 200,
+      "topic_evidence": "Speaker representing former Scientology child labor victims, asking public works to revert L. Ron Hubbard Way to a regular street designation and to stop granting permits",
+      "difficulty": "semantic"
+    },
+    {
+      "id": "pc-09-lapd-rampart-accountability",
+      "text": "army veteran demanding LAPD Rampart accountability after false accusations and rubber bullets at protests",
+      "expected_video_id": "hyhgFSAqBRM",
+      "expected_chunk_idx": 263,
+      "topic_evidence": "Monica, District 1 army vet, false police reporting at LAPD Rampart, rubber bullets and tear gas at protests, demands accountability and transparency",
+      "difficulty": "paraphrase"
+    },
+    {
+      "id": "pc-10-social-housing-renter-protection",
+      "text": "asking the council to protect renters and pursue social housing so the city doesn't rely on stopgaps",
+      "expected_video_id": "MBjio010l60",
+      "expected_chunk_idx": 207,
+      "topic_evidence": "Public commenter urges support for the plan while pushing further on protecting renters and pursuing social housing",
+      "difficulty": "semantic"
+    }
+  ]
+}

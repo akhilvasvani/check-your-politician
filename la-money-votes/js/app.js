@@ -559,6 +559,17 @@ async function loadOfficialPage() {
     }
   }
 
+  // Transcript-search module is also optional/additive
+  // (js/transcript-search.js). It hides itself when this official isn't
+  // linked to roster.json — do not break the page if it fails to init.
+  if (typeof initTranscriptSearch === "function") {
+    try {
+      initTranscriptSearch(id, official);
+    } catch (err) {
+      console.warn("[app.js] Transcript-search module failed to init:", err);
+    }
+  }
+
   wireRecordFilters(record.items || []);
   renderRecord(record.items || [], "all");
   renderSourceNote(document.getElementById("record-source"), record.source);
