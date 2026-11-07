@@ -45,7 +45,10 @@ jobs:
         run: python3 -m compileall -q scripts
 
       - name: Run unit tests
-        run: python3 -m unittest discover -v
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -v 2>&1 | tee /tmp/pipeline-tests.log
+          grep -Eq '^Ran [1-9][0-9]* tests? ' /tmp/pipeline-tests.log
 
       # Transcript tests live in scripts/transcripts/tests/, which has no
       # __init__.py, so `unittest discover` cannot import it ("Start
@@ -170,7 +173,14 @@ jobs:
             exit 1
           fi
           # Expand to explicit test-file paths for consistent discovery across runtimes.
-          node --test tests/js/*.test.js
+          set -euo pipefail
+          node --test --test-reporter=tap tests/js/*.test.js 2>&1 | tee /tmp/frontend-tests.log
+          if grep -Eq '^ok [0-9]+ - .*\.test\.js$' /tmp/frontend-tests.log; then
+            echo "::error::A JavaScript test file registered no tests"
+            exit 1
+          fi
+          grep -Eq '^# pass [1-9][0-9]*$' /tmp/frontend-tests.log
+          grep -Eq '^# fail 0$' /tmp/frontend-tests.log
 
       - name: Upload build report
         if: always()

@@ -4,7 +4,7 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 
 process.env.SUPABASE_URL = "https://example.supabase.co";
-process.env.SUPABASE_ANON_KEY = "anon-test-key";
+process.env.SUPABASE_ANON_KEY = "sb_publishable_test_fixture";
 
 const lib = require("../api/_lib/transcript-search-lib");
 const handler = require("../api/transcript-coverage");

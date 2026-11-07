@@ -137,7 +137,7 @@ const unconfiguredLimiter = {
 const providerEnv = {
   PERPLEXITY_API_KEY: "fixture-key",
   SUPABASE_URL: "https://fixture.supabase.co",
-  SUPABASE_ANON_KEY: "fixture-anon",
+  SUPABASE_ANON_KEY: "sb_publishable_test_fixture",
   KV_REST_API_URL: "https://limiter.test",
   KV_REST_API_TOKEN: "fixture-token",
 };
@@ -494,6 +494,51 @@ test("wrong speaker or public-comment attribution is never returned as official 
       assert.equal(res.statusCode, 502);
       assert.equal(res.body.results, undefined);
     }
+  } finally {
+    global.fetch = originalFetch;
+  }
+}));
+
+test("invalid read configuration consumes no limiter, embedding or database request", () => withEnv(providerEnv, async () => {
+  const originalFetch = global.fetch;
+  let calls = 0;
+  global.fetch = async () => {
+    calls += 1;
+    throw new Error("Unexpected external request");
+  };
+  try {
+    const serviceJwt = "header." + Buffer.from(JSON.stringify({ role: "service_role" })).toString("base64url") + ".signature";
+    for (const credential of [undefined, "opaque-malformed-key", "sb_publishable_", "sb_secret_example", serviceJwt]) {
+      if (credential === undefined) delete process.env.SUPABASE_ANON_KEY;
+      else process.env.SUPABASE_ANON_KEY = credential;
+      for (const handler of [officialHandler, publicHandler]) {
+        const res = response();
+        await handler(req({ query: "housing", official: context }), res);
+        assert.equal(res.statusCode, 503);
+      }
+    }
+    assert.equal(calls, 0);
+  } finally {
+    global.fetch = originalFetch;
+  }
+}));
+
+test("publishable read keys use apikey while legacy anonymous JWTs retain bearer authentication", () => withEnv(providerEnv, async () => {
+  const originalFetch = global.fetch;
+  const requests = [];
+  global.fetch = async (url, options) => {
+    requests.push({ url, options });
+    return { ok: true, json: async () => [] };
+  };
+  try {
+    await lib.transcriptCoverageRpc({ officialId: "cd14-official" });
+    assert.equal(requests[0].options.headers.apikey, "sb_publishable_test_fixture");
+    assert.equal(requests[0].options.headers.Authorization, undefined);
+    const header = Buffer.from(JSON.stringify({ typ: "JWT", alg: "HS256" })).toString("base64url");
+    const claims = Buffer.from(JSON.stringify({ role: "anon" })).toString("base64url");
+    process.env.SUPABASE_ANON_KEY = `${header}.${claims}.fixture_signature`;
+    await lib.transcriptCoverageRpc({ officialId: "cd14-official" });
+    assert.equal(requests[1].options.headers.Authorization, `Bearer ${process.env.SUPABASE_ANON_KEY}`);
   } finally {
     global.fetch = originalFetch;
   }

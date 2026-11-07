@@ -212,27 +212,36 @@ async function embedQuery(queryText) {
 }
 
 // --- Supabase RPC ----------------------------------------------------------
-async function callRpc(rpcName, params) {
+function readRpcConfig() {
   const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey =
-    process.env.SUPABASE_ANON_KEY;
+  const supabaseKey = process.env.SUPABASE_ANON_KEY;
   if (!supabaseUrl || !supabaseKey) {
     throw new Error("SUPABASE_URL and SUPABASE_ANON_KEY must both be set.");
   }
   if (supabaseKey === process.env.SUPABASE_SERVICE_ROLE_KEY || supabaseKey.startsWith("sb_secret_")) throw new Error("Read credentials must be anonymous.");
-  if (supabaseKey.split(".").length === 3) {
+  const publishable = /^sb_publishable_[A-Za-z0-9_-]+$/.test(supabaseKey);
+  if (!publishable) {
+    if (!/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(supabaseKey)) {
+      throw new Error("Expected a publishable key or legacy anonymous JWT.");
+    }
     const claims = JSON.parse(Buffer.from(supabaseKey.split(".")[1], "base64url").toString("utf8"));
     if (claims.role !== "anon") throw new Error("Read credentials must be anonymous.");
   }
   const baseUrl = new URL(supabaseUrl);
   if (baseUrl.protocol !== "https:" || baseUrl.username || baseUrl.password) throw new Error("Invalid read endpoint configuration.");
+  return { supabaseUrl, supabaseKey, publishable };
+}
+
+async function callRpc(rpcName, params) {
+  const { supabaseUrl, supabaseKey, publishable } = readRpcConfig();
   const rpcUrl = `${supabaseUrl}/rest/v1/rpc/${rpcName}`;
   return fetchJson(rpcUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       apikey: supabaseKey,
-      Authorization: `Bearer ${supabaseKey}`,
+      // Publishable keys are API keys, not JWT bearer tokens.
+      ...(publishable ? {} : { Authorization: `Bearer ${supabaseKey}` }),
     },
     body: JSON.stringify(params),
   }, "rpc");
@@ -301,6 +310,7 @@ module.exports = {
   getClientIp,
   isIsoDate,
   parseBody,
+  readRpcConfig,
   checkRateLimit,
   embedQuery,
   searchTranscriptsRpc,

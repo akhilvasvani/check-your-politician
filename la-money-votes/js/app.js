@@ -533,7 +533,14 @@ async function loadOfficialPage() {
       const districts = await districtsRes.json();
       renderDistrictContact(id, districts);
       if (typeof initCitywideMap === "function" && document.getElementById("official-mini-map")) {
-        initCitywideMap("official-mini-map", { focusId: id }).catch((err) => {
+        initCitywideMap("official-mini-map", { focusId: id }).then(() => {
+          const map = document.getElementById("official-mini-map");
+          if (map.querySelector(".citymap-error")) {
+            map.hidden = true;
+            const fallback = document.getElementById("district-map-fallback");
+            if (fallback) fallback.hidden = false;
+          }
+        }).catch((err) => {
           console.warn("[app.js] Official mini-map failed to init:", err);
           const fallback = document.getElementById("district-map-fallback");
           if (fallback) fallback.hidden = false;

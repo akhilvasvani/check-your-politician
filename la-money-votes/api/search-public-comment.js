@@ -46,6 +46,7 @@ const {
   getClientIp,
   isIsoDate,
   parseBody,
+  readRpcConfig,
   checkRateLimit,
   embedQuery,
   searchPublicCommentRpc,
@@ -90,6 +91,13 @@ module.exports = withRequest("search-public-comment", async function handler(req
     return;
   }
   if (process.env.TRANSCRIPT_SEARCH_DISABLED === "true") {
+    res.status(503).json({ error: "Transcript search is temporarily unavailable." });
+    return;
+  }
+
+  try {
+    readRpcConfig();
+  } catch {
     res.status(503).json({ error: "Transcript search is temporarily unavailable." });
     return;
   }
