@@ -13,7 +13,7 @@ name: Guard non-goals (transcript-rag branches)
 # promise at PR time.
 #
 # It ONLY runs on branches named `computer/add-transcript-*` or
-# `computer/transcript-rag-*` so it doesn't
+# `computer/transcript-rag-*` and `release/weekend-*` so it doesn't
 # get in the way of legitimate ETL / builder PRs coming from any other
 # branch. If we want a permanent guard on those files independent of this
 # feature branch, that's a separate conversation (and probably a CODEOWNERS
@@ -47,6 +47,7 @@ jobs:
 
       - name: Check forbidden paths
         env:
+          PR_BRANCH: ${{ github.head_ref }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
@@ -82,13 +83,23 @@ jobs:
             # (We do modify official.html + js/app.js + css/style.css to
             # mount the search panel — those are explicitly allowed. The
             # existing feature modules themselves are not.)
-            # Weekend mandate explicitly authorizes Ask-AI security fixes.
+            # Ask-AI paths are protected below on the original transcript branches.
+            # The weekend mandate expressly authorizes their security corrections.
             "la-money-votes/js/map.js"
             "la-money-votes/js/treemap.js"
 
             # === Existing scheduled workflow ===
             ".github/workflows/refresh-data.yml"
           )
+
+          # Preserve the original transcript branch scope. Only the weekend
+          # release integration is authorized to correct the Ask-AI APIs/UI.
+          if [[ "$PR_BRANCH" != release/weekend-* ]]; then
+            FORBIDDEN_PATTERNS+=(
+              "la-money-votes/js/ask-ai.js"
+              "la-money-votes/api/ask-official.js"
+            )
+          fi
 
           # Get the changed-file list for this PR. `git diff --name-only`
           # against the merge-base is what GitHub itself uses to compute

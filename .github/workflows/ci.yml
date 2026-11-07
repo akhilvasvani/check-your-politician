@@ -152,7 +152,7 @@ jobs:
         run: |
           node --version
           status=0
-          for f in js/freshness.js js/app.js tests/js/freshness.test.js; do
+          for f in api/*.js api/_lib/*.js js/*.js tests/js/*.test.js tests/test-transcript-coverage.js; do
             if node --check "$f"; then
               echo "ok: $f"
             else

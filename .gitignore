@@ -241,3 +241,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local release evidence, tools, hidden review keys and diagnostic caches.
+/work/
+.env*
