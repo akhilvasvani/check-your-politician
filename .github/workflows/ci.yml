@@ -66,6 +66,7 @@ jobs:
             scripts.transcripts.tests.test_eval_metrics \
             scripts.transcripts.tests.test_eval_replay \
             scripts.transcripts.tests.test_m3_1_ingest \
+            scripts.transcripts.tests.test_ingest_verified \
             2>&1 | tee /tmp/transcript-offline.log
           # Every test in these modules is expected to run. Any skip here is
           # unexpected and fails the job.

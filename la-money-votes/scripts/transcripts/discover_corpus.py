@@ -330,7 +330,7 @@ def build_manifest(
         (
             item
             for item in meetings
-            if item["meeting_type"] == "regular_council" and item["video_id"]
+            if item["meeting_type"] == "regular_council"
         ),
         key=lambda item: item["date_time"] or "",
         reverse=True,

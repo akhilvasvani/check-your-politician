@@ -76,6 +76,20 @@ class DiscoverCorpusTests(unittest.TestCase):
         self.assertEqual(meeting["ingest_disposition"], "m3_1_caption_preflight")
         self.assertEqual(manifest["summary"]["new_video_candidates"], 1)
 
+    def test_newest_ten_regular_sessions_include_missing_video(self):
+        rows = [row(id=100 + day, dateTime=f"2026-08-{day:02d}T10:00:00",
+                    videoUrl="" if day == 18 else "https://youtu.be/2Wm-11hPNns")
+                for day in range(7, 19)]
+        rows.append(row(id=999, title="Special City Council Meeting",
+                        dateTime="2026-08-19T10:00:00"))
+        manifest = build_manifest(rows, TAXONOMY, {}, days=90,
+                                  generated_at="2026-08-19T20:00:00+00:00")
+        newest = manifest["top_10_regular_council"]
+        self.assertEqual([item["primegov_id"] for item in newest],
+                         list(range(118, 108, -1)))
+        self.assertIsNone(newest[0]["video_id"])
+        self.assertEqual(newest[0]["pipeline_state"], "blocked")
+
     def test_no_video_is_terminally_blocked(self):
         manifest = build_manifest(
             [row(videoUrl="")],

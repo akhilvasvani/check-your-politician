@@ -46,6 +46,12 @@ import shutil
 import subprocess
 import sys
 import time
+import tempfile
+
+if __package__:
+    from .vtt_flatten import parse_vtt, SPEAKER_LABEL, VTT_TS
+else:
+    from vtt_flatten import parse_vtt, SPEAKER_LABEL, VTT_TS
 from pathlib import Path
 from typing import Any
 
@@ -108,7 +114,10 @@ def parse_list_subs(stdout: str) -> dict[str, list[dict[str, str]]]:
 
 def pick_manual_track(manual: list[dict[str, str]]) -> dict[str, str] | None:
     """Choose the English manual/CART track a CART ingest would want."""
-    candidates = [t for t in manual if not is_probably_asr(t["name"], t["code"])]
+    candidates = [t for t in manual
+                  if not is_probably_asr(t["name"], t["code"])
+                  and (re.match(r"^en(?:$|[-_])", t["code"], re.I)
+                       or "english" in t["name"].lower())]
     for hint in MANUAL_TRACK_HINTS:
         for track in candidates:
             if hint in f"{track['code']} {track['name']}".lower():
@@ -120,8 +129,8 @@ def classify_fetch(*, declared: bool, returncode: int, http_status: int | None,
                    byte_count: int | None) -> str:
     """Classify one caption fetch attempt into a comparable outcome."""
     if not declared:
-        return "not_offered"
-    if returncode != 0 and byte_count in (None, 0):
+        return "fetch_failed" if returncode else "not_offered"
+    if returncode != 0:
         return "fetch_failed"
     if byte_count == 0:
         # The distinguishing symptom: the server acknowledges the request but
@@ -149,24 +158,23 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
         findings.append(
             "MANUAL CAPTIONS ARE STILL RETRIEVABLE via player_client(s): "
             + ", ".join(clients)
-            + ". This is a client-gating issue, not an empty upstream asset. "
-              "Pin a working client in the ingest path; no ASR exception is needed."
+            + ". The successful payload constrains the client-gating hypothesis. "
+              "Review its speaker cues before ingestion; no ASR exception is needed."
         )
     elif control_rows and not control_ok:
         findings.append(
-            "The previously-ingested control returned no bytes on every client "
-            "probed. Since its captions were ingested before, the asset is not "
-            "simply absent -- suspect a yt-dlp or auth regression before "
-            "concluding the captions are gone upstream. Retry with a different "
-            "yt-dlp version and a confirmed signed-in cookie jar."
+            "The previously-ingested control returned no usable payload. "
+            "Environment, authentication, source access or a tooling regression "
+            "remain possible. This alone does not justify repeating the same probe. "
+            "This result does not establish source absence."
         )
-    if declared_rows and not ok_rows:
+    if declared_rows and all(r["outcome"] == "zero_byte" for r in declared_rows):
         findings.append(
             "Every declared manual track returned zero bytes. Record these "
             "meetings as blocked with a source-specific reason; do not record "
             "them as having no captions, because the track is still declared."
         )
-    if not declared_rows:
+    if results and all(r["outcome"] == "not_offered" for r in results):
         findings.append(
             "No manual track was declared at all on any probe -- a different "
             "failure from the zero-byte payload originally reported."
@@ -189,26 +197,109 @@ def run(cmd: list[str], timeout: int = 120) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
 
 
+def inspect_payload(path: Path) -> dict[str, Any]:
+    """Require usable CART text, timing, and speaker cues; retain only metadata."""
+    payload = path.read_bytes()
+    evidence = {"sha256": hashlib.sha256(payload).hexdigest(),
+                "byte_count": len(payload), "cue_count": 0,
+                "speaker_cue_count": 0, "usable": False}
+    try:
+        text = payload.decode("utf-8-sig")
+        frames = parse_vtt(path)
+    except (UnicodeError, ValueError):
+        return evidence
+    evidence["cue_count"] = len(frames)
+    evidence["speaker_cue_count"] = sum(bool(SPEAKER_LABEL.match(frame.text))
+                                        for frame in frames)
+    timestamps = [match for line in text.splitlines() if (match := VTT_TS.match(line))]
+    timing_lines = [line for line in text.splitlines() if "-->" in line]
+    valid_timestamps = len(timestamps) == len(timing_lines) and all(
+        int(stamp.split(":")[1]) < 60 and float(stamp.split(":")[2]) < 60
+        for match in timestamps for stamp in match.groups()
+    )
+    inline_stamps = re.findall(r"<(\d{2}:[^>]*)>", text)
+    valid_inline = all(
+        re.fullmatch(r"\d{2}:\d{2}:\d{2}\.\d{3}", stamp)
+        and int(stamp.split(":")[1]) < 60 and float(stamp.split(":")[2]) < 60
+        for stamp in inline_stamps
+    )
+    evidence["usable"] = bool(
+        text.startswith("WEBVTT") and frames and valid_timestamps and valid_inline
+        and all(frame.end > frame.start >= 0 for frame in frames)
+        and evidence["speaker_cue_count"]
+    )
+    return evidence
+
+
+def error_category(stderr: str) -> str | None:
+    """Classify known failures without persisting raw downloader output."""
+    if not stderr.strip():
+        return None
+    message = stderr.lower()
+    categories = (
+        ("cookie_access", ("cookie database", "could not copy chrome", "failed to decrypt")),
+        ("keychain_access", ("keychain", "could not find chrome safe storage")),
+        ("dependency_missing", ("no module named", "not installed", "no supported javascript runtime")),
+        ("authentication_required", ("sign in", "sign-in", "login required")),
+        ("rate_limited", ("http error 429", "too many requests")),
+        ("network_failure", ("certificate verify failed", "unable to download", "connection", "timed out")),
+    )
+    for category, markers in categories:
+        if any(marker in message for marker in markers):
+            return category
+    return "unclassified_tool_error"
+
+
 def probe(video_id: str, player_client: str, cookie_args: list[str],
-          workdir: Path) -> dict[str, Any]:
+          workdir: Path, retain_usable_dir: Path | None = None) -> dict[str, Any]:
     """List subtitles for one client, then try to download the manual track."""
-    base = ["yt-dlp", "--skip-download", "--extractor-args",
+    base = ["yt-dlp", "--ignore-config", "--skip-download",
+            "--socket-timeout", "20", "--retries", "0",
+            "--fragment-retries", "0", "--extractor-args",
             f"youtube:player_client={player_client}", *cookie_args]
     url = f"https://www.youtube.com/watch?v={video_id}"
-
-    listed = run([*base, "--list-subs", url])
-    tracks = parse_list_subs(listed.stdout)
-    chosen = pick_manual_track(tracks["manual"])
 
     row: dict[str, Any] = {
         "video_id": video_id,
         "player_client": player_client,
+        "stage_reached": "listing",
+        "stages": {
+            "cookie_access": "unknown" if cookie_args else "not_requested",
+            "listing": "started",
+            "caption_download": "not_reached",
+            "parsing": "not_reached",
+        },
+        "list_returncode": None,
+        "fetch_returncode": None,
+        "payload_actually_retrieved": False,
+    }
+    try:
+        listed = run([*base, "--list-subs", url])
+    except subprocess.TimeoutExpired:
+        row.update(outcome="fetch_failed", list_error_category="deadline_exceeded")
+        row["stages"]["listing"] = "timed_out"
+        return row
+    tracks = parse_list_subs(listed.stdout)
+    chosen = pick_manual_track(tracks["manual"])
+    category = error_category(listed.stderr)
+    row.update({
         "manual_track_count": len(tracks["manual"]),
         "asr_track_count": len(tracks["automatic"]),
         "declared_track": chosen["code"] if chosen else None,
         "list_returncode": listed.returncode,
-        "list_stderr_head": listed.stderr.strip().splitlines()[:2],
-    }
+        "list_error_present": bool(listed.stderr.strip()),
+        "list_error_category": category,
+    })
+    row["stages"]["listing"] = "completed" if listed.returncode == 0 else "failed"
+    if cookie_args and re.search(r"Extracted \d+ cookies", listed.stdout):
+        row["stages"]["cookie_access"] = "completed"
+    if listed.returncode and category in {"cookie_access", "keychain_access"}:
+        row["stages"]["cookie_access"] = "failed"
+        row["stage_reached"] = "cookie_access"
+        row["stages"]["listing"] = "not_completed"
+    if listed.returncode:
+        row["outcome"] = "fetch_failed"
+        return row
     if chosen is None:
         row["outcome"] = classify_fetch(
             declared=False, returncode=listed.returncode,
@@ -216,25 +307,50 @@ def probe(video_id: str, player_client: str, cookie_args: list[str],
         )
         return row
 
-    out_tpl = workdir / f"{video_id}.{player_client}"
-    fetched = run([*base, "--write-sub", "--sub-langs", chosen["code"],
-                   "--sub-format", "vtt", "-o", str(out_tpl), url])
-    written = sorted(workdir.glob(f"{video_id}.{player_client}*"))
-    byte_count = sum(p.stat().st_size for p in written) if written else 0
-    row.update({
-        "fetch_returncode": fetched.returncode,
-        "fetch_stderr_head": fetched.stderr.strip().splitlines()[:3],
-        "byte_count": byte_count,
-        "files_written": [p.name for p in written],
-        # A caption URL embeds a signed token, so only its digest is recorded.
-        "track_url_sha256": hashlib.sha256(
-            f"{video_id}:{chosen['code']}".encode()
-        ).hexdigest()[:16],
-        "outcome": classify_fetch(
-            declared=True, returncode=fetched.returncode,
-            http_status=200, byte_count=byte_count,
-        ),
-    })
+    # Isolate every attempt so an older successful file cannot satisfy a retry.
+    with tempfile.TemporaryDirectory(prefix="probe-", dir=workdir) as attempt:
+        out_tpl = Path(attempt) / f"{video_id}.{player_client}"
+        row["stage_reached"] = "caption_download"
+        row["stages"]["caption_download"] = "started"
+        try:
+            fetched = run([*base, "--write-sub", "--sub-langs", chosen["code"],
+                           "--sub-format", "vtt", "-o", str(out_tpl), url])
+        except subprocess.TimeoutExpired:
+            row.update(outcome="fetch_failed", fetch_error_category="deadline_exceeded")
+            row["stages"]["caption_download"] = "timed_out"
+            return row
+        written = sorted(Path(attempt).glob("*.vtt"))
+        payloads = [inspect_payload(path) for path in written]
+        byte_count = sum(payload["byte_count"] for payload in payloads)
+        row["stages"]["caption_download"] = "completed" if fetched.returncode == 0 else "failed"
+        row["payload_actually_retrieved"] = byte_count > 0
+        if byte_count:
+            row["stage_reached"] = "parsing"
+            row["stages"]["parsing"] = "completed" if all(p["usable"] for p in payloads) else "failed"
+        outcome = classify_fetch(declared=True, returncode=fetched.returncode,
+                                 http_status=None, byte_count=byte_count)
+        if outcome == "ok" and not all(p["usable"] for p in payloads):
+            outcome = "fetch_failed"
+        if outcome == "ok" and retain_usable_dir is not None:
+            retain_usable_dir.mkdir(parents=True, exist_ok=True)
+            for path, evidence in zip(written, payloads):
+                cached = retain_usable_dir / f"{video_id}.{player_client}.{evidence['sha256']}.vtt"
+                shutil.copyfile(path, cached)
+                evidence["retained_path"] = str(cached)
+        row.update({
+            "fetch_returncode": fetched.returncode,
+            "fetch_error_present": bool(fetched.stderr.strip()),
+            "fetch_error_category": error_category(fetched.stderr),
+            "byte_count": byte_count,
+            "payloads": payloads,
+            # This identifies the declared track, not an unobserved signed URL.
+            "track_identity_sha256": hashlib.sha256(
+                f"{video_id}:{chosen['code']}".encode()
+            ).hexdigest(),
+            "http_status": None,
+            "outcome": outcome,
+        })
+
     return row
 
 
@@ -243,6 +359,8 @@ def main(argv: list[str]) -> int:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--video", action="append", default=[],
                         help="extra video ID to probe (defaults cover the 3 known cases)")
+    parser.add_argument("--only-video", action="append", default=[],
+                        help="probe only these IDs instead of historical defaults")
     parser.add_argument("--cookies-from-browser", default=None,
                         help="passed straight to yt-dlp; the value is never written to the report")
     parser.add_argument("--cookies", type=Path, default=None,
@@ -251,6 +369,8 @@ def main(argv: list[str]) -> int:
                         help=f"player_client to probe (default: {', '.join(PLAYER_CLIENTS)})")
     parser.add_argument("--workdir", type=Path, default=Path("./caption_probe"),
                         help="scratch dir for downloaded payloads (keep it gitignored)")
+    parser.add_argument("--retain-usable-dir", type=Path,
+                        help="explicit approved ignored cache for validated VTT payloads")
     args = parser.parse_args(argv)
 
     if not shutil.which("yt-dlp"):
@@ -267,7 +387,9 @@ def main(argv: list[str]) -> int:
         print("warning: no cookie source given; an unauthenticated probe cannot "
               "distinguish an auth downgrade from an empty asset", file=sys.stderr)
 
-    videos = list(KNOWN_VIDEOS) + [v for v in args.video if v not in KNOWN_VIDEOS]
+    videos = args.only_video or (list(KNOWN_VIDEOS) + [v for v in args.video if v not in KNOWN_VIDEOS])
+    if any(not re.fullmatch(r"[A-Za-z0-9_-]{11}", v) for v in videos):
+        parser.error("Every video ID must contain 11 YouTube ID characters")
     clients = args.client or list(PLAYER_CLIENTS)
     args.workdir.mkdir(parents=True, exist_ok=True)
 
@@ -277,7 +399,7 @@ def main(argv: list[str]) -> int:
         for client in clients:
             print(f"[probe] {video_id} client={client}", flush=True)
             try:
-                results.append(probe(video_id, client, cookie_args, args.workdir))
+                results.append(probe(video_id, client, cookie_args, args.workdir, args.retain_usable_dir))
             except subprocess.TimeoutExpired:
                 results.append({
                     "video_id": video_id, "player_client": client,
@@ -286,10 +408,10 @@ def main(argv: list[str]) -> int:
             time.sleep(0.5)
 
     report = {
-        "schema_version": "caption-diagnosis-v1",
+        "schema_version": "caption-diagnosis-v2",
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "yt_dlp_version": version,
-        "authenticated": bool(cookie_args),
+        "cookie_source_supplied": bool(cookie_args),
         "videos": {v: KNOWN_VIDEOS.get(v, "additional probe") for v in videos},
         "player_clients": clients,
         "results": results,

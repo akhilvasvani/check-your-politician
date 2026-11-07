@@ -1,223 +1,168 @@
-# `scripts/transcripts/` — transcript ingestion
+# Transcript ingestion and verification
 
-Ingests LA City Council meeting transcripts from the City Clerk's public
-YouTube channel (CART captions, one file per meeting), resolves speakers
-via `data/transcripts/roster.json`, chunks each transcript, embeds the
-chunks with Perplexity's `pplx-embed-v1-0.6b` model, and upserts them
-into a Supabase Postgres table (`transcript_chunks`) that the
-`/api/search-transcripts` Vercel function queries at request time.
+The transcript feature retrieves passages from static canonical artifacts indexed
+in Supabase PostgreSQL/pgvector. Query and document embeddings use
+`pplx-embed-v1-0.6b`, 1,024 dimensions, embedding version 1. Speaker labels are
+resolved deterministically through `roster.json` and role mappings. Public
+comments use a separate search RPC. Web-grounded Ask-AI remains a separate
+feature.
 
-This runs **locally on the Mac mini**, not in GitHub Actions. See the
-"Why not CI?" note at the bottom.
+The operating owner is Akhil Vasvani. The supported execution host is a local,
+unprivileged macOS or Linux shell with the required dependencies explicitly
+approved and installed. Transcript refresh is a manually reviewed process.
+Finance refresh keeps its existing workflow and schedule.
 
-Frontend and API integration:
+## Current evidence and gates
 
-- `data/transcripts/roster.json` — human-curated speaker table.
-- `data/transcripts/{video_id}.json` — per-meeting output, canonical.
-- `data/transcripts/schema.sql` — Supabase table + RPC (apply once).
-- `api/search-transcripts.js` — Vercel function that reads Supabase.
-- `js/transcript-search.js` — per-official panel on `official.html`.
+The nine checked-in canonical recordings contain 3,341 parent turns, with dates
+from June 24 through August 14, 2026. Their existence proves local artifact
+availability. Inspect the intended Supabase project before asserting live
+index counts, migration status, grants, or current coverage.
 
-Full schema reference: [`../../CONTRACT.md`](../../CONTRACT.md#new-datatranscripts-transcript-search-feature-additive).
+M3.1 corpus expansion, M3.3 live evaluation, M3.4 independent speaker precision,
+and M3.5 release acceptance remain open. The complete 234-candidate relevance
+judgment pool and historical 30-query replay are preserved. Six authored queries
+still lack traces, and committee cases require verified committee evidence.
+The independent councilmember attribution precision gate is at least 0.85 on
+the documented stratified sample of at least 100 turns. Practice labels are
+separate from that acceptance sample.
 
-## One-time setup
+## Dependencies and credentials
 
-### 1. Python virtualenv
+Inspect installed tools first. Installing packages, accessing browser cookies,
+paid embedding/evaluation calls, and shared database writes each require the
+owner's applicable approval for this release. Use a workspace virtual environment
+and a local PostgreSQL prefix when approved. Avoid global package upgrades and
+privileged helper-user creation.
 
-`scripts/transcripts/` intentionally does **not** share Python
-dependencies with `scripts/pipeline/`, which is stdlib-only. It has its
-own `requirements-transcripts.txt`.
+Offline discovery, parsing, and evaluation helpers use Python standard-library
+modules. Caption probing needs `yt-dlp`. Disposable database tests need
+PostgreSQL 16, pgvector, and `psycopg2`. The legacy online builder imports
+`supabase`, but it is not the approved replacement publication entry point.
 
-From the repo root:
+| Credential | Purpose |
+| --- | --- |
+| `PERPLEXITY_API_KEY` | Approved embedding calls |
+| `SUPABASE_URL` | Exact project target, verified before use |
+| `SUPABASE_ANON_KEY` | Read-only search and coverage |
+| `SUPABASE_SERVICE_ROLE_KEY` | Approved ingestion writes only |
+| `TRANSCRIPT_TEST_PG_DSN` | Disposable test database only |
 
-```bash
-cd la-money-votes
-python3 -m venv .venv-transcripts
-source .venv-transcripts/bin/activate
-pip install --upgrade pip
-pip install -r scripts/transcripts/requirements-transcripts.txt
-```
+Keep secrets out of files, frontend assets, reports, and logs. Configure preview
+and production independently. A credential being present does not establish
+access, read/write boundaries, or applied migration state.
 
-Only third-party dep is `supabase>=2.5.0,<3.0.0`. Everything else
-(PrimeGov fetch, VTT parsing, chunking, HTTP calls to Perplexity's
-embedding API) is stdlib.
+## Metadata inventory
 
-### 2. `yt-dlp` on `$PATH`
-
-The script shells out to `yt-dlp` to download CART VTT captions.
-Homebrew works:
-
-```bash
-brew install yt-dlp
-which yt-dlp    # should print /usr/local/bin/yt-dlp on Intel Mac mini
-```
-
-If `yt-dlp` lives somewhere non-standard, set `YT_DLP_PATH` to the
-absolute path.
-
-### 3. Chrome cookies
-
-`yt-dlp` invokes `--cookies-from-browser chrome` to establish the
-"logged-in human watching YouTube" signal that keeps CART captions
-downloadable without a rate-limit challenge. Just make sure Chrome is
-installed and has been used to visit `youtube.com` at least once on
-this user account; you don't need to log in.
-
-If you use a different browser, override the default:
+Run from `la-money-votes/`, substituting the approved Python executable if the
+shell's `python3` is unsuitable. Always choose a temporary output on the first
+pass.
 
 ```bash
-export YT_DLP_COOKIES_BROWSER=firefox   # or safari, edge, etc.
+python3 scripts/transcripts/discover_corpus.py --days 90 \
+  --output ../work/release/source/corpus-current.json
 ```
 
-### 4. Environment variables
+The newest-ten list includes regular Council sessions whose video URL is
+missing. The discovery window follows the public PrimeGov API's archived-row
+window. Record retrieval time, observed earliest/latest row dates, missing
+videos, collisions, and excluded bodies. Search date bounds are separate from
+discovery. Historical indexed rows remain subject to an explicit retention
+policy, and must not be deleted merely because they are older than 90 days.
 
-Required for a real (embedding) run:
+The manifest's legacy `already_published_videos` summary reflects local canonical
+artifacts. Its `pipeline_state_basis` distinguishes this evidence. Reconcile live
+rows independently before using publication counts in release claims.
 
-| Variable                     | Where it comes from                                                                        |
-| ---------------------------- | ------------------------------------------------------------------------------------------ |
-| `PERPLEXITY_API_KEY`         | Perplexity account. Same key `api/ask-official.js` uses in Vercel.                          |
-| `SUPABASE_URL`               | Supabase project settings → API → Project URL. `https://<project-ref>.supabase.co`.       |
-| `SUPABASE_SERVICE_ROLE_KEY`  | Supabase project settings → API → `service_role` key. **Never** commit or share.          |
+## Caption feasibility
 
-Optional:
-
-| Variable                     | Default              | Purpose                                                    |
-| ---------------------------- | -------------------- | ---------------------------------------------------------- |
-| `YT_DLP_PATH`                | `yt-dlp` on `$PATH`  | Absolute path to yt-dlp if not on the shell's `$PATH`.     |
-| `YT_DLP_COOKIES_BROWSER`     | `chrome`             | Which browser's cookie jar to read.                        |
-| `VTT_CACHE_DIR`              | `.cache/youtube/`    | Where raw downloaded VTTs live (never committed).          |
-
-Recommended: keep these in a `.envrc` (direnv) or a per-shell `~/.zshenv`
-snippet, never in the repo. The repo's root `.gitignore` already excludes
-`.env*` files, but the safest posture is not to write them into the tree
-at all.
-
-### 5. Supabase schema
-
-One-time only, when the Supabase project is first created OR when
-`data/transcripts/schema.sql` changes shape (a schema change is a
-CONTRACT event — do not sneak one in).
-
-Preferred: paste `data/transcripts/schema.sql` into the Supabase SQL
-editor and run it. It is idempotent (`create ... if not exists`,
-`create or replace function ...`).
-
-Alternative, if using the Supabase MCP connector from Perplexity
-Computer: apply the file via the MCP's `execute_sql` tool. The service
-role key is not needed for this — the MCP handles auth on its own.
-
-## Running the pipeline
-
-### Dry run (no Supabase, no embedding, no cost)
-
-Fast smoke test — fetches the 10 most recent City Council meetings,
-downloads each VTT, resolves speakers, chunks, and writes
-`data/transcripts/{video_id}.json`, but skips embedding and Supabase
-upsert entirely. Useful for verifying speaker coverage on a fresh
-meeting before spending API credits.
+After tool and, if needed, cookie approval, probe the known control and explicit
+current Council/committee samples. `--only-video` replaces the historical default
+set. The following command runs one client and leaves cookie access disabled.
 
 ```bash
-python3 scripts/transcripts/build_transcripts.py --no-embed
+python3 scripts/transcripts/diagnose_captions.py \
+  --out ../work/release/source/caption-probe.json \
+  --workdir ../work/release/source/caption-probe \
+  --only-video MBjio010l60 --only-video rzdSGTDRRxI \
+  --only-video DP_mNBtgH1s --client web
 ```
 
-Or one specific video (bypasses PrimeGov entirely — handy when the API
-is slow):
+Adding `--cookies-from-browser chrome` requires explicit approval. The diagnostic
+ignores implicit yt-dlp configuration and automatic retry loops. Each subprocess
+has a 120-second deadline. A single controlled follow-up may test the remaining
+hypothesis after inspecting the first report. No automatic captions or ASR are
+enabled.
+
+`ok` requires an actual UTF-8 VTT payload, valid increasing cue times, nonempty
+text, and speaker cues recognizable by the existing parser. The diagnostic
+records payload hashes and counts, discards temporary VTTs, and keeps raw stderr
+and signed URLs out of reports. Optional `--retain-usable-dir` preserves only
+validated payloads in an explicitly approved ignored local cache. Cookie-source presence is reported without
+claiming authentication succeeded. Listing failures are `fetch_failed`, not
+proof that captions are `not_offered`. `zero_byte` and `empty_with_error` remain
+separate outcomes. HTTP status remains unknown when the downloader does not
+supply it. A failed control leaves environment/authentication/source ambiguity.
+
+## Controlled publication
+
+`m3_1_ingest.py` currently has an offline CLI that applies reviewed preflight
+results to a local manifest. Inspect its supported arguments before use.
+`--allow-partial` is explicit, with strict completeness by default.
+
+`ingest_verified.py` uses `embed_and_index` and `TransactionalReplacementIndexer`
+for one reviewed recording per invocation. Its default prepares an offline plan.
+`--execute` requires an exact approved plan hash and a matching, independently
+reviewed target receipt. The plan binds the execution directory, source hashes,
+model/version, source identities and implementation hashes. Run `--help` for
+receipt fields. Confirm target project, migration signatures, model/dimensions, security,
+backup, exact keys/counts, cost bound, and recovery before requesting approval.
+Demonstrate idempotence after the approved batch.
+
+The legacy `build_transcripts.py` defaults to caption download, paid embedding,
+and client upsert. Its `--no-embed` flag still downloads captions, may access
+Chrome cookies, and writes canonical artifacts. Its `--video-id` path bypasses
+meeting discovery. These are consequential operations and should not be used as
+an offline verification shortcut or as the release replacement pipeline.
+
+A SQL file in Git does not establish that it was applied. Inspect the target
+schema and grants, propose only the exact missing migration, and obtain approval
+before applying it. Never apply the whole SQL directory blindly.
+
+## Tests and replay
+
+From `la-money-votes/`, run the explicit offline modules used by CI.
 
 ```bash
-python3 scripts/transcripts/build_transcripts.py --video-id UkdZRHDB9qs --no-embed
+PYTHONPATH=scripts python3 -m unittest -v \
+  scripts.transcripts.tests.test_backfill_meeting_dates \
+  scripts.transcripts.tests.test_diagnose_captions \
+  scripts.transcripts.tests.test_discover_corpus \
+  scripts.transcripts.tests.test_eval_metrics \
+  scripts.transcripts.tests.test_eval_replay \
+  scripts.transcripts.tests.test_m3_1_ingest \
+  scripts.transcripts.tests.test_ingest_verified
+node --test tests/test-transcript-coverage.js
+node --test tests/js/*.test.js
 ```
 
-After a dry run, check the coverage summary logged for each meeting.
-Anything with a nonzero `unresolved` count means the CART operator used
-a `cart_label` that `roster.json` doesn't have yet — fix the roster
-before doing a real run, or those utterances end up as `Unknown` in the
-committed JSON.
+For an already approved disposable PostgreSQL 16/pgvector installation, set
+`PGBIN` to its `bin` directory and `PYTHON` to the environment containing
+`psycopg2`, then run `bash scripts/transcripts/run_pg_tests.sh`. It uses a temporary
+cluster and ephemeral localhost port, tears down on exit, and refuses root.
+It does not install anything or create users on the machine. All 17 tests must
+execute. CI's 17 skips provide collection evidence only.
 
-### Real run (embeds + upserts to Supabase)
+Historical replay can be checked without paid calls.
 
 ```bash
-python3 scripts/transcripts/build_transcripts.py
+PYTHONPATH=scripts python3 scripts/transcripts/eval_replay.py replay \
+  --queries data/transcripts/eval_queries_m3_3.json \
+  --trace data/transcripts/eval_results_m2.json \
+  --out ../work/release/source/offline-replay-current.json \
+  --require-full-coverage
 ```
 
-Cost: `pplx-embed-v1-0.6b` at ~$0.004/1M tokens; a 10-meeting corpus
-re-embedded from scratch runs about $0.001. Idempotent — re-running
-against unchanged transcripts is a no-op (the `(video_id, chunk_idx,
-embedding_model)` unique constraint deduplicates on the Supabase side).
-
-## CLI flags
-
-| Flag           | Default          | Purpose                                                              |
-| -------------- | ---------------- | -------------------------------------------------------------------- |
-| `--top N`      | `10`             | How many recent City Council meetings to consider from PrimeGov.     |
-| `--video-id X` | (none)           | Skip PrimeGov entirely; process one specific YouTube video ID.       |
-| `--no-embed`   | (off)            | Skip embedding + Supabase upsert. Writes JSON only.                  |
-| `--cache-dir P`| `.cache/youtube` | Where to put downloaded raw VTTs (never committed).                  |
-| `--log-level L`| `INFO`           | Standard Python logging level.                                       |
-
-## Common failure modes
-
-### "No English CART captions on this video"
-
-Fresh livestreams don't have CART captions transcoded for anywhere from
-a few minutes to a few hours after the meeting ends. The script logs
-this and moves on — the meeting will be picked up on the next
-scheduled run (which is: the next time you run this manually). The
-committed JSON is the retry marker: as long as there's no
-`data/transcripts/{video_id}.json` for a given video, the pipeline will
-retry it.
-
-### "yt-dlp needs Chrome cookies"
-
-If the download fails with a "sign in to confirm" error, quit Chrome
-completely and rerun. `yt-dlp --cookies-from-browser chrome` needs to
-copy the cookie file, and Chrome holds an exclusive lock while running.
-
-### "Supabase 401 / 403"
-
-Almost always a wrong or missing `SUPABASE_SERVICE_ROLE_KEY`. The
-service role key starts with `eyJ` (JWT) and is 200+ characters. The
-`anon` key won't work here — writes to `transcript_chunks` need the
-service role. The Vercel search function uses the `anon` key instead,
-because it only reads via the `search_transcripts` RPC.
-
-### "The CART operator changed my labels"
-
-Symptom: coverage summary shows a big `unresolved` count, or a familiar
-councilmember suddenly resolves to `Unknown`. Look at
-`data/transcripts/{video_id}.json` — the raw `source_label` string is
-recorded verbatim next to every utterance. If the CART operator started
-writing `"CM. Jurado"` instead of `"Y. Jurado"`, that's a `roster.json`
-edit, not a code change. See CONTRACT.md's "cart_label" note.
-
-## Why not run this in CI?
-
-- **Cookie surface.** `yt-dlp` needs a real browser cookie jar to fetch
-  CART reliably. Provisioning one in GitHub Actions runners is
-  brittle — the moment YouTube tightens something, the workflow breaks.
-- **Cost visibility.** The embedding job spends real money against a
-  Perplexity API key. Running it locally keeps that spend visible and
-  attributable to a human keystroke, not a scheduled job that could
-  loop on failure.
-- **Cadence.** City Council meets weekly; a manual "run this after the
-  meeting is captioned" workflow is the right cadence, not a cron.
-
-The `refresh-data.yml` workflow (which pulls funding data from the LA
-Ethics Commission's Socrata API) has none of these constraints; the two
-data sources are deliberately kept on different operational planes.
-
-## What CI does and does not cover
-
-`.github/workflows/ci.yml` runs the offline transcript tests on every PR:
-the Python modules in `tests/` (named explicitly, because this directory
-has no `__init__.py` and `unittest discover` cannot import it), the Node
-test in `../../tests/test-transcript-coverage.js`, and `node --check` on
-the transcript JavaScript files. None of these call a live API.
-
-The 17 tests in `tests/test_replace_transcript_chunks.py` need a
-disposable PostgreSQL 16 + pgvector cluster (`run_pg_tests.sh`). CI does
-not provision one, so they skip, and the CI step fails if any of them
-runs without being skipped. As a result, CI does **not** verify chunk
-replacement against a real database: the replacement RPC, row mutation,
-RLS policies, grants, and PostgreSQL 16 / pgvector behavior. Run
-`run_pg_tests.sh` locally before changing `schema.sql`, the migration, or
-the replacement RPC.
+This currently exits nonzero because only 30 of 36 queries have traces, even
+though all 234 pooled candidates for those traces have judgments. It is not the
+final expanded-corpus acceptance artifact.

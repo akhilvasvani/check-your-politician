@@ -8,6 +8,11 @@ and hypothesis ranking are pure and are tested here against fixtures.
 from __future__ import annotations
 
 import unittest
+import json
+import subprocess
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
 
 from transcripts.diagnose_captions import (
     classify_fetch,
@@ -15,6 +20,8 @@ from transcripts.diagnose_captions import (
     parse_list_subs,
     pick_manual_track,
     summarize,
+    probe,
+    error_category,
 )
 
 LIST_SUBS = """[youtube] Extracting URL: https://www.youtube.com/watch?v=MBjio010l60
@@ -67,6 +74,10 @@ class TrackSelectionTest(unittest.TestCase):
     def test_never_selects_an_asr_track(self):
         asr_only = [{"code": "en", "name": "English (auto-generated)", "formats": "vtt"}]
         self.assertIsNone(pick_manual_track(asr_only))
+
+    def test_does_not_select_a_foreign_language_by_substring(self):
+        tracks = [{"code": "fr", "name": "French", "formats": "vtt"}]
+        self.assertIsNone(pick_manual_track(tracks))
 
     def test_returns_none_when_nothing_is_declared(self):
         self.assertIsNone(pick_manual_track([]))
@@ -146,6 +157,124 @@ class SummarizeTest(unittest.TestCase):
     def test_nothing_declared_is_reported_as_a_different_failure(self):
         summary = summarize(rows(("X", "web", "not_offered", 0)))
         self.assertTrue(any("different" in f for f in summary["findings"]))
+
+
+class ProbeSafetyTest(unittest.TestCase):
+    def run_probe(self, payload, returncode=0, stale=False):
+        with tempfile.TemporaryDirectory() as tmp:
+            workdir = Path(tmp)
+            if stale:
+                (workdir / "MBjio010l60.web.en-US.vtt").write_text(
+                    "WEBVTT\n\n00:00:01.000 --> 00:00:02.000\n&gt;&gt; Clerk: OLD\n")
+            def fake_run(cmd):
+                if "--list-subs" in cmd:
+                    return subprocess.CompletedProcess(cmd, 0, LIST_SUBS, "")
+                if payload is not None:
+                    output = Path(cmd[cmd.index("-o") + 1])
+                    Path(str(output) + ".en-US.vtt").write_text(payload)
+                return subprocess.CompletedProcess(cmd, returncode, "",
+                    "ERROR https://captions.example/?signed=secret-token")
+            with patch("transcripts.diagnose_captions.run", side_effect=fake_run):
+                return probe("MBjio010l60", "web", [], workdir)
+
+    def test_non_caption_bytes_are_not_usable_and_errors_are_private(self):
+        result = self.run_probe("<html>captcha</html>")
+        self.assertEqual(result["outcome"], "fetch_failed")
+        self.assertNotIn("secret-token", json.dumps(result))
+        self.assertNotIn("track_url_sha256", result)
+
+    def test_stale_file_does_not_turn_failed_download_into_success(self):
+        result = self.run_probe(None, returncode=1, stale=True)
+        self.assertEqual(result["outcome"], "fetch_failed")
+        self.assertEqual(result["byte_count"], 0)
+
+    def test_usable_caption_records_payload_hash_and_cue_evidence(self):
+        result = self.run_probe("WEBVTT\n\n00:00:01.000 --> 00:00:02.000\n&gt;&gt; Clerk: HELLO\n")
+        self.assertEqual(result["outcome"], "ok")
+        self.assertEqual(result["payloads"][0]["speaker_cue_count"], 1)
+        self.assertEqual(len(result["payloads"][0]["sha256"]), 64)
+
+    def test_invalid_timing_is_rejected(self):
+        result = self.run_probe("WEBVTT\n\n00:00:04.000 --> 00:00:02.000\n&gt;&gt; Clerk: HELLO\n")
+        self.assertEqual(result["outcome"], "fetch_failed")
+
+    def test_malformed_second_cue_is_not_silently_dropped(self):
+        result = self.run_probe("WEBVTT\n\n00:00:01.000 --> 00:00:02.000\n&gt;&gt; Clerk: HELLO\n\n00:00:bad --> 00:00:05.000\n&gt;&gt; Clerk: LOST TEXT\n")
+        self.assertEqual(result["outcome"], "fetch_failed")
+
+    def test_missing_speaker_cues_require_review(self):
+        result = self.run_probe("WEBVTT\n\n00:00:01.000 --> 00:00:02.000\nHELLO\n")
+        self.assertEqual(result["outcome"], "fetch_failed")
+
+    def test_explicit_cache_preserves_only_validated_payloads(self):
+        valid = "WEBVTT\n\n00:00:01.000 --> 00:00:02.000\n&gt;&gt; Clerk: HELLO\n"
+        for payload, expected_count in ((valid, 1), ("<html>error</html>", 0)):
+            with self.subTest(expected_count=expected_count), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                retained = root / "retained"
+                def fake_run(cmd):
+                    if "--list-subs" in cmd:
+                        return subprocess.CompletedProcess(cmd, 0, LIST_SUBS, "")
+                    output = Path(cmd[cmd.index("-o") + 1])
+                    Path(str(output) + ".en-US.vtt").write_text(payload)
+                    return subprocess.CompletedProcess(cmd, 0, "", "")
+                with patch("transcripts.diagnose_captions.run", side_effect=fake_run):
+                    report = probe("MBjio010l60", "web", [], root, retained)
+                cached = list(retained.glob("*.vtt"))
+                self.assertEqual(len(cached), expected_count)
+                if expected_count:
+                    self.assertEqual(cached[0].read_text(), valid)
+                    self.assertEqual(report["payloads"][0]["retained_path"], str(cached[0]))
+
+    def test_safe_error_categories_do_not_include_sensitive_text(self):
+        self.assertEqual(error_category("ERROR unable to download https://host/?signed=secret"),
+                         "network_failure")
+        self.assertEqual(error_category("ERROR cookie database at /private/path"),
+                         "cookie_access")
+        self.assertIsNone(error_category(""))
+
+    def test_invalid_inline_timestamp_is_rejected(self):
+        result = self.run_probe("WEBVTT\n\n00:00:01.000 --> 00:00:02.000\n&gt;&gt; Clerk: <00:bad>HELLO\n")
+        self.assertEqual(result["outcome"], "fetch_failed")
+
+    def test_mock_failure_stages_and_redaction_before_live_probe(self):
+        examples = [
+            ("ERROR cookie database denied /private/path https://host/?signed=secret", "cookie_access", "cookie_access"),
+            ("ERROR keychain access denied Authorization: SECRET", "keychain_access", "cookie_access"),
+            ("ERROR unable to download https://host/?signed=secret", "network_failure", "listing"),
+            ("ERROR mysterious private material SECRET", "unclassified_tool_error", "listing"),
+        ]
+        for stderr, category, stage in examples:
+            with self.subTest(category=category), tempfile.TemporaryDirectory() as tmp:
+                with patch("transcripts.diagnose_captions.run", return_value=
+                           subprocess.CompletedProcess([], 1, "", stderr)):
+                    result = probe("MBjio010l60", "web", ["--cookies-from-browser", "chrome:Default"], Path(tmp))
+                self.assertEqual(result["list_error_category"], category)
+                self.assertEqual(result["stage_reached"], stage)
+                self.assertEqual(result["list_returncode"], 1)
+                self.assertFalse(result["payload_actually_retrieved"])
+                self.assertEqual(result["stages"]["caption_download"], "not_reached")
+                self.assertEqual(result["stages"]["parsing"], "not_reached")
+                serialized = json.dumps(result)
+                for private in ("secret", "SECRET", "/private/path", "signed=", "Authorization"):
+                    self.assertNotIn(private, serialized)
+
+    def test_timeout_reports_unknown_returncode_without_private_exception(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch("transcripts.diagnose_captions.run", side_effect=
+                       subprocess.TimeoutExpired(["private-command"], 120, stderr="SECRET")):
+                result = probe("MBjio010l60", "web", [], Path(tmp))
+        self.assertEqual(result["stages"]["listing"], "timed_out")
+        self.assertIsNone(result["list_returncode"])
+        self.assertEqual(result["list_error_category"], "deadline_exceeded")
+        self.assertNotIn("SECRET", json.dumps(result))
+
+    def test_failed_listing_is_source_unavailable(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch("transcripts.diagnose_captions.run", return_value=
+                       subprocess.CompletedProcess([], 1, "", "private error")):
+                result = probe("MBjio010l60", "web", [], Path(tmp))
+        self.assertEqual(result["outcome"], "fetch_failed")
 
 
 if __name__ == "__main__":

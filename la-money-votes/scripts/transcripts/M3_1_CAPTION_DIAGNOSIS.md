@@ -2,8 +2,9 @@
 
 ## What is blocked
 
-Three videos declare a manual English CC1/CART track whose payload returns
-HTTP 200 with zero bytes:
+The August 2026 historical inspection reported three videos declaring a manual
+English CC1/CART track with an HTTP 200, zero-byte payload. A new run must
+re-establish the outcome. The historical targets were:
 
 | video | role |
 |---|---|
@@ -47,13 +48,13 @@ then attempting a real download, and classifies each attempt as `ok`,
 The `not_offered` / `zero_byte` split is the point: a declared-but-empty track
 must never be recorded as "this meeting has no captions."
 
-If the first pass is all `zero_byte`, re-run against a different yt-dlp
-version before concluding anything:
-
-```bash
-pip install --upgrade yt-dlp && python3 scripts/transcripts/diagnose_captions.py ...
-pip install 'yt-dlp==2025.11.24' && python3 scripts/transcripts/diagnose_captions.py ...
-```
+Inspect the bounded report before a follow-up. Installation changes and browser
+cookie access require the owner's current approval. Use a pinned workspace
+virtual environment, and do not run a global package upgrade. A different
+version, additional client, or extra video requires its own approved scope.
+The current diagnostic supports repeated `--only-video` arguments and one
+`--client web` to replace the broad historical default matrix. See the current
+[runbook](README.md#caption-feasibility) for the exact three-video examples.
 
 ## Reading the result
 
@@ -67,10 +68,11 @@ pip install 'yt-dlp==2025.11.24' && python3 scripts/transcripts/diagnose_caption
 
 ## Safety
 
-- No credentials are written to the report: the cookie source is recorded as a
-  boolean, and caption URLs are hashed rather than stored, since a caption URL
-  embeds a signed access token.
-- Downloaded payloads land in `caption_probe/`, which is gitignored along with
-  `*.vtt`. Raw VTTs are never committed.
+- No credentials are written to the report: the cookie-source presence is recorded as a
+  boolean, raw stderr is excluded, and payload SHA-256 values are recorded.
+  No signed caption URL is stored or represented as a known URL hash.
+- Each probe uses an isolated temporary directory. Only validated payloads may
+  be retained with explicit `--retain-usable-dir` in an approved ignored cache.
+  Raw VTTs are never committed.
 - The script only measures. It does not ingest, embed, write to Supabase, or
   select an ASR track.
