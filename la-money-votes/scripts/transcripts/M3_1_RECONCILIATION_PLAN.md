@@ -39,7 +39,7 @@ as authoritative over the payload size. The client still issues no delete.
 
 `scripts/transcripts/run_pg_tests.sh` provisions a disposable Postgres 16 +
 pgvector cluster on a free port, applies `schema.sql` and the migration, runs
-17 integration tests, and tears the cluster down. It touches no Supabase
+18 integration tests, and tears the cluster down. It touches no Supabase
 project. The tests cover the replacement happy path (shorter re-parse removes
 exactly the stale keys, longer re-parse adds keys, repeat runs are idempotent),
 cohort isolation (a replacement of one video/model leaves other videos and
@@ -47,7 +47,9 @@ other embedding models untouched), every staged-row rejection (empty payload,
 duplicate `chunk_idx`, wrong embedding dimension, missing required metadata,
 foreign `video_id`, foreign `embedding_model`, blank identifiers), both
 post-upsert guards, and the grant posture (`anon`/`authenticated` cannot
-execute the write RPC; `service_role` can; the read RPCs stay callable).
+execute the write RPC; `service_role` can; both browser roles execute the
+coverage RPC against real rows). The service-role test executes replacement
+without implicit grants, verifying the bootstrap table and sequence privileges.
 
 The two post-upsert guards are pinned separately, because they fail in
 different ways. An `AFTER INSERT OR UPDATE` trigger that deletes an upserted

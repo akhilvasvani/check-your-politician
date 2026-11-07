@@ -150,8 +150,13 @@ For an already approved disposable PostgreSQL 16/pgvector installation, set
 `PGBIN` to its `bin` directory and `PYTHON` to the environment containing
 `psycopg2`, then run `bash scripts/transcripts/run_pg_tests.sh`. It uses a temporary
 cluster and ephemeral localhost port, tears down on exit, and refuses root.
-It does not install anything or create users on the machine. All 17 tests must
-execute. CI's 17 skips provide collection evidence only.
+It does not install anything or create users on the machine. All 18 tests must
+execute. Skips without a disposable DSN provide collection evidence only.
+The tests execute coverage reads as both browser roles and replacement as
+`service_role`, without implicit table grants. The bootstrap schema explicitly
+grants public reads and service-role table/sequence access. Existing shared
+grants must be inspected before proposing any migration; do not apply the
+bootstrap file as a live repair.
 
 Historical replay can be checked without paid calls.
 

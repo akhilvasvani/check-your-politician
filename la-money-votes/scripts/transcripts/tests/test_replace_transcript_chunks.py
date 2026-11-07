@@ -82,6 +82,9 @@ class ReplaceTranscriptChunksTest(unittest.TestCase):
                     "end if; end $$;",
                     (role, role),
                 )
+            # Match Supabase's ingestion role, without giving browser roles
+            # bypass privileges or implicit grants on newly created tables.
+            cur.execute("alter role service_role bypassrls")
             cur.execute(SCHEMA_SQL.read_text())
             cur.execute(REPLACE_SQL.read_text())
 
@@ -308,12 +311,37 @@ class ReplaceTranscriptChunksTest(unittest.TestCase):
             self.assertTrue(cur.fetchone()[0], "service_role must execute the write RPC")
 
     def test_read_rpcs_remain_available_to_browser_roles(self):
+        self.seed([_row(0)])
         with self.conn.cursor() as cur:
-            cur.execute(
-                "select has_function_privilege('anon',"
-                " 'get_transcript_coverage(text,text)', 'EXECUTE')"
-            )
-            self.assertTrue(cur.fetchone()[0])
+            for role in ("anon", "authenticated"):
+                # Executability alone misses table grants needed by INVOKER.
+                cur.execute(f"set role {role}")
+                try:
+                    cur.execute(
+                        "select speaking_turns, meeting_count from "
+                        "get_transcript_coverage('tim-mcosker')"
+                    )
+                    self.assertEqual(cur.fetchone(), (1, 1))
+                    for privilege in ("INSERT", "UPDATE", "DELETE", "TRUNCATE"):
+                        cur.execute(
+                            "select has_table_privilege(current_user, "
+                            "'transcript_chunks', %s)", (privilege,),
+                        )
+                        self.assertFalse(cur.fetchone()[0])
+                finally:
+                    cur.execute("reset role")
+
+    def test_service_role_can_replace_without_implicit_table_grants(self):
+        with self.conn.cursor() as cur:
+            cur.execute("set role service_role")
+        try:
+            self.seed([_row(0), _row(1)])
+            self.replace("vidAAA", MODEL, [_row(0, text="replacement")])
+            self.assertEqual(self.keys(), [0])
+            self.assertEqual(self.texts(), {0: "replacement"})
+        finally:
+            with self.conn.cursor() as cur:
+                cur.execute("reset role")
 
     def test_replacement_is_visible_to_the_coverage_rpc(self):
         self.seed(

@@ -82,6 +82,14 @@ create policy transcript_chunks_read_anon
     to anon, authenticated
     using (true);
 
+-- New Supabase tables no longer inherit Data API grants automatically.
+-- INVOKER RPCs need table privileges as well as the RLS policy above.
+-- These are bootstrap grants, not authorization to apply this file to a
+-- shared project; inspect its existing grants and approve any migration first.
+grant select on transcript_chunks to anon, authenticated;
+grant select, insert, update, delete on transcript_chunks to service_role;
+grant usage on sequence transcript_chunks_id_seq to service_role;
+
 -- RPC used by api/search-transcripts.js.
 -- Filters:
 --   - p_embedding_model pins the vectors compared (defense against silent drift).
