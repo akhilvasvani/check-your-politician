@@ -254,7 +254,7 @@ class ReplaceTranscriptChunksTest(unittest.TestCase):
             create or replace function _vanish_one() returns trigger
             language plpgsql as $f$
             begin
-              delete from transcript_chunks where id = new.id;
+              delete from public.transcript_chunks where id = new.id;
               return null;
             end $f$;
             """,

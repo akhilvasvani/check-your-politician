@@ -1,0 +1,16 @@
+-- Read-only snapshot. Compare to prior-state.json before requesting execution.
+BEGIN READ ONLY; SET LOCAL statement_timeout='10s';
+WITH RECURSIVE membership AS (
+ SELECT r.oid AS root,r.oid AS member,ARRAY[r.oid] AS path,0 AS depth FROM pg_roles r WHERE r.rolname IN ('anon','authenticated','service_role')
+ UNION ALL SELECT x.root,m.roleid,x.path||m.roleid,x.depth+1 FROM membership x JOIN pg_auth_members m ON m.member=x.member WHERE NOT m.roleid=ANY(x.path) AND x.depth<8
+)
+SELECT jsonb_build_object(
+ 'read_only',current_setting('transaction_read_only'),'current_role',current_user,
+ 'role_paths',(SELECT jsonb_agg(jsonb_build_object('root',pg_get_userbyid(root),'role',pg_get_userbyid(member),'path',(SELECT jsonb_agg(pg_get_userbyid(v)) FROM unnest(path) v),'inherited_now',pg_has_role(root,member,'USAGE'),'can_set_role',pg_has_role(root,member,'SET')) ORDER BY root,member) FROM membership),
+ 'membership_edges',(SELECT jsonb_agg(jsonb_build_object('member',pg_get_userbyid(m.member),'role',pg_get_userbyid(m.roleid),'grantor',pg_get_userbyid(m.grantor),'admin',m.admin_option,'inherit',m.inherit_option,'set',m.set_option) ORDER BY m.member,m.roleid) FROM pg_auth_members m WHERE m.member IN (SELECT member FROM membership)),
+ 'object_acl',(SELECT jsonb_agg(jsonb_build_object('object',n.nspname||'.'||c.relname,'kind',c.relkind,'owner',pg_get_userbyid(c.relowner),'grantor',pg_get_userbyid(a.grantor),'grantee',CASE WHEN a.grantee=0 THEN 'PUBLIC' ELSE pg_get_userbyid(a.grantee) END,'privilege',a.privilege_type,'grantable',a.is_grantable) ORDER BY c.relname,a.grantee,a.privilege_type) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace CROSS JOIN LATERAL aclexplode(coalesce(c.relacl,acldefault(CASE WHEN c.relkind='S' THEN 'S'::"char" ELSE 'r'::"char" END,c.relowner))) a WHERE c.oid IN (to_regclass('public.transcript_chunks'),to_regclass('public.transcript_chunks_id_seq'))),
+ 'default_acl',(SELECT jsonb_agg(jsonb_build_object('creator',pg_get_userbyid(d.defaclrole),'schema',coalesce(n.nspname,'GLOBAL'),'kind',d.defaclobjtype,'grantor',pg_get_userbyid(a.grantor),'grantee',CASE WHEN a.grantee=0 THEN 'PUBLIC' ELSE pg_get_userbyid(a.grantee) END,'privilege',a.privilege_type,'grantable',a.is_grantable) ORDER BY d.defaclrole,d.defaclnamespace,d.defaclobjtype,a.grantee,a.privilege_type) FROM pg_default_acl d LEFT JOIN pg_namespace n ON n.oid=d.defaclnamespace CROSS JOIN LATERAL aclexplode(d.defaclacl) a WHERE d.defaclrole IN (SELECT oid FROM pg_roles WHERE rolname IN ('postgres','service_role','supabase_admin')) AND d.defaclnamespace IN (0,(SELECT oid FROM pg_namespace WHERE nspname='public'))),
+ 'effective_sequence',(SELECT jsonb_agg(jsonb_build_object('role',r.rolname,'usage',has_sequence_privilege(r.oid,c.oid,'USAGE'),'select',has_sequence_privilege(r.oid,c.oid,'SELECT'),'update',has_sequence_privilege(r.oid,c.oid,'UPDATE'),'public_create',has_schema_privilege(r.oid,'public','CREATE')) ORDER BY r.rolname) FROM pg_roles r CROSS JOIN pg_class c WHERE r.rolname IN ('anon','authenticated','service_role') AND c.oid=to_regclass('public.transcript_chunks_id_seq')),
+ 'counts',(SELECT jsonb_build_object('chunks',count(*),'parents',count(*) FILTER(WHERE sub_chunk_idx=0),'recordings',count(DISTINCT video_id)) FROM public.transcript_chunks)
+) AS preparation_inventory;
+ROLLBACK;

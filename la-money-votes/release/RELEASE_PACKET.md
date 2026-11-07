@@ -1,7 +1,7 @@
 # Weekend release evidence packet
 
 Prepared November 6, 2026 Pacific time. **Release decision is NO-GO.** Required
-source, live-service, evaluation and independent attribution gates remain open.
+source, shared-SQL, deployment, evaluation and independent attribution gates remain open.
 This packet records completed local engineering and actual evidence.
 
 ## Reviewed implementation and scope
@@ -33,7 +33,8 @@ messages, honest totals/empty states, current discovery, caption diagnostics,
 and a reviewed single-recording ingestion plan/execute adapter.
 
 The original M1–M5 PRD was not recovered in the bounded checkout/local-project
-search. Checked-in M2/M3 plans and the explicit mandate govern this work.
+search or the subsequent bounded history/GitHub-artifact search. Checked-in
+M2/M3 plans and the explicit mandate supply the proposed traceability matrix.
 Transcript-grounded synthesis is unestablished as an original requirement.
 Existing web-grounded Ask-AI and transcript evidence retrieval remain distinct.
 
@@ -44,7 +45,7 @@ Existing web-grounded Ask-AI and transcript evidence retrieval remain distinct.
 | W0 integration/publication baseline | Local checks passed | Remote CI for this branch awaits push approval |
 | W1 API/UI correctness | Mock and browser gates passed | Production credential, ingress and durable limiter verification |
 | W2 inventory/captions | Metadata verified, captions blocked | No usable new manual-caption payload |
-| W3 database/replacement | 18 disposable tests passed; live project/schema/corpus and SQL-role reads verified | Missing replacement RPC, browser privilege hardening and approved write scope |
+| W3 database/replacement | Live read baseline verified; final A/B review suite 45/45 on PG16.14 and 45/45 on PG17.6 | Separate exact-SQL approvals; neither A nor B applied |
 | M3.1 corpus expansion | Blocked | Verified source captions, target review, approved cost/write plan |
 | M3.2 live coverage | Existing 9-recording baseline reconciled live | Expanded release corpus remains unestablished |
 | M3.3 relevance | Incomplete | Six missing original traces, two supplemental cases, grounded committee cases and full live five-floor run |
@@ -54,9 +55,42 @@ Existing web-grounded Ask-AI and transcript evidence retrieval remain distinct.
 | W6 operations | Code/runbook prepared | Live counter verification, account spending bounds and connected service settings |
 | Public M5-quality release | NO-GO | Required gates above plus reviewed preview and exact-SHA release approval |
 
+## Bounded preparation follow-up
+
+The owner accepted the preceding local completion and live read inspection and
+kept NO-GO. The next review consists of four independently tracked items:
+
+| Item | Concrete evidence / proposal | Still unresolved |
+| --- | --- | --- |
+| Exact database changes | [A/B review packet](database-review/README.md), forward/recovery SQL, prior-state inventory, SHA-256 manifest and read-only postflight | Approval for A and B separately on `pwbothxnfjnxkhrcxyvd`; no shared write performed |
+| Release requirements | [Proposed traceability matrix](REQUIREMENTS_TRACEABILITY.md), 25 grouped requirements and bounded repository/history/GitHub search | Original M1/M4/M5 definitions and transcript-synthesis requirement remain unknown, unwaived |
+| Remote validation | [Remote action plan](REMOTE_VALIDATION_PLAN.md) and [draft PR text](REMOTE_PR_DRAFT.md) | Final SHA bound in external approval record; push/PR/possible-preview authorization and unresolved deployment settings |
+| Independent human review | Existing 12-item practice worksheet, predictions hidden | Owner labels pending; final ≥100-turn held-out review against the verified release corpus remains required |
+
+Approved PostgreSQL 17.6 installation completed with official source checksum
+verification and separate pgvector 0.8.2 build. Final review runs passed 45 tests
+each on PostgreSQL 16.14 and 17.6, with zero failures/skips. Each includes the
+existing 18 cases, their 18-case replay against proposed B, and nine focused
+privilege/recovery/availability cases. Counts are configuration-specific, not
+90 new unique app tests; the full application suite was not rerun. Both local
+clusters stopped and were removed. Installation and test evidence is indexed
+in [validation.json](database-review/validation.json).
+
+Fresh live catalog reads identify direct broad browser grants, no PUBLIC grants
+on the table/sequence, no parent role memberships, and broad creator defaults
+that could reintroduce access on recreation. Service RPC prerequisites are
+present. Counts remain 5,003 chunks / 3,341 parent turns / nine recordings.
+A preserves SELECT and all three read RPCs; B installs only the tested function
+with pinned contract/search_path and service-only execution. These remain local
+review files. No live destructive/write-denial test or replacement invocation ran.
+
+Caption probing stays closed with listing-stage `unclassified_tool_error`,
+cookie access unknown and no retrieved payload. The offline recommendation in
+[source-status.md](source-status.md) does not authorize another probe.
+
 ## Executed checks
 
-The latest results across distinct local test suites total **492 passed, 0 failed, 0 skipped**.
+The previously reported application baseline totals **492 passed, 0 failed, 0 skipped**.
 Earlier baseline collection skipped 17 DB tests, which were later actually
 executed in the approved disposable environment. A follow-up strengthened the
 read-role test and added a service-role execution test, bringing that suite to

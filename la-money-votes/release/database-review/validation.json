@@ -1,0 +1,193 @@
+{
+  "evidence_category": "disposable_database",
+  "runs": [
+    {
+      "postgres": "16.14",
+      "vector": "0.8.2",
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0,
+      "started_at": "2026-11-07T04:15:14.701007+00:00",
+      "completed_at": "2026-11-07T04:15:33.640462+00:00",
+      "summary": "Ran 45 tests in 18.140s\n\nOK",
+      "command": [
+        "bash",
+        "la-money-votes/scripts/transcripts/run_pg_tests.sh",
+        "scripts.transcripts.tests.test_database_review",
+        "-v"
+      ],
+      "input_sha256": {
+        "la-money-votes/release/database-review/B-recovery.sql": "4ca0c947f4637fd5aa9a9310ceffaac8e25e9d57cc090bf3a74f18bfc206d263",
+        "la-money-votes/release/database-review/postflight.sql": "bd5382c829009e28a6bbb454446f35e5dbedbbb0ad56c07755115786a92eb4fc",
+        "la-money-votes/release/database-review/preflight.sql": "0a252142fc119795de8a69fcb8a764b56d444de29ec1abb437dba810c83d5435",
+        "la-money-votes/release/database-review/A-forward.sql": "245a2122c42d14e315895ef9b0de6d079030f42beb6ece04017d42ee811cb415",
+        "la-money-votes/release/database-review/A-recovery.sql": "a401c88891057102cad47aad6152a45c0d9562a47784abfa872ddd8e3e228227",
+        "la-money-votes/release/database-review/B-forward.sql": "818c0d9c7135644e0a6796a6f7358aa55f9526a28293dc72553481b0802cf330",
+        "la-money-votes/scripts/transcripts/tests/test_database_review.py": "f06fea1a843a3e013000f02a46cd3c9da23ab3bb377b53d0103af0ba6dcc0591",
+        "la-money-votes/scripts/transcripts/tests/test_replace_transcript_chunks.py": "06472d72e9675c075af48fb5cbc16eb8455b20c6474ee6d695639ceef4a3c4c4"
+      },
+      "log_sha256": "d8eb95950266f327bbc17f21b99254815dced6d591bc89999d7bc67f490d5dd3",
+      "temporary_entries_after_run": [
+        "caption-final-followup",
+        "caption-probe"
+      ]
+    },
+    {
+      "postgres": "17.6",
+      "vector": "0.8.2",
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0,
+      "started_at": "2026-11-07T04:15:14.781778+00:00",
+      "completed_at": "2026-11-07T04:15:29.813152+00:00",
+      "summary": "Ran 45 tests in 14.273s\n\nOK",
+      "command": [
+        "bash",
+        "la-money-votes/scripts/transcripts/run_pg_tests.sh",
+        "scripts.transcripts.tests.test_database_review",
+        "-v"
+      ],
+      "input_sha256": {
+        "la-money-votes/release/database-review/B-recovery.sql": "4ca0c947f4637fd5aa9a9310ceffaac8e25e9d57cc090bf3a74f18bfc206d263",
+        "la-money-votes/release/database-review/postflight.sql": "bd5382c829009e28a6bbb454446f35e5dbedbbb0ad56c07755115786a92eb4fc",
+        "la-money-votes/release/database-review/preflight.sql": "0a252142fc119795de8a69fcb8a764b56d444de29ec1abb437dba810c83d5435",
+        "la-money-votes/release/database-review/A-forward.sql": "245a2122c42d14e315895ef9b0de6d079030f42beb6ece04017d42ee811cb415",
+        "la-money-votes/release/database-review/A-recovery.sql": "a401c88891057102cad47aad6152a45c0d9562a47784abfa872ddd8e3e228227",
+        "la-money-votes/release/database-review/B-forward.sql": "818c0d9c7135644e0a6796a6f7358aa55f9526a28293dc72553481b0802cf330",
+        "la-money-votes/scripts/transcripts/tests/test_database_review.py": "f06fea1a843a3e013000f02a46cd3c9da23ab3bb377b53d0103af0ba6dcc0591",
+        "la-money-votes/scripts/transcripts/tests/test_replace_transcript_chunks.py": "06472d72e9675c075af48fb5cbc16eb8455b20c6474ee6d695639ceef4a3c4c4"
+      },
+      "log_sha256": "3dd613bd12bd19dbfc7dfa9c1d818e760b212da5e14909091186fc2a9e9b8bdc",
+      "temporary_entries_after_run": []
+    }
+  ],
+  "test_breakdown": {
+    "original_contract": 18,
+    "original_contract_against_proposed_B": 18,
+    "hardening_recovery_concurrent_reads": 9
+  },
+  "full_application_suite_rerun": false,
+  "shared_writes": 0,
+  "pg17_source": {
+    "started_at": "2026-11-07T04:01:58.706373+00:00",
+    "source_url": "https://ftp.postgresql.org/pub/source/v17.6/postgresql-17.6.tar.bz2",
+    "checksum_url": "https://ftp.postgresql.org/pub/source/v17.6/postgresql-17.6.tar.bz2.sha256",
+    "published_sha256": "e0630a3600aea27511715563259ec2111cd5f4353a4b040e0be827f94cd7a8b0",
+    "actual_sha256": "e0630a3600aea27511715563259ec2111cd5f4353a4b040e0be827f94cd7a8b0",
+    "checksum_verified_before_extract": true,
+    "pgvector_version": "0.8.2",
+    "pgvector_archive_sha256": "69f4019389af05dc1c9548deb8628e62878e6e207c03907f2b8af2016472cdaa",
+    "pgvector_source": "previously approved official GitHub tag archive, separate extraction",
+    "postgres16_preserved": true,
+    "install_prefix": "/Users/akhilvasvani/Documents/ChatGPT/check-your-politician/work/release/tooling/pg17/install",
+    "configure_options": [
+      "--without-icu",
+      "--without-readline",
+      "--without-zlib"
+    ],
+    "git_head": "f0c0c40f8536720b7fb057efa02440e38518f945"
+  },
+  "pg17_runtime": {
+    "started_at": "2026-11-07T04:03:40.846447+00:00",
+    "listen_addresses": "127.0.0.1",
+    "unix_sockets_enabled": false,
+    "temporary_directory": "/Users/akhilvasvani/Documents/ChatGPT/check-your-politician/work/release/tooling/pg17/tmp/runtime-imax7l2p",
+    "status": "verified",
+    "server_version": "17.6",
+    "vector_version": "0.8.2",
+    "observed_listen_addresses": "127.0.0.1",
+    "observed_unix_socket_directories": "",
+    "stop_returncode": 0,
+    "post_stop_status_returncode": 3,
+    "cluster_stopped": true,
+    "temporary_directory_removed": true,
+    "completed_at": "2026-11-07T04:03:42.337605+00:00"
+  },
+  "earlier_lock_measurement": {
+    "started_at": "2026-11-07T04:12:12.802375+00:00",
+    "evidence_category": "disposable_database",
+    "server_version": "17.6",
+    "vector_version": "0.8.2",
+    "scenarios": [
+      {
+        "script": "A-forward.sql",
+        "script_sha256": "245a2122c42d14e315895ef9b0de6d079030f42beb6ece04017d42ee811cb415",
+        "transaction_state": "held immediately before terminal COMMIT",
+        "baseline": "fresh legacy grant fixture, no other proposed change applied",
+        "reader_checks": [
+          {
+            "role": "anon",
+            "query": "SELECT count(*) FROM public.transcript_chunks",
+            "count": 5003,
+            "completed_within_500ms_deadline": true,
+            "observed_duration_ms": 1.09
+          },
+          {
+            "role": "authenticated",
+            "query": "SELECT count(*) FROM public.transcript_chunks",
+            "count": 5003,
+            "completed_within_500ms_deadline": true,
+            "observed_duration_ms": 0.157
+          }
+        ],
+        "observed_relation_locks": [
+          {
+            "schema": "public",
+            "relation": "transcript_chunks",
+            "mode": "AccessShareLock",
+            "granted": true
+          },
+          {
+            "schema": "public",
+            "relation": "transcript_chunks",
+            "mode": "ShareLock",
+            "granted": true
+          }
+        ],
+        "rolled_back": true
+      },
+      {
+        "script": "B-forward.sql",
+        "script_sha256": "0fd9e4bf2956053ba1bdc0d32c4e5e38574f68584c16d6e08c1e2fe2b121aa39",
+        "transaction_state": "held immediately before terminal COMMIT",
+        "baseline": "fresh legacy grant fixture, no other proposed change applied",
+        "reader_checks": [
+          {
+            "role": "anon",
+            "query": "SELECT count(*) FROM public.transcript_chunks",
+            "count": 5003,
+            "completed_within_500ms_deadline": true,
+            "observed_duration_ms": 0.542
+          },
+          {
+            "role": "authenticated",
+            "query": "SELECT count(*) FROM public.transcript_chunks",
+            "count": 5003,
+            "completed_within_500ms_deadline": true,
+            "observed_duration_ms": 0.152
+          }
+        ],
+        "observed_relation_locks": [
+          {
+            "schema": "public",
+            "relation": "transcript_chunks",
+            "mode": "AccessShareLock",
+            "granted": true
+          },
+          {
+            "schema": "public",
+            "relation": "transcript_chunks",
+            "mode": "ShareLock",
+            "granted": true
+          }
+        ],
+        "rolled_back": true
+      }
+    ],
+    "status": "passed",
+    "cluster_stopped": true,
+    "stop_returncode": 0,
+    "temporary_directory_removed": true,
+    "completed_at": "2026-11-07T04:12:15.941480+00:00"
+  }
+}

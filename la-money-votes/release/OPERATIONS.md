@@ -247,7 +247,10 @@ python3 scripts/transcripts/ingest_verified.py \
 ```
 
 This command is a template, not a prepared or approved live operation. Source
-captions and target access are still missing. Review the emitted plan hash,
+captions remain unavailable. The target identity and live catalog/corpus reads
+are verified, while browser privilege hardening and the missing replacement RPC
+await exact-SQL approval; see [database-review/README.md](database-review/README.md).
+Review the emitted plan hash,
 maximum embedding attempts/input bytes, exact project and before-image evidence
 before approving any paid/shared action. Execution adds `--execute` and
 `--approved-plan-sha256` to the reviewed command with matching environment

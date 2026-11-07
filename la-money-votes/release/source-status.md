@@ -125,9 +125,13 @@ cause. The final separately approved follow-up is recorded below.
 
 The current shell has no `PERPLEXITY_API_KEY`, `SUPABASE_URL`,
 `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, or disposable database DSN.
-This describes local configuration only. Applied migrations, live indexed
-meetings, model dimensions, constraints, RLS/grants, and read/write behavior
-remain unverified. Paid ingestion/evaluation and shared mutation remain gated.
+This describes the shell configuration at the time of that check. Subsequent
+owner-approved live reads verified the target, five applied migrations, the
+5,003-chunk / 3,341-parent / nine-recording baseline, model/dimensions, constraints
+and SELECT access. Browser roles still have excessive table/sequence grants and
+the replacement RPC is absent. [The SQL review](database-review/README.md)
+prepares separate corrections; none has been applied. HTTP credential behavior,
+paid ingestion/evaluation and shared mutation remain gated.
 
 `scripts/transcripts/ingest_verified.py` now connects the existing embedding and
 transactional replacement seams for one reviewed recording. Its default is an
@@ -211,6 +215,26 @@ PYTHONPATH=scripts ../work/release/tooling/venv/bin/python -m unittest -v \
 ```
 
 The approved caption investigation is closed after the final follow-up. Preserve
-the frozen metadata and both probe reports. Shared target identity and live read
-access are separate outstanding requirements before migration planning or paid
-ingestion can proceed.
+the frozen metadata and both probe reports. Shared target identity and bounded
+SQL-role reads are now verified. Caption availability, exact-SQL approval,
+HTTP credentials and independently reviewed paid-ingestion prerequisites remain
+open. No new source probe is authorized.
+
+
+## Offline diagnostic recommendation (no probe authorized)
+
+The final three-video result remains listing-stage `unclassified_tool_error`,
+return code 1, cookie access unknown, and no caption payload retrieved or tested.
+The discarded raw error cannot be reconstructed; absent optional modules alone
+do not establish authentication failure or source absence. Preserve this result.
+
+A useful offline next step is to review the installed, pinned downloader's exit
+paths against synthetic errors and the existing redaction/stage fixtures, then
+propose any more precise safe category with local regression evidence. Do not
+run the downloader against a URL or profile, read browser cookies/keychains, or
+recover raw sensitive logs. Such review can improve a future diagnostic design
+but cannot determine the cause of these completed attempts. A materially
+different source option would be an official archive's manual CART export with
+verified meeting identity; obtaining or probing it would need a concrete new
+approval. No ASR, automatic-caption substitution, client/version change or new
+network probe has been performed or authorized.
