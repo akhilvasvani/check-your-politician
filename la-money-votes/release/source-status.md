@@ -151,11 +151,13 @@ unresolved/evidence fields. Sampling deliberately covers councilmember labels,
 presiding language, procedural exchanges, public-comment boundaries, and fuzzy
 labels across historical Council recordings. Committee practice remains pending
 verified source material. This diagnostic worksheet is not the final held-out
-sample and no independent labels have been received.
+sample. The owner’s revised labels were received November7 and frozen before
+practice comparison; see [practice-review/README.md](practice-review/README.md).
 
 The separate resolver answer key lives in
-`work/release/source/speaker-practice-answer-key.json`. Keep it hidden from the
-reviewer until practice labeling ends. The final acceptance sample must be drawn
+`work/release/source/speaker-practice-answer-key.json`. It remained hidden until
+the revision was frozen; practice predictions were then revealed for diagnostics
+under the owner’s explicit instruction. The final acceptance sample must be drawn
 after the release corpus is fixed and must include committee material and at
 least 100 turns. Report precision using predicted councilmember attributions as
 the denominator, preserve unresolved human labels, and meet the locked 0.85 gate.
@@ -196,7 +198,9 @@ materially different evidence and an appropriately scoped new action.
 
 The release corpus remains unfixed. Six authored legacy-fixture queries plus
 the two separately authored cases need live traces, committee cases need
-verified material, and no independent human labels have been received.
+verified material. Revised human practice labels are imported, with unresolved
+identity/target/boundary cases documented separately; no held-out acceptance
+labels or precision result exist.
 
 ## Resume commands
 

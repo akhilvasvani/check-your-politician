@@ -37,7 +37,10 @@ error and explicitly roll back an open transaction. Never retry an ambiguous
 result without a read-only state check.
 
 These are review scripts, not applied migration records. No migration-history
-row, schema-cache notification or function invocation is included. Installation
+row, explicit schema-cache notification statement or function invocation is included.
+The November7 catalog read identifies existing PostgREST event triggers that
+automatically notify schema-cache reload on B CREATE/ALTER/DROP FUNCTION; see
+[B-APPROVAL.md](B-APPROVAL.md). This side effect does not invoke replacement. Installation
 method and any later history/cache operation must be reviewed within the exact
 execution request; the files do not authorize extra SQL.
 
@@ -52,7 +55,9 @@ results. No write-denial or destructive statement was attempted live.
 Exact objects: `public.transcript_chunks` and
 `public.transcript_chunks_id_seq`, both owned by `postgres`. The sequence is
 owned by `transcript_chunks.id` and supplies its default. No column ACL or row
-trigger was found. The expected corpus is **5,003 chunks / 3,341 parent turns /
+trigger was found. The November7 [read-only refresh](review-refresh-2026-11-07.json) exactly matches
+the prior privilege inventory and finds no replacement overloads or row triggers.
+The expected corpus is **5,003 chunks / 3,341 parent turns /
 9 recordings**. Existing read RPC bodies match the checked-in versions.
 
 | Principal | Effective transcript table privileges before A | Sequence privileges before A | After A |

@@ -7,3 +7,5 @@ Local validation includes offline Python/Node suites, disposable PostgreSQL/pgve
 Public release gates remain open, including verified caption material, independent speaker review, live relevance evaluation, browser-role privilege hardening, approved replacement-RPC migration, deployment credential/limiter verification and exact-SHA preview review. No paid API batch, shared data write, merge, production deployment or promotion is authorized by this draft PR.
 
 The reviewed push/PR approval must account for automatic Vercel preview side effects. See `la-money-votes/release/REMOTE_VALIDATION_PLAN.md` for the inspected configuration, unresolved Git settings, proposed actions and recovery steps.
+
+Revised practice annotations are preserved and frozen before diagnostic comparison; no practice item counts toward held-out acceptance. The separate A/B database approval packets retain unchanged tested SQL. Current remote preflight keeps push blocked until Vercel production/build/branch behavior is verified.

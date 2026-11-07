@@ -1,0 +1,42 @@
+{
+  "change": "A",
+  "approval_status": "NOT APPROVED",
+  "target": {
+    "supabase_project_id": "pwbothxnfjnxkhrcxyvd",
+    "organization": "la-politician",
+    "region": "us-west-2",
+    "database": "postgres",
+    "executor": "postgres"
+  },
+  "forward_sql_file": "A-forward.sql",
+  "forward_sha256": "245a2122c42d14e315895ef9b0de6d079030f42beb6ece04017d42ee811cb415",
+  "authorized_statement_set_if_approved": "Only the full exact forward file above, in its single transaction, plus the reviewed read-only preflight/postflight checks. Stop on drift/error/ambiguous outcome.",
+  "recovery_sql_file": "A-recovery.sql",
+  "recovery_sha256": "a401c88891057102cad47aad6152a45c0d9562a47784abfa872ddd8e3e228227",
+  "recovery_requires_separate_approval": true,
+  "excluded": [
+    "the other shared change",
+    "RPC invocation",
+    "ingestion",
+    "corpus replacement",
+    "paid calls",
+    "destructive live tests",
+    "live write-denial tests",
+    "remote pushes",
+    "deployment",
+    "settings changes",
+    "extra migration-history or repair SQL"
+  ],
+  "scope": {
+    "table": "public.transcript_chunks",
+    "sequence": "public.transcript_chunks_id_seq",
+    "revoked_principals": [
+      "PUBLIC",
+      "anon",
+      "authenticated"
+    ],
+    "retained_browser_table_privilege": "SELECT",
+    "service_owner_privileges": "unchanged",
+    "default_privileges": "unchanged"
+  }
+}

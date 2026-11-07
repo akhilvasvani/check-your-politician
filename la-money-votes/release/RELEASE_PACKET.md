@@ -49,11 +49,30 @@ Existing web-grounded Ask-AI and transcript evidence retrieval remain distinct.
 | M3.1 corpus expansion | Blocked | Verified source captions, target review, approved cost/write plan |
 | M3.2 live coverage | Existing 9-recording baseline reconciled live | Expanded release corpus remains unestablished |
 | M3.3 relevance | Incomplete | Six missing original traces, two supplemental cases, grounded committee cases and full live five-floor run |
-| M3.4 attribution | Pending human review | Practice labels, release corpus, held-out stratified sample of at least 100 turns, precision ≥0.85 |
+| M3.4 attribution | Revised practice annotations frozen and compared; diagnostic holds remain | Verified release corpus, held-out stratified sample of at least 100 turns, independent precision ≥0.85 |
 | M3.5 closeout | Blocked | Relevance, attribution, coverage and live integration gates |
 | W5 finance/action evidence | Local corrections passed | Future factual changes require independent source review |
 | W6 operations | Code/runbook prepared | Live counter verification, account spending bounds and connected service settings |
 | Public M5-quality release | NO-GO | Required gates above plus reviewed preview and exact-SHA release approval |
+
+## Decision-ready follow-up — November 7
+
+[Consolidated decision report](DECISION_REPORT.md) contains the practice import,
+separate full-SQL [A](database-review/A-APPROVAL.md) and
+[B](database-review/B-APPROVAL.md) approval packets, fresh read-only evidence,
+[remote preflight](REMOTE_PREFLIGHT.md), and remaining gates. A/B forward/recovery
+SQL and all recorded test inputs are unchanged; the45/45 results on PostgreSQL
+16.14 and17.6 are reused, not rerun. The fresh privilege inventory exactly matches
+prior state. No replacement overload or transcript row trigger exists. Existing
+PostgREST DDL triggers can notify schema-cache reload on B creation/removal; this
+platform side effect is now explicit in the B packet.
+
+The standard Preview URL still identifies the existing Supabase project. Current
+production/build/branch rules remain omitted by connectors; the now-available
+browser reaches sign-in, not authenticated settings. Push remains blocked until
+those rules are verified. No secret environment value, cookie, paid call,
+ingestion, shared mutation or remote publication occurred. Annotation/report
+commits require a new final source SHA in the external approval record.
 
 ## Bounded preparation follow-up
 
@@ -65,7 +84,7 @@ kept NO-GO. The next review consists of four independently tracked items:
 | Exact database changes | [A/B review packet](database-review/README.md), forward/recovery SQL, prior-state inventory, SHA-256 manifest and read-only postflight | Approval for A and B separately on `pwbothxnfjnxkhrcxyvd`; no shared write performed |
 | Release requirements | [Proposed traceability matrix](REQUIREMENTS_TRACEABILITY.md), 25 grouped requirements and bounded repository/history/GitHub search | Original M1/M4/M5 definitions and transcript-synthesis requirement remain unknown, unwaived |
 | Remote validation | [Remote action plan](REMOTE_VALIDATION_PLAN.md) and [draft PR text](REMOTE_PR_DRAFT.md) | Final SHA bound in external approval record; push/PR/possible-preview authorization and unresolved deployment settings |
-| Independent human review | Existing 12-item practice worksheet, predictions hidden | Owner labels pending; final ≥100-turn held-out review against the verified release corpus remains required |
+| Independent human review | [12 revised practice labels imported](practice-review/README.md), frozen before practice predictions were revealed | Target/boundary holds; final ≥100-turn held-out review against verified release corpus remains required |
 
 Approved PostgreSQL 17.6 installation completed with official source checksum
 verification and separate pgvector 0.8.2 build. Final review runs passed 45 tests
@@ -261,9 +280,13 @@ were preserved. Two additional authored cases are saved in
 traces or newly reviewed retrieval pools. The final live
 `eval_results_m3_3.json` is absent.
 
-The [12-item practice worksheet](source-speaker-practice.md) is ready. The owner
-will supply labels separately. Predictions remain in a hidden local answer key.
-Practice is diagnostic and will not enter the held-out acceptance denominator.
+The [12-item practice worksheet](source-speaker-practice.md) is preserved. The
+owner’s revised annotations were frozen before comparison with the previously
+hidden practice key on November7; [import and diagnostics](practice-review/README.md)
+preserve the original submission, corrections, name spellings and target intervals.
+No identity accuracy is calculated:10 named submissions include target/boundary
+holds;2 items retain unresolved identities. Practice contributes zero held-out
+acceptance items and its predictions are now unblinded for diagnostics only.
 The final ≥100-turn stratified review cannot be sampled against an unestablished
 release corpus. Attribution precision and false positives are unmeasured.
 
@@ -351,7 +374,7 @@ require identifying and approving the exact prior deployment. None was initiated
    gates for later approved configuration and preview work.
 3. Obtain usable verified manual captions through a materially different,
    approved source/access path. No identical caption probe remains authorized.
-4. Finish independent practice review, then prepare reviewed cohort plans and
+4. Resolve practice target/boundary holds, then prepare reviewed cohort plans and
    exact paid/write approval bounds once sources and targets are known.
 5. Establish the release corpus, complete grounded committee/live relevance
    evaluation and independent ≥100-turn attribution gate.

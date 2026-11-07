@@ -1,0 +1,293 @@
+{
+  "recorded_at_utc": "2026-11-07 23:17:53 UTC",
+  "project": {
+    "id": "prj_I1kOylFB27M1pABXw5luy5pgkjXv",
+    "name": "check-your-politician",
+    "framework": null,
+    "accountId": "team_aPlAJHap7jEuwyrs7qWcc9OL",
+    "createdAt": 1786310290080,
+    "updatedAt": 1793774380646,
+    "nodeVersion": "24.x",
+    "live": false,
+    "latestDeployment": {
+      "id": "dpl_HqsZGeeJAKYML6H8X5fuj1cj5iXb",
+      "url": "check-your-politician-f9kkn8l2u-team-politicheck.vercel.app",
+      "createdAt": 1793774372848,
+      "readyState": "READY",
+      "target": "production"
+    },
+    "domains": [
+      "lapolitician.akhilvasvani.com",
+      "check-your-politician.vercel.app",
+      "check-your-politician-team-politicheck.vercel.app",
+      "check-your-politician-git-main-team-politicheck.vercel.app"
+    ],
+    "passwordProtection": {
+      "enabled": false,
+      "deploymentType": null
+    },
+    "ssoProtection": {
+      "enabled": true,
+      "deploymentType": "all_except_custom_domains"
+    },
+    "trustedIps": {
+      "enabled": false,
+      "deploymentType": null,
+      "addresses": [],
+      "protectionMode": null
+    }
+  },
+  "release_branch_custom_environments": {
+    "accountLimit": {
+      "total": 0
+    },
+    "environments": []
+  },
+  "domains": {
+    "domains": [
+      {
+        "name": "lapolitician.akhilvasvani.com",
+        "apexName": "akhilvasvani.com",
+        "projectId": "prj_I1kOylFB27M1pABXw5luy5pgkjXv",
+        "redirect": null,
+        "redirectStatusCode": null,
+        "gitBranch": null,
+        "customEnvironmentId": null,
+        "updatedAt": 1786319949495,
+        "createdAt": 1786311327414,
+        "verified": true
+      },
+      {
+        "name": "check-your-politician.vercel.app",
+        "apexName": "vercel.app",
+        "projectId": "prj_I1kOylFB27M1pABXw5luy5pgkjXv",
+        "redirect": null,
+        "gitBranch": null,
+        "customEnvironmentId": null,
+        "updatedAt": 1786310289946,
+        "createdAt": 1786310289946,
+        "verified": true
+      }
+    ],
+    "pagination": {
+      "count": 2,
+      "next": null,
+      "prev": 1786311327414
+    }
+  },
+  "project_list": {
+    "result": {
+      "projects": [
+        {
+          "id": "prj_I1kOylFB27M1pABXw5luy5pgkjXv",
+          "name": "check-your-politician",
+          "accountId": "team_aPlAJHap7jEuwyrs7qWcc9OL",
+          "createdAt": 1786310290080,
+          "updatedAt": 1793774380646
+        }
+      ],
+      "pagination": {
+        "count": 1,
+        "prev": 1793774380646
+      }
+    }
+  },
+  "deployment": {
+    "id": "dpl_HqsZGeeJAKYML6H8X5fuj1cj5iXb",
+    "name": "check-your-politician",
+    "url": "check-your-politician-f9kkn8l2u-team-politicheck.vercel.app",
+    "type": "LAMBDAS",
+    "state": "READY",
+    "createdAt": 1793774372848,
+    "creator": {
+      "uid": "H8WvbOmw2ZJdkxxnz2Lmgqpl",
+      "username": "akhilvasvani"
+    },
+    "project": {
+      "id": "prj_I1kOylFB27M1pABXw5luy5pgkjXv",
+      "name": "check-your-politician",
+      "framework": null
+    },
+    "meta": {
+      "githubCommitRef": "main",
+      "githubCommitSha": "25a51ebe617f5d24c4a7c405a6498c2104f1a2fd",
+      "githubCommitMessage": "data: automated refresh from LA Ethics Commission API (#27)\n\nCo-authored-by: akhilvasvani <1943443+akhilvasvani@users.noreply.github.com>",
+      "githubRepo": "check-your-politician",
+      "githubOrg": "akhilvasvani"
+    },
+    "alias": [
+      "lapolitician.akhilvasvani.com",
+      "check-your-politician.vercel.app",
+      "check-your-politician-team-politicheck.vercel.app",
+      "check-your-politician-git-main-team-politicheck.vercel.app"
+    ],
+    "target": "production",
+    "regions": [
+      "iad1"
+    ],
+    "buildingAt": 1793774373838,
+    "ready": 1793774380316,
+    "readyState": "READY",
+    "source": "git",
+    "aliasError": null
+  },
+  "environment_names_and_scopes": [
+    {
+      "id": "GmW1Q1tPyRIyY8V3",
+      "key": "SUPABASE_ANON_KEY",
+      "type": "encrypted",
+      "target": [
+        "preview"
+      ],
+      "updatedAt": 1787129144581
+    },
+    {
+      "id": "W2jDlLSpaDw75YQk",
+      "key": "SUPABASE_URL",
+      "type": "plain",
+      "target": [
+        "preview"
+      ],
+      "updatedAt": 1787129144077
+    },
+    {
+      "id": "UZFzOAfaSRUzTO2D",
+      "key": "KV_REST_API_URL",
+      "type": "sensitive",
+      "target": [
+        "production",
+        "preview"
+      ],
+      "updatedAt": 1786316730820
+    },
+    {
+      "id": "gCNxgJd0vxvN4Dwh",
+      "key": "REDIS_URL",
+      "type": "sensitive",
+      "target": [
+        "production",
+        "preview"
+      ],
+      "updatedAt": 1786316730820
+    },
+    {
+      "id": "u23RKH7gwpFa8cVA",
+      "key": "KV_REST_API_READ_ONLY_TOKEN",
+      "type": "sensitive",
+      "target": [
+        "production",
+        "preview"
+      ],
+      "updatedAt": 1786316730820
+    },
+    {
+      "id": "A4wevds7RlhPdkYI",
+      "key": "KV_REST_API_TOKEN",
+      "type": "sensitive",
+      "target": [
+        "production",
+        "preview"
+      ],
+      "updatedAt": 1786316730820
+    },
+    {
+      "id": "MtRPq9e08UgKgHav",
+      "key": "KV_URL",
+      "type": "sensitive",
+      "target": [
+        "production",
+        "preview"
+      ],
+      "updatedAt": 1786316730820
+    },
+    {
+      "id": "wQow0W9MX5aHDss6",
+      "key": "RATE_LIMIT_WINDOW_SECONDS",
+      "type": "plain",
+      "target": [
+        "preview"
+      ],
+      "updatedAt": 1786316723242
+    },
+    {
+      "id": "lZXFNxbxt7sglds7",
+      "key": "RATE_LIMIT_MAX_REQUESTS",
+      "type": "plain",
+      "target": [
+        "preview"
+      ],
+      "updatedAt": 1786316722728
+    },
+    {
+      "id": "vb2qLonArbx2PPQt",
+      "key": "RATE_LIMIT_WINDOW_SECONDS",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ],
+      "updatedAt": 1786316678685
+    },
+    {
+      "id": "XaK0n9l6Bk6u24Jq",
+      "key": "RATE_LIMIT_MAX_REQUESTS",
+      "type": "encrypted",
+      "target": [
+        "production"
+      ],
+      "updatedAt": 1786316650235
+    },
+    {
+      "id": "5WS8NKMX29jKQx2W",
+      "key": "PERPLEXITY_API_KEY",
+      "type": "sensitive",
+      "target": [
+        "preview",
+        "production"
+      ],
+      "customEnvironmentIds": [],
+      "updatedAt": 1786312834871
+    }
+  ],
+  "release_branch_specific_envs": {
+    "envs": [],
+    "hiddenProductionEnvCount": 0
+  },
+  "preview_url_target_check": {
+    "key": "SUPABASE_URL",
+    "target": [
+      "preview"
+    ],
+    "hostname": "pwbothxnfjnxkhrcxyvd.supabase.co",
+    "matches_expected": true,
+    "read_scope": "Only approved non-secret SUPABASE_URL; no other values"
+  },
+  "github": {
+    "main_sha": "25a51ebe617f5d24c4a7c405a6498c2104f1a2fd",
+    "main_protected": true,
+    "main_summary_protection": {
+      "enabled": true,
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      }
+    },
+    "release_matching_refs": [],
+    "open_release_prs": []
+  },
+  "missing_configuration": [
+    "configured production branch",
+    "Git deployment enablement/branch rules",
+    "actual release-branch target mapping",
+    "root directory",
+    "build/install/output/ignored-build commands"
+  ],
+  "fallback": {
+    "browser_available": true,
+    "authenticated_settings_access": false,
+    "observed_blocker": "Vercel settings redirected to login; GitHub sign-in required. No credentials entered or settings changed.",
+    "installed_vercel_cli_on_path": false
+  },
+  "remote_mutations": 0,
+  "secret_environment_values_read": 0
+}

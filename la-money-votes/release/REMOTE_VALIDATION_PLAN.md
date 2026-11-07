@@ -6,6 +6,12 @@ configuration changes and deployment remain subject to the owner's approval
 under section 4 of the weekend mandate. No such action was performed while
 preparing this document.
 
+November7 update: [REMOTE_PREFLIGHT.md](REMOTE_PREFLIGHT.md) supersedes this
+plan’s access status. Browser availability is restored but authenticated settings
+are blocked by sign-in; production/build/branch rules remain unknown. The
+standard Preview URL target was reverified without reading secret values. Push
+remains blocked, and revised annotation commits require a new exact head.
+
 ## Exact targets and SHA binding
 
 | Item | Observed value |

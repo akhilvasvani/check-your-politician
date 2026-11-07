@@ -244,4 +244,7 @@ __marimo__/
 
 # Local release evidence, tools, hidden review keys and diagnostic caches.
 /work/
+
+# Local macOS Finder metadata; preserve files without publishing them.
+.DS_Store
 .env*
