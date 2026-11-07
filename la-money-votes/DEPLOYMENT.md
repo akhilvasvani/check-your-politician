@@ -3,20 +3,26 @@
 The deployment target is the Vercel project for
 `akhilvasvani/check-your-politician`, with `la-money-votes/` as its root.
 The owner's public domain is `lapolitician.akhilvasvani.com`.
-November 6 connected inspection identified project ID
+November 6 authenticated inspection verified project ID
 `prj_I1kOylFB27M1pABXw5luy5pgkjXv` in team `team-politicheck`
-(`team_aPlAJHap7jEuwyrs7qWcc9OL`). Scoped project details require additional
-team authorization. The production branch, alias assignment and deployed SHA
-remain unverified. Verify those in the connected Vercel project before any
-push that could deploy, preview creation or promotion.
-The previously documented feature-branch custom-domain assignment is historical.
+(`team_aPlAJHap7jEuwyrs7qWcc9OL`). The public domain maps to READY production
+deployment `dpl_HqsZGeeJAKYML6H8X5fuj1cj5iXb`, built from `main` at
+`25a51ebe617f5d24c4a7c405a6498c2104f1a2fd`. Both the public domain and
+`check-your-politician.vercel.app` are verified, with no branch-specific
+domain assignment. The old feature-branch custom-domain assignment is historical.
+The connector did not return the configured root directory or production-branch
+setting. Confirm those settings and refresh deployment identity before any
+approved push, preview creation or promotion.
 
 ## Project configuration
 
 Use the Other framework preset and leave Build, Install and Output Directory
 settings at their static-project defaults. The project serves HTML, CSS,
 JavaScript and JSON, plus Node serverless APIs under `api/`.
-Use Node 22 as in CI. Function execution ceilings are in `vercel.json`.
+The connected project currently specifies Node `24.x`. Completed local tests
+used Node 24.22.1; the preserved CI configuration uses Node 22 and has not run
+for this local branch. Do not describe Node 22 as the verified Vercel runtime.
+Function execution ceilings for the release are in `vercel.json`.
 The application uses built-in `fetch` without an npm install step.
 
 Any DNS operation must identify the exact existing record and desired value
@@ -36,6 +42,16 @@ Root-domain changes are outside this release's authorization.
 Changing a Vercel environment variable requires a new deployment to affect
 running functions. Record only credential presence and environment scope in
 release reports. Keep values in the approved secret store.
+
+The November 6 names-only inspection found `SUPABASE_URL` and
+`SUPABASE_ANON_KEY` in Preview only. Production has neither name. The durable
+limiter's `KV_REST_API_URL`/`KV_REST_API_TOKEN` and `PERPLEXITY_API_KEY` are
+configured for Preview and Production. Neither paid-endpoint kill-switch name
+is configured. The later owner-approved read confirmed only the non-secret
+Preview Supabase URL, identifying project `pwbothxnfjnxkhrcxyvd`. Credential
+values/validity and live limiter behavior were not inspected. Production
+transcript enablement requires a separately approved
+configuration and deployment after the source and database gates pass.
 
 ## Server environment
 

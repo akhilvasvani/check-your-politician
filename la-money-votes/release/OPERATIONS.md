@@ -25,18 +25,33 @@ The November 6 public-domain read found `index.html`, `official.html`,
 `js/app.js` and `data/freshness.json` byte-identical to `main` at
 `25a51ebe617f5d24c4a7c405a6498c2104f1a2fd`. GitHub's Vercel status identifies
 deployment `HqsZGeeJAKYML6H8X5fuj1cj5iXb`, team `team-politicheck`, project
-`check-your-politician`. These are sampled content and status observations.
-The exact deployment-to-domain mapping and project settings still require
-verification before release. Connected project listing subsequently resolved
-project ID `prj_I1kOylFB27M1pABXw5luy5pgkjXv` and team ID
-`team_aPlAJHap7jEuwyrs7qWcc9OL`. Scoped inspection requires owner team consent.
+`check-your-politician`. Authenticated Vercel inspection subsequently verified
+the public alias points to `dpl_HqsZGeeJAKYML6H8X5fuj1cj5iXb`, READY for
+production, with that exact main SHA. The project ID is
+`prj_I1kOylFB27M1pABXw5luy5pgkjXv` and the team ID is
+`team_aPlAJHap7jEuwyrs7qWcc9OL`. Team consent is complete. Its configured Node
+version is `24.x`; root-directory and production-branch settings were not
+returned by the connector. No release-branch deployment exists from this work.
 
-The connected Supabase account lists project `pwbothxnfjnxkhrcxyvd` in the
-`la-politician` Free-plan organization. Its reported state is `INACTIVE` and
-the migration read timed out. Target association, live schema, grants and corpus
-counts remain unverified. Do not resume it without explicit approval for that
-service-state change. Confirm restoration eligibility and repeat runtime/schema
-verification afterward; the inactive metadata is not a live database result.
+Names-only environment inspection found Supabase URL/anon variables in Preview
+only. The production transcript configuration is incomplete. Limiter REST
+URL/token and Perplexity key names exist in both scopes, but their values and
+operational behavior remain unverified. Neither release kill-switch name exists
+in either scope. Do not interpret variable presence as a successful service test.
+
+The owner-approved Preview URL read confirmed project `pwbothxnfjnxkhrcxyvd` in
+the `la-politician` Free-plan organization. One approved restore brought it to
+ACTIVE_HEALTHY. Leave it active; re-pausing needs separate approval. Read-only
+inspection confirmed PostgreSQL 17.6, pgvector 0.8.2, nine recordings, 5,003
+chunks and 3,341 parent turns. The existing corpus ends August 14.
+
+Browser SQL-role reads work under the SELECT-only RLS policy, but broad table/
+sequence grants including TRUNCATE remain. The transactional replacement RPC is
+absent. These are separate pre-ingestion hardening/migration gates, not permission
+to apply bootstrap SQL. The three live read RPC bodies match the checked-in
+SQL. No key/token values, application RPC calls, shared schema changes or
+ingestion were used for the inspection. Details and advisor context are in
+[RELEASE_PACKET.md](RELEASE_PACKET.md).
 
 ## Finance and public actions
 
@@ -164,14 +179,15 @@ Before any embedding or shared write, prepare the exact cohort, source hashes,
 model/version, token/request estimate, owner-approved spend bound, Supabase
 project ID, applied migrations/RPC signatures, grants/RLS and recovery backup.
 A configured URL is insufficient proof of applied SQL or correct row counts.
-Run all 17 replacement-RPC tests in a disposable PostgreSQL/pgvector environment.
+Run all 18 replacement-RPC tests in a disposable PostgreSQL/pgvector environment.
 Use transactional replacement, checkpoint each cohort, reconcile intended keys,
 parent turns and distinct recordings, and demonstrate an idempotent rerun.
 Resume from verified checkpoints with the same manifest and model/version.
 
-The older nine-artifact corpus is historical evidence. Current live indexed
-coverage must be independently read and reconciled before it is described as
-current. The final expanded-corpus relevance artifact and held-out speaker sample
+The nine-artifact corpus was reconciled with the live database after restoration;
+it remains historical coverage, not a current rolling corpus. New live indexed
+coverage must be independently read and reconciled after any approved ingestion.
+The final expanded-corpus relevance artifact and held-out speaker sample
 remain separate gates. At least 100 stratified turns require independent labels,
 with councilmember attribution precision at least 0.85 using the predicted-
 attribution denominator. Practice labels are diagnostic material only.
@@ -205,7 +221,7 @@ git diff --check
 ```
 
 The replacement tests need `TRANSCRIPT_TEST_PG_DSN` pointing to a disposable
-PostgreSQL/pgvector database. Their 17 skips without a DSN count as unexecuted.
+PostgreSQL/pgvector database. Their 18 skips without a DSN count as unexecuted.
 CI intentionally collects these as expected skips and cannot satisfy the database
 release gate. Record the actual test counts in the release ledger, and run focused
 browser checks separately with mock/preview/production evidence labels.

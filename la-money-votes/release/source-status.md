@@ -13,9 +13,17 @@ The locked taxonomy admits 101 meetings, comprising 35 Council and 66 standing
 committee rows. There are 76 unique recordings, 25 missing-video rows, and zero
 shared-recording collisions within this response. Three recordings match local
 canonical artifacts. Seventy-three recordings need caption preflight. The
-legacy manifest field `already_published_videos` counts local artifact matches,
-so live publication is still unverified. Six older canonical recordings remain
+legacy manifest field `already_published_videos` counts local artifact matches;
+it is not itself live publication evidence. A subsequent approved Supabase
+restore and read independently confirmed all nine local recordings are indexed,
+including these three window matches. Six older canonical recordings remain
 outside the discovery window and have been preserved.
+
+The post-restore live baseline is 5,003 chunks and 3,341 parent turns across nine
+recordings dated June 24–August 14, with model `pplx-embed-v1-0.6b`, version 1.
+All per-video parent counts match canonical utterances. No expanded committee
+corpus is established. Safe live evidence is
+`work/release/live-services/database-verified.json`.
 
 Independent enumeration from the captured raw metadata matches the corrected
 helper's newest ten regular Council sessions. The first two sessions have no
@@ -63,6 +71,12 @@ with zero failures and zero skips. The temporary cluster listened on loopback
 only, disabled Unix sockets, and was stopped and removed by the runner.
 `work/release/source/pg-executed.log` contains the actual execution evidence.
 The older skip log records only the initial environment state.
+Subsequent bootstrap-grant verification strengthened the real browser-role read
+test and added actual service-role replacement. Both failed without explicit
+grants and passed after the local bootstrap correction. The current disposable
+suite has 18 tests, all passing in 0.147 seconds, with zero failures or skips.
+Evidence is `work/release/source/pg-explicit-grants-after.log`; the temporary
+cluster was removed and the two pre-existing empty caption directories preserved.
 
 A current offline replay reproduced 30 of 36 queries with 234 of 234 pooled
 candidates judged. The full-coverage command exits nonzero due to six missing

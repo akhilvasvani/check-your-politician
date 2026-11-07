@@ -6,8 +6,8 @@ This packet records completed local engineering and actual evidence.
 
 ## Reviewed implementation and scope
 
-Application and ingestion implementation reviewed at
-`842cef06d194aa001b5713c4173eba8068c93a58` on local branch
+Current implementation reviewed at
+`040cf6f2203a479f745f691cec9895534350b681` on local branch
 `release/weekend-2026-11-08`. The packet/documentation commit follows that
 implementation. The final local HEAD is reported in the handoff. A subsequent
 workflow-only correction removes an unnecessary Bash 4 glob option while
@@ -20,7 +20,10 @@ current published finance/action/freshness bytes and both CI suites.
 
 Local commits through the reviewed implementation include integration `e191962`,
 CI/guard protection `f0620ce`, API/evidence corrections `47136d7`, source/ingestion
-work `c1d8f44`, and credential/fallback corrections `842cef0`.
+work `c1d8f44`, credential/fallback corrections `842cef0`, and explicit database
+bootstrap grants with actual role execution tests `040cf6f`. API/frontend/ingestion
+code is unchanged since `842cef0`. The bootstrap correction received a bounded
+independent source review with no actionable findings.
 
 Changes cover canonical API identity, original-length/calendar validation,
 anonymous read credentials, bounded cancellation, atomic durable-limit counters,
@@ -41,9 +44,9 @@ Existing web-grounded Ask-AI and transcript evidence retrieval remain distinct.
 | W0 integration/publication baseline | Local checks passed | Remote CI for this branch awaits push approval |
 | W1 API/UI correctness | Mock and browser gates passed | Production credential, ingress and durable limiter verification |
 | W2 inventory/captions | Metadata verified, captions blocked | No usable new manual-caption payload |
-| W3 database/replacement | 17 disposable DB tests passed, adapter mock-tested | Exact live project, applied SQL/grants, read boundary and approved write scope |
+| W3 database/replacement | 18 disposable tests passed; live project/schema/corpus and SQL-role reads verified | Missing replacement RPC, browser privilege hardening and approved write scope |
 | M3.1 corpus expansion | Blocked | Verified source captions, target review, approved cost/write plan |
-| M3.2 live coverage | Unverified for release corpus | Reconcile live parent turns and distinct recordings after corpus establishment |
+| M3.2 live coverage | Existing 9-recording baseline reconciled live | Expanded release corpus remains unestablished |
 | M3.3 relevance | Incomplete | Six missing original traces, two supplemental cases, grounded committee cases and full live five-floor run |
 | M3.4 attribution | Pending human review | Practice labels, release corpus, held-out stratified sample of at least 100 turns, precision ≥0.85 |
 | M3.5 closeout | Blocked | Relevance, attribution, coverage and live integration gates |
@@ -53,16 +56,19 @@ Existing web-grounded Ask-AI and transcript evidence retrieval remain distinct.
 
 ## Executed checks
 
-The distinct local test suites total **491 passed, 0 failed, 0 skipped**.
+The latest results across distinct local test suites total **492 passed, 0 failed, 0 skipped**.
 Earlier baseline collection skipped 17 DB tests, which were later actually
-executed in the approved disposable environment. They are counted once below.
+executed in the approved disposable environment. A follow-up strengthened the
+read-role test and added a service-role execution test, bringing that suite to
+18. After the bootstrap fix, all 18 executed successfully. Unchanged suites
+retain their preceding verified results; repeated runs are not double-counted.
 
 | Command from la-money-votes | Passed | Failed | Skipped | Evidence category |
 | --- | ---: | ---: | ---: | --- |
 | `python3 -m unittest discover -v` | 265 | 0 | 0 | Offline pipeline fixtures |
 | Explicit seven transcript modules listed in OPERATIONS.md | 132 | 0 | 0 | Offline fixtures/mocks |
 | `node --test tests/js/*.test.js tests/test-transcript-coverage.js` | 77 | 0 | 0 | API/frontend mocks |
-| `bash scripts/transcripts/run_pg_tests.sh -v` with approved local PGBIN/PYTHON/TMPDIR | 17 | 0 | 0 | Disposable PostgreSQL/pgvector |
+| `bash scripts/transcripts/run_pg_tests.sh -v` with approved local PGBIN/PYTHON/TMPDIR | 18 | 0 | 0 | Disposable PostgreSQL/pgvector |
 
 Additional passes include compileall, 16 individual JavaScript syntax checks,
 committed-data schema/cross-reference validation, `git diff --check`, the actual
@@ -91,47 +97,95 @@ historical guard and test jobs. These runs predate this integration.
 The public domain served index.html, official.html, js/app.js and freshness.json
 byte-identical to fetched main during the November 6 read. GitHub's Vercel status
 reports deployment `HqsZGeeJAKYML6H8X5fuj1cj5iXb` for
-`team-politicheck/check-your-politician`. Sampled assets establish content parity,
-while exact build-to-domain/environment configuration remains unverified.
-Connected Vercel inspection subsequently resolved project ID
+`team-politicheck/check-your-politician`. After owner team authorization,
+authenticated Vercel inspection verified project ID
 `prj_I1kOylFB27M1pABXw5luy5pgkjXv` under team
-`team_aPlAJHap7jEuwyrs7qWcc9OL` (`team-politicheck`). Project listing succeeded,
-but scoped project inspection returned HTTP 403 requiring team consent. A
-single-use authorization link was presented to the owner. Build identity,
-domain assignment and environment names/scopes remain unverified. No preview
-was created for this local branch. Production was not changed.
+`team_aPlAJHap7jEuwyrs7qWcc9OL` (`team-politicheck`). The public alias maps to
+`dpl_HqsZGeeJAKYML6H8X5fuj1cj5iXb`, READY for production, with GitHub commit
+`25a51ebe617f5d24c4a7c405a6498c2104f1a2fd` and ref `main`. The public domain
+and `check-your-politician.vercel.app` are verified without branch-specific
+domain bindings. This independently resolves the sampled build/domain identity.
+
+The project specifies Node `24.x`, matching the major version used locally.
+Configured root-directory and production-branch settings were not returned by
+the connector. No preview was created for this local branch. Production was
+not changed. Safe evidence is in `work/release/live-services/vercel-verified.json`.
+
+The initial environment names/scopes inspection did not decrypt or retain values.
+`SUPABASE_URL` and `SUPABASE_ANON_KEY` exist only in Preview, leaving production
+transcript configuration incomplete. Limiter `KV_REST_API_URL`/`KV_REST_API_TOKEN`
+and `PERPLEXITY_API_KEY` names exist in Preview and Production. Neither
+`ASK_AI_DISABLED` nor `TRANSCRIPT_SEARCH_DISABLED` is configured. Credential
+validity, deployed function environment snapshots, store behavior and spending
+controls remain unverified. No environment changes were made.
 
 ## Database evidence
 
 Approved local versions are PostgreSQL 16.14, pgvector 0.8.2 and
-psycopg2-binary 2.9.11. All 17 replacement tests executed, covering rollback,
+psycopg2-binary 2.9.11. All 18 replacement tests executed, covering rollback,
 model/cohort isolation, stale keys, exact intended keys/counts, duplicate indexes,
-invalid dimensions, idempotence, coverage visibility and role grants.
+invalid dimensions, idempotence, coverage visibility and role grants. Stronger
+role tests first reproduced two permission failures without implicit grants.
+Explicit bootstrap SELECT grants for browser roles and table/sequence grants
+for the service role fixed both. The suite now executes coverage reads as anon
+and authenticated and replacement as service_role. Its BYPASSRLS setting exists
+only in the disposable test fixture. No bootstrap SQL was applied remotely.
+
+The latest executed log is `work/release/source/pg-explicit-grants-after.log`
+(18 passed in 0.147 seconds). The preceding failure is preserved separately.
+This follows Supabase's [new-table grant change](https://supabase.com/changelog/45329-breaking-change-tables-not-exposed-to-data-and-graphql-api-automatically).
+The platform change does not by itself establish that the existing transcript
+table is broken. The subsequent live read confirmed that its read grants work.
 
 The runner bound an isolated temporary cluster to loopback on an ephemeral port.
 It stopped and removed the cluster after tests. Cleanup verification found zero
 temporary files. Installed sources/binaries remain only under ignored
 `work/release/tooling/`, outside the Vercel application root.
 
-Supabase and Vercel integrations are now connected. Supabase management reads
-list one project, `pwbothxnfjnxkhrcxyvd`, named `akhilvasvani's Project`, in the
-`la-politician` organization (`lkcaqfydvsheedqghupd`). The organization reports
-the Free plan. The project reports `INACTIVE`, region `us-west-2` and database
-version `17.6.1.155`. The organization name supports its association with this
-app, but the deployed Supabase URL and transcript tables have not established
-that relationship. Public-table listing failed, and migration listing failed
-with a database connection timeout. No table rows or migration records were
-retrieved. No project restore/resume was attempted.
+The owner approved a narrow Preview URL read and one conditional restore.
+`SUPABASE_URL` identified `pwbothxnfjnxkhrcxyvd.supabase.co`, with no override for
+`release/weekend-2026-11-08`. This confirmed project `pwbothxnfjnxkhrcxyvd` in
+the `la-politician` Free-plan organization (`lkcaqfydvsheedqghupd`), `us-west-2`.
+Its refreshed state was INACTIVE. One `restore_project` call succeeded; the
+project reached ACTIVE_HEALTHY by 03:21:08 UTC on November 7 (November 6 Pacific).
+It was left active as instructed. No plan change or additional repair occurred.
 
-Live migration signatures, constraints, RLS/grants, indexed counts,
-model/version and anon/authenticated boundaries remain unverified. Exact target
-confirmation and explicit service-resume approval are needed before a restore.
-The pause date and restoration eligibility are unknown. Supabase documents a
-[90-day restore window](https://supabase.com/docs/guides/platform/free-project-pausing)
-for paused Free projects. Its [upgrade guidance](https://supabase.com/docs/guides/platform/upgrading)
-notes that restoration can update service versions, so the inactive project
-metadata cannot establish its eventual runtime version.
-Safe management evidence is in `work/release/live-services/access-status.json`.
+Nine bounded SQL inspections used read-only transactions and 10-second statement
+limits. They invoked no application functions and returned safe metadata or
+aggregates. Actual runtime is PostgreSQL 17.6 with pgvector 0.8.2. The table uses
+`vector(1024)`, model `pplx-embed-v1-0.6b`, version 1, and a unique key on
+`(video_id, chunk_idx, embedding_model)`. The checked integrity aggregates found
+zero duplicate full keys and zero invalid timing/subchunk/empty-text rows.
+
+Five applied migration records run through `20260820042036_m3_transcript_coverage`.
+The three read RPCs are STABLE and SECURITY INVOKER, and their body hashes match
+the checked-in SQL. The transactional `replace_transcript_chunks` RPC is absent.
+Its migration still needs separate review and approval before ingestion.
+
+Actual reads under both anon and authenticated returned 5,003 chunks and 3,341
+parent turns. RLS is enabled with a SELECT-only public read policy. Both roles
+lack BYPASSRLS, but retain broad table and sequence privileges, including
+TRUNCATE. Ordinary row writes are denied by the current RLS policy; whole-table
+operations such as TRUNCATE are [outside RLS](https://www.postgresql.org/docs/17/ddl-rowsecurity.html).
+The browser privilege boundary therefore needs hardening review. No write probe,
+grant change, migration or data change was performed. SQL-role reads do not
+establish HTTP API-key or deployed-endpoint authentication.
+
+The security advisor returned four warning types: mutable function search path,
+extension in public, and anon/authenticated execution of a SECURITY DEFINER
+function. Catalog inspection identifies that definer as `rls_auto_enable`, an
+event-trigger function attached to `ensure_rls` on `ddl_command_end`, with
+`search_path=pg_catalog`; neither browser role can CREATE in public. It was not
+invoked or modified. See the [search-path warning](https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable),
+[extension warning](https://supabase.com/docs/guides/database/database-linter?lint=0014_extension_in_public),
+and [definer warning](https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable)
+for context before proposing changes. No `cron.job` table or pg_cron/pg_net
+extension was found; activity by other clients was not measured.
+
+`work/release/live-services/database-verified.json` contains the safe live
+findings. `database-restore-receipt.json` records the single restore. These and
+`vercel-verified.json` supersede the initial access-blocked report. No key/token
+values were read. The only inspected environment value was the approved URL.
 
 ## Current inventory and source evidence
 
@@ -142,11 +196,14 @@ local canonical artifacts. Seventy-three require caption preflight. The newest
 returned meeting is October 28, so completeness through November 6 is unknown.
 Actual newest-ten enumeration includes October 28 and 27 sessions without video.
 
-Nine historical canonical artifacts remain intact, with 5,003 chunks and
-3,341 parent turns in the historical baseline. Those figures are not a fresh
-live database inspection. The discovery window has not imposed retention or
-removed any indexed history. Detailed dates, source identities and response
-hash are in [source-status.md](source-status.md).
+The post-restore live read independently confirmed the nine historical recordings,
+5,003 chunks and 3,341 parent turns, dated June 24 through August 14. Per-video
+parent counts match all nine canonical artifacts. This is now a verified live
+baseline, not an expanded or current rolling corpus. CD8 has zero resolved
+district-attributed turns; generic presiding turns remain separate, and this is
+not evidence of silence. The discovery window has not imposed retention or
+removed history. Detailed dates, identities and response hash are in
+[source-status.md](source-status.md).
 
 Two explicitly approved three-video probes ran, first in 2.53 seconds and final
 follow-up in 2.23 seconds. Both used yt-dlp 2026.10.26, Chrome Default and one web
@@ -227,9 +284,11 @@ in the measured 390px viewport. Screenshots and result JSON live in
 
 ## External usage, release action and recovery
 
-Observed paid Perplexity generation/embedding calls are zero. Shared database
-writes, remote pushes/PR creation, workflow dispatch and deployment/promotion
-operations are zero. Public metadata/assets and the approved package/caption
+Agent-initiated paid Perplexity generation/embedding calls are zero. Shared schema
+or row changes, remote pushes/PR creation, workflow dispatch and deployment/
+promotion operations are zero. One explicitly approved Supabase service restore
+completed. It may reactivate other clients; their activity or cost was not
+measured. Public metadata/assets and the approved package/caption
 requests were read. Tool version/download hashes are recorded in
 `work/release/tooling/download-manifest.json`; published PostgreSQL and Python
 wheel hashes were verified, while the pgvector archive hash is recorded without
@@ -251,10 +310,11 @@ require identifying and approving the exact prior deployment. None was initiated
 ## Resume order
 
 1. Read this packet, the local `work/release/LEDGER.md`, current HEAD and working tree.
-2. Complete Vercel team authorization and inspect exact build/domain/environment
-   identity. Establish the Supabase target and obtain explicit resume approval
-   if needed before repeating live schema/grant/corpus reads. Both integrations
-   are connected; connection alone has not resolved their access/state gates.
+2. Keep the restored Supabase project active. Do not repeat restoration. Prepare
+   exact browser-grant hardening and missing replacement-RPC changes for separate
+   review/approval before any shared mutation. Production transcript configuration,
+   HTTP credential verification, live limiter behavior and spending bounds remain
+   gates for later approved configuration and preview work.
 3. Obtain usable verified manual captions through a materially different,
    approved source/access path. No identical caption probe remains authorized.
 4. Finish independent practice review, then prepare reviewed cohort plans and
