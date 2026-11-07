@@ -27,7 +27,16 @@ The November 6 public-domain read found `index.html`, `official.html`,
 deployment `HqsZGeeJAKYML6H8X5fuj1cj5iXb`, team `team-politicheck`, project
 `check-your-politician`. These are sampled content and status observations.
 The exact deployment-to-domain mapping and project settings still require
-verification before release.
+verification before release. Connected project listing subsequently resolved
+project ID `prj_I1kOylFB27M1pABXw5luy5pgkjXv` and team ID
+`team_aPlAJHap7jEuwyrs7qWcc9OL`. Scoped inspection requires owner team consent.
+
+The connected Supabase account lists project `pwbothxnfjnxkhrcxyvd` in the
+`la-politician` Free-plan organization. Its reported state is `INACTIVE` and
+the migration read timed out. Target association, live schema, grants and corpus
+counts remain unverified. Do not resume it without explicit approval for that
+service-state change. Confirm restoration eligibility and repeat runtime/schema
+verification afterward; the inactive metadata is not a live database result.
 
 ## Finance and public actions
 

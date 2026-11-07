@@ -3,9 +3,12 @@
 The deployment target is the Vercel project for
 `akhilvasvani/check-your-politician`, with `la-money-votes/` as its root.
 The owner's public domain is `lapolitician.akhilvasvani.com`.
-The repository does not identify the current project ID, production branch,
-alias assignment or deployed SHA. Verify those in the connected Vercel
-project before any push that could deploy, preview creation or promotion.
+November 6 connected inspection identified project ID
+`prj_I1kOylFB27M1pABXw5luy5pgkjXv` in team `team-politicheck`
+(`team_aPlAJHap7jEuwyrs7qWcc9OL`). Scoped project details require additional
+team authorization. The production branch, alias assignment and deployed SHA
+remain unverified. Verify those in the connected Vercel project before any
+push that could deploy, preview creation or promotion.
 The previously documented feature-branch custom-domain assignment is historical.
 
 ## Project configuration

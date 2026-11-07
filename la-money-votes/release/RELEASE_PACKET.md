@@ -93,7 +93,13 @@ byte-identical to fetched main during the November 6 read. GitHub's Vercel statu
 reports deployment `HqsZGeeJAKYML6H8X5fuj1cj5iXb` for
 `team-politicheck/check-your-politician`. Sampled assets establish content parity,
 while exact build-to-domain/environment configuration remains unverified.
-No preview was created for this local branch. Production was not changed.
+Connected Vercel inspection subsequently resolved project ID
+`prj_I1kOylFB27M1pABXw5luy5pgkjXv` under team
+`team_aPlAJHap7jEuwyrs7qWcc9OL` (`team-politicheck`). Project listing succeeded,
+but scoped project inspection returned HTTP 403 requiring team consent. A
+single-use authorization link was presented to the owner. Build identity,
+domain assignment and environment names/scopes remain unverified. No preview
+was created for this local branch. Production was not changed.
 
 ## Database evidence
 
@@ -107,11 +113,25 @@ It stopped and removed the cluster after tests. Cleanup verification found zero
 temporary files. Installed sources/binaries remain only under ignored
 `work/release/tooling/`, outside the Vercel application root.
 
-No shared Supabase project has been identified or queried in this session.
-Local credentials are absent and legacy installed CLI binaries are incompatible.
-Supabase and Vercel integrations were found available but uninstalled and await
-connection. Live migration signatures, constraints, RLS/grants, indexed counts,
-model/version and anon/authenticated boundaries remain unverified.
+Supabase and Vercel integrations are now connected. Supabase management reads
+list one project, `pwbothxnfjnxkhrcxyvd`, named `akhilvasvani's Project`, in the
+`la-politician` organization (`lkcaqfydvsheedqghupd`). The organization reports
+the Free plan. The project reports `INACTIVE`, region `us-west-2` and database
+version `17.6.1.155`. The organization name supports its association with this
+app, but the deployed Supabase URL and transcript tables have not established
+that relationship. Public-table listing failed, and migration listing failed
+with a database connection timeout. No table rows or migration records were
+retrieved. No project restore/resume was attempted.
+
+Live migration signatures, constraints, RLS/grants, indexed counts,
+model/version and anon/authenticated boundaries remain unverified. Exact target
+confirmation and explicit service-resume approval are needed before a restore.
+The pause date and restoration eligibility are unknown. Supabase documents a
+[90-day restore window](https://supabase.com/docs/guides/platform/free-project-pausing)
+for paused Free projects. Its [upgrade guidance](https://supabase.com/docs/guides/platform/upgrading)
+notes that restoration can update service versions, so the inactive project
+metadata cannot establish its eventual runtime version.
+Safe management evidence is in `work/release/live-services/access-status.json`.
 
 ## Current inventory and source evidence
 
@@ -231,8 +251,10 @@ require identifying and approving the exact prior deployment. None was initiated
 ## Resume order
 
 1. Read this packet, the local `work/release/LEDGER.md`, current HEAD and working tree.
-2. Verify Supabase/Vercel connection state and perform only the authorized live
-   reads to resolve exact project/schema/grant/corpus/build identity.
+2. Complete Vercel team authorization and inspect exact build/domain/environment
+   identity. Establish the Supabase target and obtain explicit resume approval
+   if needed before repeating live schema/grant/corpus reads. Both integrations
+   are connected; connection alone has not resolved their access/state gates.
 3. Obtain usable verified manual captions through a materially different,
    approved source/access path. No identical caption probe remains authorized.
 4. Finish independent practice review, then prepare reviewed cohort plans and
