@@ -33,6 +33,13 @@
   var lastRequestAt = 0;
   var wired = false;
 
+  function safeUrl(value) {
+    try {
+      var url = new URL(value);
+      return (url.protocol === "http:" || url.protocol === "https:") && !url.username && !url.password ? url.href : null;
+    } catch (e) { return null; }
+  }
+
   function escapeHtml(value) {
     if (typeof global.escapeHtml === "function") return global.escapeHtml(value);
     var div = document.createElement("div");
@@ -119,8 +126,11 @@
     setLoading(true);
     showStatus("Thinking\u2026", false);
 
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, 35000);
     try {
       var response = await fetch("/api/ask-official", {
+        signal: controller.signal,
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -160,6 +170,7 @@
         true
       );
     } finally {
+      clearTimeout(timer);
       setLoading(false);
       startCooldown(submitBtn);
     }
@@ -198,6 +209,10 @@
       // target/rel by default) so they behave like the citations list.
       var links = container.querySelectorAll("a[href]");
       for (var i = 0; i < links.length; i++) {
+        if (!safeUrl(links[i].getAttribute("href"))) {
+          links[i].removeAttribute("href");
+          continue;
+        }
         links[i].setAttribute("target", "_blank");
         links[i].setAttribute("rel", "noopener noreferrer");
       }
@@ -220,9 +235,11 @@
     var list = document.createElement("ol");
     list.className = "ask-ai-citations-list";
     citations.forEach(function (c) {
+      var url = c && safeUrl(c.url);
+      if (!url) return;
       var li = document.createElement("li");
       var a = document.createElement("a");
-      a.href = (c && c.url) || "#";
+      a.href = url;
       a.target = "_blank";
       a.rel = "noopener noreferrer";
       a.textContent = (c && (c.title || c.url)) || "Source";

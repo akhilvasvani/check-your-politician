@@ -1,3 +1,4 @@
+const { getClientIp, fetchJson, rateCounter, aggregatePaidLimit } = require("./request-safety");
 // api/_lib/transcript-search-lib.js
 //
 // Shared building blocks for the transcript-search family of serverless
@@ -9,7 +10,7 @@
 // Both endpoints share:
 //   * query length / IP extraction / JSON parsing conventions
 //   * snippet extraction from CART chunks
-//   * per-IP rate limiting (Upstash if configured, in-memory otherwise)
+//   * durable per-IP rate limiting, failing closed on outages
 //   * Perplexity embedding call for the query
 //   * generic Supabase RPC invocation
 //
@@ -22,8 +23,7 @@
 //   - No hidden globals: rate-limit config is read from env at import time
 //     but exported so callers can inspect it.
 //   - Backwards-compatible with the previous single-file search-transcripts.js:
-//     same MAX_QUERY_LENGTH, same MIN_SIMILARITY, same snippet output, same
-//     rate-limit keys/windows.
+//     same MAX_QUERY_LENGTH, same MIN_SIMILARITY, same snippet output.
 
 const MAX_QUERY_LENGTH = 200;
 const DEFAULT_LIMIT = 8;
@@ -157,87 +157,23 @@ function extractSnippet(text, query) {
 }
 
 // --- Request helpers -------------------------------------------------------
-function getClientIp(req) {
-  const forwarded = req.headers["x-forwarded-for"];
-  if (typeof forwarded === "string" && forwarded.length > 0) {
-    return forwarded.split(",")[0].trim();
-  }
-  return (req.socket && req.socket.remoteAddress) || "unknown";
-}
-
-function sanitizeString(value, maxLen) {
-  if (typeof value === "string") return value.slice(0, maxLen);
-  return "";
-}
-
 function isIsoDate(value) {
-  return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value);
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  if (value.startsWith("0000-")) return false;
+  const date = new Date(value + "T00:00:00Z");
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value;
 }
 
 // --- Rate limiting ---------------------------------------------------------
-const memoryHits = new Map(); // key -> { count, windowStart }
-
-async function rateLimitViaUpstash(key, windowSeconds, limit) {
-  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-  if (!url || !token) return null;
-
-  const encodedKey = encodeURIComponent(key);
-  const incrResp = await fetch(`${url}/incr/${encodedKey}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!incrResp.ok) {
-    throw new Error(`Upstash INCR failed with status ${incrResp.status}`);
-  }
-  const incrData = await incrResp.json();
-  const count = Number(incrData && incrData.result);
-
-  if (count === 1) {
-    await fetch(`${url}/expire/${encodedKey}/${windowSeconds}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    }).catch((err) => {
-      console.warn("[transcript-search-lib] Upstash EXPIRE failed (non-fatal):", err);
-    });
-  }
-  return { count, limited: count > limit };
-}
-
-function rateLimitViaMemory(key, windowSeconds, limit) {
-  const now = Date.now();
-  const windowMs = windowSeconds * 1000;
-  const entry = memoryHits.get(key);
-  if (!entry || now - entry.windowStart > windowMs) {
-    memoryHits.set(key, { count: 1, windowStart: now });
-    return { count: 1, limited: false };
-  }
-  entry.count += 1;
-  return { count: entry.count, limited: entry.count > limit };
-}
-
-// Rate-limit keys are shared across endpoints (`tsx:*`) so the abuse ceiling
-// is per client IP across the whole transcript-search surface, not per
-// endpoint — a single actor firing 10 official searches + 10 public-comment
-// searches per minute still trips the limiter.
 async function checkRateLimit(ip) {
-  const now = Date.now();
-  const minuteBucket = Math.floor(now / 60_000);
-  const hourBucket = Math.floor(now / 3_600_000);
-  const minuteKey = `tsx:1m:${ip}:${minuteBucket}`;
-  const hourKey = `tsx:1h:${ip}:${hourBucket}`;
-
-  let minResult;
-  let hourResult;
-  try {
-    minResult = await rateLimitViaUpstash(minuteKey, 90, RATE_LIMIT_PER_MIN);
-    hourResult = await rateLimitViaUpstash(hourKey, 3700, RATE_LIMIT_PER_HOUR);
-  } catch (err) {
-    console.warn("[transcript-search-lib] Upstash rate-limit failed, falling back to memory:", err);
-    minResult = null;
-    hourResult = null;
-  }
-  if (!minResult) minResult = rateLimitViaMemory(minuteKey, 60, RATE_LIMIT_PER_MIN);
-  if (!hourResult) hourResult = rateLimitViaMemory(hourKey, 3600, RATE_LIMIT_PER_HOUR);
-  return { minResult, hourResult, limited: minResult.limited || hourResult.limited };
+  const minuteBucket = Math.floor(Date.now() / 60000);
+  const hourBucket = Math.floor(Date.now() / 3600000);
+  const aggregate = await aggregatePaidLimit(ip);
+  if (aggregate.limited) return aggregate;
+  const minResult = await rateCounter(`tsx:1m:${ip}:${minuteBucket}`, 90, RATE_LIMIT_PER_MIN);
+  if (minResult.limited) return minResult;
+  const hourResult = await rateCounter(`tsx:1h:${ip}:${hourBucket}`, 3700, RATE_LIMIT_PER_HOUR);
+  return { limited: hourResult.limited };
 }
 
 // --- Embedding -------------------------------------------------------------
@@ -245,7 +181,7 @@ async function embedQuery(queryText) {
   const apiKey = process.env.PERPLEXITY_API_KEY;
   if (!apiKey) throw new Error("PERPLEXITY_API_KEY is not set in this environment.");
 
-  const resp = await fetch("https://api.perplexity.ai/v1/embeddings", {
+  const data = await fetchJson("https://api.perplexity.ai/v1/embeddings", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -256,16 +192,10 @@ async function embedQuery(queryText) {
       model: EMBED_MODEL_NAME,
       encoding_format: "base64_int8",
     }),
-  });
+  }, "embedding");
 
-  if (!resp.ok) {
-    const body = await resp.text().catch(() => "");
-    throw new Error(`Perplexity embed failed status=${resp.status} body=${body.slice(0, 200)}`);
-  }
-
-  const data = await resp.json();
   const item = (data && Array.isArray(data.data)) ? data.data[0] : null;
-  if (!item || typeof item.embedding !== "string") {
+  if (!item || typeof item.embedding !== "string" || !/^[A-Za-z0-9+/]+={0,2}$/.test(item.embedding)) {
     throw new Error("Unexpected Perplexity embedding response shape.");
   }
 
@@ -277,6 +207,7 @@ async function embedQuery(queryText) {
   if (vec.length !== EMBED_DIM) {
     throw new Error(`Expected ${EMBED_DIM}-dim embedding, got ${vec.length}.`);
   }
+  if (!vec.some((value) => value !== 0)) throw new Error("Embedding vector has zero magnitude.");
   return vec;
 }
 
@@ -284,12 +215,19 @@ async function embedQuery(queryText) {
 async function callRpc(rpcName, params) {
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey =
-    process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+    process.env.SUPABASE_ANON_KEY;
   if (!supabaseUrl || !supabaseKey) {
-    throw new Error("SUPABASE_URL and a Supabase key must both be set.");
+    throw new Error("SUPABASE_URL and SUPABASE_ANON_KEY must both be set.");
   }
+  if (supabaseKey === process.env.SUPABASE_SERVICE_ROLE_KEY || supabaseKey.startsWith("sb_secret_")) throw new Error("Read credentials must be anonymous.");
+  if (supabaseKey.split(".").length === 3) {
+    const claims = JSON.parse(Buffer.from(supabaseKey.split(".")[1], "base64url").toString("utf8"));
+    if (claims.role !== "anon") throw new Error("Read credentials must be anonymous.");
+  }
+  const baseUrl = new URL(supabaseUrl);
+  if (baseUrl.protocol !== "https:" || baseUrl.username || baseUrl.password) throw new Error("Invalid read endpoint configuration.");
   const rpcUrl = `${supabaseUrl}/rest/v1/rpc/${rpcName}`;
-  const resp = await fetch(rpcUrl, {
+  return fetchJson(rpcUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -297,12 +235,7 @@ async function callRpc(rpcName, params) {
       Authorization: `Bearer ${supabaseKey}`,
     },
     body: JSON.stringify(params),
-  });
-  if (!resp.ok) {
-    const body = await resp.text().catch(() => "");
-    throw new Error(`Supabase RPC ${rpcName} failed status=${resp.status} body=${body.slice(0, 300)}`);
-  }
-  return resp.json();
+  }, "rpc");
 }
 
 async function searchTranscriptsRpc({ embedding, officialId, dateFrom, dateTo, limit, minSimilarity }) {
@@ -345,7 +278,7 @@ function parseBody(req) {
       return { error: "Invalid JSON body." };
     }
   }
-  if (!body || typeof body !== "object") {
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
     return { error: "Invalid request body." };
   }
   return { body };
@@ -366,7 +299,6 @@ module.exports = {
   // helpers
   extractSnippet,
   getClientIp,
-  sanitizeString,
   isIsoDate,
   parseBody,
   checkRateLimit,

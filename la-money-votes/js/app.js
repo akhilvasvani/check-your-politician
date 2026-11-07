@@ -403,7 +403,7 @@ function renderFundingStats(donors) {
   const el = document.getElementById("funding-stats");
   if (!el) return;
   const total = donors.reduce((sum, d) => sum + donorTotal(d), 0);
-  el.textContent = `${formatMoney(total)} raised from ${donors.length} donor${donors.length === 1 ? "" : "s"}`;
+  el.textContent = `${formatMoney(total)} in displayed contributions from ${donors.length} donor${donors.length === 1 ? "" : "s"}`;
 }
 
 function renderFunding(funding) {
@@ -467,12 +467,10 @@ function renderRecordTerm(items, term, filterKey) {
   table.querySelector("tbody").innerHTML = filtered.map(recordRowHtml).join("");
   table.hidden = filtered.length === 0;
   emptyEl.hidden = filtered.length !== 0;
-  // An empty term and an empty filter result look identical but mean very
-  // different things — a councilmember who just started a new term has nothing
-  // on file yet, which shouldn't read as "your filter matched nothing".
+  // Distinguish a filter miss from an empty curated term.
   emptyEl.textContent = inTerm.length
-    ? "No matching items."
-    : "Nothing on file for this term yet.";
+    ? "No items in this curated sample match the filter."
+    : "No actions are included in this curated sample for this term.";
 }
 
 function renderRecord(items, filterKey) {

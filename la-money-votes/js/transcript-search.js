@@ -47,6 +47,27 @@
   var lastRequestAt = 0;
   var wired = false;
 
+  // Covers headers and body consumption. Each user action makes one request
+  // per selected source, with no automatic retry.
+  async function requestJson(url, options) {
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, 35000);
+    try {
+      var response = await fetch(url, Object.assign({}, options, { signal: controller.signal }));
+      var data = await response.json();
+      if (!response.ok || !data) throw new Error("Source unavailable");
+      return data;
+    } finally { clearTimeout(timer); }
+  }
+
+  async function searchSource(url, body) {
+    var data = await requestJson(url, {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body)
+    });
+    if (!Array.isArray(data.results)) throw new Error("Source unavailable");
+    return data.results;
+  }
+
   function escapeHtml(value) {
     if (typeof global.escapeHtml === "function") return global.escapeHtml(value);
     var div = document.createElement("div");
@@ -145,19 +166,15 @@
   async function loadCoverage(officialId) {
     var coverageEl = document.getElementById("transcript-search-coverage");
     if (!coverageEl) return;
-    coverageEl.hidden = true;
+    coverageEl.hidden = false;
+    coverageEl.textContent = "Transcript coverage counts are unavailable. This index is not a complete public record. Missing matches do not establish that an official was silent.";
     coverageEl.classList.remove("transcript-search-coverage-thin");
 
     try {
-      var response = await fetch(
-        "/api/transcript-coverage?official_id=" + encodeURIComponent(officialId)
-      );
-      var data = null;
-      try { data = await response.json(); } catch (e) { data = null; }
-      if (!response.ok || !data) return;
-
-      var turns = Math.max(0, Number(data.speaking_turns) || 0);
-      var meetings = Math.max(0, Number(data.meeting_count) || 0);
+      var data = await requestJson("/api/transcript-coverage?official_id=" + encodeURIComponent(officialId));
+      var turns = data.speaking_turns;
+      var meetings = data.meeting_count;
+      if (!Number.isSafeInteger(turns) || turns < 0 || !Number.isSafeInteger(meetings) || meetings < 0) return;
       var turnLabel = turns === 1 ? "speaking turn" : "speaking turns";
       var meetingLabel = meetings === 1 ? "meeting" : "meetings";
       var text =
@@ -169,7 +186,10 @@
         text +=
           " Coverage is limited, so searches may miss relevant statements.";
       }
-      text += " This index is not a complete public record.";
+      if (data.first_meeting_date && data.last_meeting_date) {
+        text += " Indexed meeting dates span " + formatDate(data.first_meeting_date) + " through " + formatDate(data.last_meeting_date) + ".";
+      }
+      text += " This index is not a complete public record. Missing matches do not establish that an official was silent.";
       coverageEl.textContent = text;
       coverageEl.hidden = false;
     } catch (err) {
@@ -228,74 +248,19 @@
     var includePublic = !!(includePublicEl && includePublicEl.checked);
 
     try {
-      // Fire the per-official search and (if requested) the public-comment
-      // search in parallel. They're independent RPCs and the two endpoints
-      // don't share state client-side.
-      var officialPromise = fetch("/api/search-transcripts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          query: query,
-          official: {
-            id: currentContext.id,
-            resolved_official_id: currentContext.resolved_official_id,
-            name: currentContext.name,
-          },
-          limit: 8,
-        }),
-      });
-
-      var publicPromise = includePublic
-        ? fetch("/api/search-public-comment", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ query: query, limit: 8 }),
-          })
-        : null;
-
-      var officialResp = await officialPromise;
-      var officialData = null;
-      try { officialData = await officialResp.json(); } catch (e) { officialData = null; }
-
-      if (!officialResp.ok) {
-        var message =
-          (officialData && officialData.error) ||
-          "Search is temporarily unavailable. Please try again in a moment.";
-        showStatus(message, true);
-        return;
-      }
-
-      var results = (officialData && Array.isArray(officialData.results)) ? officialData.results : [];
-
-      var publicResults = [];
-      var publicError = null;
-      if (publicPromise) {
-        try {
-          var publicResp = await publicPromise;
-          var publicData = null;
-          try { publicData = await publicResp.json(); } catch (e) { publicData = null; }
-          if (publicResp.ok && publicData && Array.isArray(publicData.results)) {
-            publicResults = publicData.results;
-          } else if (publicData && publicData.error) {
-            publicError = publicData.error;
-          } else {
-            publicError = "Public comment search was unavailable for this query.";
-          }
-        } catch (err) {
-          console.warn("[transcript-search] public-comment request failed:", err);
-          publicError = "Public comment search was unavailable for this query.";
-        }
-      }
-
-      if (!results.length && !publicResults.length) {
-        if (emptyEl) {
-          emptyEl.hidden = false;
-          emptyEl.textContent =
-            "No transcript matches for \u201C" + query + "\u201D. Try a broader phrase, or a topic like \u201Chomelessness\u201D or \u201Cbudget\u201D.";
-        }
-        hideStatus();
-        return;
-      }
+      var requests = [searchSource("/api/search-transcripts", {
+        query: query,
+        official: { id: currentContext.id, resolved_official_id: currentContext.resolved_official_id },
+        limit: 8
+      })];
+      if (includePublic) requests.push(searchSource("/api/search-public-comment", { query: query, limit: 8 }));
+      // Attach rejection handlers to both requests immediately. Either source
+      // may finish or fail first, and successful evidence remains inspectable.
+      var settled = await Promise.allSettled(requests);
+      var officialError = settled[0].status === "rejected";
+      var results = officialError ? [] : settled[0].value;
+      var publicError = includePublic && settled[1].status === "rejected";
+      var publicResults = includePublic && !publicError ? settled[1].value : [];
 
       if (results.length) {
         renderResults(resultsEl, results, {
@@ -307,7 +272,9 @@
         // Official had no hits but public-comment did — surface a subhead.
         var noOfficial = document.createElement("p");
         noOfficial.className = "transcript-search-results-heading";
-        noOfficial.textContent = "No matches from " + currentContext.name + ".";
+        noOfficial.textContent = officialError
+          ? "Official transcript search is unavailable for this query."
+          : "No matches from " + currentContext.name + " in the indexed transcripts. This does not establish that no statement was made.";
         resultsEl.appendChild(noOfficial);
       }
 
@@ -324,13 +291,21 @@
           var noPublic = document.createElement("p");
           noPublic.className = "transcript-search-results-heading";
           noPublic.textContent = publicError
-            ? publicError
-            : "No public comment matches for \u201C" + query + "\u201D.";
+            ? "Public comment search is unavailable for this query."
+            : "No indexed public comment matches for \u201C" + query + "\u201D.";
           publicResultsEl.appendChild(noPublic);
         }
       }
 
-      hideStatus();
+      var summary = officialError
+        ? "Official transcript search is unavailable."
+        : "Official transcript search returned " + results.length + " matching passages.";
+      if (includePublic) {
+        summary += publicError
+          ? " Public comment search is unavailable."
+          : " Public comment search returned " + publicResults.length + " matching passages.";
+      }
+      showStatus(summary, officialError || publicError);
     } catch (err) {
       console.warn("[transcript-search] request failed:", err);
       showStatus(
@@ -388,7 +363,7 @@
       // M2.2 sub-chunk badge. Only shown when the chunk is one slice of a
       // longer turn (sub_chunk_of > 1). Positioned between speaker and
       // score so it reads left-to-right as: date · time · speaker · part …
-      // · match %.
+      // · similarity.
       var badgeText = subChunkBadgeText(r);
       if (badgeText) {
         var badge = document.createElement("span");
@@ -406,7 +381,8 @@
       if (typeof r.similarity === "number") {
         var score = document.createElement("span");
         score.className = "transcript-search-result-score";
-        score.textContent = " · match " + (r.similarity * 100).toFixed(0) + "%";
+        score.textContent = " · similarity " + r.similarity.toFixed(2);
+        score.setAttribute("title", "Retrieval similarity measures how closely text matches the query. It is not a probability or factual confidence score.");
         meta.appendChild(score);
       }
 

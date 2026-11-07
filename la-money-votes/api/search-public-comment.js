@@ -1,3 +1,4 @@
+const { withRequest } = require("./_lib/request-safety");
 // api/search-public-comment.js
 //
 // Vercel serverless function backing the "Public comment" search surface
@@ -43,7 +44,6 @@ const {
   RATE_LIMIT_EXCEEDED_MESSAGE,
   extractSnippet,
   getClientIp,
-  sanitizeString,
   isIsoDate,
   parseBody,
   checkRateLimit,
@@ -54,7 +54,7 @@ const {
 
 const ENDPOINT = "search-public-comment";
 
-module.exports = async function handler(req, res) {
+module.exports = withRequest("search-public-comment", async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     res.status(405).json({ error: "Method not allowed. Use POST." });
@@ -68,7 +68,7 @@ module.exports = async function handler(req, res) {
   }
   const body = parsed.body;
 
-  const query = sanitizeString(body.query, MAX_QUERY_LENGTH).trim();
+  const query = typeof body.query === "string" ? body.query.trim() : "";
   if (!query) {
     res.status(400).json({ error: "A search query is required." });
     return;
@@ -83,8 +83,16 @@ module.exports = async function handler(req, res) {
     MAX_LIMIT
   );
 
-  const dateFrom = isIsoDate(body.date_from) ? body.date_from : null;
-  const dateTo = isIsoDate(body.date_to) ? body.date_to : null;
+  const dateFrom = body.date_from == null ? null : body.date_from;
+  const dateTo = body.date_to == null ? null : body.date_to;
+  if ((dateFrom !== null && !isIsoDate(dateFrom)) || (dateTo !== null && !isIsoDate(dateTo)) || (dateFrom && dateTo && dateFrom > dateTo)) {
+    res.status(400).json({ error: "Supply valid calendar dates in YYYY-MM-DD order, with date_from on or before date_to." });
+    return;
+  }
+  if (process.env.TRANSCRIPT_SEARCH_DISABLED === "true") {
+    res.status(503).json({ error: "Transcript search is temporarily unavailable." });
+    return;
+  }
 
   const ip = getClientIp(req);
   const startedAt = Date.now();
@@ -105,7 +113,9 @@ module.exports = async function handler(req, res) {
       return;
     }
   } catch (err) {
-    console.error("[search-public-comment] rate limit check errored:", err);
+    console.warn("[search-public-comment] limiter unavailable");
+    res.status(503).json({ error: "Search is temporarily unavailable. Please try again later." });
+    return;
   }
 
   try {
@@ -118,7 +128,9 @@ module.exports = async function handler(req, res) {
       minSimilarity: MIN_SIMILARITY,
     });
 
-    const resultArray = (Array.isArray(results) ? results : []).map((row) => {
+    if (!Array.isArray(results)) throw new Error("Malformed search response");
+    const resultArray = results.map((row) => {
+      if (!row || typeof row.text !== "string" || row.resolved_role !== "public-speaker") throw new Error("Unexpected transcript attribution");
       const snippet = extractSnippet(row.text, query);
       return snippet ? { ...row, snippet } : row;
     });
@@ -143,7 +155,7 @@ module.exports = async function handler(req, res) {
       results: resultArray,
     });
   } catch (err) {
-    console.error("[search-public-comment] search failed:", err);
+    console.warn("[search-public-comment] provider request failed");
     logSearchMetrics({
       endpoint: ENDPOINT,
       outcome: "error",
@@ -158,4 +170,4 @@ module.exports = async function handler(req, res) {
         "Public comment search is temporarily unavailable. Please try again in a moment.",
     });
   }
-};
+});
