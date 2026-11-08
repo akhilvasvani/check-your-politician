@@ -1,5 +1,17 @@
 # Remote validation proposal
 
+**November 8 update:** [Current remote preflight](REMOTE_PREFLIGHT.md) supersedes
+the historical settings-access blockers below. Owner-supplied dashboard values
+establish main as Production and all unassigned branches as Preview, with Other,
+la-money-votes root, overrides off and Node24.x. Source/configuration inspection
+finds no build/install ingestion, migration or paid-provider invocation. The
+exact final successor HEAD will be bound after local documentation commit in one
+normal-push/draft-PR approval request, including possible automatic Preview and
+platform/CI side effects. Nothing is pushed or deployed yet. Initial validation
+excludes valid query submissions and paid/write paths. Release remains NO-GO.
+
+## Historical November 6–7 preparation
+
 Prepared November 6, 2026 Pacific, with read-only observations through
 November 7 at 04:02 UTC. This is a reviewable proposal. Remote push, draft PR,
 configuration changes and deployment remain subject to the owner's approval

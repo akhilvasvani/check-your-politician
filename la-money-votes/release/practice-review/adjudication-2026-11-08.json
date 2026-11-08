@@ -1,0 +1,90 @@
+{
+  "revision": "reviewer-adjudication-2026-11-08",
+  "recorded_date_pacific": "2026-11-08",
+  "source": "adjudication-submission-2026-11-08.txt",
+  "source_sha256": "fe47387f6e4f009b960a43324d8f97caeb7c8bb5d80f4a386380d82941d85732",
+  "prior_freeze_file": "revision-frozen.json",
+  "prior_freeze_sha256": "c2074fd24cdb68ef8e18dabd51cebced51361b2f9672a8d1630d69f09595bf46",
+  "prior_comparison_file": "comparison.json",
+  "prior_comparison_sha256": "b0f24be565f60db6ee5f526f4b3b707285825f2d343706379003dc3073686aa4",
+  "items": [
+    {
+      "item": "01",
+      "video_id": "H-OkhDWvgYE",
+      "target_start": "00:44:08",
+      "target_end": "00:44:12",
+      "reviewer_reported_identity": "Marqueece Harris-Dawson",
+      "reviewer_reported_role": "Los Angeles City Council President",
+      "reviewer_reported_unresolved": "No",
+      "supersedes_identity": "Eunisses Hernandez",
+      "evidence": null,
+      "provenance": "Reviewer reports watching the exact target interval.",
+      "verification_by_codex": false,
+      "prediction_preserved": {
+        "item": 1,
+        "video_id": "H-OkhDWvgYE",
+        "canonical_utterance_index": 9,
+        "artifact_sha256": "fade7ad962fc539522722310f394bb356cafb3f70a7ad6b45f570fa27a97ba14",
+        "sampling_category": "explicit councilmember label",
+        "source_label": "I. Padilla",
+        "resolver_role": "councilmember",
+        "resolver_official_id": "cd6-official",
+        "resolver_name": "Imelda Padilla",
+        "resolution_method": "exact-councilmember"
+      },
+      "diagnostic_identity_comparison": "different personal names",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "03",
+      "video_id": "QePVCuF0iAY",
+      "target_start": "00:46:44",
+      "target_end": "00:46:49",
+      "reviewer_reported_identity": "Marqueece Harris-Dawson",
+      "reviewer_reported_role": "Los Angeles City Council President",
+      "reviewer_reported_unresolved": "No",
+      "supersedes_identity": "Luigi Verano",
+      "evidence": "In the exact target interval, the reviewer identifies the Council President conducting proceedings and addressing council members/the clerk about agenda sequencing.",
+      "provenance": "Reviewer watched the video and also consulted Gemini.",
+      "verification_by_codex": false,
+      "prediction_preserved": {
+        "item": 3,
+        "video_id": "QePVCuF0iAY",
+        "canonical_utterance_index": 0,
+        "artifact_sha256": "f440cac9ed3be0164da9862df913bfea173ed97ac0c2e3ee49b4a4779001c47b",
+        "sampling_category": "explicit councilmember label",
+        "source_label": "T. Park",
+        "resolver_role": "councilmember",
+        "resolver_official_id": "cd11-official",
+        "resolver_name": "Traci Park",
+        "resolution_method": "exact-councilmember"
+      },
+      "diagnostic_identity_comparison": "different personal names",
+      "held_out_contribution": 0
+    }
+  ],
+  "unchanged_items": [
+    "02",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12"
+  ],
+  "independent_codex_verification": false,
+  "overall_accuracy_calculated": false,
+  "held_out_acceptance_items": 0,
+  "corpus_labels_changed": false,
+  "resolver_behavior_changed": false,
+  "production_data_changed": false,
+  "remaining_practice_holds": [
+    "10: target-aligned evidence and personal identity",
+    "11: possible mixed procedural voice/boundaries",
+    "12: chair/clerk personal identities and boundaries"
+  ],
+  "limits": "Post-comparison reviewer-reported diagnostic adjudication. Item03 includes Gemini consultation. Neither is blinded held-out evidence; no overall identity accuracy or attribution precision inferred."
+}

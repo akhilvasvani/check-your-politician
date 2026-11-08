@@ -8,7 +8,12 @@ This packet records completed local engineering and actual evidence.
 exact-hash and fresh prior-state checks. Browser roles now retain table SELECT
 only and no sequence privileges. All reviewed read-only postflight checks
 passed, with counts unchanged at 5,003 chunks / 3,341 parent turns / 9 recordings.
-Change B remains absent and unapproved; release remains NO-GO.
+Change B remains absent after a cancelled confirmation and a separately approved
+fresh confirmation that expired. Read-only reconciliation found no change;
+another submission requires a new instruction. Owner-supplied Vercel settings
+resolve the prior dashboard gap; a precise push/draft-PR approval is still pending.
+Practice Items01/03 have a new reviewer-reported adjudication preserving the
+original freeze and predictions. Release remains NO-GO.
 
 ## Reviewed implementation and scope
 
@@ -51,7 +56,7 @@ Existing web-grounded Ask-AI and transcript evidence retrieval remain distinct.
 | W0 integration/publication baseline | Local checks passed | Remote CI for this branch awaits push approval |
 | W1 API/UI correctness | Mock and browser gates passed | Production credential, ingress and durable limiter verification |
 | W2 inventory/captions | Metadata verified, captions blocked | No usable new manual-caption payload |
-| W3 database/replacement | A committed November 8; read-only postflight passed; prior disposable A/B suite 45/45 on PG16.14 and 45/45 on PG17.6 | B absent and awaiting separate exact-SQL/target approval; no replacement invocation authorized |
+| W3 database/replacement | A committed November 8; read-only postflight passed; prior disposable A/B suite 45/45 on PG16.14 and 45/45 on PG17.6 | B absent after cancelled/expired confirmations; no automatic resubmission or replacement invocation authorized |
 | M3.1 corpus expansion | Blocked | Verified source captions, target review, approved cost/write plan |
 | M3.2 live coverage | Existing 9-recording baseline reconciled live | Expanded release corpus remains unestablished |
 | M3.3 relevance | Incomplete | Six missing original traces, two supplemental cases, grounded committee cases and full live five-floor run |

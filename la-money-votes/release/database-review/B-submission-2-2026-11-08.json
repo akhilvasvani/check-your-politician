@@ -1,0 +1,187 @@
+{
+  "action": "Change B explicitly authorized fresh submission",
+  "project_id": "pwbothxnfjnxkhrcxyvd",
+  "organization": "la-politician",
+  "region": "us-west-2",
+  "database": "postgres",
+  "executor": "postgres",
+  "source_head": "9903a16636576b8bceac3d93343e49d2170377e1",
+  "source_sha256": "818c0d9c7135644e0a6796a6f7358aa55f9526a28293dc72553481b0802cf330",
+  "prior_submission_receipt": "B-execution-2026-11-08.json",
+  "outcome": "CONFIRMATION_EXPIRED; READ_ONLY_RECONCILIATION_CONFIRMS_FUNCTION_ABSENT",
+  "tool_result": {
+    "status": "expired",
+    "message": "This confirmation expired after 2 minutes. Call `execute_sql` again to get a new confirmation.",
+    "error_code": "INVALID_ARGUMENT"
+  },
+  "returned_at_utc": "2026-11-08 23:52:34 UTC",
+  "preflight_checks": {
+    "target_and_sql": true,
+    "inventory_matches_reviewed_A_post_state": true,
+    "service_prerequisites": true,
+    "read_functions_A_privileges_counts": true,
+    "roles_owners_policy_watchers_access_absence": true,
+    "exact_replacement_absent": true,
+    "no_replacement_overloads": true
+  },
+  "preflight_at_utc": "2026-11-08 23:48:28 UTC",
+  "fresh_submissions": 1,
+  "automatic_retries": 0,
+  "reconciliation": {
+    "rpcs": [
+      {
+        "acl": [
+          {
+            "grantee": "PUBLIC",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "name": "get_transcript_coverage",
+        "owner": "postgres",
+        "result": "TABLE(speaking_turns bigint, meeting_count bigint, first_meeting_date date, last_meeting_date date)",
+        "body_md5": "22161cc4439ed49a91aae3b0146c2d7e",
+        "settings": null,
+        "arguments": "p_official_id text, p_embedding_model text DEFAULT 'pplx-embed-v1-0.6b'::text",
+        "signature": "p_official_id text, p_embedding_model text",
+        "volatility": "s",
+        "security_definer": false
+      },
+      {
+        "acl": [
+          {
+            "grantee": "PUBLIC",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "name": "search_public_comment",
+        "owner": "postgres",
+        "result": "TABLE(id bigint, video_id text, meeting_date date, chunk_idx integer, start_sec real, end_sec real, resolved_role text, resolved_official_id text, resolved_name text, source_label text, turn_speaker_raw text, text text, token_count integer, similarity real, sub_chunk_idx integer, sub_chunk_of integer)",
+        "body_md5": "33e4ba028630765299b3359a19b9a396",
+        "settings": null,
+        "arguments": "p_query_embedding vector, p_date_from date DEFAULT NULL::date, p_date_to date DEFAULT NULL::date, p_embedding_model text DEFAULT 'pplx-embed-v1-0.6b'::text, p_match_count integer DEFAULT 8, p_min_similarity real DEFAULT 0.25",
+        "signature": "p_query_embedding vector, p_date_from date, p_date_to date, p_embedding_model text, p_match_count integer, p_min_similarity real",
+        "volatility": "s",
+        "security_definer": false
+      },
+      {
+        "acl": [
+          {
+            "grantee": "PUBLIC",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "name": "search_transcripts",
+        "owner": "postgres",
+        "result": "TABLE(id bigint, video_id text, meeting_date date, chunk_idx integer, start_sec real, end_sec real, resolved_role text, resolved_official_id text, resolved_name text, text text, token_count integer, similarity real, sub_chunk_idx integer, sub_chunk_of integer)",
+        "body_md5": "67e13f5e574b0ef81e124b42256b775d",
+        "settings": null,
+        "arguments": "p_query_embedding vector, p_official_id text, p_date_from date DEFAULT NULL::date, p_date_to date DEFAULT NULL::date, p_embedding_model text DEFAULT 'pplx-embed-v1-0.6b'::text, p_match_count integer DEFAULT 8, p_min_similarity real DEFAULT 0.25",
+        "signature": "p_query_embedding vector, p_official_id text, p_date_from date, p_date_to date, p_embedding_model text, p_match_count integer, p_min_similarity real",
+        "volatility": "s",
+        "security_definer": false
+      }
+    ],
+    "roles": [
+      {
+        "role": "anon",
+        "select": true,
+        "maintain": false,
+        "any_write": false,
+        "any_sequence": false
+      },
+      {
+        "role": "authenticated",
+        "select": true,
+        "maintain": false,
+        "any_write": false,
+        "any_sequence": false
+      },
+      {
+        "role": "service_role",
+        "select": true,
+        "maintain": true,
+        "any_write": true,
+        "any_sequence": true
+      }
+    ],
+    "counts": {
+      "chunks": 5003,
+      "recordings": 9,
+      "parent_turns": 3341
+    },
+    "read_only": "on"
+  },
+  "reconciled_at_utc": "2026-11-08 23:52:57 UTC",
+  "reconciliation_passed": true,
+  "known_transaction_state": "No successful execution/COMMIT returned. Confirmation expired. Reviewed read-only postflight shows replacement absent and exactly unchanged A role/read-function/count state; no installation commit observed.",
+  "post_commit_checks": "Not applicable; one approved read-only state reconciliation only",
+  "recovery": false,
+  "replacement_invoked": false,
+  "ingestion": false,
+  "paid_calls": 0,
+  "next_action": "STOP. No further submission is authorized by the consumed one-fresh-submission instruction.",
+  "release": "NO-GO"
+}

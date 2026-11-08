@@ -1,5 +1,16 @@
 # Consolidated decision report — NO-GO
 
+**Latest November 8 update:** B remains absent after a cancelled confirmation
+and a separately authorized fresh confirmation that expired. Read-only
+reconciliation confirms unchanged A privileges, read functions and counts.
+[B receipt](database-review/B-submission-2-2026-11-08.json). No automatic retry.
+The owner supplied the missing Vercel settings; [the existing remote preflight](REMOTE_PREFLIGHT.md)
+now supports a precise approval request for a normal push/draft PR with possible
+automatic Preview. No remote write is approved or performed yet.
+[A new practice adjudication](practice-review/adjudication-2026-11-08.json)
+records reviewer-reported Harris-Dawson labels for Items01/03, preserving history,
+Gemini provenance for03, disagreement diagnostics and zero held-out credit.
+
 **November 8 update:** Change A was separately approved and committed; all
 reviewed read-only postflight checks passed with unchanged counts 5003/3341/9.
 See [A's result](database-review/A-RESULT.md). B and remote publication remain

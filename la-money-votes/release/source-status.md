@@ -131,7 +131,9 @@ owner-approved live reads verified the target, five applied migrations, the
 and SELECT access. On November 8, approved [Change A](database-review/A-RESULT.md)
 committed and passed all reviewed read-only checks: browser roles retain table
 SELECT only and no sequence privileges; counts remain 5003/3341/9. The replacement
-RPC is still absent and B remains unapproved. HTTP credential behavior, paid
+RPC is still absent after B's cancelled/expired confirmations; reviewed read-only
+reconciliation confirms A/read/count state unchanged. No automatic resubmission
+is authorized. HTTP credential behavior, paid
 ingestion/evaluation and any further shared mutation remain gated.
 
 `scripts/transcripts/ingest_verified.py` now connects the existing embedding and
@@ -227,6 +229,22 @@ open. No new source probe is authorized.
 
 
 ## Offline diagnostic recommendation (no probe authorized)
+
+November 8 offline follow-up inspected the installed, pinned yt-dlp 2026.10.26
+source without importing/running the downloader. Its CLI maps both CookieLoadError
+and DownloadError to exit code 1; the cookie loader has a generic "failed to load
+cookies" wrapper. Five synthetic pure-classifier cases confirm that this wrapper
+currently falls through to unclassified, while explicit cookie/login/download
+markers receive their existing categories. This is a possible classification
+gap, not evidence that the wrapper occurred in the completed probes. No live
+outcome was reclassified and no classifier/client/version was changed. Safe
+source hashes and synthetic results are retained locally in
+`work/release/offline-diagnostic-2026-11-08.json`.
+
+A future diagnostic design could classify that exact wrapper as a generic
+cookie-loading failure without asserting decryption, authentication or source
+absence; local fixtures would need to cover the distinction before any newly
+approved probe. The existing three-video result remains unchanged below.
 
 The final three-video result remains listing-stage `unclassified_tool_error`,
 return code 1, cookie access unknown, and no caption payload retrieved or tested.

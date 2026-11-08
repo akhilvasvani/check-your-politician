@@ -1,8 +1,14 @@
 # Change B — exact approval packet
 
-**NOT APPROVED. Separate approval for target Supabase `pwbothxnfjnxkhrcxyvd`,
-la-politician, us-west-2, database/executor postgres. Installation does not
-authorize invocation, ingestion or corpus replacement.**
+**November 8 status: installation authorized, but NOT INSTALLED.** The first
+confirmation was cancelled and the tool reported nothing ran. A separately
+authorized fresh confirmation expired. Reviewed read-only reconciliation found
+the replacement absent and A/read-function/count state unchanged. See receipts
+[1](B-execution-2026-11-08.json) and [2](B-submission-2-2026-11-08.json).
+Stop: no automatic retry; another submission needs a new explicit instruction.
+The unchanged reviewed target is Supabase `pwbothxnfjnxkhrcxyvd`, la-politician,
+us-west-2, database/executor postgres. Invocation, ingestion and replacement
+remain excluded. The original SQL contract below is preserved.
 
 This is the unchanged prepared B from eb06c4e. Recommend **A first, verify A,
 then separately approve B**. There is no SQL dependency requiring B first; B can

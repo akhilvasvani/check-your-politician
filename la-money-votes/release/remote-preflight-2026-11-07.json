@@ -289,5 +289,52 @@
     "installed_vercel_cli_on_path": false
   },
   "remote_mutations": 0,
-  "secret_environment_values_read": 0
+  "secret_environment_values_read": 0,
+  "november8_update": {
+    "date_pacific": "2026-11-08",
+    "provenance": "Owner supplied exact screenshot settings in conversation; no claim of a new authenticated dashboard read.",
+    "settings": {
+      "production_branch": "main",
+      "preview_branch_tracking": "enabled for all unassigned branches",
+      "preview_custom_domains_shown": [],
+      "custom_environments": 0,
+      "framework": "Other",
+      "root_directory": "la-money-votes",
+      "displayed_command_output_overrides": "all off",
+      "include_outside_root_files": true,
+      "skip_unchanged_root_dependency_deployments": true,
+      "ignored_build_step": "Automatic",
+      "node": "24.x"
+    },
+    "github": {
+      "main_sha": "25a51ebe617f5d24c4a7c405a6498c2104f1a2fd",
+      "main_protected": true,
+      "release_matching_refs": [],
+      "release_prs_all_states": [],
+      "checked_at_utc": "2026-11-08 23:55:13 UTC"
+    },
+    "preview_database": {
+      "project_id": "pwbothxnfjnxkhrcxyvd",
+      "organization": "la-politician",
+      "region": "us-west-2",
+      "evidence": "Narrowly approved November7 Preview URL read; no branch-specific override. No value reread in this update."
+    },
+    "source_inspection_head": "9903a16636576b8bceac3d93343e49d2170377e1",
+    "final_head_binding": "Full documentation-successor SHA will be bound in the final explicit approval request after commit; no prior SHA approval reused.",
+    "no_build_install_ingestion_migration_provider_hooks_found": true,
+    "git_push_performed": false,
+    "pr_created": false,
+    "deployment_performed": false,
+    "approval_state": "PENDING explicit normal push/draft PR including possible automatic Preview and CI/platform effects",
+    "initial_validation_excludes": [
+      "valid transcript-search/public-comment-search/Ask-AI submissions",
+      "paid provider calls",
+      "replacement invocation",
+      "ingestion",
+      "migrations",
+      "environment/settings changes",
+      "merge/manual deploy/redeploy/production promotion/workflow dispatch"
+    ],
+    "release": "NO-GO"
+  }
 }

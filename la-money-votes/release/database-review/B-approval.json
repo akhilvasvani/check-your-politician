@@ -1,6 +1,6 @@
 {
   "change": "B",
-  "approval_status": "NOT APPROVED",
+  "approval_status": "AUTHORIZED SUBMISSIONS CANCELLED/EXPIRED; NOT INSTALLED",
   "target": {
     "supabase_project_id": "pwbothxnfjnxkhrcxyvd",
     "organization": "la-politician",
@@ -53,5 +53,11 @@
       "recordings": 9
     }
   },
-  "expected_existing_platform_side_effect": "Existing pgrst_ddl_watch emits schema-cache reload notification for CREATE/ALTER FUNCTION; does not invoke replacement. Recovery can notify through pgrst_drop_watch."
+  "expected_existing_platform_side_effect": "Existing pgrst_ddl_watch emits schema-cache reload notification for CREATE/ALTER FUNCTION; does not invoke replacement. Recovery can notify through pgrst_drop_watch.",
+  "submission_receipts": [
+    "B-execution-2026-11-08.json",
+    "B-submission-2-2026-11-08.json"
+  ],
+  "automatic_retry_authorized": false,
+  "next_submission_requires_new_instruction": true
 }

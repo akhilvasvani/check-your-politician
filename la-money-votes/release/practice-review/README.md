@@ -1,5 +1,23 @@
 # Practice annotation import and diagnostics
 
+**November 8 adjudication revision:** [New reviewer submission](adjudication-submission-2026-11-08.txt)
+and [normalized revision/comparison](adjudication-2026-11-08.json) supersede only
+Items 01 and 03 in the current diagnostic interpretation. The November 7 freeze,
+original submission, comparison and predictions below remain historical and unchanged.
+
+| Item / exact target | New reviewer-reported identity | Preserved prediction | Provenance and diagnostic result |
+| --- | --- | --- | --- |
+| 01 / H-OkhDWvgYE 00:44:08–00:44:12 | Marqueece Harris-Dawson; Los Angeles City Council President; unresolved No | Imelda Padilla | Reviewer reports watching the exact interval; supersedes Eunisses Hernandez. Different personal names. |
+| 03 / QePVCuF0iAY 00:46:44–00:46:49 | Marqueece Harris-Dawson; Los Angeles City Council President; unresolved No | Traci Park | Reviewer reports watching the interval and consulting Gemini; describes the President conducting proceedings and addressing members/the clerk about agenda sequencing. Supersedes Luigi Verano. Different personal names. |
+
+These are post-comparison, reviewer-reported adjudications, not independent
+verification by Codex. No overall accuracy or attribution precision is inferred
+from these two items. Practice still contributes **zero held-out acceptance items**.
+Items 10/11/12 retain their identity, target or boundary holds. No corpus labels,
+resolver behavior or production data were changed from this revision.
+
+## Historical November 7 freeze and comparison
+
 Recorded November 7, 2026 Pacific. Practice only; **0 items count toward final acceptance**.
 
 ## Freeze and provenance
