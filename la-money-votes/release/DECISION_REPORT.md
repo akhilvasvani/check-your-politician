@@ -1,5 +1,12 @@
 # Consolidated decision report — NO-GO
 
+**November 8 update:** Change A was separately approved and committed; all
+reviewed read-only postflight checks passed with unchanged counts 5003/3341/9.
+See [A's result](database-review/A-RESULT.md). B and remote publication remain
+unapproved. The November 7 report below is retained as the historical proposal;
+its statements that A awaits approval or no shared SQL has run are superseded
+by that execution receipt. Practice annotations and comparison are unchanged.
+
 Prepared November 7, 2026 Pacific. Final proposed source: `<FINAL_REVIEW_HEAD>`
 on `release/weekend-2026-11-08`; intended draft PR base main at
 `25a51ebe617f5d24c4a7c405a6498c2104f1a2fd`. The export binds the new commit;

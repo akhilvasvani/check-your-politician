@@ -1,0 +1,230 @@
+{
+  "action": "Change A only",
+  "approval_source": "Owner explicit approval in this conversation on November 8, 2026 Pacific",
+  "source_head": "9e4507f3c691ee4dba44e2edd266246f3f971cc2",
+  "source_sha256": "245a2122c42d14e315895ef9b0de6d079030f42beb6ece04017d42ee811cb415",
+  "source_matches_approval_packet_and_export": true,
+  "target": {
+    "project_id": "pwbothxnfjnxkhrcxyvd",
+    "organization": "la-politician",
+    "organization_id": "lkcaqfydvsheedqghupd",
+    "region": "us-west-2",
+    "database": "postgres",
+    "executor": "postgres"
+  },
+  "started_at_utc": "2026-11-08T08:29:37.271990+00:00",
+  "execution_returned_at_utc": "2026-11-08 08:29:42 UTC",
+  "verified_at_utc": "2026-11-08 08:30:37 UTC",
+  "mutation_attempts": 1,
+  "outcome": "COMMITTED",
+  "outcome_evidence": "Exact unchanged transaction ending COMMIT returned without error; separate reviewed read-only catalog and browser-role reads confirm persisted expected state.",
+  "lock_timeout": "2s",
+  "statement_timeout": "15s per statement",
+  "preflight_checks": {
+    "inventory_owners_acl_public_inheritance_defaults_counts": true,
+    "all_read_function_metadata_and_acl": true,
+    "ddl_event_functions_unchanged": true,
+    "database_executor_read_only": true,
+    "runtime": true,
+    "column_acl_absent": true,
+    "row_triggers_absent": true,
+    "all_required_read_executes": true,
+    "policy": true,
+    "table_rls_owner": true,
+    "sequence_owner": true,
+    "approved_source_hash": true,
+    "role_anon": true,
+    "role_authenticated": true,
+    "role_service_role": true
+  },
+  "postflight_checks": {
+    "read_only": true,
+    "counts": true,
+    "read_functions_unchanged": true,
+    "browser_roles": true,
+    "service_role_unchanged": true
+  },
+  "postflight": {
+    "rpcs": [
+      {
+        "acl": [
+          {
+            "grantee": "PUBLIC",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "name": "get_transcript_coverage",
+        "owner": "postgres",
+        "result": "TABLE(speaking_turns bigint, meeting_count bigint, first_meeting_date date, last_meeting_date date)",
+        "body_md5": "22161cc4439ed49a91aae3b0146c2d7e",
+        "settings": null,
+        "arguments": "p_official_id text, p_embedding_model text DEFAULT 'pplx-embed-v1-0.6b'::text",
+        "signature": "p_official_id text, p_embedding_model text",
+        "volatility": "s",
+        "security_definer": false
+      },
+      {
+        "acl": [
+          {
+            "grantee": "PUBLIC",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "name": "search_public_comment",
+        "owner": "postgres",
+        "result": "TABLE(id bigint, video_id text, meeting_date date, chunk_idx integer, start_sec real, end_sec real, resolved_role text, resolved_official_id text, resolved_name text, source_label text, turn_speaker_raw text, text text, token_count integer, similarity real, sub_chunk_idx integer, sub_chunk_of integer)",
+        "body_md5": "33e4ba028630765299b3359a19b9a396",
+        "settings": null,
+        "arguments": "p_query_embedding vector, p_date_from date DEFAULT NULL::date, p_date_to date DEFAULT NULL::date, p_embedding_model text DEFAULT 'pplx-embed-v1-0.6b'::text, p_match_count integer DEFAULT 8, p_min_similarity real DEFAULT 0.25",
+        "signature": "p_query_embedding vector, p_date_from date, p_date_to date, p_embedding_model text, p_match_count integer, p_min_similarity real",
+        "volatility": "s",
+        "security_definer": false
+      },
+      {
+        "acl": [
+          {
+            "grantee": "PUBLIC",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "name": "search_transcripts",
+        "owner": "postgres",
+        "result": "TABLE(id bigint, video_id text, meeting_date date, chunk_idx integer, start_sec real, end_sec real, resolved_role text, resolved_official_id text, resolved_name text, text text, token_count integer, similarity real, sub_chunk_idx integer, sub_chunk_of integer)",
+        "body_md5": "67e13f5e574b0ef81e124b42256b775d",
+        "settings": null,
+        "arguments": "p_query_embedding vector, p_official_id text, p_date_from date DEFAULT NULL::date, p_date_to date DEFAULT NULL::date, p_embedding_model text DEFAULT 'pplx-embed-v1-0.6b'::text, p_match_count integer DEFAULT 8, p_min_similarity real DEFAULT 0.25",
+        "signature": "p_query_embedding vector, p_official_id text, p_date_from date, p_date_to date, p_embedding_model text, p_match_count integer, p_min_similarity real",
+        "volatility": "s",
+        "security_definer": false
+      }
+    ],
+    "roles": [
+      {
+        "role": "anon",
+        "select": true,
+        "maintain": false,
+        "any_write": false,
+        "any_sequence": false
+      },
+      {
+        "role": "authenticated",
+        "select": true,
+        "maintain": false,
+        "any_write": false,
+        "any_sequence": false
+      },
+      {
+        "role": "service_role",
+        "select": true,
+        "maintain": true,
+        "any_write": true,
+        "any_sequence": true
+      }
+    ],
+    "counts": {
+      "chunks": 5003,
+      "recordings": 9,
+      "parent_turns": 3341
+    },
+    "read_only": "on"
+  },
+  "browser_role_reads": [
+    {
+      "role": "anon",
+      "read_only": "on",
+      "chunks": 5003,
+      "parent_turns": 3341,
+      "recordings": 9
+    },
+    {
+      "role": "authenticated",
+      "read_only": "on",
+      "chunks": 5003,
+      "parent_turns": 3341,
+      "recordings": 9
+    }
+  ],
+  "postgres_service_preservation": "Forward SQL revokes only PUBLIC/anon/authenticated object grants. Postgres ownership is asserted before/after inside the transaction; service postflight access matches preflight.",
+  "failed_verification": [],
+  "ambiguous_verification": [],
+  "retries": 0,
+  "recovery_executed": false,
+  "change_B_executed": false,
+  "replacement_invoked": false,
+  "ingestion": false,
+  "destructive_or_write_denial_probes": false,
+  "paid_calls": 0,
+  "remote_push": false,
+  "settings_changes": false,
+  "deployment": false,
+  "release": "NO-GO",
+  "post_commit_sql_scope": [
+    "exact reviewed postflight.sql",
+    "reviewed anon browser SELECT transaction",
+    "reviewed authenticated browser SELECT transaction"
+  ],
+  "scope_limits": "No application RPC invocation or HTTP credential test. No new full post-commit ACL inventory beyond the reviewed postflight; no rewrite or migration-history operation."
+}

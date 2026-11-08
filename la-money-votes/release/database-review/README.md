@@ -1,9 +1,10 @@
-# Database changes awaiting separate approval
+# Database change status and review packets
 
-**REVIEW ONLY — neither A nor B has been applied to the shared project. Release
-remains NO-GO.** Approve each exact forward SQL file and target separately.
-Approval of preparation, local testing or project restoration is not execution
-approval. Recovery files also require approval before use.
+**Change A committed November 8, 2026; all reviewed read-only postflight checks
+passed. Change B remains absent and unapproved. Release remains NO-GO.**
+See [A's result](A-RESULT.md) and [receipt](A-execution-2026-11-08.json).
+Do not rerun A. B and recovery require separate exact-SQL/target approval.
+Preparation, local testing and project restoration do not authorize execution.
 
 Target: Supabase `pwbothxnfjnxkhrcxyvd`, organization `la-politician`
 (`lkcaqfydvsheedqghupd`), `us-west-2`, database `postgres`, executor `postgres`.
@@ -20,10 +21,11 @@ the connected Supabase project identity; the executor must bind the tool's
 | B | [B-forward.sql](B-forward.sql) | [B-recovery.sql](B-recovery.sql) | Install the missing transactional replacement function; permit only the owner and service role to execute it. Do not invoke it. |
 
 [SHA256SUMS](SHA256SUMS) binds all SQL, contract and prior-state evidence files.
-The proposed order is A, read-only postflight, then B, read-only postflight, with
-separate approval for each. Each is independently tested from the observed
-baseline; B does not silently apply A. A alone leaves the replacement absent.
-B alone leaves the existing broad table/sequence browser grants unresolved.
+The first step, A plus read-only postflight, is complete. B plus read-only
+postflight remains subject to separate approval. Each was independently tested
+from the original baseline; B does not silently apply A. A alone leaves the
+replacement absent. The fresh A execution receipt supplies the current privilege
+baseline; the broad browser grants in historical prior-state files are pre-A.
 
 Before any approved execution, run [preflight.sql](preflight.sql),
 [prerequisites.sql](prerequisites.sql) and [postflight.sql](postflight.sql) as
@@ -33,10 +35,12 @@ The scripts abort for count, owner, RLS/policy, role-membership, column-ACL or
 read-function-body drift. A additionally pins the complete observed object ACL.
 B refuses to overwrite an existing signature. Run the complete approved file in
 one transaction; do not split it into autocommitted statements. Stop after any
-error and explicitly roll back an open transaction. Never retry an ambiguous
-result without a read-only state check.
+error and report the transaction's known state. Never automatically retry a
+failed or uncertain execution or apply recovery. Follow the specific execution
+approval's stop boundary; an unknown state does not authorize extra SQL.
 
-These are review scripts, not applied migration records. No migration-history
+These scripts are not migration-history records. A's separate execution receipt
+records its approved application; B remains review-only. No migration-history
 row, explicit schema-cache notification statement or function invocation is included.
 The November7 catalog read identifies existing PostgREST event triggers that
 automatically notify schema-cache reload on B CREATE/ALTER/DROP FUNCTION; see

@@ -4,6 +4,12 @@ Prepared November 6, 2026 Pacific time. **Release decision is NO-GO.** Required
 source, shared-SQL, deployment, evaluation and independent attribution gates remain open.
 This packet records completed local engineering and actual evidence.
 
+**November 8 update:** [Change A committed](database-review/A-RESULT.md) after
+exact-hash and fresh prior-state checks. Browser roles now retain table SELECT
+only and no sequence privileges. All reviewed read-only postflight checks
+passed, with counts unchanged at 5,003 chunks / 3,341 parent turns / 9 recordings.
+Change B remains absent and unapproved; release remains NO-GO.
+
 ## Reviewed implementation and scope
 
 Current implementation reviewed at
@@ -45,7 +51,7 @@ Existing web-grounded Ask-AI and transcript evidence retrieval remain distinct.
 | W0 integration/publication baseline | Local checks passed | Remote CI for this branch awaits push approval |
 | W1 API/UI correctness | Mock and browser gates passed | Production credential, ingress and durable limiter verification |
 | W2 inventory/captions | Metadata verified, captions blocked | No usable new manual-caption payload |
-| W3 database/replacement | Live read baseline verified; final A/B review suite 45/45 on PG16.14 and 45/45 on PG17.6 | Separate exact-SQL approvals; neither A nor B applied |
+| W3 database/replacement | A committed November 8; read-only postflight passed; prior disposable A/B suite 45/45 on PG16.14 and 45/45 on PG17.6 | B absent and awaiting separate exact-SQL/target approval; no replacement invocation authorized |
 | M3.1 corpus expansion | Blocked | Verified source captions, target review, approved cost/write plan |
 | M3.2 live coverage | Existing 9-recording baseline reconciled live | Expanded release corpus remains unestablished |
 | M3.3 relevance | Incomplete | Six missing original traces, two supplemental cases, grounded committee cases and full live five-floor run |
@@ -215,14 +221,16 @@ The three read RPCs are STABLE and SECURITY INVOKER, and their body hashes match
 the checked-in SQL. The transactional `replace_transcript_chunks` RPC is absent.
 Its migration still needs separate review and approval before ingestion.
 
-Actual reads under both anon and authenticated returned 5,003 chunks and 3,341
-parent turns. RLS is enabled with a SELECT-only public read policy. Both roles
-lack BYPASSRLS, but retain broad table and sequence privileges, including
-TRUNCATE. Ordinary row writes are denied by the current RLS policy; whole-table
-operations such as TRUNCATE are [outside RLS](https://www.postgresql.org/docs/17/ddl-rowsecurity.html).
-The browser privilege boundary therefore needs hardening review. No write probe,
-grant change, migration or data change was performed. SQL-role reads do not
-establish HTTP API-key or deployed-endpoint authentication.
+The original live reads found 5,003 chunks and 3,341 parent turns under both
+anon and authenticated, with SELECT-only RLS but excessive object grants.
+Approved Change A on November 8 removed those browser write/destructive and
+sequence privileges. Its reviewed read-only postflight confirms SELECT only
+and no sequence access for both roles, unchanged read RPCs/service access, and
+5,003 chunks / 3,341 parent turns / 9 recordings under each browser role.
+See [the exact execution receipt](database-review/A-execution-2026-11-08.json).
+No corpus rows, RLS policy or read functions were changed. No live write or
+destructive probe was run. SQL-role reads do not establish HTTP API-key or
+deployed-endpoint authentication.
 
 The security advisor returned four warning types: mutable function search path,
 extension in public, and anon/authenticated execution of a SECURITY DEFINER
@@ -341,11 +349,12 @@ in the measured 390px viewport. Screenshots and result JSON live in
 
 ## External usage, release action and recovery
 
-Agent-initiated paid Perplexity generation/embedding calls are zero. Shared schema
-or row changes, remote pushes/PR creation, workflow dispatch and deployment/
-promotion operations are zero. One explicitly approved Supabase service restore
-completed. It may reactivate other clients; their activity or cost was not
-measured. Public metadata/assets and the approved package/caption
+Agent-initiated paid Perplexity generation/embedding calls are zero. One approved
+shared object-privilege change (A) committed November 8; no shared corpus-row or
+function/schema-definition change occurred. Remote pushes/PR creation, workflow
+dispatch and deployment/promotion operations are zero. One explicitly approved
+Supabase service restore completed earlier. It may reactivate other clients;
+their activity or cost was not measured. Public metadata/assets and the approved package/caption
 requests were read. Tool version/download hashes are recorded in
 `work/release/tooling/download-manifest.json`; published PostgreSQL and Python
 wheel hashes were verified, while the pgvector archive hash is recorded without
@@ -367,9 +376,11 @@ require identifying and approving the exact prior deployment. None was initiated
 ## Resume order
 
 1. Read this packet, the local `work/release/LEDGER.md`, current HEAD and working tree.
-2. Keep the restored Supabase project active. Do not repeat restoration. Prepare
-   exact browser-grant hardening and missing replacement-RPC changes for separate
-   review/approval before any shared mutation. Production transcript configuration,
+2. Keep the restored Supabase project active. Do not repeat restoration or A.
+   A committed and passed read-only postflight. The missing replacement-RPC
+   change B still needs separate exact-SQL/target approval and fresh preflight;
+   its installation does not authorize invocation or ingestion. Production
+   transcript configuration,
    HTTP credential verification, live limiter behavior and spending bounds remain
    gates for later approved configuration and preview work.
 3. Obtain usable verified manual captions through a materially different,

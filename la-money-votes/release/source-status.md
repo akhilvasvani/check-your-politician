@@ -128,10 +128,11 @@ The current shell has no `PERPLEXITY_API_KEY`, `SUPABASE_URL`,
 This describes the shell configuration at the time of that check. Subsequent
 owner-approved live reads verified the target, five applied migrations, the
 5,003-chunk / 3,341-parent / nine-recording baseline, model/dimensions, constraints
-and SELECT access. Browser roles still have excessive table/sequence grants and
-the replacement RPC is absent. [The SQL review](database-review/README.md)
-prepares separate corrections; none has been applied. HTTP credential behavior,
-paid ingestion/evaluation and shared mutation remain gated.
+and SELECT access. On November 8, approved [Change A](database-review/A-RESULT.md)
+committed and passed all reviewed read-only checks: browser roles retain table
+SELECT only and no sequence privileges; counts remain 5003/3341/9. The replacement
+RPC is still absent and B remains unapproved. HTTP credential behavior, paid
+ingestion/evaluation and any further shared mutation remain gated.
 
 `scripts/transcripts/ingest_verified.py` now connects the existing embedding and
 transactional replacement seams for one reviewed recording. Its default is an

@@ -1,7 +1,10 @@
 # Change A — exact approval packet
 
-**NOT APPROVED. Target Supabase `pwbothxnfjnxkhrcxyvd`, la-politician,
-us-west-2, database/executor postgres. This approval object covers A only.**
+**APPROVED AND COMMITTED November 8, 2026. Target Supabase
+`pwbothxnfjnxkhrcxyvd`, la-politician, us-west-2, database/executor postgres.
+All reviewed read-only postflight checks passed. Do not execute A again.**
+See [the result](A-RESULT.md) and [execution receipt](A-execution-2026-11-08.json).
+The reviewed contract and SQL below are retained unchanged; this approval covered A only.
 Neither B nor recovery, ingestion, invocation or remote publication is included.
 
 This is the unchanged prepared A from eb06c4e. The November 7 read-only refresh
