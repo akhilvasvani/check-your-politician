@@ -2,7 +2,16 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/ask-official.js": {
-      "maxDuration": 15
+      "maxDuration": 30
+    },
+    "api/search-transcripts.js": {
+      "maxDuration": 30
+    },
+    "api/search-public-comment.js": {
+      "maxDuration": 30
+    },
+    "api/transcript-coverage.js": {
+      "maxDuration": 10
     }
   }
 }

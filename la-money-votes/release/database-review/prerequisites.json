@@ -1,0 +1,21 @@
+{
+  "project_ref": "pwbothxnfjnxkhrcxyvd",
+  "recorded_at_utc": "2026-11-07 04:16:23 UTC",
+  "dependency_prerequisites": {
+    "counts": {
+      "chunks": 5003,
+      "recordings": 9,
+      "parent_turns": 3341
+    },
+    "read_only": "on",
+    "service_role": {
+      "bypass_rls": true,
+      "public_usage": true,
+      "vector_usage": true,
+      "database_temp": true,
+      "database_connect": true,
+      "vector_dims_execute": true
+    }
+  },
+  "shared_changes": 0
+}

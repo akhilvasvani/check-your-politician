@@ -1,0 +1,38 @@
+Finalize the following practice-review corrections as a new adjudication
+revision. Preserve the original frozen annotations and model predictions.
+
+ITEM 01
+Video: H-OkhDWvgYE
+Target: 00:44:08–00:44:12
+Actual speaker: Marqueece Harris-Dawson
+Role: Los Angeles City Council President
+Unresolved: No
+Provenance: Reviewer reports watching the exact target interval.
+This supersedes my earlier Eunisses Hernandez annotation.
+
+ITEM 03
+Video: QePVCuF0iAY
+Target: 00:46:44–00:46:49
+Actual speaker: Marqueece Harris-Dawson
+Role: Los Angeles City Council President
+Unresolved: No
+Evidence: In the exact target interval, the reviewer identifies the
+Council President conducting proceedings and addressing council
+members/the clerk about agenda sequencing.
+Provenance: Reviewer watched the video and also consulted Gemini.
+This supersedes my earlier Luigi Verano annotation.
+
+Treat these as reviewer-reported adjudications, not as independent
+verification performed by Codex. Preserve the evidence/provenance
+distinction and do not rewrite the pre-comparison freeze.
+
+Compare the revised labels with the preserved predictions for diagnostic
+purposes. Both submitted identities differ from the recorded personal-name
+predictions; do not infer an overall accuracy from these two items.
+
+Practice continues to contribute zero held-out acceptance items.
+Do not change corpus labels, resolver behavior or production data solely
+from these practice corrections.
+
+Continue the database and remote-preflight work without waiting for
+another practice-review checkpoint.

@@ -1,0 +1,39 @@
+{
+  "action": "Change B installation only",
+  "project_id": "pwbothxnfjnxkhrcxyvd",
+  "organization": "la-politician",
+  "region": "us-west-2",
+  "database": "postgres",
+  "executor": "postgres",
+  "source_head": "9903a16636576b8bceac3d93343e49d2170377e1",
+  "source_sha256": "818c0d9c7135644e0a6796a6f7358aa55f9526a28293dc72553481b0802cf330",
+  "outcome": "CANCELLED_BEFORE_EXECUTION",
+  "outcome_evidence": {
+    "status": "cancelled",
+    "message": "The client cancelled this confirmation 82.1 s after it was sent. Nothing was run. If you didn't see a confirmation prompt, your client may have cancelled it automatically."
+  },
+  "submission_attempts": 1,
+  "database_execution_count": 0,
+  "retries": 0,
+  "preflight_checks": {
+    "exact_target": true,
+    "organization": true,
+    "expected_A_hardened_object_acl_and_effective_sequence": true,
+    "required_read_functions_A_effective_privileges_counts": true,
+    "state_roles_ownership_policy_watchers_function_access": true,
+    "replacement_signature_absent": true,
+    "no_replacement_overloads": true,
+    "service_prerequisites": true
+  },
+  "preflight_at_utc": "2026-11-08 23:44:21 UTC",
+  "result_returned_at_utc": "2026-11-08 23:45:54 UTC",
+  "postflight_performed": false,
+  "postflight_reason": "No commit; tool states nothing was run. Stop boundary respected.",
+  "approved_sql_unchanged": true,
+  "recovery": false,
+  "replacement_invoked": false,
+  "ingestion": false,
+  "paid_calls": 0,
+  "release": "NO-GO",
+  "next_action": "No automatic retry. A new explicit instruction is required to resubmit B; refresh preconditions before any later attempt."
+}

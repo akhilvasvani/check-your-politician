@@ -1,0 +1,1497 @@
+{
+  "project_ref": "pwbothxnfjnxkhrcxyvd",
+  "recorded_at_utc": "2026-11-07 04:03:33 UTC",
+  "inventory": {
+    "counts": {
+      "chunks": 5003,
+      "parents": 3341,
+      "recordings": 9
+    },
+    "read_only": "on",
+    "object_acl": [
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "owner": "postgres",
+        "object": "public.transcript_chunks",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "owner": "postgres",
+        "object": "public.transcript_chunks_id_seq",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "USAGE"
+      }
+    ],
+    "role_paths": [
+      {
+        "path": [
+          "anon"
+        ],
+        "role": "anon",
+        "root": "anon",
+        "can_set_role": true,
+        "inherited_now": true
+      },
+      {
+        "path": [
+          "authenticated"
+        ],
+        "role": "authenticated",
+        "root": "authenticated",
+        "can_set_role": true,
+        "inherited_now": true
+      },
+      {
+        "path": [
+          "service_role"
+        ],
+        "role": "service_role",
+        "root": "service_role",
+        "can_set_role": true,
+        "inherited_now": true
+      }
+    ],
+    "default_acl": [
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "f",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "EXECUTE"
+      },
+      {
+        "kind": "f",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "EXECUTE"
+      },
+      {
+        "kind": "f",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "EXECUTE"
+      },
+      {
+        "kind": "f",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "EXECUTE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "postgres",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "anon",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "authenticated",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "supabase_admin",
+        "grantee": "service_role",
+        "grantor": "supabase_admin",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "S",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "USAGE"
+      },
+      {
+        "kind": "f",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "EXECUTE"
+      },
+      {
+        "kind": "f",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "EXECUTE"
+      },
+      {
+        "kind": "f",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "EXECUTE"
+      },
+      {
+        "kind": "f",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "EXECUTE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "postgres",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "anon",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "authenticated",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "DELETE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "INSERT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "MAINTAIN"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "REFERENCES"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "SELECT"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRIGGER"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "TRUNCATE"
+      },
+      {
+        "kind": "r",
+        "schema": "public",
+        "creator": "postgres",
+        "grantee": "service_role",
+        "grantor": "postgres",
+        "grantable": false,
+        "privilege": "UPDATE"
+      }
+    ],
+    "current_role": "postgres",
+    "membership_edges": null,
+    "effective_sequence": [
+      {
+        "role": "anon",
+        "usage": true,
+        "select": true,
+        "update": true,
+        "public_create": false
+      },
+      {
+        "role": "authenticated",
+        "usage": true,
+        "select": true,
+        "update": true,
+        "public_create": false
+      },
+      {
+        "role": "service_role",
+        "usage": true,
+        "select": true,
+        "update": true,
+        "public_create": false
+      }
+    ]
+  },
+  "dependencies": {
+    "column_acl": null,
+    "row_triggers": null,
+    "new_rpc_absent": true,
+    "sql_body_references": [
+      {
+        "owner": "postgres",
+        "schema": "public",
+        "body_md5": "67e13f5e574b0ef81e124b42256b775d",
+        "function": "search_transcripts",
+        "arguments": "p_query_embedding vector, p_official_id text, p_date_from date, p_date_to date, p_embedding_model text, p_match_count integer, p_min_similarity real",
+        "search_path": null,
+        "security_definer": false
+      },
+      {
+        "owner": "postgres",
+        "schema": "public",
+        "body_md5": "33e4ba028630765299b3359a19b9a396",
+        "function": "search_public_comment",
+        "arguments": "p_query_embedding vector, p_date_from date, p_date_to date, p_embedding_model text, p_match_count integer, p_min_similarity real",
+        "search_path": null,
+        "security_definer": false
+      },
+      {
+        "owner": "postgres",
+        "schema": "public",
+        "body_md5": "22161cc4439ed49a91aae3b0146c2d7e",
+        "function": "get_transcript_coverage",
+        "arguments": "p_official_id text, p_embedding_model text",
+        "search_path": null,
+        "security_definer": false
+      }
+    ],
+    "relation_dependencies": [
+      {
+        "type": "n",
+        "dependent": "default value for column id of table transcript_chunks",
+        "referenced": "sequence transcript_chunks_id_seq"
+      },
+      {
+        "type": "a",
+        "dependent": "policy transcript_chunks_read_anon on table transcript_chunks",
+        "referenced": "table transcript_chunks"
+      },
+      {
+        "type": "i",
+        "dependent": "type transcript_chunks",
+        "referenced": "table transcript_chunks"
+      },
+      {
+        "type": "i",
+        "dependent": "toast table pg_toast.pg_toast_17819",
+        "referenced": "table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "default value for column id of table transcript_chunks",
+        "referenced": "column id of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "constraint transcript_chunks_pkey on table transcript_chunks",
+        "referenced": "column id of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "sequence transcript_chunks_id_seq",
+        "referenced": "column id of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_subchunk_idx",
+        "referenced": "column video_id of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "constraint transcript_chunks_video_id_chunk_idx_embedding_model_key on table transcript_chunks",
+        "referenced": "column video_id of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_video_idx",
+        "referenced": "column video_id of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_date_idx",
+        "referenced": "column meeting_date of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "constraint transcript_chunks_video_id_chunk_idx_embedding_model_key on table transcript_chunks",
+        "referenced": "column chunk_idx of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_video_idx",
+        "referenced": "column chunk_idx of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_subchunk_idx",
+        "referenced": "column resolved_official_id of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_official_idx",
+        "referenced": "column resolved_official_id of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_official_idx",
+        "referenced": "column resolved_official_id of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_embedding_idx",
+        "referenced": "column embedding of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "default value for column embedding_model of table transcript_chunks",
+        "referenced": "column embedding_model of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "constraint transcript_chunks_video_id_chunk_idx_embedding_model_key on table transcript_chunks",
+        "referenced": "column embedding_model of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "default value for column embedding_version of table transcript_chunks",
+        "referenced": "column embedding_version of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "default value for column ingested_at of table transcript_chunks",
+        "referenced": "column ingested_at of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "default value for column sub_chunk_idx of table transcript_chunks",
+        "referenced": "column sub_chunk_idx of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_subchunk_idx",
+        "referenced": "column sub_chunk_idx of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "default value for column sub_chunk_of of table transcript_chunks",
+        "referenced": "column sub_chunk_of of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_subchunk_idx",
+        "referenced": "column sub_chunk_of of table transcript_chunks"
+      },
+      {
+        "type": "a",
+        "dependent": "index transcript_chunks_subchunk_idx",
+        "referenced": "column sub_chunk_of of table transcript_chunks"
+      }
+    ]
+  },
+  "shared_changes": 0
+}

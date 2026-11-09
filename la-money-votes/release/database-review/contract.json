@@ -1,0 +1,26 @@
+{
+  "target": "pwbothxnfjnxkhrcxyvd",
+  "baseline_sql_sha256": "4236f13f9624d188b2857d859fac90a0fc263404354517d9dea621434b5bc84b",
+  "replacement_signature": "public.replace_transcript_chunks(text,text,jsonb)",
+  "arguments": "p_video_id text, p_embedding_model text, p_rows jsonb",
+  "returns": "TABLE(intended_count bigint, upserted_count bigint, deleted_count bigint)",
+  "language": "plpgsql",
+  "volatility": "VOLATILE",
+  "replacement_body_md5": "dc3d667d0a6a03a86c823da31eff205f",
+  "owner": "postgres",
+  "security": "INVOKER",
+  "search_path": [
+    "pg_catalog",
+    "pg_temp"
+  ],
+  "execute_roles": [
+    "postgres (owner)",
+    "service_role"
+  ],
+  "browser_exec": false,
+  "expected_counts": {
+    "chunks": 5003,
+    "parent_turns": 3341,
+    "recordings": 9
+  }
+}

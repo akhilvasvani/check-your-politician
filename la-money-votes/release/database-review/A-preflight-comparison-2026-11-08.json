@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-11-08T08:29:23.679682+00:00",
+  "checks": {
+    "inventory_owners_acl_public_inheritance_defaults_counts": true,
+    "all_read_function_metadata_and_acl": true,
+    "ddl_event_functions_unchanged": true,
+    "database_executor_read_only": true,
+    "runtime": true,
+    "column_acl_absent": true,
+    "row_triggers_absent": true,
+    "all_required_read_executes": true,
+    "policy": true,
+    "table_rls_owner": true,
+    "sequence_owner": true,
+    "approved_source_hash": true,
+    "role_anon": true,
+    "role_authenticated": true,
+    "role_service_role": true
+  },
+  "all_pass": true,
+  "drift_detected": false,
+  "mutation_attempted": false
+}

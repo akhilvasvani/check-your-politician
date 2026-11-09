@@ -1,0 +1,16 @@
+# Transcript-ingestion pipeline dependencies.
+# Isolated from scripts/pipeline/ (stdlib-only, per its __init__.py comment).
+#
+# Install:
+#     python -m venv .venv-transcripts
+#     .venv-transcripts/bin/pip install -r scripts/transcripts/requirements-transcripts.txt
+#
+# Embedding is done via the Perplexity /v1/embeddings HTTP endpoint (no
+# local ML model, no torch, no sentence-transformers). This keeps the
+# runtime footprint small and the same PERPLEXITY_API_KEY that Vercel
+# already has is the only credential the ingestion side needs.
+#
+# yt-dlp is invoked as a subprocess; not listed here because the standalone
+# binary at ~/cyp-spike-m0/yt-dlp is already deployed. Override via YT_DLP_PATH.
+
+supabase>=2.5.0,<3.0.0

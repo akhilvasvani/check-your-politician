@@ -1,0 +1,138 @@
+Process my revised practice annotations below, then make the existing
+database and remote review packet decision-ready. Do not restart completed
+work or repeat passing suites unless code or relevant assumptions changed.
+
+A. HUMAN PRACTICE REVIEW
+
+Preserve my original submission and this revision separately. Freeze this
+revision before comparing it with hidden model predictions.
+
+Import ITEM 01–07 and ITEM 09 as submitted. Normalize “Unresolved: None”
+to “No” as formatting only. Preserve submitted name spellings; flag any
+later source-supported spelling correction separately.
+
+ITEM 08:
+Keep Rose Kato as my submitted identity. Record that the continuity
+explanation is transcript-based. Do not upgrade that to visual evidence.
+
+ITEM 10:
+The later correction supersedes the opening entry:
+- Actual speaker: Unknown.
+- Role: Presiding chair / Council President, as observed.
+- Unresolved: Yes — personal identity not established.
+Preserve the conduct-warning and handoff timestamps.
+
+ITEM 11:
+Keep Marqueece Harris-Dawson as my submitted identity.
+Replace the contradictory “speaker addressing the chair” wording with:
+“The submitted annotation identifies the presiding chair conducting
+the vote at 02:09:57–02:10:03.”
+Preserve the quoted speech. Distinguish the submitted identity from
+what the transcript quotation alone establishes.
+
+ITEM 12:
+Withdraw the earlier Rodriguez attribution.
+My revision says Rodriguez is recognized/in the queue but does not
+speak in the target excerpt. Record chair/clerk procedural speech,
+with exact personal identities and speaker boundaries unresolved.
+Do not assign the whole interval to Rodriguez or infer the chair's name.
+
+For every item, retain the original worksheet video ID and target interval.
+Do not infer video IDs from timestamp-only links.
+
+After freezing these annotations:
+- Compare them with the previously hidden predictions for practice
+  diagnostics only.
+- Separate resolved exact-identity items, unresolved items, and
+  mixed-speaker/boundary issues.
+- Report denominators explicitly; do not calculate a misleading
+  twelve-item identity accuracy by treating unknowns as resolved.
+- Do not overwrite my labels with model answers.
+- Do not count these practice items toward the final >=100-turn
+  held-out acceptance review.
+
+B. CHANGE A — PERMISSION HARDENING
+
+Surface the existing prepared Change A; do not regenerate it unnecessarily.
+
+Show:
+- Exact target project: pwbothxnfjnxkhrcxyvd.
+- Full forward SQL and its SHA-256.
+- Exact schema-qualified table/sequence names and affected roles.
+- Effective privileges before and after, including PUBLIC and inheritance.
+- Required SELECT/read-RPC access preserved.
+- Relevant default-privilege findings and any proposed changes.
+- Locking/availability impact, bounded timeout behavior, and drift checks.
+- Recovery SQL and a warning if recovery would restore unsafe grants.
+- Read-only postflight and corpus-invariance checks.
+
+Keep the approval object narrowly scoped to A.
+Do not apply shared SQL until the exact statement set is approved.
+
+C. CHANGE B — REPLACEMENT RPC INSTALLATION
+
+Surface the existing prepared Change B separately.
+
+Show:
+- Full forward SQL and its SHA-256.
+- Exact function signature, owner, security mode and configured search_path.
+- Explicit effective execution rights: intended owner/service access,
+  no unintended PUBLIC/anon/authenticated access.
+- Creation and permission restrictions in one transaction.
+- Any overloads, dependencies, grants or triggers that affect exposure.
+- Recovery SQL, locking impact and read-only postflight.
+- Existing disposable-test evidence for atomicity, validation failures,
+  permissions and unchanged-state behavior.
+
+State clearly:
+Installation does not authorize invocation, ingestion or corpus replacement.
+
+Recommend A first, verify it, then B. Explain any actual dependency that
+requires another order. Each shared change requires separate approval.
+Do not run destructive or replacement probes against the live database,
+even with an intended rollback.
+
+D. REMOTE PLAN — READ-ONLY PREFLIGHT FIRST
+
+Verify deployment behavior using read-only configuration inspection.
+Do not read secret environment values. The previously approved non-secret
+Preview SUPABASE_URL check remains limited to target verification.
+
+Confirm:
+- Current local branch, full head SHA, clean-tree state and remote base.
+- Whether head still equals
+  eb06c4e210d4e4457a5d862bb134243b0f61c3f3.
+  If annotations or other files create a new commit, use the new SHA;
+  do not reuse approval for the old head.
+- Exact normal push refspec and intended draft PR against main.
+- CI and other workflows triggered by push, PR or deployment events.
+- Any migrations, refresh jobs, ingestion, paid calls or external writes
+  those workflows/build scripts could execute.
+- Actual Vercel production branch, release-branch environment mapping,
+  automatic Preview behavior, and attached domain effects.
+- Whether Preview shares the existing Supabase database and whether
+  build/startup/verification can write to it.
+
+Do not describe “draft PR” as preventing Preview deployment.
+If automatic Preview creation is expected, include it explicitly in the
+approval request. If behavior is unknown, keep the push blocked.
+Do not change deployment settings to avoid this without separate consent.
+
+E. REPORT AND APPROVAL BOUNDARIES
+
+Return one consolidated report containing:
+1. Practice-review import and diagnostic results.
+2. Change A exact approval packet.
+3. Change B exact approval packet.
+4. Remote preflight findings and exact proposed action.
+5. Remaining release gates.
+
+Reuse the reported 45/45 passing results on PostgreSQL 16.14 and 17.6
+unless changes require rerunning tests. Identify precisely what was tested.
+
+Keep release NO-GO. Caption probing stays stopped.
+No additional cookie access, ASR substitution, paid calls, ingestion,
+shared SQL, remote pushes, workflow dispatches, settings changes,
+merge or deployment is approved by this instruction.
+
+Continue authorized local/offline work without routine checkpoints.

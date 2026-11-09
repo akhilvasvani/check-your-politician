@@ -1,0 +1,63 @@
+{
+  "change": "B",
+  "approval_status": "AUTHORIZED SUBMISSIONS CANCELLED/EXPIRED; NOT INSTALLED",
+  "target": {
+    "supabase_project_id": "pwbothxnfjnxkhrcxyvd",
+    "organization": "la-politician",
+    "region": "us-west-2",
+    "database": "postgres",
+    "executor": "postgres"
+  },
+  "forward_sql_file": "B-forward.sql",
+  "forward_sha256": "818c0d9c7135644e0a6796a6f7358aa55f9526a28293dc72553481b0802cf330",
+  "authorized_statement_set_if_approved": "Only the full exact forward file above, in its single transaction, plus the reviewed read-only preflight/postflight checks. Stop on drift/error/ambiguous outcome.",
+  "recovery_sql_file": "B-recovery.sql",
+  "recovery_sha256": "4ca0c947f4637fd5aa9a9310ceffaac8e25e9d57cc090bf3a74f18bfc206d263",
+  "recovery_requires_separate_approval": true,
+  "excluded": [
+    "the other shared change",
+    "RPC invocation",
+    "ingestion",
+    "corpus replacement",
+    "paid calls",
+    "destructive live tests",
+    "live write-denial tests",
+    "remote pushes",
+    "deployment",
+    "settings changes",
+    "extra migration-history or repair SQL"
+  ],
+  "scope": {
+    "target": "pwbothxnfjnxkhrcxyvd",
+    "baseline_sql_sha256": "4236f13f9624d188b2857d859fac90a0fc263404354517d9dea621434b5bc84b",
+    "replacement_signature": "public.replace_transcript_chunks(text,text,jsonb)",
+    "arguments": "p_video_id text, p_embedding_model text, p_rows jsonb",
+    "returns": "TABLE(intended_count bigint, upserted_count bigint, deleted_count bigint)",
+    "language": "plpgsql",
+    "volatility": "VOLATILE",
+    "replacement_body_md5": "dc3d667d0a6a03a86c823da31eff205f",
+    "owner": "postgres",
+    "security": "INVOKER",
+    "search_path": [
+      "pg_catalog",
+      "pg_temp"
+    ],
+    "execute_roles": [
+      "postgres (owner)",
+      "service_role"
+    ],
+    "browser_exec": false,
+    "expected_counts": {
+      "chunks": 5003,
+      "parent_turns": 3341,
+      "recordings": 9
+    }
+  },
+  "expected_existing_platform_side_effect": "Existing pgrst_ddl_watch emits schema-cache reload notification for CREATE/ALTER FUNCTION; does not invoke replacement. Recovery can notify through pgrst_drop_watch.",
+  "submission_receipts": [
+    "B-execution-2026-11-08.json",
+    "B-submission-2-2026-11-08.json"
+  ],
+  "automatic_retry_authorized": false,
+  "next_submission_requires_new_instruction": true
+}

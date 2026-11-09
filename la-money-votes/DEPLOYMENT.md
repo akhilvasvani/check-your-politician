@@ -1,158 +1,117 @@
-# Deploying `la-money-votes` to Vercel (subdomain only)
+# Deploying Check Your Politician
 
-This document covers deploying the **`la-money-votes`** site to Vercel on a
-**subdomain** (e.g. `politician.akhilvasvani.com` or
-`civic.akhilvasvani.com`) so it can host the "Ask about this official"
-serverless search feature (`api/ask-official.js`), which needs a Node.js
-runtime and therefore can't run on GitHub Pages (static-only).
+The deployment target is the Vercel project for
+`akhilvasvani/check-your-politician`, with `la-money-votes/` as its root.
+The owner's public domain is `lapolitician.akhilvasvani.com`.
+November 6 authenticated inspection verified project ID
+`prj_I1kOylFB27M1pABXw5luy5pgkjXv` in team `team-politicheck`
+(`team_aPlAJHap7jEuwyrs7qWcc9OL`). The public domain maps to READY production
+deployment `dpl_HqsZGeeJAKYML6H8X5fuj1cj5iXb`, built from `main` at
+`25a51ebe617f5d24c4a7c405a6498c2104f1a2fd`. Both the public domain and
+`check-your-politician.vercel.app` are verified, with no branch-specific
+domain assignment. The old feature-branch custom-domain assignment is historical.
+The connector did not return the configured root directory or production-branch
+setting. Confirm those settings and refresh deployment identity before any
+approved push, preview creation or promotion.
 
-**This must never touch the root domain.** `akhilvasvani.com` and its
-existing GitHub Pages deployment (`.github/workflows/deploy-pages.yml`,
-triggered on every push to `main`) are completely independent of this Vercel
-project and are not modified by anything below. Vercel is an *additional*
-place this site is also deployed to, on its own subdomain, not a
-replacement.
+## Project configuration
 
-## 1. Is a build step required?
+Use the Other framework preset and leave Build, Install and Output Directory
+settings at their static-project defaults. The project serves HTML, CSS,
+JavaScript and JSON, plus Node serverless APIs under `api/`.
+The connected project currently specifies Node `24.x`. Completed local tests
+used Node 24.22.1; the preserved CI configuration uses Node 22 and has not run
+for this local branch. Do not describe Node 22 as the verified Vercel runtime.
+Function execution ceilings for the release are in `vercel.json`.
+The application uses built-in `fetch` without an npm install step.
 
-No. `la-money-votes/` is a static site (`index.html`, `official.html`,
-`css/`, `js/`, `data/`) plus one serverless function (`api/ask-official.js`).
-There is nothing to compile or bundle — Vercel can deploy the directory as-is
-with:
+Any DNS operation must identify the exact existing record and desired value
+from the Vercel project first. The release target is the named subdomain.
+Root-domain changes are outside this release's authorization.
 
-- **Build Command:** _(leave empty / none)_
-- **Output Directory:** _(leave default — the root of this directory)_
-- **Install Command:** _(leave empty / none — the function has no npm
-  dependencies; it only uses Node's built-in `fetch`)_
+## Separate environments
 
-## 2. Import the repo into Vercel
+| Setting | Development | Preview | Production |
+| --- | --- | --- | --- |
+| Static pages | Local HTTP server | Exact approved commit | Exact approved release commit |
+| Paid APIs | Mocks by default | Disabled until bounded smoke approval | Enabled only after release gates and spending approval |
+| Supabase | Disposable database for tests | Explicitly identified read target | Verified production read target |
+| Rate limiter | Explicit local memory mode permitted | Durable shared store required | Durable shared store required |
+| Credentials | Per-process environment | Vercel Preview scope | Vercel Production scope |
 
-1. Go to [vercel.com/new](https://vercel.com/new) and sign in.
-2. Click **Import Project** and select the `akhilvasvani/check-your-politician`
-   GitHub repository (grant Vercel access to it if prompted).
-3. On the "Configure Project" screen:
-   - **Framework Preset:** `Other` (no framework — plain static + one
-     serverless function).
-   - **Root Directory:** click "Edit" and set it to `la-money-votes`. This is
-     the important part — it tells Vercel that `la-money-votes/` (not the
-     repo root, which also holds unrelated files like `README.md` and
-     `LICENSE`) is what gets deployed, and that `la-money-votes/api/*.js`
-     is where its serverless functions live.
-   - Leave Build/Output/Install commands empty, per step 1.
-4. Click **Deploy**. Vercel will give you a `*.vercel.app` preview URL once
-   it finishes — confirm `index.html` and an official profile page load
-   there before continuing.
-5. **Do not merge/promote to a production alias without explicit approval.**
-   Use a preview deployment (a branch/PR deployment, not the `main`-tracking
-   production deployment) until asked to go further.
+Changing a Vercel environment variable requires a new deployment to affect
+running functions. Record only credential presence and environment scope in
+release reports. Keep values in the approved secret store.
 
-## 3. Add the subdomain in Vercel
+The November 6 names-only inspection found `SUPABASE_URL` and
+`SUPABASE_ANON_KEY` in Preview only. Production has neither name. The durable
+limiter's `KV_REST_API_URL`/`KV_REST_API_TOKEN` and `PERPLEXITY_API_KEY` are
+configured for Preview and Production. Neither paid-endpoint kill-switch name
+is configured. The later owner-approved read confirmed only the non-secret
+Preview Supabase URL, identifying project `pwbothxnfjnxkhrcxyvd`. Credential
+values/validity and live limiter behavior were not inspected. Production
+transcript enablement requires a separately approved
+configuration and deployment after the source and database gates pass.
 
-1. In the Vercel dashboard, open this project → **Settings → Domains**.
-2. Enter your chosen subdomain, e.g. `politician.akhilvasvani.com` (anything
-   other than the bare `akhilvasvani.com` root — do not add the root domain
-   here).
-3. Vercel will show you a CNAME target to add at your DNS registrar — it
-   looks like `cname.vercel-dns.com` (Vercel displays the exact value for
-   your project; use what it shows you, the value below is the common
-   default but always copy the one Vercel gives you).
+## Server environment
 
-## 4. Add the CNAME record at your domain registrar
-
-At whichever registrar/DNS provider hosts `akhilvasvani.com`'s DNS (**not**
-in this repo, and **not** in GitHub Pages settings), add a new DNS record:
-
-| Field | Value |
+| Variable | Purpose |
 | --- | --- |
-| Type | `CNAME` |
-| Host / Name | the subdomain prefix only, e.g. `politician` (some registrars want just `politician`, others want `politician.akhilvasvani.com` — follow your registrar's own convention) |
-| Target / Value | the CNAME value Vercel showed you in step 3, e.g. `cname.vercel-dns.com` |
-| TTL | default / automatic is fine |
+| `PERPLEXITY_API_KEY` | Server-only Sonar generation and transcript query embeddings |
+| `SUPABASE_URL` | Exact verified transcript project URL |
+| `SUPABASE_ANON_KEY` | Read credential for transcript and coverage RPCs |
+| `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Durable Upstash REST limiter configuration |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | Alternate limiter configuration names |
+| `ASK_AI_DISABLED=true` | Disable paid web-answer generation |
+| `TRANSCRIPT_SEARCH_DISABLED=true` | Disable paid transcript search |
+| `ALLOW_IN_MEMORY_LIMITER=true` | Explicit development-only limiter, refused on Vercel or in production |
+| `RATE_LIMIT_MAX_REQUESTS` | Ask-AI requests per client in its window, default 5 |
+| `RATE_LIMIT_WINDOW_SECONDS` | Ask-AI window, default 600 seconds |
+| `TRANSCRIPT_RATE_LIMIT_PER_MIN` | Per-client transcript minute ceiling, default 10 |
+| `TRANSCRIPT_RATE_LIMIT_PER_HOUR` | Per-client transcript hourly ceiling, default 60 |
 
-Do **not** touch any existing record for the root `@`/`akhilvasvani.com`
-host or any other existing subdomain — this should be a single new record,
-additive only.
+Both paid surfaces also share an aggregate client ceiling. Confirm current
+values in `api/_lib/request-safety.js` and the [operations runbook](release/OPERATIONS.md)
+before approval. The read APIs require the intended read credential.
+`SUPABASE_SERVICE_ROLE_KEY` belongs only in an approved ingestion environment.
 
-DNS propagation can take anywhere from a few minutes to a few hours.
-Vercel's Domains page will show the subdomain as "Valid Configuration" once
-it detects the record.
+On Vercel the limiter reads `x-vercel-forwarded-for` when `VERCEL=1`.
+Verify the deployment ingress and header replacement behavior before claiming
+spoof-resistant rate limiting. Other hosts use the socket peer and require a
+separate ingress review. A configured durable store still needs approved
+end-to-end verification, including its outage behavior.
 
-## 5. Set `PERPLEXITY_API_KEY` as an environment variable
+## Review and release
 
-The Ask-AI feature needs a Perplexity API key **on the server only** — it
-must never appear in any committed file or in client-side code.
+1. Record project ID, deployment ID, commit SHA, branch and alias mapping.
+2. Confirm offline suites, disposable PostgreSQL/pgvector tests, corpus coverage,
+   relevance evaluation and independent speaker attribution have passed.
+3. Review exact environment scopes, durable limits, provider spending caps and
+   the previous known-good deployment. Use disabled paid surfaces until an
+   approved paid smoke test is ready.
+4. Obtain approval for the exact push/PR/preview operation. Record its resulting
+   preview URL and verify that it serves the reviewed SHA.
+5. Test the homepage and all 16 profiles at desktop and 390px, including source
+   links, donor controls, public-action scope, freshness failure, transcript
+   partial failure, keyboard access and floating-button clearance.
+6. Obtain explicit approval for the exact merge/deployment/promotion action,
+   naming the target project, commit, alias, side effects and rollback target.
+7. After approval, verify deployed identity, assets/data and static profiles.
+   Run paid endpoint smoke only within the separately approved call budget.
 
-1. In the Vercel dashboard: project → **Settings → Environment Variables**.
-2. Add a new variable:
-   - **Key:** `PERPLEXITY_API_KEY`
-   - **Value:** your Perplexity API key (from
-     [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api))
-   - **Environments:** check Production, Preview, and Development as
-     needed (at minimum, whichever environment you're testing against).
-3. Redeploy (Vercel prompts you to redeploy after adding/changing an
-   environment variable — env vars are only picked up by new deployments,
-   not the currently-running one).
+An ordinary local static server cannot execute `/api/*`. Use it for static
+and mocked browser checks, and label those results accordingly. Local mocks
+and prior GitHub checks do not establish current preview or production behavior.
 
-`api/ask-official.js` reads this via `process.env.PERPLEXITY_API_KEY` at
-request time and never returns it in any response.
+## Recovery
 
-## 5b. Rate limiting: add a Redis store + configure the limit
+Record the last verified deployment ID and SHA before promotion. A proposed
+rollback must specify the exact deployment and alias action and receive the
+applicable approval. Provider failures can be contained by the paid-surface
+kill switches through an approved environment update and redeployment.
+Static profiles remain usable during paid-provider outages.
 
-Ask-AI is rate-limited server-side (by IP + official page) to keep API cost
-predictable. This needs a durable, shared store — an in-process `Map` alone
-doesn't work reliably across multiple serverless instances/regions.
-
-1. In the Vercel dashboard: project → **Storage** tab → **Create Database**
-   (or **Browse Marketplace**) → choose **Upstash for Redis** → select the
-   **Free** plan → connect it to this project for **Production** and
-   **Preview** environments.
-2. This automatically adds `KV_REST_API_URL` and `KV_REST_API_TOKEN` (plus
-   a read-only token and raw Redis URLs) to the project's environment
-   variables — no manual copy/paste of secrets needed. (If you instead
-   connect an Upstash database directly through Upstash rather than via
-   Vercel's marketplace integration, it may name these
-   `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` instead —
-   `api/ask-official.js` checks for both naming conventions.)
-3. Add two more environment variables to configure the limit itself
-   (Settings → Environment Variables), for Production and Preview:
-   - **Key:** `RATE_LIMIT_MAX_REQUESTS` — **Value:** `5` (max questions per
-     window)
-   - **Key:** `RATE_LIMIT_WINDOW_SECONDS` — **Value:** `600` (10-minute
-     window)
-   These are read from `process.env` at request time, so the limit can be
-   tuned without a code change or redeploy of the function's logic — just
-   update the value and redeploy (or wait for the next deploy).
-4. If the Redis store isn't configured yet (e.g. in a fresh environment),
-   `api/ask-official.js` falls back to a best-effort in-memory counter with
-   the same limits — the feature still works, but the count isn't shared
-   across serverless instances or regions, so it's not a durable substitute
-   for step 1 above. Set up Redis before relying on this for real abuse
-   prevention.
-
-## 6. Verify
-
-Once deployed and DNS has propagated:
-
-- Visit `https://<your-subdomain>.akhilvasvani.com/` — the citywide map and
-  official cards should load, matching what you saw locally.
-- Open a council-district profile (e.g. `?id=cd11-official`) and the
-  Mayor's profile (`?id=mayor-bass`) — confirm the "Ask about ..." module
-  renders between the donor table and the Voting & Proposal Record section,
-  and that submitting a test question returns an answer with citations.
-- On a narrow (mobile-width) viewport, confirm the floating "Ask AI" button
-  appears bottom-right and scrolls to/focuses the module.
-- Separately, confirm `https://akhilvasvani.com` (GitHub Pages) still loads
-  exactly as before — this deployment should have had zero effect on it.
-
-## What NOT to do here
-
-- Do not add the bare `akhilvasvani.com` (or `www.akhilvasvani.com`) as a
-  domain on this Vercel project.
-- Do not change GitHub Pages settings, `.github/workflows/deploy-pages.yml`,
-  or any existing DNS record for the root domain.
-- Do not commit `PERPLEXITY_API_KEY` (or any secret) into this repo, a
-  `.env` file, or a Vercel config file that gets committed. Vercel's
-  Environment Variables UI (step 5) is the only place it should live.
-- Do not merge this feature branch to `main` or promote a Vercel deployment
-  to the production alias without explicit approval — keep this on a
-  preview/branch deployment until told otherwise.
+Finance snapshot recovery uses the publication journal described in
+[CONTRACT.md](CONTRACT.md). Transcript replacement recovery requires the
+approved cohort backup and exact model/version scope described in
+[OPERATIONS.md](release/OPERATIONS.md).

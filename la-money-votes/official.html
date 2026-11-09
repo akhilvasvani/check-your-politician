@@ -30,6 +30,7 @@
     <section id="funding-section">
       <h2>Funding</h2>
       <p id="funding-stats" class="funding-stats"></p>
+      <p class="source-note" id="funding-scope">Shows up to 30 donors with the largest itemized totals for the selected campaign committees and cycles listed in the source note below. Displayed totals cover this selection only. Filing periods describe the statements represented and may have gaps. Automated refreshes omit employer and occupation fields. Contributions alone do not establish influence over public actions.</p>
 
       <h3 class="treemap-heading">Donor Contribution Map</h3>
       <p class="treemap-caption" id="donor-treemap-caption"></p>
@@ -87,7 +88,7 @@
       <h2 id="ask-ai-heading">Ask about <span id="ask-ai-official-name">this official</span></h2>
       <p class="ask-ai-intro">
         Ask a question and get an AI-generated answer with cited sources, powered by
-        Perplexity search. Answers are generated on the fly and may not be fully accurate
+        Perplexity web search. Meeting transcript excerpts are available in the separate search below. Answers are generated on the fly and may not be fully accurate
         &mdash; always check the citations and the funding/record data above.
       </p>
       <form id="ask-ai-form" class="ask-ai-form" novalidate>
@@ -115,8 +116,56 @@
       </div>
     </section>
 
+    <!--
+      Transcript search: shown only when this official has a roster.json
+      entry with a resolved official_id. js/transcript-search.js hides the
+      section (via [hidden]) at init time if the roster doesn't link them.
+    -->
+    <section id="transcript-search-section" aria-labelledby="transcript-search-heading" hidden>
+      <h2 id="transcript-search-heading">Search council meetings for <span id="transcript-search-official-name">this official</span></h2>
+      <p class="transcript-search-intro">
+        Search indexed passages attributed to this official in City Council meetings.
+        Each result links to the exact moment in the source YouTube video &mdash;
+        so you can watch what they said in context.
+      </p>
+      <div
+        id="transcript-search-coverage"
+        class="transcript-search-coverage"
+        role="status"
+        aria-live="polite"
+        data-testid="status-transcript-coverage"
+        hidden
+      ></div>
+      <form id="transcript-search-form" class="transcript-search-form" novalidate>
+        <label for="transcript-search-input" class="transcript-search-label">Search phrase</label>
+        <input
+          type="text"
+          id="transcript-search-input"
+          name="query"
+          class="transcript-search-input"
+          maxlength="200"
+          placeholder="e.g. homelessness, budget vote, LAPD"
+          aria-describedby="transcript-search-coverage transcript-search-hint"
+          required
+        />
+        <div class="transcript-search-form-footer">
+          <p id="transcript-search-hint" class="transcript-search-hint">Searches the available transcript index. Coverage dates appear above when available. Up to 200 characters.</p>
+          <label class="transcript-search-option" for="transcript-search-include-public">
+            <input type="checkbox" id="transcript-search-include-public" name="include_public_comment" />
+            Include public comment
+          </label>
+          <button type="submit" id="transcript-search-submit" class="transcript-search-submit">Search</button>
+        </div>
+      </form>
+      <div id="transcript-search-status" class="transcript-search-status" role="status" aria-live="polite" hidden></div>
+      <div id="transcript-search-results" class="transcript-search-results"></div>
+      <div id="transcript-search-public-results" class="transcript-search-results transcript-search-public-results" hidden></div>
+      <p id="transcript-search-empty" class="transcript-search-empty" hidden></p>
+    </section>
+
     <section id="record-section">
       <h2>Voting &amp; Proposal Record</h2>
+      <p class="source-note" id="record-scope">This curated sample includes individually sourced public actions. Coverage is incomplete. Proposing, seconding and voting describe separate roles, while the outcome describes the item. Dates identify the recorded action, and term labels group the curated entries. Empty results can reflect gaps in this sample.</p>
 
       <div class="record-filters" role="group" aria-label="Filter by role">
         <button type="button" class="filter-btn active" data-filter="all">All</button>
@@ -184,6 +233,7 @@
   <script src="js/vendor/purify.min.js"></script>
   <script src="js/ask-ai.js"></script>
   <script src="js/freshness.js"></script>
+  <script src="js/transcript-search.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,332 @@
+{
+  "compared_at_utc": "2026-11-07T23:16:32.657746+00:00",
+  "frozen_revision_sha256": "c2074fd24cdb68ef8e18dabd51cebced51361b2f9672a8d1630d69f09595bf46",
+  "prediction_key_sha256": "9a47eb4449bbb7bdea18533480018290cad698be0340131c50ac8b50d723de7a",
+  "worksheet_video_and_interval_matches": 12,
+  "canonical_artifact_hash_matches": 12,
+  "denominators": {
+    "total_practice_items": 12,
+    "submitted_resolved_named_identities": 10,
+    "unresolved_identity_items": 2,
+    "resolved_submissions_available_for_limited_target_comparison": [
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "resolved_submissions_held_for_alignment_or_boundaries": [
+      1,
+      3,
+      11
+    ],
+    "explicit_person_name_predictions": 3,
+    "matching_submitted_name": [
+      2
+    ],
+    "disagreeing_submitted_name_pending_target_adjudication": [
+      1,
+      3
+    ],
+    "generic_role_predictions": 9,
+    "mixed_or_boundary_issues": [
+      11,
+      12
+    ],
+    "held_out_acceptance_items": 0
+  },
+  "identity_accuracy_calculated": false,
+  "reason": "Two of three explicit-name comparisons are unadjudicated target-alignment conflicts; unknowns and generic role outputs are not resolved personal identities. No twelve-item identity accuracy or held-out precision is valid.",
+  "items": [
+    {
+      "item": "01",
+      "video_id": "H-OkhDWvgYE",
+      "target_start": "00:44:08",
+      "target_end": "00:44:12",
+      "submitted_identity": "Eunisses Hernandez",
+      "submitted_role": "City Councilmember, District 1",
+      "unresolved": "No",
+      "prediction": {
+        "item": 1,
+        "video_id": "H-OkhDWvgYE",
+        "canonical_utterance_index": 9,
+        "artifact_sha256": "fade7ad962fc539522722310f394bb356cafb3f70a7ad6b45f570fa27a97ba14",
+        "sampling_category": "explicit councilmember label",
+        "source_label": "I. Padilla",
+        "resolver_role": "councilmember",
+        "resolver_official_id": "cd6-official",
+        "resolver_name": "Imelda Padilla",
+        "resolution_method": "exact-councilmember"
+      },
+      "diagnostic_group": "target-alignment hold",
+      "diagnostic_note": "Submitted name differs from prediction. Evidence at 00:44:45 is outside target 00:44:08–00:44:12. Do not score the disagreement as adjudicated or overwrite the label.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "02",
+      "video_id": "MBjio010l60",
+      "target_start": "00:46:06",
+      "target_end": "00:46:29",
+      "submitted_identity": "John Lee",
+      "submitted_role": "Los Angeles City Councilmember, District 12",
+      "unresolved": "No",
+      "prediction": {
+        "item": 2,
+        "video_id": "MBjio010l60",
+        "canonical_utterance_index": 5,
+        "artifact_sha256": "ffe1785f59f76844737d80b4002e9e9b943e7287d68d5522f97f201514e3dabc",
+        "sampling_category": "explicit councilmember label",
+        "source_label": "J. Lee",
+        "resolver_role": "councilmember",
+        "resolver_official_id": "cd12-official",
+        "resolver_name": "John Lee",
+        "resolution_method": "exact-councilmember"
+      },
+      "diagnostic_group": "resolved submission, target-aligned comparison",
+      "diagnostic_note": "John Lee matches the personal-name prediction; submitted evidence covers the target. This is label agreement, not independently replayed audiovisual verification.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "03",
+      "video_id": "QePVCuF0iAY",
+      "target_start": "00:46:44",
+      "target_end": "00:46:49",
+      "submitted_identity": "Luigi Verano",
+      "submitted_role": "City Clerk",
+      "unresolved": "No",
+      "prediction": {
+        "item": 3,
+        "video_id": "QePVCuF0iAY",
+        "canonical_utterance_index": 0,
+        "artifact_sha256": "f440cac9ed3be0164da9862df913bfea173ed97ac0c2e3ee49b4a4779001c47b",
+        "sampling_category": "explicit councilmember label",
+        "source_label": "T. Park",
+        "resolver_role": "councilmember",
+        "resolver_official_id": "cd11-official",
+        "resolver_name": "Traci Park",
+        "resolution_method": "exact-councilmember"
+      },
+      "diagnostic_group": "target-alignment hold",
+      "diagnostic_note": "Submitted clerk identity differs from Traci Park prediction. Evidence describes a 14-ayes result; the worksheet quote concerns an amendment on item 14. Resolve the speech/source alignment before scoring.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "04",
+      "video_id": "H-OkhDWvgYE",
+      "target_start": "00:42:37",
+      "target_end": "00:42:56",
+      "submitted_identity": "Marqueece Harris-Dawson",
+      "submitted_role": "Los Angeles City Council President",
+      "unresolved": "No",
+      "prediction": {
+        "item": 4,
+        "video_id": "H-OkhDWvgYE",
+        "canonical_utterance_index": 0,
+        "artifact_sha256": "fade7ad962fc539522722310f394bb356cafb3f70a7ad6b45f570fa27a97ba14",
+        "sampling_category": "presiding language",
+        "source_label": "Council President",
+        "resolver_role": "presiding",
+        "resolver_official_id": "council-president",
+        "resolver_name": "Council President",
+        "resolution_method": "exact-role"
+      },
+      "diagnostic_group": "resolved submission, target-aligned comparison",
+      "diagnostic_note": "Model predicts the presiding role, not Marqueece Harris-Dawson personally. User reports a chyron at 00:42:42–00:42:56; the target starts five seconds earlier. Broad role agrees; exact identity is not a model output.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "05",
+      "video_id": "MBjio010l60",
+      "target_start": "00:41:52",
+      "target_end": "00:42:40",
+      "submitted_identity": "Bob Blumenfield",
+      "submitted_role": "Council President Pro Tempore",
+      "unresolved": "No",
+      "prediction": {
+        "item": 5,
+        "video_id": "MBjio010l60",
+        "canonical_utterance_index": 0,
+        "artifact_sha256": "ffe1785f59f76844737d80b4002e9e9b943e7287d68d5522f97f201514e3dabc",
+        "sampling_category": "presiding language",
+        "source_label": "Council President",
+        "resolver_role": "presiding",
+        "resolver_official_id": "council-president",
+        "resolver_name": "Council President",
+        "resolution_method": "exact-role"
+      },
+      "diagnostic_group": "resolved submission, target-aligned comparison",
+      "diagnostic_note": "Model predicts a generic presiding role, not Bob Blumenfield. User reports President Pro Tempore; compatible broad function, distinct submitted title.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "06",
+      "video_id": "H-OkhDWvgYE",
+      "target_start": "00:43:23",
+      "target_end": "00:44:02",
+      "submitted_identity": "Luigi Verano",
+      "submitted_role": "City Clerk",
+      "unresolved": "No",
+      "prediction": {
+        "item": 6,
+        "video_id": "H-OkhDWvgYE",
+        "canonical_utterance_index": 7,
+        "artifact_sha256": "fade7ad962fc539522722310f394bb356cafb3f70a7ad6b45f570fa27a97ba14",
+        "sampling_category": "procedural exchange",
+        "source_label": "Clerk",
+        "resolver_role": "clerk",
+        "resolver_official_id": "clerk",
+        "resolver_name": "Clerk",
+        "resolution_method": "exact-role"
+      },
+      "diagnostic_group": "resolved submission, target-aligned comparison",
+      "diagnostic_note": "Model predicts Clerk; submitted Luigi Verano spelling preserved. Role agrees; no personal-name model prediction.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "07",
+      "video_id": "MBjio010l60",
+      "target_start": "00:49:28",
+      "target_end": "00:49:45",
+      "submitted_identity": "Luigi Verano",
+      "submitted_role": "City Clerk",
+      "unresolved": "No",
+      "prediction": {
+        "item": 7,
+        "video_id": "MBjio010l60",
+        "canonical_utterance_index": 16,
+        "artifact_sha256": "ffe1785f59f76844737d80b4002e9e9b943e7287d68d5522f97f201514e3dabc",
+        "sampling_category": "procedural exchange",
+        "source_label": "Clerk",
+        "resolver_role": "clerk",
+        "resolver_official_id": "clerk",
+        "resolver_name": "Clerk",
+        "resolution_method": "exact-role"
+      },
+      "diagnostic_group": "resolved submission, target-aligned comparison",
+      "diagnostic_note": "Model predicts Clerk; submitted Luigi Verano spelling preserved. Role agrees; no personal-name model prediction.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "08",
+      "video_id": "H-OkhDWvgYE",
+      "target_start": "01:19:56",
+      "target_end": "01:20:01",
+      "submitted_identity": "Rose Kato",
+      "submitted_role": "Community advocate / constituent of CD11",
+      "unresolved": "No",
+      "prediction": {
+        "item": 8,
+        "video_id": "H-OkhDWvgYE",
+        "canonical_utterance_index": 71,
+        "artifact_sha256": "fade7ad962fc539522722310f394bb356cafb3f70a7ad6b45f570fa27a97ba14",
+        "sampling_category": "public-comment boundary",
+        "source_label": "Speaker",
+        "resolver_role": "public-speaker",
+        "resolver_official_id": null,
+        "resolver_name": "Speaker",
+        "resolution_method": "exact-role"
+      },
+      "diagnostic_group": "resolved submission, target-aligned comparison",
+      "diagnostic_note": "Rose Kato remains submitted identity. The 01:19:51–01:19:58 claim partly overlaps the target; continuity to 01:22:32 is transcript-based, unverified and not visual. Generic Speaker is a broad non-official role only.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "09",
+      "video_id": "MBjio010l60",
+      "target_start": "00:58:19",
+      "target_end": "00:59:00",
+      "submitted_identity": "Naji Ali",
+      "submitted_role": "Local community activist and leader within the Los Angeles Muslim community.",
+      "unresolved": "No",
+      "prediction": {
+        "item": 9,
+        "video_id": "MBjio010l60",
+        "canonical_utterance_index": 40,
+        "artifact_sha256": "ffe1785f59f76844737d80b4002e9e9b943e7287d68d5522f97f201514e3dabc",
+        "sampling_category": "public-comment boundary",
+        "source_label": "Speaker",
+        "resolver_role": "public-speaker",
+        "resolver_official_id": null,
+        "resolver_name": "Speaker",
+        "resolution_method": "exact-role"
+      },
+      "diagnostic_group": "resolved submission, target-aligned comparison",
+      "diagnostic_note": "Naji Ali spelling preserved. Model predicts generic Speaker. Presentation/honoree speech is not by itself proof of a formal public-comment turn; broad non-official role is compatible.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "10",
+      "video_id": "QePVCuF0iAY",
+      "target_start": "01:06:01",
+      "target_end": "01:06:45",
+      "submitted_identity": "Unknown",
+      "submitted_role": "Presiding chair / Council President, as observed",
+      "unresolved": "Yes — personal identity not established",
+      "prediction": {
+        "item": 10,
+        "video_id": "QePVCuF0iAY",
+        "canonical_utterance_index": 37,
+        "artifact_sha256": "f440cac9ed3be0164da9862df913bfea173ed97ac0c2e3ee49b4a4779001c47b",
+        "sampling_category": "public-comment boundary",
+        "source_label": "Speaker",
+        "resolver_role": "public-speaker",
+        "resolver_official_id": null,
+        "resolver_name": "Speaker",
+        "resolution_method": "exact-role"
+      },
+      "diagnostic_group": "unresolved personal identity",
+      "diagnostic_note": "Unknown is not an identity match or mismatch. Submitted chair role differs from model public-speaker, but 01:06:54–01:07:08 evidence follows the original 01:06:01–01:06:45 target. Preserve warning/handoff times; role disagreement needs target-aligned review.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "11",
+      "video_id": "hyhgFSAqBRM",
+      "target_start": "02:09:59",
+      "target_end": "02:10:05",
+      "submitted_identity": "Marqueece Harris-Dawson",
+      "submitted_role": "City Council President",
+      "unresolved": "No",
+      "prediction": {
+        "item": 11,
+        "video_id": "hyhgFSAqBRM",
+        "canonical_utterance_index": 295,
+        "artifact_sha256": "6294fa7a019150414a6bd88dc9d969900aa44b0d13305a94e0517bec63a99993",
+        "sampling_category": "fuzzy role cue",
+        "source_label": "Council Presiden",
+        "resolver_role": "presiding",
+        "resolver_official_id": "council-president",
+        "resolver_name": "Council President",
+        "resolution_method": "fuzzy-from:Council Presiden"
+      },
+      "diagnostic_group": "mixed-speaker/boundary hold",
+      "diagnostic_note": "Keep submitted Marqueece Harris-Dawson identity for the chair. Generic presiding prediction fits vote-management speech; target also includes \"12 AYES\", a possible additional procedural voice. Neither quotation nor model establishes personal identity or exact boundaries for the whole interval.",
+      "held_out_contribution": 0
+    },
+    {
+      "item": "12",
+      "video_id": "oPUdYYi9HyE",
+      "target_start": "03:10:09",
+      "target_end": "03:10:21",
+      "submitted_identity": "Unresolved chair/clerk identities",
+      "submitted_role": "Chair/clerk procedural speech",
+      "unresolved": "Yes — exact personal identities and speaker boundaries unresolved",
+      "prediction": {
+        "item": 12,
+        "video_id": "oPUdYYi9HyE",
+        "canonical_utterance_index": 423,
+        "artifact_sha256": "48ea1344b80df3764297bf6a4fa087a7058ec7b5df5d5765240abe165db63a75",
+        "sampling_category": "fuzzy role cue",
+        "source_label": "Council Presiden",
+        "resolver_role": "presiding",
+        "resolver_official_id": "council-president",
+        "resolver_name": "Council President",
+        "resolution_method": "fuzzy-from:Council Presiden"
+      },
+      "diagnostic_group": "unresolved personal identities and boundaries",
+      "diagnostic_note": "Rodriguez attribution withdrawn. Chair/clerk procedural interpretation retained. Generic presiding prediction can describe a chair component, not establish all speakers. The worksheet places \"13 AYES, 1 NO\" after target; clerk timing within target remains unresolved.",
+      "held_out_contribution": 0
+    }
+  ]
+}
